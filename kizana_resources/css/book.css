@@ -1,0 +1,232 @@
+* { 
+  box-sizing : border-box ;
+  }
+  
+  body { 
+  overflow  : hidden ;
+  line-height: 1.65;
+
+  }
+  
+  img.chrome-tab { 
+  position  : absolute ; 
+  top : 5 ; 
+  float : left ; 
+  height : 30 ;
+  width : 30 ; 
+  z-index : 5 ;
+  }
+  
+
+  
+  .book_div {
+    position  : fixed ; 
+      height : 95% ; 
+  background-color : white ;
+  width : 100%
+  }
+  
+  #book_toolbox { 
+  height : 98% ; 
+  width  : 25 ; 
+  float : right ; 
+  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+  border-radius: 16px;
+  padding : 10 5 ; 
+  margin-left  : 3px ; 
+  }
+  
+  .slider{
+  background-color: #b7b0b0;
+  height : 50%;
+  left : -1 ; 
+  }
+
+
+    .previous { 
+    padding : 0 ; 
+  width  : 30px ;
+  position : relative ; 
+  left : 8 ; 
+  }
+
+    .next { 
+  width  : 30px ;
+  position : relative ; 
+  left : 8 ; 
+  }
+
+  
+
+  #page_input {
+    z-index : 100 ; 
+  font-size : 12px ;
+  width : 25 ;
+  height : 30 ;
+  position : relative ; 
+  left : 6 ;   
+  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+  border-radius: 5px;
+  border : none ; 
+  margin : 5 0 5 0 ;
+  }
+
+    #part_input {
+    z-index : 100 ; 
+  font-size : 12px ;
+  width : 25 ;
+  height : 30 ;
+  position : relative ; 
+  left : 6 ;   
+  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+  border-radius: 5px;
+  border : none ; 
+  }
+  #book_info { 
+  position :relative ; 
+  right  : -7 ;
+  width  : 28px ;
+  margin-top : 7 ; 
+  }
+
+
+.sidebar_icon { 
+  position : absolute ; 
+  right  : -5 ;
+  bottom : 15 ;
+  width  : 30px ;
+
+}
+
+
+.sidebar {
+  float : right ; 
+  width: auto;
+  max-width : 20% ; 
+  height: 97%;
+  overflow : hidden ; 
+  padding-right : 0 ; 
+  letter-spacing: .01em;
+  line-height: 1.65;
+  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+  border-radius: 16px;
+  margin :3 0 0 3  ; 
+  
+  }
+  
+  .active  {
+  background-color :#d2caca ;    
+  border-radius: 7px;
+  }
+
+  .sidebar h1 { 
+  font-size: 18px;
+    font-weight: 600  ;
+  text-decoration : underline #cac4c4  ; 
+  text-underline-position: under;
+  font-family : "jazeera-light" ; 
+  text-decoration-thickness: .1em ;
+  padding-right : 5 ;
+  }
+  
+  .sidebar h2 { 
+  font-size: 18 ;
+  font-weight: 400  ;
+  font-family : "jazeera-light" ; 
+  padding-right : 5 ; 
+  }
+  
+  
+  .sidebar:hover { 
+  overflow-y : auto ; 
+  }
+  
+    
+  .sidebar h1:hover,h2:hover{ 
+  cursor:pointer;
+  background-color : #F1F3F4 ; 
+  border-radius: 10px;
+
+  }
+ 
+  .content {
+  width: auto ; 
+  height: 80%;  
+  line-height: 1.65;
+  font-size : 24 ; 
+  font-family : "helveteca"  ;  
+  font-weight : lighter ; 
+  overflow-y: auto;
+  overflow-x : hidden ; 
+  cursor: text ;
+  letter-spacing: .001em;
+  word-spacing: 1px;
+  padding : 10 ; 
+  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+  border-radius: 16px;
+  margin  : 3 3  3 3 ;   
+    position: relative;
+  
+  }
+
+   [data-type="title"] {
+  font-family : "jazeera-bold" ; 
+  font-size : 18 ; 
+  }
+
+  
+  .hashia { 
+  height : 119  ;
+  width: s;  
+  padding : 10 ; 
+  overflow-y: auto;
+  overflow-x : hidden ; 
+  font-family : "helveteca" ; 
+  font-size : 18 ; 
+  line-height: 1.60;
+  letter-spacing: .01em;
+  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+  border-radius: 16px 16px 16px ;
+  }
+
+  .hashia::selection , .content::selection {
+     background-color: #434141 ; 
+     color : white ; 
+     }
+  
+  @font-face {
+    font-family: "Naskh" ;
+    src: url("fonts/Naskh.ttf");
+  }
+  
+  
+    @font-face {
+    font-family: "jazeera-light" ;
+    src: url("fonts/Al-Jazeera-Light.woff2");
+  }
+  
+
+     @font-face {
+    font-family: "jazeera-regular";
+    src: url("fonts/Al-Jazeera-Regular.0112de0f.woff2");
+  }
+
+  @font-face {
+    font-family: "jazeera-bold";
+    src: url("fonts/Al-Jazeera-Bold.3301c4f5.woff2");
+  }
+
+  @font-face {
+    font-family: "helveteca";
+    src: url("fonts/alfont_com_AlFont_com_HelveticaWorld-Regular.ttf");
+  }
+
+img:hover  , .bio_img_search:hover , .bio_img:hover{ 
+cursor : pointer ; 
+   transform: translateY(4px);
+
+}
+
+ img:active {
+   transform: translateY(8px);
+}

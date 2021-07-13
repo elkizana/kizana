@@ -1,0 +1,100 @@
+<html lang="ar" dir="rtl">
+<script>
+  const $ = jQuery = require("jquery");
+  const ChromeTabs = require("./kizana_resources/js/chrome-tabs.js");
+  const path = require('path');
+  const url = require('url');
+</script>
+
+<!-- <script charset="utf-8"  src="kizana_resources/js/dragscroll.js"></script> -->
+
+<script charset="utf-8" src="kizana_resources/js/myscript.js"></script>
+<script  charset="utf-8" src="kizana_resources/js/jquery-ui.js"></script>
+<script src="kizana_resources/js/jquery.ui.slider-rtl.js"></script>
+<script src="kizana_resources/js/arabicString.js"></script>
+<link rel="stylesheet" href="kizana_resources/css/jquery-ui.css">
+<link rel="stylesheet" href="kizana_resources/css/jquery.ui.slider-rtl.css" > 
+<link rel="stylesheet" href="kizana_resources/css/chrome-tabs.css">
+<link rel="stylesheet" href="kizana_resources/css/normalize.css">
+<link rel="stylesheet" href="kizana_resources/css/book.css">
+<link rel="stylesheet" href="kizana_resources/css/library_index.css">
+<link rel="stylesheet" href="kizana_resources/css/search.css">
+
+
+<body>
+  <div class="chrome-tabs">
+    <div class="chrome-tabs-content"></div>
+    <div class="chrome-tabs-bottom-bar"></div>
+  </div>
+
+  <img src="./kizana_resources/icons/outline_home_black_24dp.png" id="001" class="chrome-tab" /> <!-- Khizana index books icon -->
+  
+  
+
+  
+    <div class="book_div"  id="b001">
+
+      <div  id="b001_sidebar"  >             <!-- navigation menu -->
+      <img src="./kizana_resources/icons/outline_book_black_24dp.png"   id="book_icon" />
+      <img src="./kizana_resources/icons/outline_person_black_24dp.png"  id="authors_icon" />
+      <img src="./kizana_resources/icons/outline_search_black_24dp.png"  id="search_icon" />
+       </div> 
+ <!-- categ && authors menus -->
+
+    <div id='main'>    
+    <div id="first_container"> <div  id="first_container_one"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...'>  </div>   
+    <div id="second_container"> <div  id="second_container_one"  > </div> <div  id="second_container_two"  > </div>    <input  onfocus="this.value=''" id="tags2" value='...'>  </div>  
+      </div> 
+
+  <div id="search_main">                            <!-- search menus -->
+    <div id="search_window_0">      
+      <input type="text" id="search_box_1" > 
+      <input  id="search_button" type="image"  src="./kizana_resources/icons//outline_search_black_24dp.png" onclick="search()" >  <!-- -->
+      
+      <div id="progress_bar"></div>
+      <!-- <input type="button" id="" value="without tashkeel " autocomplete="on"  onclick="search2()" >   -->
+      
+    </div>
+      
+    <div id="search_window_1">  </div>    
+    <input type="text" id="tags_search_window" >  
+    <div id="search_window_2">  </div> 
+    <div id="search_window_3">  </div>    
+
+  </div>
+</div> 
+
+</body>
+
+</html>
+
+
+<script>
+$("#book_icon").on("click" , function() { 
+  $('#search_main').hide() 
+    $('#main').show() 
+     $('#first_container_one, #second_container_one,#second_container_two ').empty()  
+      $('input:text').val('') 
+        library_index()
+})
+
+$("#authors_icon").on("click" , function() { 
+  $('#search_main').hide() 
+     $('#main').show() 
+      $('#first_container_one, #second_container_one,#second_container_two ').empty() 
+      $('input:text').val('') 
+        authors_index()
+})
+
+$("#search_icon").on("click" , function() { 
+  $('#main').hide()  
+   //$('#search_window_1 , #search_window_2 , #search_window_3').empty() 
+     $('#search_main').show() 
+      show_by_categ() 
+         $('input:text').val('') 
+})
+
+
+
+
+</script>
