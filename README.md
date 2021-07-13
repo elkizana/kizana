@@ -8,3 +8,6 @@
 </p>
 
 <h3 dir="rtl" >لتنصيبها :</h3>
+
+<code> npm install </code>
+<code> npm start </code>
