@@ -9,5 +9,5 @@
 
 <h3 dir="rtl" >لتنصيبها :</h3>
 
-<code> npm install </code><br>
+<code> npm install </code><br><br>
 <code> npm start </code>
