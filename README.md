@@ -7,7 +7,7 @@
 الخزانة قاعدة بياناتها (كتبها كلها) مأخوذة من المكتبة الشاملة الشهيرة.<br>
 </p>
 
-<h3 dir="rtl" >لتنصيبها :</h3>
+
 
 <code> npm install </code><br><br>
 <code> npm start </code>
