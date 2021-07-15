@@ -14,20 +14,7 @@
 
 
 
-<span lang="ar" class="image_title">محتوى كتاب </span> <br>
-<img  src="kizana_screenshots/01.png" alt="محتوى كتاب">
-
-<a href="kizana_screenshots/02.png">
-<span class="image_title">التصانيف</span><br>
- <img src="kizana_screenshots/02.png" alt="التصانيف">
-</a>
-
- <a href="kizana_screenshots/03.png">
- <span class="image_title">المؤلفون</span><br>
- <img src="kizana_screenshots/03.png" alt="المؤلفون">
-</a>
-
- <a href="kizana_screenshots/04.png">
- <span class="image_title">البحث</span><br>
- <img src="kizana_screenshots/04.png" alt="البحث">
-</a>
+<img  src="kizana_screenshots/01.png" alt="محتوى كتاب"><br>
+ <img src="kizana_screenshots/02.png" alt="التصانيف"><br>
+ <img src="kizana_screenshots/03.png" alt="المؤلفون"><br>
+ <img src="kizana_screenshots/04.png" alt="البحث"><br>
