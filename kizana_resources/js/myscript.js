@@ -169,9 +169,9 @@ async function show_by_categ() {
       filename: path.join(__dirname, 'kizana_resources/databases/master.sqlite')
                 } })
 
-$('#search_box_1').on("keyup" , function(event){var keycode = (event.keyCode ? event.keyCode : event.which);if(keycode == '13'){search()}}) // on Enter press
+$('#first_search_input').on("keyup" , function(event){var keycode = (event.keyCode ? event.keyCode : event.which);if(keycode == '13'){search()}}) // on Enter press
 
-$("#search_box_1").on("keyup" , function() { 
+$("#first_search_input").on("keyup" , function() { 
                   
   $(this).val(Oktob.replaceEnCharsAZERTY( $(this).val()       )      )
 
@@ -210,7 +210,7 @@ await knex.from("category").orderBy("category_order").then(function(rows){
 })
 
      
-        $("#tags_search_window").on( "keyup" , function() {
+        $("#second_search_input").on( "keyup" , function() {
           var Oktob = oktob();
             $(this).val(Oktob.replaceEnCharsAZERTY( $(this).val()       )      )
           var filter = $(this).val(),
@@ -227,13 +227,13 @@ await knex.from("category").orderBy("category_order").then(function(rows){
      
         $(".single_book_checkbox").on("change"  , function() {
           this.checked  ? books_to_search.push([ $("label[for=" + this.id).text() , "b" + this.id.slice(1) ] ) : books_to_search = books_to_search.filter(element => element[0] !==  $("label[for=" + this.id).text() ) 
-          $("#progress_bar").html(  books_to_search.length )
+          $("#progress_status").html(  books_to_search.length )
         }) 
   
          $("#checkall_books").on("change"  , function() {
           $('input:checkbox').not(this).prop('checked', this.checked);
           this.checked ? $(".books_to_search").each(function(){books_to_search.push([$(this).text() ,  "b" +  $(this).attr("for").slice(1) ] )}) : books_to_search = []
-          $("#progress_bar").html(  books_to_search.length )
+          $("#progress_status").html(  books_to_search.length )
         }) 
      
      
@@ -259,13 +259,13 @@ async function search() {
                 
                 
   $("#b001").animate({ scrollTop: 500 }, 1000);
-  let search_input_value  = $("#search_box_1").val().removeTashkel()
+  let search_input_value  = $("#first_search_input").val().removeTashkel()
   
   
 
   $("td").remove()
 
- $("#search_main").append("<table><tr><th></th><th>المعثور</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>")
+ $("#search_window_3").html("<table><tr><th></th><th>المعثور</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>")
  for ( book of books_to_search) { 
   book_name = book[0]
   found_in  = []
@@ -274,7 +274,7 @@ async function search() {
   
   
      for (row of results) { 
-      $("#progress_bar").html( (books_to_search.indexOf(book) + 1 )  +   "/"  + books_to_search.length) 
+      $("#progress_status").html( (books_to_search.indexOf(book) + 1 )  +   "/"  + books_to_search.length) 
      let content_raw =  row.content.removeTashkel()
       if (content_raw.includes(search_input_value) ) {
          index  = content_raw.search(search_input_value)
@@ -298,51 +298,6 @@ async function search() {
 
 
 
-async function search2() { 
-  console.time('doSomething')
-
-  let i = 1 
-
-  var knex = require("knex")({
-    client: "sqlite3",
-    connection: {
-      filename: path.join(__dirname, 'kizana_resources/databases/kizana_all_books.sqlite')
-                } });
-  
-  $("#b001").animate({ scrollTop: 500 }, 1000);
-  let search_input_value  = $("#search_box_1").val()
-  
-  
-
-  $("td").remove()
-
- $("#search_window_3").html("<table><tr><th></th><th>المعثور</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>")
- for ( book of books_to_search) { 
-  book_name = book[0]
-  found_in  = []
-  await knex.select("content", "page" , "part" , "id").from(book[1]).then(function(results) { 
-      found_in = results
-  }  ,  function(error) {console.log(error) }
-  
-  ) 
-    //console.log( book )
-
-    for (row of found_in) { 
-     
-       if (row.content.search(search_input_value) != -1 ) { 
-          index  = row.content.search(search_input_value)
-          output = row.content.substring(index - 60 , index  ) + "<span id=found_word> "  + row.content.substring(index , index + 10) +  "</span>" + row.content.substring(index + 10 , index + 60)  
-          $("table").append( `<tr>    <td> ${i++} </td>    <td  class="${book[1]}" id="${row.id}" > ${output} </td>     <td>  ${ book_name }  </td>      <td>  ${row.page}  </td>     <td>  ${row.part || ""}  </td>   </tr> `)                           
-          $(  "." + book[1]  + ":last").on("click" , function() { add_book_and_tab( $(this).next().text() , this.className.slice(1) , initial_rowid = this.id   )} )
-      }
-    
-      else { null }  
-                          }   
-                     
-                        }
-                        console.timeEnd('doSomething') 
-                        
-}
 
 
 
