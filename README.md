@@ -13,7 +13,7 @@
 <code> npm start </code>
 
 
-
+<h6 dir="rtl" >صور منها :</h6>
 <img  src="kizana_screenshots/01.png" alt="محتوى كتاب"><br>
  <img src="kizana_screenshots/02.png" alt="التصانيف"><br>
  <img src="kizana_screenshots/03.png" alt="المؤلفون"><br>
