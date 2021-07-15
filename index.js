@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron')
-process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+//process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
 function createWindow() {
   const win = new BrowserWindow({
