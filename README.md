@@ -14,8 +14,8 @@
 
 
 
-<span class="image_title">محتوى كتاب </span> <br>
-<img dir="rtl" src="kizana_screenshots/01.png" alt="محتوى كتاب">
+<span dir="rtl" class="image_title">محتوى كتاب </span> <br>
+<img  src="kizana_screenshots/01.png" alt="محتوى كتاب">
 
 <a href="kizana_screenshots/02.png">
 <span class="image_title">التصانيف</span><br>
