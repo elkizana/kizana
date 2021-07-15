@@ -164,14 +164,20 @@
   padding : 10 ; 
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 16px;
-  margin  : 3 3  3 3 ;   
-    position: relative;
+  margin  : 3 3  3 0 ;   
+  position: relative;
   
+  }
+
+  .aya { 
+display : inline  ; 
+color : #323232 ; 
+word-spacing: 1px;
   }
 
    [data-type="title"] {
   font-family : "jazeera-bold" ; 
-  font-size : 18 ; 
+  font-size : "10px" ; 
   }
 
   

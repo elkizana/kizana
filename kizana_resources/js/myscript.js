@@ -1,3 +1,5 @@
+var Oktob = oktob();
+
 function library_index() {
   
        
@@ -51,7 +53,9 @@ $("#tags2").hide()
 })
 
 
-    $("#tags2").keyup(function() {
+    $("#tags2").on( "keyup" , function() {
+      var Oktob = oktob();
+            $(this).val(Oktob.replaceEnCharsAZERTY( $(this).val()       )      )
       var filter = $(this).val(),
         count = 0;
       $('.books').each(function() {
@@ -98,21 +102,22 @@ function authors_index() {
               if ( info[0].inf != null ) { 
                 $("#" + theid ).attr('title', info[0].inf )
               }
-                else {
 
+              else {
                   $("#" + theid ).attr('title', "ليس قيه بطاقة" )
                 }
             }).catch(function(error){
               $("#" + theid ).attr('title', "ليس قيه بطاقة" )
-
              })
   })
  
 
 
 
-          $("#tags1").keyup(function() {
-            var filter = $(this).val(),
+          $("#tags1").on( "keyup" ,  function() {
+            var Oktob = oktob();
+            $(this).val(Oktob.replaceEnCharsAZERTY( $(this).val()       )      )
+            var filter =  $(this).val()  
               count = 0;
             $('.authors').each(function() {
               if ($(this).text().search(new RegExp(filter, "i")) < 0) {
@@ -164,7 +169,13 @@ async function show_by_categ() {
       filename: path.join(__dirname, 'kizana_resources/databases/master.sqlite')
                 } })
 
-$('#search_box_1').keypress(function(event){var keycode = (event.keyCode ? event.keyCode : event.which);if(keycode == '13'){search()}}) // on Enter press
+$('#search_box_1').on("keyup" , function(event){var keycode = (event.keyCode ? event.keyCode : event.which);if(keycode == '13'){search()}}) // on Enter press
+
+$("#search_box_1").on("keyup" , function() { 
+                  
+  $(this).val(Oktob.replaceEnCharsAZERTY( $(this).val()       )      )
+
+})
 
 await knex.from("category").orderBy("category_order").then(function(rows){  
   $("#search_window_1").append( `<span class="categ"> الخزانة كلها <br></span>`)
@@ -199,7 +210,9 @@ await knex.from("category").orderBy("category_order").then(function(rows){
 })
 
      
-        $("#tags_search_window").keyup(function() {
+        $("#tags_search_window").on( "keyup" , function() {
+          var Oktob = oktob();
+            $(this).val(Oktob.replaceEnCharsAZERTY( $(this).val()       )      )
           var filter = $(this).val(),
             count = 0;
           $('.books_to_search').each(function() {
@@ -242,7 +255,9 @@ async function search() {
     connection: {
       filename: path.join(__dirname, 'kizana_resources/databases/kizana_all_books.sqlite')
                 } });
-  
+                
+                
+                
   $("#b001").animate({ scrollTop: 500 }, 1000);
   let search_input_value  = $("#search_box_1").val().removeTashkel()
   
@@ -250,7 +265,7 @@ async function search() {
 
   $("td").remove()
 
- $("#search_window_3").html("<table><tr><th></th><th>المعثور</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>")
+ $("#search_main").append("<table><tr><th></th><th>المعثور</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>")
  for ( book of books_to_search) { 
   book_name = book[0]
   found_in  = []
@@ -349,7 +364,11 @@ function add_book(table_id , initial_rowid="1")   {
   let previous = "#previous" + table_id
   let sidebar_icon = "#sidebar_icon" + table_id
   let delimeter = "_________" 
-  let line_breaking = /(?:\r\n|\r|\n)/g
+  let line_breaking = /(?:\r\n|\r|\n)/g 
+  let prentheses  = /\(([^(١|٢|٣|٤|٥|٦|٧|٨|٩)]+)\)/g                       
+  let curly_brackets = /{([^}]*)}/g
+  //let curly_brackets_digits =  /{([١|٢]*)}/g
+  let quotation = /"([^"]*)"/g
   let table_length  = ""
   let page_input = ".page_input" + table_id 
   let part_input = ".part_input" + table_id
@@ -373,14 +392,14 @@ function content_updater (table_id_original , row_id , content_id ) {
     $(content_id).animate({ scrollTop: 0 }, 0);
     if (  row[0].content.includes(delimeter)    ) {
           hashia = row[0].content.split(delimeter)[1] , row[0].content = row[0].content.split(delimeter)[0]
-          $(content_id).html(  `${row[0].content.replace(line_breaking, '<br>') }   `)
+          $(content_id).html(  `${row[0].content.replace(line_breaking, '<br>')/* .replace(prentheses, "<h5 class=aya>”$1“</h5>" ) */  }   `)  //.replace(quotation , "<h5 class=aya>”$1“</h5>" )
           $(page_input).val(` ${row[0].page || "" }  `)         //  
           $(part_input).val(` ${row[0].part || ""}  `)
           $(hashia_id).html( hashia.replace(line_breaking , "<br>" ).slice(4).replaceAll("¬" , "") )
           $(content_id).attr('id', row_id);
     }
     else { 
-      $(content_id).html( `${row[0].content.replace(line_breaking, '<br>') }  ` )            
+      $(content_id).html(  `${row[0].content.replace(line_breaking, '<br>')/* .replace(prentheses, "<h5 class=aya>”$1“</h5>" ).replace(curly_brackets , "<h5 class=aya>”$1“</h5>" )  */}   `)
       $(page_input).val(` ${row[0].page || "" }  `) 
       $(part_input).val(` ${row[0].part || ""}  `)
       $(content_id).attr('id', row_id);
@@ -505,19 +524,23 @@ function content_updater (table_id_original , row_id , content_id ) {
     }) 
 
     let width 
-    setTimeout(function() { width = $(sidebar_id).width()  }, 1000)
+    //setTimeout(function() { width = $(sidebar_id).width()  }, 1000)
 
     $(sidebar_icon).on("click" , function() { 
-      if (  $(sidebar_id).width() != 0   ) { 
-        $(sidebar_id).animate({width: '0'})    
-        $(sidebar_id).slideUp()
-        $(content_id).animate({width: 'auto'})    
+  
+  if (  $(sidebar_id).width() != 0   ) { 
+    width  = $(sidebar_id).width()
+    $(sidebar_id).animate({width: '0'})    
+    $(sidebar_id).slideUp()
+    $(content_id).animate({width: 'auto'})    
 }    
-      else { 
-        $(sidebar_id).animate({width: Math.round( width )   + 'px'  })
-        $(content_id).animate({width: 'auto'})
-        $(sidebar_id).show()
+  else { 
+    $(sidebar_id).animate({width: Math.round( width )   + 'px'  })
+    $(content_id).animate({width: 'auto'})
+    $(sidebar_id).show()
 }  
+   
+      
 })
 
 }                  /// end add_book

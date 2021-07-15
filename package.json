@@ -16,13 +16,11 @@
   "build": {
     "appId": "com.kizana.app",
     "productName": "الخزانة",
-    "files" : "!kizana_resources/databases/kizana_all_books.sqlite" ,
+    "files": "!kizana_resources/databases/kizana_all_books.sqlite",
     "directories": {
       "buildResources": "build",
       "output": "release"
     },
-    
-    
     "linux": {
       "category": "Education",
       "desktop": {
@@ -33,21 +31,18 @@
       },
       "executableName": "kizana",
       "maintainer": "kizana@gmail.com",
-      "asar" : "false",
+      "asar": "false",
       "icon": "build/icon.icns",
       "target": [
         "appImage"
       ]
     },
-  
     "mac": {
       "category": "public.app-category.tools",
       "target": [
         "dmg"
       ]
     },
-   
-   
     "win": {
       "asar": false,
       "target": [
@@ -55,12 +50,11 @@
       ]
     }
   },
-
-
   "dependencies": {
     "chrome-tabs": "^5.4.0",
     "jquery": "3.6.0",
     "knex": "0.95.05",
+    "oktob.js": "^1.1.0",
     "path": "0.12.7",
     "sqlite3": "5.0.0"
   },
