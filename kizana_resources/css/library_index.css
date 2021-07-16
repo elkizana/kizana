@@ -1,9 +1,11 @@
 #b001{ 
 width : 100% ; 
 height : 100% ; 
-font-family : "jazeera-bold" ; 
-letter-spacing: .01em ;
+font-family : "jazeera-regular" ;
+letter-spacing: .02em ;
 overflow : scroll ;   
+font-weight: 600; 
+
 }
 
 [id="001"] { 
