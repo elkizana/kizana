@@ -1,8 +1,6 @@
 var Oktob = oktob();
 
 function library_index() {
-  
-       
  var knex = require("knex")({
       client: "sqlite3",
       connection: {                                   
@@ -22,8 +20,7 @@ $("#tags2").hide()
   this.id.slice(1) != "" ? selected_category = knex.select("book_name" , "book_id" , "book_category").from("book").orderBy("book_name","ASC" ).where("book_category" , this.id.slice(1) )/* .andWhere("book_type" , "1") */  : selected_category =  knex.select("book_name" , "book_id"  , "authors" , "author_name" , "author_id" , "book_category" , "death_text").from("book").leftJoin("author" , "authors" , "author_id" )/* .where("book_type" , "1") */.orderBy("book_name","ASC" )
 
   selected_category.then(function(rows) { 
-    rows.forEach(book => $("#second_container_two").append(`<span class="books" id="${book.book_id}" title="" > ${book.book_name} <div class="bio_img" > </div>  </span>`)) //src="./kizana_resources/icons/outline_book_grey_24dp.png"
-    //${"المؤلف : " + book.author_name }  &#13;&#10; ${book.death_text ? "توفي : " +  book.death_text + "" : ""   }    
+    rows.forEach(book => $("#second_container_two").append(`<span class="books" id="${book.book_id}" title="" > ${book.book_name} <div class="bio_img" > </div>  </span>`))
     $("#second_container_one").html("<div id=author_and_book_number >" + $(".books").length + " كتابا في " + category + "</div>")   
     $(".books").on("click" , function() {  add_book_and_tab($(this).text() , $(this).attr("id"))  })        
 
@@ -44,7 +41,7 @@ $("#tags2").hide()
               
               } else {
                 
-                $(pointer ).attr('title', "ليس فيه بطاقة للكتاب" )
+                $(pointer ).attr('title', "ليس للكتاب بطاقة" )
               }             
 
               } )
@@ -85,7 +82,7 @@ function authors_index() {
                   $("#tags1").show()
                   $("#tags2").hide()
         knex.from("author").orderBy("author_name").then(function(rows){                       /* appendding  categories  */
-          rows.forEach(author  => $("#first_container_one").append( `<span class="authors"  id="${author.author_id}" title="" > ${author.author_name}      <span id="death_date" >${author.death_text ?  author.death_text : ""}</span></span>`))
+          rows.forEach(author  => $("#first_container_one").append( `<span class="authors"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img" > </div>     <span id="death_date" >${author.death_text ?  author.death_text : ""}</span></span>`))
           $("#first_container_one").prepend( "<div id=author_and_book_number >المؤلفون (" +   $('.authors').length  + ")</div>"   )
           
 
@@ -97,19 +94,23 @@ function authors_index() {
                           }
                                     });
        
-            let theid = this.id
-            get_book_info.select("inf").from("bio").where("authid" , this.id).then(function(info) {
-              if ( info[0].inf != null ) { 
-                $("#" + theid ).attr('title', info[0].inf )
-              }
+             pointer =  $(this).children(".bio_img")
+             knex.select("bibliography").from("biblio").where("id" , this.id).then(function(info) {
+               if (info[0].bibliography.length > 2 ) { 
+                 $(pointer ).attr('title', info[0].bibliography )
 
-              else {
-                  $("#" + theid ).attr('title', "ليس قيه بطاقة" )
+                 
                 }
-            }).catch(function(error){
-              $("#" + theid ).attr('title', "ليس قيه بطاقة" )
-             })
-  })
+             } ).catch(function() { 
+              $(pointer ).attr('title', "ليس للكتاب بطاقة" )
+            })
+  
+  
+            })
+
+
+
+
  
 
 
@@ -142,17 +143,6 @@ function authors_index() {
                      
                         $( ".books").mouseover(function() { 
               
-                          pointer =  $(this).children(".bio_img")
-                          knex.select("bibliography").from("biblio").where("id" , this.id).then(function(info) {
-                            if (info.length  != 0   ) { 
-                              $(pointer ).attr('title', info[0].bibliography )
-                              //$(pointer ).tooltip()
-                          
-                          } else {
-                            
-                            $(pointer ).attr('title', "ليس فيه بطاقة للكتاب" )
-                          }             
-                          } )
             })
                       }) 
                       })                            
@@ -204,7 +194,7 @@ await knex.from("category").orderBy("category_order").then(function(rows){
           
           } else {
             
-            $(pointer ).attr('title', "ليس فيه بطاقة للكتاب" )
+            $(pointer ).attr('title', "ليس للكتاب بطاقة" )
           }             
           } )
 })
@@ -347,14 +337,14 @@ function content_updater (table_id_original , row_id , content_id ) {
     $(content_id).animate({ scrollTop: 0 }, 0);
     if (  row[0].content.includes(delimeter)    ) {
           hashia = row[0].content.split(delimeter)[1] , row[0].content = row[0].content.split(delimeter)[0]
-          $(content_id).html(  `${row[0].content.replace(line_breaking, '<br>')/* .replace(prentheses, "<h5 class=aya>”$1“</h5>" ) */  }   `)  //.replace(quotation , "<h5 class=aya>”$1“</h5>" )
+          $(content_id).html(  `${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>”$1“</h5>" )  }   `)  //.replace(quotation , "<h5 class=aya>”$1“</h5>" )
           $(page_input).val(` ${row[0].page || "" }  `)         //  
           $(part_input).val(` ${row[0].part || ""}  `)
           $(hashia_id).html( hashia.replace(line_breaking , "<br>" ).slice(4).replaceAll("¬" , "") )
           $(content_id).attr('id', row_id);
     }
     else { 
-      $(content_id).html(  `${row[0].content.replace(line_breaking, '<br>')/* .replace(prentheses, "<h5 class=aya>”$1“</h5>" ).replace(curly_brackets , "<h5 class=aya>”$1“</h5>" )  */}   `)
+      $(content_id).html(  `${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>”$1“</h5>" )}   `)
       $(page_input).val(` ${row[0].page || "" }  `) 
       $(part_input).val(` ${row[0].part || ""}  `)
       $(content_id).attr('id', row_id);
@@ -439,7 +429,7 @@ function content_updater (table_id_original , row_id , content_id ) {
         }
     }).catch(function() { 
       $(book_info).tooltip({
-        content : "ليس فيه بطاقة للكتاب"
+        content : "ليس للكتاب بطاقة"
       })
       
     })
@@ -511,54 +501,3 @@ function content_updater (table_id_original , row_id , content_id ) {
   $(".book_div").hide()
   add_book (id , initial_rowid)
   }
-
-
-
-
-/* 
-const options = {
-  includeMatches : true , 
-  //includeScore: true,
-  //shouldSort : true , 
-  //findAllMatches : true ,
-  //ignoreLocation : true , 
-  threshold : 0.5 , 
-  
-  keys: ['content'  , 'page' , 'part'] , 
-  //minMatchCharLength : 7
-}
-
-const fuse = new Fuse(found_in, options)
-const result = fuse.search('رسول الله')
- console.log(result.map( row => row )  ) */
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
- var availableTags = []               
- $( ".books" ).each(function() {availableTags.push(this.outerHTML)}) 
-   $( "#tags2" ).autocomplete({ 
-    minLength : 3 ,   
-     source: function(request, response) {
-    var results = $.ui.autocomplete.filter(availableTags, request.term) 
-    $("#second_container_two .books").hide()
-    $("#second_container_two").prepend(results.slice(0,15))  
-    $("#second_container_two .books:visible").addClass("filtered")
-    $("input").on("keyup" , function() {if (!this.value) {$("#second_container_two .filtered").remove() && $("#second_container_two .books").show() } })    
-    $(".filtered").on("click" , function() { add_book_and_tab($(this).text() , $(this).attr("id"))  })        
-  }         // end source  
-})  // end #tags 
-
-
-
-*/

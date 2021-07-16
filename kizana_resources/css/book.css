@@ -121,10 +121,9 @@
 
   .sidebar h1 { 
   font-size: 18px;
-    font-weight: 600  ;
   text-decoration : underline #cac4c4  ; 
   text-underline-position: under;
-  font-family : "jazeera-light" ; 
+  font-family : "jazeera-regular" ; 
   text-decoration-thickness: .1em ;
   padding-right : 5 ;
   }
@@ -132,7 +131,7 @@
   .sidebar h2 { 
   font-size: 18 ;
   font-weight: 400  ;
-  font-family : "jazeera-light" ; 
+  font-family : "jazeera-regular" ; 
   padding-right : 5 ; 
   }
   
@@ -154,8 +153,7 @@
   height: 80%;  
   line-height: 1.65;
   font-size : 24 ; 
-  font-family : "helveteca"  ;  
-  font-weight : lighter ; 
+  font-family : "Naskh"  ;  
   overflow-y: auto;
   overflow-x : hidden ; 
   cursor: text ;
@@ -171,23 +169,23 @@
 
   .aya { 
 display : inline  ; 
-color : #323232 ; 
-word-spacing: 1px;
+color : #282727 ; 
   }
 
    [data-type="title"] {
   font-family : "jazeera-regular" ; 
+  font-size : 18 ; 
+  font-weight : 600 ; 
   }
 
   
   .hashia { 
   height : 119  ;
-  width: s;  
   padding : 10 ; 
   overflow-y: auto;
   overflow-x : hidden ; 
-  font-family : "helveteca" ; 
-  font-size : 18 ; 
+  font-family : "Naskh" ; 
+  font-size : 20 ; 
   line-height: 1.60;
   letter-spacing: .01em;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
@@ -204,27 +202,12 @@ word-spacing: 1px;
     src: url("fonts/Naskh.ttf");
   }
   
-  
-    @font-face {
-    font-family: "jazeera-light" ;
-    src: url("fonts/Al-Jazeera-Light.woff2");
-  }
-  
-
      @font-face {
     font-family: "jazeera-regular";
     src: url("fonts/Al-Jazeera-Regular.0112de0f.woff2");
   }
 
-  @font-face {
-    font-family: "jazeera-bold";
-    src: url("fonts/Al-Jazeera-Bold.3301c4f5.woff2");
-  }
 
-  @font-face {
-    font-family: "helveteca";
-    src: url("fonts/alfont_com_AlFont_com_HelveticaWorld-Regular.ttf");
-  }
 
 img:hover  , .bio_img_search:hover , .bio_img:hover{ 
 cursor : pointer ; 
