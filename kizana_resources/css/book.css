@@ -199,12 +199,12 @@ color : #282727 ;
   
   @font-face {
     font-family: "Naskh" ;
-    src: url("fonts/Naskh.ttf");
+    src: url("../fonts/Naskh.ttf");
   }
   
      @font-face {
     font-family: "jazeera-regular";
-    src: url("fonts/Al-Jazeera-Regular.0112de0f.woff2");
+    src: url("../fonts/Al-Jazeera-Regular.woff2");
   }
 
 

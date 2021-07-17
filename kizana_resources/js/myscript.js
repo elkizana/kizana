@@ -1,4 +1,4 @@
-var Oktob = oktob();
+var Oktob = oktob()
 
 function library_index() {
  var knex = require("knex")({
@@ -37,16 +37,12 @@ $("#tags2").hide()
               knex.select("bibliography").from("biblio").where("id" , this.id).then(function(info) {
                 if (info.length  != 0   ) { 
                   $(pointer ).attr('title', info[0].bibliography  )
-                  //$(pointer ).tooltip()
               
               } else {
-                
                 $(pointer ).attr('title', "ليس للكتاب بطاقة" )
               }             
 
               } )
-
-          
 })
 
 
@@ -87,32 +83,18 @@ function authors_index() {
           
 
            $( ".authors").mouseover(function() { 
-            var get_book_info = require("knex")({
-              client: "sqlite3",
-              connection: {
-                filename: path.join(__dirname, './kizana_resources/databases/master.sqlite')
-                          }
-                                    });
        
              pointer =  $(this).children(".bio_img")
-             knex.select("bibliography").from("biblio").where("id" , this.id).then(function(info) {
-               if (info[0].bibliography.length > 2 ) { 
-                 $(pointer ).attr('title', info[0].bibliography )
-
-                 
+             knex.select("inf").from("bio").where("authid" , this.id).then(function(info) {
+               if (info[0].inf.length > 2 ) { 
+                 $(pointer ).attr('title', info[0].inf )
                 }
              } ).catch(function() { 
-              $(pointer ).attr('title', "ليس للكتاب بطاقة" )
+              $(pointer ).attr('title', "ليس للمؤلف بطاقة" )
             })
   
   
             })
-
-
-
-
- 
-
 
 
           $("#tags1").on( "keyup" ,  function() {
@@ -142,6 +124,17 @@ function authors_index() {
                         $(".books").on("click" , function() { add_book_and_tab($(this).text() , $(this).attr("id"))})  
                      
                         $( ".books").mouseover(function() { 
+
+                          pointer =  $(this).children(".bio_img")
+             knex.select("bibliography").from("biblio").where("id" , this.id).then(function(info) {
+               if (info[0].bibliography.length > 5 ) { 
+                 $(pointer ).attr('title', info[0].bibliography )
+                }
+             } ).catch(function(info) { 
+              $(pointer ).attr('title', "ليس للكتاب بطاقة" )
+            })
+
+
               
             })
                       }) 
@@ -152,7 +145,7 @@ function authors_index() {
 
   let books_to_search = []
 
-async function show_by_categ() { 
+async function search_index() { 
   var knex = require("knex")({
     client: "sqlite3",
     connection: {
@@ -160,11 +153,8 @@ async function show_by_categ() {
                 } })
 
 $('#first_search_input').on("keyup" , function(event){var keycode = (event.keyCode ? event.keyCode : event.which);if(keycode == '13'){search()}}) // on Enter press
-
 $("#first_search_input").on("keyup" , function() { 
-                  
   $(this).val(Oktob.replaceEnCharsAZERTY( $(this).val()       )      )
-
 })
 
 await knex.from("category").orderBy("category_order").then(function(rows){  
@@ -287,20 +277,11 @@ async function search() {
 }
 
 
-
-
-
-
-
-
-
-
 let unique = 0
 function add_book(table_id , initial_rowid="1")   { 
   
   let table_id_original = table_id
-  table_id = table_id + unique
-  
+  let table_id = table_id + unique
   let slider_id = "#s" + table_id
   let content_id = ".c" + table_id
   let sidebar_id = ".side" + table_id
