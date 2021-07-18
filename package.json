@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "chrome-tabs": "^5.4.0",
+    "isomorphic-git": "^1.9.2",
     "jquery": "3.6.0",
     "knex": "0.95.05",
     "oktob.js": "^1.1.0",

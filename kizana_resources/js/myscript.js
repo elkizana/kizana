@@ -35,7 +35,7 @@ $("#tags2").hide()
               pointer =  $(this).children(".bio_img")
               
               knex.select("bibliography").from("biblio").where("id" , this.id).then(function(info) {
-                if (info.length  != 0   ) { 
+                if (info.length  > 5   ) { 
                   $(pointer ).attr('title', info[0].bibliography  )
               
               } else {
@@ -281,7 +281,7 @@ let unique = 0
 function add_book(table_id , initial_rowid="1")   { 
   
   let table_id_original = table_id
-  let table_id = table_id + unique
+  table_id = table_id + unique
   let slider_id = "#s" + table_id
   let content_id = ".c" + table_id
   let sidebar_id = ".side" + table_id
@@ -301,7 +301,7 @@ function add_book(table_id , initial_rowid="1")   {
   let book_info = ".book_info" + table_id
   
   
-  $("body").append(`<div class="book_div" id="b${table_id}" > <div id="book_toolbox">  <div class=slider id=s${table_id}> </div>  <img src="./kizana_resources/icons/outline_keyboard_arrow_up_black_24dp.png" class="previous" id=previous${table_id} />  <img src="./kizana_resources/icons/outline_keyboard_arrow_down_black_24dp.png" class="next" id=next${table_id} />   <input type="text" class="page_input${table_id}" id="page_input"> <input type="text" class="part_input${table_id}" id="part_input"><img src="./kizana_resources/icons/outline_book_black_24dp.png" title="" class="book_info${table_id}"  id="book_info" />  <img src="./kizana_resources/icons/baseline_menu_open_black_24dp.png" class="sidebar_icon" id="sidebar_icon${table_id}" /> </div> <div class="sidebar side${table_id}">  </div>    <div class="content c${table_id}">   </div>  <div class="hashia h${table_id}">   </div> </div>`) //add html for book
+  $("body").append(`<div class="book_div" id="b${table_id}" > <div id="book_toolbox">  <div class=slider id=s${table_id}> </div>  <img src="./kizana_resources/icons/arrow_up.png" class="previous" id=previous${table_id} />  <img src="./kizana_resources/icons/arrow_down.png" class="next" id=next${table_id} />   <input type="text" class="page_input${table_id}" id="page_input"> <input type="text" class="part_input${table_id}" id="part_input"><img src="./kizana_resources/icons/book.png" title="" class="book_info${table_id}"  id="book_info" />  <img src="./kizana_resources/icons/menu_open_close.png" class="sidebar_icon" id="sidebar_icon${table_id}" /> </div> <div class="sidebar side${table_id}">  </div>    <div class="content c${table_id}">   </div>  <div class="hashia h${table_id}">   </div> </div>`) //add html for book
    
   var knex = require("knex")({
             client: "sqlite3",
