@@ -9,8 +9,8 @@
 
 
 
-<code> npm install </code><br><br>
-<code> npm start </code>
+<code> npm install <br>
+npm start </code>
 
 
 <h6 dir="rtl" >صور منها :</h6>
