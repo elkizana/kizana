@@ -34,7 +34,6 @@
       "asar": "false",
       "icon": "build/icon.icns",
       "target": [
-        "appImage"
       ]
     },
     "mac": {
