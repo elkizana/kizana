@@ -33,8 +33,7 @@
       "maintainer": "kizana@gmail.com",
       "asar": "false",
       "icon": "build/icon.icns",
-      "target": [
-      ]
+      "target": []
     },
     "mac": {
       "category": "public.app-category.tools",
@@ -54,6 +53,7 @@
     "isomorphic-git": "^1.9.2",
     "jquery": "3.6.0",
     "knex": "0.95.05",
+    "node-svn-ultimate": "^1.2.1",
     "oktob.js": "^1.1.0",
     "path": "0.12.7",
     "sqlite3": "5.0.0"
