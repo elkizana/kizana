@@ -417,9 +417,9 @@ function content_updater (table_id_original , row_id , content_id ) {
         
       $('body').on('DOMSubtreeModified', content_id, function(){                               // menu tracker 
         
-        if  ($(content_id +  " [data-type='title']").length != 0) {     
+        if  ($(content_id +  " [data-type='title']").length != 0 && $(sidebar_id).width() != 0 ) {     
           theid = "#I"  + $(content_id + " [data-type=title]").attr('id').slice(4)
-          $(sidebar_id + " " + theid).is(":hidden") ? $(sidebar_id + " " + theid).prev("H1").one().click()   : null   
+          $(sidebar_id + " " + theid).is(":hidden")  ? $(sidebar_id + " " + theid).prev("H1").one().click()   : null   
           $(sidebar_id + " H1, H2").removeClass("active")
           $(sidebar_id + " " + theid).addClass("active")
           document.querySelector(sidebar_id + " " + theid).scrollIntoView({behavior: 'smooth'  ,block: "center"}) 
