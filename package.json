@@ -1,7 +1,7 @@
 {
   "name": "kizana",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.0",
+  "main": "kizana_resources/index.js",
   "description": "خزانة الكتب فيها ثمانية آلاف كتاب للقراءة و البحث فيها",
   "scripts": {
     "start": "electron .",
@@ -16,7 +16,7 @@
   "build": {
     "appId": "com.kizana.app",
     "productName": "الخزانة",
-    "files": "!kizana_resources/databases/kizana_all_books.sqlite",
+    "files": "!kizana_resources/kizana_all_books.sqlite",
     "directories": {
       "buildResources": "build",
       "output": "release"
@@ -49,14 +49,14 @@
     }
   },
   "dependencies": {
+    "adm-zip": "^0.5.5",
     "chrome-tabs": "^5.4.0",
-    "isomorphic-git": "^1.9.2",
     "jquery": "3.6.0",
     "knex": "0.95.05",
-    "node-svn-ultimate": "^1.2.1",
     "oktob.js": "^1.1.0",
     "path": "0.12.7",
-    "sqlite3": "5.0.0"
+    "sqlite3": "5.0.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "electron": "13.1.5",
