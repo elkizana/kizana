@@ -1,3 +1,6 @@
+let kizana_version = 121442
+
+
 const { app, BrowserWindow } = require('electron');
 const { cpuUsage } = require('process');
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
@@ -8,10 +11,8 @@ function createWindow() {
       nodeIntegration: true,
       enableRemoteModule: true,
       contextIsolation: false
+    } 
 
-    } , 
-//    icon: __dirname + "/kizana_resources/icons/khizana_main_icon.png"
-//"pack": "electron-builder --dir",
   })
 
   win.loadFile('kizana_resources/html/main.html')
@@ -39,19 +40,25 @@ app.on('activate', () => {
 
 })
 
-
-
- /* try {
+/* try {
   require('electron-reloader')(module);
 } catch (_) { }
  */
-const kizana_version =  2222
+/* 
+var request = require('request');
+  request.get('https://elkizana.github.io/version.txt', function (error, response, body) {      // new update verfication 
+      if (!error && response.statusCode == 200) {
+              if ( body !== kizana_version ) { 
+                upadte(ver_num = body )
+              }
+    }
+  })
 
-function upadte() {
+async function upadte(ver_num) {
   
-var AdmZip =   require('adm-zip');
-const https = require('https'); // or 'https' for https:// URLs
-const fs = require('fs');
+var AdmZip =   require('adm-zip')
+const https = require('https')
+const fs = require('fs')
 
 const file = fs.createWriteStream("update.zip");
 
@@ -65,29 +72,12 @@ const file = fs.createWriteStream("update.zip");
       })
   })
 
-}   // end update function 
+  await  console.log(ver_num)
+    var data = fs.readFileSync('kizana_resources/index.js').toString().split("\n");
+    data.splice(0, 1, "let kizana_version = " + ver_num);
+    var text = data.join("\n");
+    fs.writeFile('kizana_resources/index.js', text, function (err) {
+      if (err) return console.log(err);
+    })
 
-
-  var request = require('request');
-request.get('https://elkizana.github.io/test.txt', function (error, response, body) {
-
-if (!error && response.statusCode == 200) {
-        console.log(body)
-        if ( body !== kizana_version ) { 
-
-          upadte()
-        }
-
-        else { 
-          console.log("bbb")
-
-}
-
-
-
-
-    }
-    
-
-
-  })
+}   */
