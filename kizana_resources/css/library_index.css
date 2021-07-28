@@ -14,8 +14,20 @@ height : 30 ;
 width : 30 ; 
 }
 
+
+#kizana_div_sidebar{ 
+position : relative ; 
+width : 50 ; 
+max-width : 8% ; 
+height : 50% ; 
+margin : 150 0 0 0   ; 
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius:16px;
+float : right ; 
+}
+
+
 #main{
-  //border : solid 1px red ;
 height : 90%  ; 
 width: 80%;
 margin: auto;

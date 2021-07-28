@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="../css/book.css">
 <link rel="stylesheet" href="../css/library_index.css">
 <link rel="stylesheet" href="../css/search.css">
+<link rel="stylesheet" href="../css/info.css">
 
 
 <body>
@@ -41,7 +42,7 @@
       <img src="../icons/book.png"   id="book_icon" />
       <img src="../icons/person.png"  id="authors_icon" />
       <img src="../icons/search.png"  id="search_icon" />
-      <img src="../icons/settings.png"  id="settings_icon" />
+      <img src="../icons/info.png"  id="info_icon" />
        </div> 
  <!-- categ && authors menus -->
 
@@ -66,6 +67,8 @@
     <div id="search_window_3">  </div>    
 
   </div>
+
+  <div id="info_window"><div>
 </div> 
 
 </body>
@@ -84,6 +87,7 @@ $("#book_icon").on("click" , function() {
 
 $("#authors_icon").on("click" , function() { 
   $('#search_main').hide() 
+  $('#info_window').hide() 
      $('#main').show() 
       $('#first_container_one, #second_container_one,#second_container_two ').empty() 
       $('input:text').val('') 
@@ -92,12 +96,26 @@ $("#authors_icon").on("click" , function() {
 
 $("#search_icon").on("click" , function() { 
   $('#main').hide()  
+  $('#info_window').hide() 
    //$('#search_window_1 , #search_window_2 , #search_window_3').empty() 
      $('#search_main').show() 
       search_index() 
          $('input:text').val('') 
 })
 
+$("#info_icon").on("click" , function() { 
+  $('#main , #search_main').hide()  
+     $('#info_window').show() 
+      
+      $('#info_window').html(`<p dir="rtl">
+الخزانة فيها ثمانية آلاف كتاب من الكتب الشرعية و غيرها يمكنك المطالعة و البحث فيها. <br>
+الخزانة تشتغل في الأنظمة الثلاث : Linux و Windows و MAC.<br>
+الخزانة مفتوحة المصدر (Open Source) ليس عليها حجر في الإستعمال أو النسخ أو التوزيع أو التغيير.<br>
+الخزانة قاعدة بياناتها (كتبها كلها) مأخوذة من المكتبة الشاملة الشهيرة.<br><br><br><br>
+من له ملاحظة أو اقتراح يراسلني في :  mehdibabaameur@gmail.com
+</p>
+`) 
+})
 
 
 

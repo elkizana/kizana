@@ -33,7 +33,7 @@
       "maintainer": "kizana@gmail.com",
       "asar": "false",
       "icon": "build/icon.icns",
-      "target": []
+      "target": ["AppImage"]
     },
     "mac": {
       "category": "public.app-category.tools",
@@ -55,8 +55,7 @@
     "knex": "0.95.05",
     "oktob.js": "^1.1.0",
     "path": "0.12.7",
-    "sqlite3": "5.0.0",
-    "xmlhttprequest": "^1.8.0"
+    "sqlite3": "5.0.0"
   },
   "devDependencies": {
     "electron": "13.1.5",
