@@ -56,7 +56,7 @@
       <input type="text" id="first_search_input" > 
       <input  id="search_button" type="image"  src="./../icons/search.png" onclick="search()" >  <!-- -->
       
-      <div id="progress_bar"></div>
+      <div id="progress_status"></div>
       <!-- <input type="button" id="" value="without tashkeel " autocomplete="on"  onclick="search2()" >   -->
       
     </div>
@@ -77,6 +77,10 @@
 
 
 <script>
+  $("#001").on("click" , function() { 
+    $(this).hide()  
+})
+
 $("#book_icon").on("click" , function() { 
   $('#search_main').hide() 
     $('#main').show() 
@@ -95,6 +99,7 @@ $("#authors_icon").on("click" , function() {
 })
 
 $("#search_icon").on("click" , function() { 
+  $('#001').hide()  
   $('#main').hide()  
   $('#info_window').hide() 
    //$('#search_window_1 , #search_window_2 , #search_window_3').empty() 

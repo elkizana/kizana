@@ -9,6 +9,7 @@ font-weight: 600;
 }
 
 [id="001"] { 
+display : none ;
 left : 0 ; 
 height : 30 ; 
 width : 30 ; 
