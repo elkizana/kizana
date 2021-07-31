@@ -1,15 +1,22 @@
 var Oktob = oktob()
+var knex_all = require("knex")({
+  client: "sqlite3",
+  connection: {
+    filename: path.join(__dirname, '../kizana_all_books.sqlite')
+  }
+})
+
+var knex_master = require("knex")({
+  client: "sqlite3",
+  connection: {
+    filename: path.join(__dirname, '../index.sqlite')
+  }
+})
 
 function library_index() {
-  var knex = require("knex")({
-    client: "sqlite3",
-    connection: {
-      filename: path.join(__dirname, '../index.sqlite')
-    }
-  });
   $("#tags1").hide()
   $("#tags2").hide()
-  knex.from("category").orderBy("category_order").then(function (rows) {
+  knex_master.from("category").orderBy("category_order").then(function (rows) {
 
     $("#first_container_one").append(`<span class="categ"> الخزانة كلها <br></span>`)
     rows.forEach(category => $("#first_container_one").append(`<span class="categ " id="t${category.category_id}" >${category.category_name}<br></span>`))
@@ -18,24 +25,17 @@ function library_index() {
       let category = $(this).text()
       $("#tags2").show()
       $("#second_container_one, #second_container_two").empty()
-      this.id.slice(1) != "" ? selected_category = knex.select("book_name", "book_id", "book_category").from("book").orderBy("book_name", "ASC").where("book_category", this.id.slice(1))/* .andWhere("book_type" , "1") */ : selected_category = knex.select("book_name", "book_id", "authors", "author_name", "author_id", "book_category", "death_text").from("book").leftJoin("author", "authors", "author_id")/* .where("book_type" , "1") */.orderBy("book_name", "ASC")
+      this.id.slice(1) != "" ? selected_category = knex_master.select("book_name", "book_id", "book_category").from("book").orderBy("book_name", "ASC").where("book_category", this.id.slice(1))/* .andWhere("book_type" , "1") */ : selected_category = knex_master.select("book_name", "book_id", "authors", "author_name", "author_id", "book_category", "death_text").from("book").leftJoin("author", "authors", "author_id")/* .where("book_type" , "1") */.orderBy("book_name", "ASC")
 
       selected_category.then(function (rows) {
         rows.forEach(book => $("#second_container_two").append(`<span class="books" id="${book.book_id}" title="" > ${book.book_name} <div class="bio_img" > </div>  </span>`))
         $("#second_container_one").html("<div id=author_and_book_number >" + $(".books").length + " كتابا في " + category + "</div>")
         $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")) })
 
-        var knex = require("knex")({
-          client: "sqlite3",
-          connection: {
-            filename: path.join(__dirname, '../index.sqlite')
-          }
-        })
-
-        $(".books").mouseover(function () {
+        $(".books").on("mouseover" , function () {
           pointer = $(this).children(".bio_img")
 
-          knex.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
+          knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
             if (info[0].bibliography.length > 5) {
               $(pointer).attr('title', info[0].bibliography)
 
@@ -53,12 +53,12 @@ function library_index() {
 
 
         $("#tags2").on("keyup", function () {
-          var Oktob = oktob();
+          
           $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
           var filter = $(this).val(),
             count = 0;
           $('.books').each(function () {
-            if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+            if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length > 2 ) {
               $(this).hide();
             } else {
               $(this).show();
@@ -76,23 +76,17 @@ function library_index() {
 }                         //end library_index                        
 
 function authors_index() {
-  var knex = require("knex")({
-    client: "sqlite3",
-    connection: {
-      filename: path.join(__dirname, '../index.sqlite')
-    }
-  });
   $("#tags1").show()
   $("#tags2").hide()
-  knex.from("author").orderBy("author_name").then(function (rows) {                       /* appendding  categories  */
+  knex_master.from("author").orderBy("author_name").then(function (rows) {                       /* appendding  categories  */
     rows.forEach(author => $("#first_container_one").append(`<span class="authors"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
     $("#first_container_one").prepend("<div id=author_and_book_number >المؤلفون (" + $('.authors').length + ")</div>")
 
 
-    $(".authors").mouseover(function () {
+    $(".authors").on("mouseover" , function () {
 
       pointer = $(this).children(".bio_img")
-      knex.select("inf").from("bio").where("authid", this.id).then(function (info) {
+      knex_master.select("inf").from("bio").where("authid", this.id).then(function (info) {
         if (info[0].inf.length > 2) {
           $(pointer).attr('title', info[0].inf)
         }
@@ -105,12 +99,11 @@ function authors_index() {
 
 
     $("#tags1").on("keyup", function () {
-      var Oktob = oktob();
       $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
       var filter = $(this).val()
       count = 0;
       $('.authors').each(function () {
-        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+        if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length > 2) {
           $(this).hide();
         } else {
           $(this).show();
@@ -124,16 +117,16 @@ function authors_index() {
       // let author =  $(this).text().not("#date")
       author = $(this).clone().children().remove().end().text()
 
-      knex.from("book").orderBy("book_name", "ASC").where("authors", this.id).then(function (rows) {
+      knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).then(function (rows) {
 
         rows.forEach(book => $("#second_container_two").append(`<span class="books" id="${book.book_id}" > ${book.book_name} <div class="bio_img" > </div>  </span>`))
         $("#second_container_one").html("<span id=author_and_book_number> كتب" + author + " (" + $(".books").length + ")</span>")
         $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")) })
 
-        $(".books").mouseover(function () {
+        $(".books").on("mouseover" , function () {
 
           pointer = $(this).children(".bio_img")
-          knex.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
+          knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
             if (info[0].bibliography.length > 5) {
               $(pointer).attr('title', info[0].bibliography)
             }
@@ -153,19 +146,13 @@ function authors_index() {
 let books_to_search = []
 
 async function search_index() {
-  var knex = require("knex")({
-    client: "sqlite3",
-    connection: {
-      filename: path.join(__dirname, '../index.sqlite')
-    }
-  })
 
   $('#first_search_input').on("keyup", function (event) { var keycode = (event.keyCode ? event.keyCode : event.which); if (keycode == '13') { search() } }) // on Enter press
   $("#first_search_input").on("keyup", function () {
     $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
   })
 
-  await knex.from("category").orderBy("category_order").then(function (rows) {
+  await knex_master.from("category").orderBy("category_order").then(function (rows) {
     $("#search_window_1").append(`<span class="categ"> الخزانة كلها <br></span>`)
     rows.forEach(c => $("#search_window_1").append(`<span class="categ " id="t${c.category_id}" >${c.category_name}<br></span>`))
   })
@@ -173,7 +160,7 @@ async function search_index() {
 
   $(".categ").on("click", function () {
     $("#search_window_2").empty();
-    this.id.slice(1) != "" ? selected_category = knex.select("book_name", "book_id", "book_category").from("book").orderBy("book_name", "ASC").where("book_category", this.id.slice(1)) : selected_category = knex.select("book_name", "book_id", "authors", "author_name", "author_id", "book_category", "death_text").from("book").leftJoin("author", "authors", "author_id").orderBy("book_name", "ASC")
+    this.id.slice(1) != "" ? selected_category = knex_master.select("book_name", "book_id", "book_category").from("book").orderBy("book_name", "ASC").where("book_category", this.id.slice(1)) : selected_category = knex_master.select("book_name", "book_id", "authors", "author_name", "author_id", "book_category", "death_text").from("book").leftJoin("author", "authors", "author_id").orderBy("book_name", "ASC")
 
 
     selected_category.then(function (rows) {
@@ -181,10 +168,10 @@ async function search_index() {
       rows.forEach(b => $("#search_window_2").append(`<label for="l${b.book_id}" class="books_to_search"> ${b.book_name} <div class="bio_img"> </div>  <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" ></label>  `))
 
 
-      $(".books_to_search").mouseover(function () {
+      $(".books_to_search").on("mouseover" , function () {
         theid = $(this).attr("for").slice(1)
         pointer = $(this).children(".bio_img")
-        knex.select("bibliography").from("biblio").where("id", theid).then(function (info) {
+        knex_master.select("bibliography").from("biblio").where("id", theid).then(function (info) {
 
           if (info.length != 0) {
             $(pointer).attr('title', info[0].bibliography)
@@ -199,12 +186,12 @@ async function search_index() {
 
 
       $("#second_search_input").on("keyup", function () {
-        var Oktob = oktob();
+        
         $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
         var filter = $(this).val(),
           count = 0;
         $('.books_to_search').each(function () {
-          if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+          if ($(this).text().search(new RegExp(filter, "i")  ) < 0 && filter.length > 2) {
             $(this).hide();
           } else {
             $(this).show();
@@ -216,6 +203,7 @@ async function search_index() {
       $(".single_book_checkbox").on("change", function () {
         this.checked ? books_to_search.push([$("label[for=" + this.id).text(), "b" + this.id.slice(1)]) : books_to_search = books_to_search.filter(element => element[0] !== $("label[for=" + this.id).text())
         $("#progress_status").html(books_to_search.length)
+        //console.log(books_to_search)
       })
 
       $("#checkall_books").on("change", function () {
@@ -234,16 +222,11 @@ async function search_index() {
 
 
 async function search() {
+  //$("#progres_status").after().append(books_to_search.length)
   // console.time('doSomething')
 
   let i = 1
 
-  var knex = require("knex")({
-    client: "sqlite3",
-    connection: {
-      filename: path.join(__dirname, '../kizana_all_books.sqlite')
-    }
-  });
 
 
 
@@ -258,7 +241,7 @@ async function search() {
   for (book of books_to_search) {
     book_name = book[0]
     found_in = []
-    await knex.select("content", "page", "part", "id").from(book[1]).then(function (results) {
+    await knex_all.select("content", "page", "part", "id").from(book[1]).then(function (results) {
       // found_in = results جساسة
 
 
@@ -312,16 +295,10 @@ function add_book(table_id, initial_rowid = "1") {
 
   $("body").append(`<div class="book_div" id="b${table_id}" > <div id="book_toolbox">  <div class=slider id=s${table_id}> </div>  <img src="./../icons/arrow_up.png" class="previous" id=previous${table_id} />  <img src="./../icons/arrow_down.png" class="next" id=next${table_id} />   <input type="text" class="page_input${table_id}" id="page_input"> <input type="text" class="part_input${table_id}" id="part_input"><img src="./../icons/book.png" title="" class="book_info${table_id}"  id="book_info" />  <img src="./../icons/menu_open_close.png" class="sidebar_icon" id="sidebar_icon${table_id}" /> </div> <div class="sidebar side${table_id}">  </div>    <div class="content c${table_id}">   </div>  <div class="hashia h${table_id}">   </div> </div>`) //add html for book
 
-  var knex = require("knex")({
-    client: "sqlite3",
-    connection: {
-      filename: path.join(__dirname, '../kizana_all_books.sqlite')
-    }
-  });
-  knex.raw("SELECT COUNT(*) FROM b" + table_id_original).then(function (text_table) { table_length = Object.values(text_table[0]) })  // table length for slider length                                                                    
+  knex_all.raw("SELECT COUNT(*) FROM b" + table_id_original).then(function (text_table) { table_length = Object.values(text_table[0]) })  // table length for slider length                                                                    
 
   function content_updater(table_id_original, row_id, content_id) {
-    knex.from("b" + table_id_original).where("id", row_id).then(function (row) {
+    knex_all.from("b" + table_id_original).where("id", row_id).then(function (row) {
       //handle.text( row[0].page  );
       //console.log(row[0].content)
       $(content_id).animate({ scrollTop: 0 }, 0);
@@ -347,7 +324,7 @@ function add_book(table_id, initial_rowid = "1") {
 
 
 
-  knex.from("t" + table_id_original).then(function (index) {                         /// start of book index 
+  knex_all.from("t" + table_id_original).then(function (index) {                         /// start of book index 
     for (x in index) {
       if (index[x].parent == 0) {
         $(sidebar_id).append(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
@@ -360,7 +337,7 @@ function add_book(table_id, initial_rowid = "1") {
   })                                                                          /// end of book index 
 
   /// Book content 
-  knex.from("b" + table_id_original).where("id", initial_rowid).then(function (text_table) {
+  knex_all.from("b" + table_id_original).where("id", initial_rowid).then(function (text_table) {
     $(content_id).append(`${text_table[0].content.replace(line_breaking, '<br>')} `)
     $(content_id).attr('id', initial_rowid);
     $(slider_id).slider({
@@ -404,17 +381,9 @@ function add_book(table_id, initial_rowid = "1") {
 
     })
 
+    knex_master.select("bibliography").from("biblio").where("id", book_info.slice(10, -1)).then(function (info) {
 
-    var get_book_info = require("knex")({
-      client: "sqlite3",
-      connection: {
-        filename: path.join(__dirname, '../index.sqlite')
-      }
-    });
-
-    get_book_info.select("bibliography").from("biblio").where("id", book_info.slice(10, -1)).then(function (info) {
-
-      if (info[0].bibliography.length > 2) {
+      if (info[0].bibliography.length > 5) {
         $(book_info).tooltip({
           content: info[0].bibliography.replace(line_breaking, "<br>")
         })
@@ -443,7 +412,7 @@ function add_book(table_id, initial_rowid = "1") {
     $(sidebar_id + " H1 , H2").on("click", function () {                        // On click  toggle the title sub-titles and scroll to correspondent text in main book window                     
       this.tagName == "H1" ? $(this).nextUntil("H1").toggle('slow') : null;
       row_id = $(this).attr("id").slice(1)
-      knex.from("b" + table_id_original).where('content', 'like', '%toc-' + $(this).attr("id").slice(1) + '%').then(function (title) {
+      knex_all.from("b" + table_id_original).where('content', 'like', '%toc-' + $(this).attr("id").slice(1) + '%').then(function (title) {
         $(slider_id).slider("value", title[0].id);
         content_updater(table_id_original, title[0].id, content_id)
       }).catch(function () {
@@ -487,6 +456,7 @@ function add_book(table_id, initial_rowid = "1") {
 
 
 function add_book_and_tab(tab_title, id, initial_rowid) {
+  $('#001').show()  
   var el = document.querySelector('.chrome-tabs');
   var chromeTabs = new ChromeTabs();
   chromeTabs.init(el, { tabOverlapDistance: 14, minWidth: 45, maxWidth: 243 });
