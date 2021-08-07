@@ -32,13 +32,13 @@
   width  : 25 ; 
   float : right ; 
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 16px;
+  border-radius: 3px;
   padding : 10 5 ; 
   margin-left  : 3px ; 
   }
   
   .slider{
-  background-color: #b7b0b0;
+  background-color: #1B1C20;
   height : 50%;
   left : -1 ; 
   }
@@ -48,21 +48,31 @@
     padding : 0 ; 
   width  : 30px ;
   position : relative ; 
-  left : 8 ; 
+  border: solid 2px #1B1C20;
+  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+  border-radius: 5px;width : 25 ;
+  height : 30 ;
+  left : 6 ; 
+  margin : 6px 0px 0px 0px ; 
   }
 
     .next { 
   width  : 30px ;
   position : relative ; 
-  left : 8 ; 
+  border: solid 2px #1B1C20;
+  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+  border-radius: 5px;width : 25 ;
+  height : 30 ;
+  left : 6 ; 
   }
 
   
 
   #page_input {
+     
     z-index : 100 ; 
-  font-size : 12px ;
-  width : 25 ;
+  font-size : 10px ;
+  width : 25 ; 
   height : 30 ;
   position : relative ; 
   left : 6 ;   
@@ -70,10 +80,14 @@
   border-radius: 5px;
   border : none ; 
   margin : 5 0 5 0 ;
+  font-family : "jazeera-regular" ;
+  border: solid 2px #1B1C20;
+  margin : 10px 0px 0px 0px ; 
   }
 
     #part_input {
-    z-index : 100 ; 
+  font-family : "jazeera-regular" ;
+  z-index : 100 ; 
   font-size : 12px ;
   width : 25 ;
   height : 30 ;
@@ -82,21 +96,78 @@
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 5px;
   border : none ; 
+  border: solid 2px #1B1C20;
   }
   #book_info { 
   position :relative ; 
   right  : -7 ;
   width  : 28px ;
   margin-top : 7 ; 
+  position : absolute ; 
+  right  : -2 ;
+  bottom : 80 ;
+  }
+  #single_book_search { 
+  position :relative ; 
+  right  : -7 ;
+  width  : 28px ;
+  margin-top : 7 ; 
+  position : absolute ; 
+  right  : -2 ;
+  bottom : 45 ;
+  }
+  
+  #search_block {
+
+    width : 400px ;  
+    height : 50px ; 
+    position : absolute ; 
+    bottom : 40px ; 
+    right : 30px ; 
+    background-color : #ffffff ; 
+    box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+    border-radius: 7px;
+    display : none ; 
+    z-index : 5 ; 
+    border :  solid #c8c0c0 1px ;
+    padding-right : 2px ;  
+    font-family : "jazeera-regular" ;
+  }
+  #single_book_search_input {
+  width : 250px ; 
+  height : 35px ; 
+  border-radius: 5px;
+  border : #cab8b8 1px solid ; 
+  padding: 6px 12px 6px 14px;
+
   }
 
+  #previous_found , #next_found  { 
+  
+  display : none ; 
+  height : 30px ; 
+  width : 30px ; 
+  margin :  0px  ; 
+  }
+#single_book_search_num { 
+display  : inline ; 
+font-size : 18px ; 
+margin-right : 16px ; 
+}
+
+.found_single_word { 
+font-weight: 600 ;  
+background-color : red ;
+border-radius: 5px;
+
+
+}
 
 .sidebar_icon { 
   position : absolute ; 
   right  : -5 ;
   bottom : 15 ;
   width  : 30px ;
-
 }
 
 
@@ -110,7 +181,7 @@
   letter-spacing: .01em;
   line-height: 1.65;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 16px;
+  border-radius: 5px;
   margin :3 0 0 3  ; 
   
   }
@@ -121,8 +192,9 @@
   }
 
   .sidebar h1 { 
+  color : #1B1C20 ; 
   font-size: 18px;
-  text-decoration : underline #cac4c4  ; 
+  text-decoration : underline #1B1C20  ; 
   text-underline-position: under;
   font-family : "jazeera-regular" ; 
   text-decoration-thickness: .1em ;

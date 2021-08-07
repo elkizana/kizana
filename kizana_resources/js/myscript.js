@@ -13,6 +13,8 @@ var knex_master = require("knex")({
   }
 })
 
+
+
 function library_index() {
   $("#tags1").hide()
   $("#tags2").hide()
@@ -99,7 +101,7 @@ function authors_index() {
 
 
     $("#tags1").on("keyup", function () {
-      $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
+      $(this).val(  Oktob.replaceEnCharsAZERTY(   $(this).val()  )   )
       var filter = $(this).val()
       count = 0;
       $('.authors').each(function () {
@@ -224,16 +226,10 @@ async function search_index() {
 async function search() {
   //$("#progres_status").after().append(books_to_search.length)
   // console.time('doSomething')
-
   let i = 1
-
-
-
 
   $("#b001").animate({ scrollTop: 500 }, 1000);
   let search_input_value = $("#first_search_input").val().removeTashkel()
-
-
 
   $("td").remove()
 
@@ -291,9 +287,37 @@ function add_book(table_id, initial_rowid = "1") {
   let page_input = ".page_input" + table_id
   let part_input = ".part_input" + table_id
   let book_info = ".book_info" + table_id
+  let single_book_search = ".single_book_search" + table_id
+  let single_book_search_input = ".single_book_search_input" + table_id
+  let search_block = ".search_block" + table_id
+  let previous_found = ".previous_found" + table_id
+  let next_found = ".next_found" + table_id
+  let single_book_search_num = ".single_book_search_num" + table_id
 
 
-  $("body").append(`<div class="book_div" id="b${table_id}" > <div id="book_toolbox">  <div class=slider id=s${table_id}> </div>  <img src="./../icons/arrow_up.png" class="previous" id=previous${table_id} />  <img src="./../icons/arrow_down.png" class="next" id=next${table_id} />   <input type="text" class="page_input${table_id}" id="page_input"> <input type="text" class="part_input${table_id}" id="part_input"><img src="./../icons/book.png" title="" class="book_info${table_id}"  id="book_info" />  <img src="./../icons/menu_open_close.png" class="sidebar_icon" id="sidebar_icon${table_id}" /> </div> <div class="sidebar side${table_id}">  </div>    <div class="content c${table_id}">   </div>  <div class="hashia h${table_id}">   </div> </div>`) //add html for book
+  $("body").append(`<div class="book_div" id="b${table_id}" > 
+  <div id="book_toolbox">
+    <div class=slider id=s${table_id}> </div>
+      <img src="./../icons/arrow_up.png" class="previous" id=previous${table_id} />
+        <img src="./../icons/arrow_down.png" class="next" id=next${table_id} />  
+          <input type="text" class="page_input${table_id}" id="page_input"> 
+          <input type="text" class="part_input${table_id}" id="part_input">
+          <img src="./../icons/book.png" title="" class="book_info${table_id}"  id="book_info" /> 
+          <img src="./../icons/search.png" title="" class="single_book_search${table_id}"  id="single_book_search" /> 
+          <img src="./../icons/menu_open_close.png" class="sidebar_icon" id="sidebar_icon${table_id}"  /> 
+          </div> 
+          
+          <div class=search_block${table_id} id=search_block> 
+          <input type="text"  class="single_book_search_input${table_id}" id="single_book_search_input"> 
+          <img src="./../icons/arrow_down.png" class="next_found${table_id}" id="next_found"   />  
+          <img src="./../icons/arrow_up.png" class="previous_found${table_id}" id="previous_found" />
+          <div id="single_book_search_num" class="single_book_search_num${table_id}"> </div>
+          </div>
+
+
+          <div class="sidebar side${table_id}">  </div>    
+          <div class="content c${table_id}">   </div>  
+            <div class="hashia h${table_id}">   </div> </div>`) 
 
   knex_all.raw("SELECT COUNT(*) FROM b" + table_id_original).then(function (text_table) { table_length = Object.values(text_table[0]) })  // table length for slider length                                                                    
 
@@ -395,6 +419,80 @@ function add_book(table_id, initial_rowid = "1") {
 
     })
 
+    let found_in = []
+
+    $(single_book_search).on("click" , function () {
+      $(search_block).slideToggle()
+      $(single_book_search_input).trigger("focus")
+    })
+    
+    $(single_book_search_input).on("keyup", function (event) { 
+      
+      
+      //var keycode = (event.keyCode ? event.keyCode : event.which); if (keycode == '13') { search_in_single_book() } 
+      $(this).val(  Oktob.replaceEnCharsAZERTY(     $(this).val()  )   ) 
+      $(single_book_search_input).val().length  > 2 ? search_in_single_book() : $(single_book_search_num).html( "لا شيئ" ) && $( previous_found ).hide()  && $( next_found ).hide() 
+      
+    })   
+    
+    async function search_in_single_book() {
+      $( next_found ).off()
+      $(previous_found).off()
+      found_in = []
+      let search_input_value =   $(single_book_search_input).val().removeTashkel() 
+        await knex_all.select("content", "id").from("b" + table_id_original).then(function (results) {
+            for (row of results) {
+             
+              if (row.content.includes(search_input_value)) {
+                $( previous_found ).show()
+                $( next_found ).show()
+                found_in.push(row.id)
+            }
+            else {
+              $(single_book_search_num).html( "لا شيئ" )
+             } 
+          }
+        })
+    
+    let i = 0 
+    let a = 1     
+
+       $(next_found).on("click" , function () {
+       content_updater(table_id_original,  found_in[i] , content_id)
+        $(single_book_search_num).html(  a  + " / "  + found_in.length   )
+
+              i == (found_in.length - 1) ? null :  i++
+              a == found_in.length ? null : a++ 
+
+              setTimeout(() => {
+                $( `${content_id}:contains(${search_input_value}) , ${hashia_id}:contains(${search_input_value}) `  ).html(function(_, html) {
+                  return html.split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`);
+              });
+              }, 500);
+            })
+
+    
+    $(previous_found).on("click" , function () {
+        a ==  1 ?   null :   a--
+        i == 0 ? null : i--
+
+        content_updater(table_id_original,  found_in[i] , content_id)
+        
+        $(single_book_search_num).html( a  + " / "  +  found_in.length  )
+          setTimeout(() => {
+            $(`${content_id}:contains(${search_input_value}) , ${hashia_id}:contains(${search_input_value}) ` ).html(function(_, html) {
+              return html.split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`);
+          });
+          }, 500);
+    })
+
+
+    $(next_found).trigger("click")
+
+    }
+
+
+
     $('body').on('DOMSubtreeModified', content_id, function () {                               // menu tracker 
 
       if ($(content_id + " [data-type='title']").length != 0 && $(sidebar_id).width() != 0) {
@@ -429,6 +527,7 @@ function add_book(table_id, initial_rowid = "1") {
   $(".chrome-tab").on("click", function () {                                    /*          navigating between tabs            */
     $(".book_div").hide()
     $("#b" + this.id).show()
+    //$("#001").show()
   })
 
   let width
