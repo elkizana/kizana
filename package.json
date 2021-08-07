@@ -16,7 +16,7 @@
   "build": {
     "appId": "com.kizana.app",
     "productName": "الخزانة",
-    "files": "!kizana_resources/kizana_all_books.sqlite",
+    "files": ["!kizana_resources/kizana_all_books.sqlite" ,"!kizana_resources/index.sqlite"],
     "directories": {
       "buildResources": "build",
       "output": "release"
