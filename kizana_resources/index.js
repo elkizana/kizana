@@ -1,5 +1,5 @@
 let kizana_version = "121442"
-
+const { jsPDF } = require("jspdf"); // will automatically load the node version
 
 const { app, BrowserWindow } = require('electron');
 const { cpuUsage } = require('process');
@@ -50,8 +50,6 @@ var request = require('request');
       if (!error && response.statusCode == 200) {
         console.log(Number.isInteger(kizana_version))
               if ( toString(body) !=  toString(kizana_version)) { 
-                //upadte(ver_num = body )
-                
               }
     }
   })
@@ -81,5 +79,7 @@ const file = fs.createWriteStream("update.zip");
     fs.writeFile('kizana_resources/index.js', text, function (err) {
       if (err) return console.log(err);
     })
-
 }  
+
+
+

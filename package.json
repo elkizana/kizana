@@ -16,7 +16,10 @@
   "build": {
     "appId": "com.kizana.app",
     "productName": "الخزانة",
-    "files": ["!kizana_resources/kizana_all_books.sqlite" ,"!kizana_resources/index.sqlite"],
+    "files": [
+      "!kizana_resources/kizana_all_books.sqlite",
+      "!kizana_resources/index.sqlite"
+    ],
     "directories": {
       "buildResources": "build",
       "output": "release"
@@ -33,7 +36,9 @@
       "maintainer": "kizana@gmail.com",
       "asar": "false",
       "icon": "build/icon.icns",
-      "target": ["AppImage"]
+      "target": [
+        "AppImage"
+      ]
     },
     "mac": {
       "category": "public.app-category.tools",
@@ -52,9 +57,14 @@
     "adm-zip": "^0.5.5",
     "chrome-tabs": "^5.4.0",
     "jquery": "3.6.0",
+    "jspdf": "^2.3.1",
     "knex": "0.95.05",
     "oktob.js": "^1.1.0",
     "path": "0.12.7",
+    "pdfkit": "^0.12.3",
+    "pdfmake": "^0.2.2",
+    "puppeteer-core": "^10.2.0",
+    "puppeteer-in-electron": "^3.0.5",
     "sqlite3": "5.0.0"
   },
   "devDependencies": {
