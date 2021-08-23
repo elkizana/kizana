@@ -229,7 +229,7 @@ async function search() {                                         // Search
 
   $("td").remove()
 
-  $("#search_window_3").html("<table><tr><th></th><th>المعثور</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>")
+  $("#search_window_3").html("<table class=search_table><tr><th></th><th>المعثور</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>")
   for (book of books_to_search) {
     book_name = book[0]
     found_in = []
@@ -240,7 +240,7 @@ async function search() {                                         // Search
         if (content_raw.includes(search_input_value)) {
           index = content_raw.search(search_input_value)
           output = content_raw.split(search_input_value)[0].slice(-60) + "<span id=found_word> " + search_input_value + "</span>" + content_raw.split(search_input_value)[1].slice(0, 60)
-          $("table").append(`<tr>    <td> ${i++} </td>    <td  class="${book[1]}" id="${row.id}" > ${output} </td>     <td>  ${book_name}  </td>      <td>  ${row.page}  </td>     <td>  ${row.part || ""}  </td>   </tr> `)
+          $(".search_table").append(`<tr>    <td> ${i++} </td>    <td  class="${book[1]}" id="${row.id}" > ${output} </td>     <td>  ${book_name}  </td>      <td>  ${row.page}  </td>     <td>  ${row.part || ""}  </td>   </tr> `)
           $("." + book[1] + ":last").on("click", function () { add_book_and_tab($(this).next().text(), this.className.slice(1), initial_rowid = this.id) })
         }
 
@@ -262,6 +262,7 @@ let unique = 0
 function add_book(table_id, initial_rowid = "1") {                    // add book 
   let table_id_original = table_id
   table_id = table_id + unique
+  let book_title = $("#" + table_id + " .chrome-tab-title").text()  
   let slider_id = "#s" + table_id
   let content_id = ".c" + table_id
   let sidebar_id = ".side" + table_id
@@ -489,7 +490,12 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
                 "items": {
                     "fold2-key": {"name": author_inf}
                 }
-            } 
+            } , 
+            
+            "bookmark" : { "name" : "جعل هذا الموضع في المفضلات" , 
+              callback: function(itemKey, opt, e) {
+                add_to_bookmarks()
+            }}
 
 
           }
@@ -546,6 +552,14 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       $(sidebar_id).show()
     }
   }
+
+function add_to_bookmarks() {
+let rawdata = fs.readFileSync('./kizana_resources/js/bookmark.json');
+let bookmarks_list = JSON.parse(rawdata);
+bookmarks_list.push({"name" : book_title , "page" : $(page_input ).val() || "1" , "id" : table_id_original} )
+bookmarks_list = JSON.stringify(bookmarks_list)
+fs.writeFileSync('./kizana_resources/js/bookmark.json', bookmarks_list ) 
+}
 }                  /// end add_book
 
 function add_book_and_tab(tab_title, id, initial_rowid) {
@@ -560,3 +574,50 @@ function add_book_and_tab(tab_title, id, initial_rowid) {
 }
 
 
+
+
+
+ 
+
+
+function jsontotable() {
+  let rawdata = fs.readFileSync('./kizana_resources/js/bookmark.json');
+let bookmarks_list = JSON.parse(rawdata);
+  let i = 0 
+      var transform = {"tag":"table", "id" : "bookmark_table" , "children":[
+        {"tag":"tbody","children":[
+          {"tag":"tr","children":[
+              {"tag":"td",'id':"${id}" ,"class" : "bookmarked_book" , "html": "${name}"  },
+              {"tag":"td",'id':"${id}"  , "html": "${page}"  },
+              {"tag":"td" , "html": "<p  id=${id} class=remove_book >___</p>"  }
+          ]}
+      ]}
+    ]}
+    $('#bookmark_table').html(json2html.transform(bookmarks_list,transform))
+    $('#bookmark_table').prepend('<th>الكتاب</th><th>الصفحة</th><th>إزالة</th>')
+
+    $(".bookmarked_book").on("click" , function () {
+      add_book_and_tab( $(this).text(), $(this).attr("id"))
+    })
+
+$(".remove_book").on("click" , function () {
+  remove_from_bookmarks(this.id)
+  $("tr").last().remove()
+})
+
+}
+
+
+function remove_from_bookmarks(id) { 
+  console.log(id +  " removed" )
+  let rawdata = fs.readFileSync('./kizana_resources/js/bookmark.json');
+  let bookmarks_list = JSON.parse(rawdata);
+
+  bookmarks_list = $.grep(bookmarks_list, function(e){ 
+    return e.id != id; 
+})
+
+bookmarks_list = JSON.stringify(bookmarks_list)
+fs.writeFileSync('./kizana_resources/js/bookmark.json', bookmarks_list ) 
+
+}

@@ -186,12 +186,12 @@ td:nth-child(5) , td:nth-child(4) {
 font-size : 13 ; 
 }
 
-td:nth-child(2):hover , .books_to_search:hover {
+.search_table td:nth-child(2):hover , .books_to_search:hover , #bookmark_table td:nth-child(1):hover {
 background-color : #e8e8e8 ; 
 cursor : pointer ; 
 
 }
-td:nth-child(3):hover , td:nth-child(2):hover , td:nth-child(1):hover{
+.search_table td:nth-child(3):hover , .search_table td:nth-child(2):hover , .search_table td:nth-child(1):hover{
 overflow: visible; 
 white-space: normal;
 height:auto;  /* just added this line */

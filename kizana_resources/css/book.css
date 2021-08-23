@@ -283,7 +283,7 @@ color : #282727 ;
 
 
 
-img:hover  , .bio_img_search:hover , .bio_img:hover{ 
+img:hover  , .bio_img_search:hover , .bio_img:hover , .remove_book:hover {  
 cursor : pointer ; 
    transform: translateY(4px);
 
@@ -291,4 +291,5 @@ cursor : pointer ;
 
  img:active {
    transform: translateY(8px);
+   
 }
