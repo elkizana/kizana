@@ -5,6 +5,8 @@
   const path = require('path');
   const url = require('url');
   const oktob = require("oktob.js")
+  const fs = require("fs")
+
 </script>
 
 <!-- <script charset="utf-8"  src="../js/dragscroll.js"></script> -->
@@ -16,6 +18,8 @@
 <script src="../js/oktob.js"></script>
 <script src="../js/jquery.contextMenu.min.js"></script>
 <script src="../js/jquery.ui.position.js"></script>
+<script src="../js/bookmark.json"></script>
+<script src="../js/json2html.js"></script>
 
 <link rel="stylesheet" href="../css/jquery-ui.css">
 <link rel="stylesheet" href="../css/jquery.ui.slider-rtl.css" > 
@@ -41,10 +45,11 @@
     <div class="book_div"  id="b001">
 
       <div  id="kizana_div_sidebar"  >             <!-- navigation menu -->
-      <img src="../icons/book.png"   id="book_icon" />
-      <img src="../icons/person.png"  id="authors_icon" />
-      <img src="../icons/search.png"  id="search_icon" />
-      <img src="../icons/info.png"  id="info_icon" />
+      <img src="../icons/book.png"   id="book_icon" title="الكتب" />
+      <img src="../icons/person.png"  id="authors_icon" title="المؤلفون"/>
+      <img src="../icons/search.png"  id="search_icon" title="البحث" />
+      <img src="../icons/info.png"  id="info_icon"  />
+      <img src="../icons/bookmark.png"  id="bookmark_icon" title="المفضلة" />
        </div> 
  <!-- categ && authors menus -->
 
@@ -69,8 +74,8 @@
     <div id="search_window_3">  </div>    
 
   </div>
-
-  <div id="info_window"><div>
+  <div id="bookmark_window"> <table id="bookmark_table" > <th>الكتاب</th> <th>الصفحة</th> </table>       </div>
+  <div id="info_window"></div>
 </div> 
 
 </body>
@@ -80,38 +85,42 @@
 
 <script>
   $("#001").on("click" , function() { 
-    //$(this).hide()  
 })
 
-$("#book_icon").on("click" , function() { 
-  $('#search_main').hide() 
+$("#book_icon").on("click" , function() {                           // books icon onclick
+  $('#search_main , #bookmark_window , #info_window ' ).hide() 
     $('#main').show() 
      $('#first_container_one, #second_container_one,#second_container_two ').empty()  
       $('input:text').val('') 
         library_index()
 })
 
-$("#authors_icon").on("click" , function() { 
-  $('#search_main').hide() 
-  $('#info_window').hide() 
+$("#authors_icon").on("click" , function() {                        // authors icon onclick
+  $('#search_main , #info_window , #bookmark_window ').hide() 
+  
      $('#main').show() 
       $('#first_container_one, #second_container_one,#second_container_two ').empty() 
       $('input:text').val('') 
         authors_index()
 })
 
-$("#search_icon").on("click" , function() { 
-  $('#001').hide()  
-  $('#main').hide()  
-  $('#info_window').hide() 
-   //$('#search_window_1 , #search_window_2 , #search_window_3').empty() 
+$("#search_icon").on("click" , function() {                            // search icon onclick
+  $('#001 , #main , #info_window  , #bookmark_window' ).hide()   
      $('#search_main').show() 
       search_index() 
          $('input:text').val('') 
 })
 
-$("#info_icon").on("click" , function() { 
-  $('#main , #search_main').hide()  
+$("#bookmark_icon").on("click" , function() {                           // bookmark icon onclick
+  $('#main , #search_main , #info_window , #bookmark_window').hide()  
+     $('#bookmark_window').show() 
+     jsontotable()
+
+})
+
+
+$("#info_icon").on("click" , function() {                                // info icon onclick
+  $('#main , #search_main , #bookmark_window').hide()   
      $('#info_window').show() 
       
       $('#info_window').html(`<p dir="rtl">
