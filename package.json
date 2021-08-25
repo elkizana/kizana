@@ -1,6 +1,6 @@
 {
   "name": "kizana",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "kizana_resources/index.js",
   "description": "خزانة الكتب فيها ثمانية آلاف كتاب للقراءة و البحث فيها",
   "scripts": {
@@ -16,13 +16,9 @@
   "build": {
     "appId": "com.kizana.app",
     "productName": "الخزانة",
-    "files": [
-      "!kizana_resources/kizana_all_books.sqlite",
-      "!kizana_resources/index.sqlite"
-    ],
     "directories": {
       "buildResources": "build",
-      "output": "release"
+      "output": "/mnt/CCA8F968A8F95206/kizana_appimage"
     },
     "linux": {
       "category": "Education",

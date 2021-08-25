@@ -44,7 +44,7 @@ app.on('activate', () => {
   require('electron-reloader')(module);
 } catch (_) { }
  */
-
+/* 
 var request = require('request');
   request.get('https://elkizana.github.io/version.txt', function (error, response, body) {      // new update verfication 
       if (!error && response.statusCode == 200) {
@@ -83,3 +83,4 @@ const file = fs.createWriteStream("update.zip");
 
 
 
+ */
