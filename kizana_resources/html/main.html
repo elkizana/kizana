@@ -84,8 +84,6 @@
 
 
 <script>
-  $("#001").on("click" , function() { 
-})
 
 $("#book_icon").on("click" , function() {                           // books icon onclick
   $('#search_main , #bookmark_window , #info_window ' ).hide() 
@@ -105,7 +103,7 @@ $("#authors_icon").on("click" , function() {                        // authors i
 })
 
 $("#search_icon").on("click" , function() {                            // search icon onclick
-  $('#001 , #main , #info_window  , #bookmark_window' ).hide()   
+  $('#main , #info_window  , #bookmark_window' ).hide()   
      $('#search_main').show() 
       search_index() 
          $('input:text').val('') 

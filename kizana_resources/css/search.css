@@ -11,7 +11,8 @@ float : right ;
 
 #search_main{
 
-width : 100% ; 
+width : 90% ; 
+margin : auto ; 
 display : none ; 
 //border : solid 1px black ;
 margin-bottom : 50px ; 
@@ -19,7 +20,7 @@ margin-bottom : 50px ;
 
 #search_window_0 { 
 position: relative;
-height : 550px  ;
+height : 100px  ;
 width: 250;
 padding: 10px;
 margin: 5px;
@@ -74,7 +75,7 @@ color : #969393 ;
 }
 
 #search_window_1 { 
-height : 550  ; 
+height : 510px  ; 
 width: 250; 
 padding: 10px;
 margin: 5 0 5 5 ;
@@ -98,7 +99,7 @@ margin : 3 ;
 
 
 #search_window_2 { 
-height : 515  ; 
+height : 475px  ; 
 width : auto ; 
 padding: 10px;
 overflow : hidden ;
@@ -159,7 +160,7 @@ td, th {
 border: 1px solid #dfdfdf ; 
 }
 td:nth-child(1) { 
-
+text-align : center ; 
 font-size : 12 ;
 overflow: hidden;
 text-overflow: ellipsis;
@@ -213,7 +214,8 @@ margin  :  0 0 8 15 ;
 
 #found_word { 
 font-weight: 600 ;  
-color : #786c6c ; 
+background-color : #efeaea ; 
+border-radius : 8px ; 
 
 }
 
