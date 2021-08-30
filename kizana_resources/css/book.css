@@ -48,7 +48,7 @@
     padding : 0 ; 
   width  : 30px ;
   position : relative ; 
-  border: solid 2px #1B1C20;
+  border: solid 1px #6d6e73;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 5px;width : 25 ;
   height : 30 ;
@@ -59,7 +59,7 @@
     .next { 
   width  : 30px ;
   position : relative ; 
-  border: solid 2px #1B1C20;
+  border: solid 1px #6d6e73;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 5px;width : 25 ;
   height : 30 ;
@@ -81,7 +81,7 @@
   border : none ; 
   margin : 5 0 5 0 ;
   font-family : "jazeera-regular" ;
-  border: solid 2px #1B1C20;
+  border: solid 1px #6d6e73;
   margin : 10px 0px 0px 0px ; 
   }
 
@@ -96,7 +96,7 @@
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 5px;
   border : none ; 
-  border: solid 2px #1B1C20;
+  border: solid 1px #6d6e73;
   }
   #book_info { 
   position :relative ; 
@@ -175,7 +175,8 @@ border-radius: 5px;
   float : right ; 
   width: auto;
   max-width : 20% ; 
-  height: 97%;
+  height: 93%;
+  float : right ; 
   overflow : hidden ; 
   padding-right : 0 ; 
   letter-spacing: .01em;
@@ -185,7 +186,16 @@ border-radius: 5px;
   margin :3 0 0 3  ; 
   
   }
-  
+  #sidebar_search_input { 
+  bottom : 20px ; 
+  height : 27px ; 
+  bottom : 15px ; 
+  right : 29px ; 
+  position : absolute ; 
+  border-radius: 5px;
+  border : #cfc3c3 1px solid ; 
+  padding: 6px 12px 6px 14px;
+  }
   .active  {
   color :white ;    
   border-radius: 0px;
@@ -193,9 +203,8 @@ border-radius: 5px;
   }
 
   .sidebar h1 { 
-  //color : #1B1C20 ; 
   font-size: 18px;
-  text-decoration : underline #1B1C20  ; 
+  text-decoration : underline #d0d1d4  ; 
   text-underline-position: under;
   font-family : "jazeera-regular" ; 
   text-decoration-thickness: .1em ;
@@ -219,7 +228,6 @@ border-radius: 5px;
   cursor:pointer;
   color :white ;    
   background-color : #1B1C20 ; 
-
   }
  
   .content {
@@ -238,7 +246,6 @@ border-radius: 5px;
   border-radius: 16px;
   margin  : 3 3  3 0 ;   
   position: relative;
-  
   }
 
   .aya { 
@@ -286,10 +293,8 @@ color : #282727 ;
 img:hover  , .bio_img_search:hover , .bio_img:hover , .remove_book:hover {  
 cursor : pointer ; 
    transform: translateY(4px);
-
 }
 
  img:active {
    transform: translateY(8px);
-   
 }

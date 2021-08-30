@@ -264,9 +264,17 @@
     display: none;
     width : 440px ; 
     max-height : 400px ; 
-    right : 200px ; 
+    right : 258px ; 
     overflow-y : auto ;  
     
+}
+
+.context-menu-item:last-child { 
+//background-color : red ;
+}
+
+.context-menu-item:hover > .context-menu-list{ 
+//background-color : red ; 
 }
 .context-menu-item.context-menu-visible > .context-menu-list {
     display: block;

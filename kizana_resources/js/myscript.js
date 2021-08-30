@@ -201,7 +201,6 @@ async function search_index() {                         // Search index
       $(".single_book_checkbox").on("change", function () {
         this.checked ? books_to_search.push([$("label[for=" + this.id).text(), "b" + this.id.slice(1)]) : books_to_search = books_to_search.filter(element => element[0] !== $("label[for=" + this.id).text())
         $("#progress_status").html(books_to_search.length)
-        //console.log(books_to_search)
       })
 
       $("#checkall_books").on("change", function () {
@@ -220,8 +219,6 @@ async function search_index() {                         // Search index
 
 
 async function search() {                                         // Search 
-  //$("#progres_status").after().append(books_to_search.length)
-  // console.time('doSomething')
   let i = 1
 
   $("#b001").animate({ scrollTop: 500 }, 1000);
@@ -253,8 +250,6 @@ async function search() {                                         // Search
     )
 
   }
-  // console.timeEnd('doSomething') 
-
 }
 
 
@@ -273,7 +268,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   let line_breaking = /(?:\r\n|\r|\n)/g
   let prentheses = /\(([^(١|٢|٣|٤|٥|٦|٧|٨|٩)]+)\)/g
   let curly_brackets = /{([^}]*)}/g
-  
   let quotation = /"(.*?)"/g
   let table_length = ""
   let page_input = ".page_input" + table_id
@@ -283,6 +277,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   let previous_found = ".previous_found" + table_id
   let next_found = ".next_found" + table_id
   let single_book_search_num = ".single_book_search_num" + table_id
+  let sidebar_search_input = ".sidebar_search_input" + table_id
 
   $("body").append(`<div class="book_div" id="b${table_id}" > 
   <div id="book_toolbox">
@@ -301,7 +296,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           <div id="single_book_search_num" class="single_book_search_num${table_id}"> </div>
           </div>
 
-          <div class="sidebar side${table_id}">  </div>    
+          <div class="sidebar side${table_id}">   </div>    
+             <input type="text" class="sidebar_search_input${table_id}" id="sidebar_search_input" >
           <div class="content c${table_id}">   </div>  
             <div class="hashia h${table_id}">   </div> </div>`) 
 
@@ -342,11 +338,30 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       }
     }
     $(sidebar_id).append("<H1></H1>")
+
+    
+    $(sidebar_search_input).on("keyup", function () {
+          
+      $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
+      var filter = $(this).val() 
+        count = 0;
+      $(sidebar_id + " H1,H2").each(function () {
+        if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length > 2 ) {
+          $(this).hide();
+        } else {
+          $(this).show();
+          count++;
+        }
+
+      })
+    })
+
   })                                                                          /// end of book index 
 
   /// Book content 
   knex_all.from("b" + table_id_original).where("id", initial_rowid).then(function (text_table) {
     $(content_id).append(`    ${text_table[0].content.replace(line_breaking, '<br>')}      `)
+    $(page_input).val(` ${text_table[0].page || ""}  `)   
     $(content_id).attr('id', initial_rowid);
     $(slider_id).slider({
       value: initial_rowid,
@@ -467,7 +482,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
                 "close" : {"name"  : "غلق أو فتح الفهرس" ,
                 callback: function(itemKey, opt, e) {
                   close_index()
-                  
               }
               } ,
 
@@ -525,6 +539,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         null
       })
     })
+    $(sidebar_search_input).css("width" , $(sidebar_id).width() ) // give width to sidebar_search_input
   })                                                               // end text table  selection
 
   $(".chrome-tab-close").on("click", function () {              /*          closing tabs            */
@@ -543,22 +558,25 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     if ($(sidebar_id).width() != 0) {
       width = $(sidebar_id).width()
       $(sidebar_id).animate({ width: '0' })
-      $(sidebar_id).slideUp()
+      $(sidebar_search_input).animate({ width: '0' }) && $(sidebar_search_input).hide()
+      //$(sidebar_id).slideUp()
       $(content_id).animate({ width: 'auto' })
+      
     }
     else {
       $(sidebar_id).animate({ width: Math.round(width) + 'px' })
+      $(sidebar_search_input).animate({ width: Math.round(width) + 'px' }) && $(sidebar_search_input).show()
       $(content_id).animate({ width: 'auto' })
       $(sidebar_id).show()
     }
   }
 
 function add_to_bookmarks() {
-let rawdata = fs.readFileSync('./kizana_resources/js/bookmark.json');
+let rawdata = fs.readFileSync('kizana_resources/js/bookmark.json');
 let bookmarks_list = JSON.parse(rawdata);
-bookmarks_list.push({"name" : book_title , "page" : $(page_input ).val() || "1" , "id" : table_id_original} )
+bookmarks_list.push({"name" : book_title , "page" : $(page_input ).val() || "1" , "page_id" : $(content_id).attr("id") , "part" : $(part_input).val()  ,   "id" : table_id_original} )
 bookmarks_list = JSON.stringify(bookmarks_list)
-fs.writeFileSync('./kizana_resources/js/bookmark.json', bookmarks_list ) 
+fs.writeFileSync('kizana_resources/js/bookmark.json', bookmarks_list ) 
 }
 }                  /// end add_book
 
@@ -573,36 +591,28 @@ function add_book_and_tab(tab_title, id, initial_rowid) {
   add_book(id, initial_rowid)
 }
 
-
-
-
-
- 
-
-
-function jsontotable() {
-  let rawdata = fs.readFileSync('./kizana_resources/js/bookmark.json');
+function jsontotable() {      // form html table from json file
+  let rawdata = fs.readFileSync('kizana_resources/js/bookmark.json');
 let bookmarks_list = JSON.parse(rawdata);
   let i = 0 
       var transform = {"tag":"table", "id" : "bookmark_table" , "children":[
-        {"tag":"tbody","children":[
           {"tag":"tr","children":[
-              {"tag":"td",'id':"${id}" ,"class" : "bookmarked_book" , "html": "${name}"  },
+              {"tag":"td",'id':"${id}" ,"class" : "bookmarked_book" , "data-page-id" : "${page_id}" , "html": "${name}"  },
               {"tag":"td",'id':"${id}"  , "html": "${page}"  },
+              {"tag":"td",'id':"${id}"  , "html": "${part}"  },
               {"tag":"td" , "html": "<p  id=${id} class=remove_book >___</p>"  }
           ]}
-      ]}
     ]}
     $('#bookmark_table').html(json2html.transform(bookmarks_list,transform))
-    $('#bookmark_table').prepend('<th>الكتاب</th><th>الصفحة</th><th>إزالة</th>')
+    $('#bookmark_table').prepend('<th>الكتاب</th><th>الصفحة</th><th>الجزء</th><th>إزالة</th>')
 
     $(".bookmarked_book").on("click" , function () {
-      add_book_and_tab( $(this).text(), $(this).attr("id"))
-    })
+      add_book_and_tab( $(this).text(), $(this).attr("id") , initial_rowid = $(this).attr("data-page-id") )
+          })
 
 $(".remove_book").on("click" , function () {
   remove_from_bookmarks(this.id)
-  $("tr").last().remove()
+  $(this).parents("tbody").remove()
 })
 
 }
@@ -610,7 +620,7 @@ $(".remove_book").on("click" , function () {
 
 function remove_from_bookmarks(id) { 
   console.log(id +  " removed" )
-  let rawdata = fs.readFileSync('./kizana_resources/js/bookmark.json');
+  let rawdata = fs.readFileSync('kizana_resources/js/bookmark.json');
   let bookmarks_list = JSON.parse(rawdata);
 
   bookmarks_list = $.grep(bookmarks_list, function(e){ 
@@ -618,6 +628,6 @@ function remove_from_bookmarks(id) {
 })
 
 bookmarks_list = JSON.stringify(bookmarks_list)
-fs.writeFileSync('./kizana_resources/js/bookmark.json', bookmarks_list ) 
+fs.writeFileSync('kizana_resources/js/bookmark.json', bookmarks_list ) 
 
 }

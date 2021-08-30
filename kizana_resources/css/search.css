@@ -1,13 +1,3 @@
-#kizana_div_sidebar{ 
-width : 50 ; 
-max-width : 8% ; 
-height : 50% ; 
-margin : 150 0 0 0   ; 
-background-color : white ; 
-box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-border-radius:16px;
-float : right ; 
-}
 
 #search_main{
 
