@@ -16,14 +16,14 @@ width : 30 ;
 }
 
 
-#kizana_div_sidebar{ 
+#kizana_div_sidebar { 
 position : relative ; 
-width : 50 ; 
+width : 50px ; 
 max-width : 8% ; 
 height : 50% ; 
 margin : 150 0 0 0   ; 
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-border-radius:16px;
+border-radius:10px;
 float : right ; 
 }
 
