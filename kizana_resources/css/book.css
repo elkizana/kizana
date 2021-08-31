@@ -129,18 +129,17 @@
     border-radius: 7px;
     display : none ; 
     z-index : 5 ; 
-    border :  solid #9f9e9e 1px ;
-    padding-right : 2px ;  
+    border :  solid #757575 1px ;
     font-family : "jazeera-regular" ;
   }
   #single_book_search_input {
-    
+  display : inline ;   
   width : 250px ; 
   height : 35px ; 
   border-radius: 5px;
-  border : #6a6a6a 1px solid ; 
-  padding: 6px 12px 6px 14px;
-
+  border : #929292 1px solid ; 
+  //padding: 6px 12px 6px 14px;
+  margin : 5px ; 
   }
 
   #previous_found , #next_found  { 
@@ -149,12 +148,24 @@
   width : 30px ; 
   margin :  0px  ; 
   }
+  
 #single_book_search_num { 
 display  : inline ; 
 font-size : 18px ; 
 margin-right : 16px ; 
 }
 
+#close_search { 
+font-size : 20px ; 
+float : left ; 
+margin : 10 ; 
+color : #6f6161 ; 
+cursor : pointer  ; 
+}
+#close_search:hover { 
+cursor : pointer ; 
+   transform: translateY(4px);
+}
 .found_single_word { 
 font-weight: 600 ;  
 background-color : #9d9696 ; 
