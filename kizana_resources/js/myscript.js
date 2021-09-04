@@ -64,6 +64,7 @@ function library_index() {               // library index
             } else {
               $(this).show();
               count++;
+              $("#author_and_book_number").html(count)
             }
 
           })
@@ -105,6 +106,7 @@ function authors_index() {                      //end author_index
         } else {
           $(this).show();
           count++;
+                    $("#author_and_book_number").html(count)
         }
       })
     })
@@ -194,7 +196,7 @@ async function search_index() {                         // Search index
           } else {
             $(this).show();
             count++;
-          }
+                    }
         })
       })
 
@@ -265,7 +267,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   let next = "#next" + table_id
   let previous = "#previous" + table_id
   let delimeter = "_________"
-  let line_breaking = /(?:\r\n|\r|\n)/g
+  //let line_breaking = /(?:\r\n|\r|\n)/g
+  let line_breaking = /(?:\r)/g
   let prentheses = /\(([^(١|٢|٣|٤|٥|٦|٧|٨|٩)]+)\)/g
   let curly_brackets = /{([^}]*)}/g
   let quotation = /"(.*?)"/g
@@ -420,7 +423,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       }
       
          let book_inf          
-         knex_master.select("bibliography").from("biblio").where("id", table_id_original ).then(function (info) {
+          knex_master.select("bibliography").from("biblio").where("id", table_id_original ).then(function (info) {
            if (info[0].bibliography.length > 5) {
              book_inf = info[0].bibliography.replace(line_breaking , "\n")
            }
