@@ -609,11 +609,11 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   }
 
 function add_to_bookmarks() {                           // add_to_bookmarks
-let rawdata = fs.readFileSync('kizana_resources/js/bookmark.json');
+let rawdata = fs.readFileSync('bookmark.json');
 let bookmarks_list = JSON.parse(rawdata);
 bookmarks_list.push({"name" : book_title , "page" : $(page_input ).val() || "1" , "page_id" : $(content_id).attr("id") , "part" : $(part_input).val()  ,   "id" : table_id_original} )
 bookmarks_list = JSON.stringify(bookmarks_list)
-fs.writeFileSync('kizana_resources/js/bookmark.json', bookmarks_list ) 
+fs.writeFileSync('bookmark.json', bookmarks_list ) 
 }
 
 
@@ -632,7 +632,7 @@ function add_book_and_tab(tab_title, id, initial_rowid) {
 }
 
 function jsontotable() {      // form html table from json file
-  let rawdata = fs.readFileSync('kizana_resources/js/bookmark.json');
+  let rawdata = fs.readFileSync('bookmark.json');
 let bookmarks_list = JSON.parse(rawdata);
   let i = 0 
       var transform = {"tag":"table", "id" : "bookmark_table" , "children":[
@@ -660,7 +660,7 @@ $(".remove_book").on("click" , function () {
 
 function remove_from_bookmarks(id) { 
   console.log(id +  " removed" )
-  let rawdata = fs.readFileSync('kizana_resources/js/bookmark.json');
+  let rawdata = fs.readFileSync('bookmark.json');
   let bookmarks_list = JSON.parse(rawdata);
 
   bookmarks_list = $.grep(bookmarks_list, function(e){ 
@@ -668,6 +668,6 @@ function remove_from_bookmarks(id) {
 })
 
 bookmarks_list = JSON.stringify(bookmarks_list)
-fs.writeFileSync('kizana_resources/js/bookmark.json', bookmarks_list ) 
+fs.writeFileSync('bookmark.json', bookmarks_list ) 
 
 }
