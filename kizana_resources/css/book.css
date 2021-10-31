@@ -38,7 +38,7 @@
   }
   
   .slider{
-  background-color: #1B1C20;
+  background-color: #c1c1c1;
   height : 50%;
   left : -1 ; 
   }
@@ -208,9 +208,8 @@ border-radius: 5px;
   padding: 6px 12px 6px 14px;
   }
   .active  {
-  color :white ;    
   border-radius: 0px;
-  background-color : #1B1C20 ; 
+  background-color : #c1c1c1 ; 
   }
 
   .sidebar h1 { 
@@ -257,6 +256,7 @@ border-radius: 5px;
   border-radius: 16px;
   margin  : 3 3  3 0 ;   
   position: relative;
+  outline : none ; 
   }
 
   .aya { 

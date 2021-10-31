@@ -1,5 +1,5 @@
 let kizana_version = "121442"
-const { jsPDF } = require("jspdf"); // will automatically load the node version
+
 
 const { app, BrowserWindow } = require('electron');
 const { cpuUsage } = require('process');
