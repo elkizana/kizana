@@ -59,7 +59,7 @@ function library_index() {               // library index
           var filter = $(this).val(),
             count = 0;
           $('.books').each(function () {
-            if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length > 2 ) {
+            if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length > 3 ) {
               $(this).hide();
             } else {
               $(this).show();
@@ -259,6 +259,7 @@ let unique = 0
 function add_book(table_id, initial_rowid = "1") {                    // add book 
   let table_id_original = table_id
   table_id = table_id + unique
+  let book_id = "#b" + table_id
   let book_title = $("#" + table_id + " .chrome-tab-title").text()  
   let slider_id = "#s" + table_id
   let content_id = ".c" + table_id
@@ -283,7 +284,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   let sidebar_search_input = ".sidebar_search_input" + table_id
   let close_search = ".close_search" + table_id
 
-  $("body").append(`<div class="book_div" id="b${table_id}" > 
+  $("body").append(`<div class="book_div" id="b${table_id}"  > 
   <div id="book_toolbox">
     <div class=slider id=s${table_id}> </div>
       <img src="./../icons/arrow_up.png" class="previous" id=previous${table_id} />
@@ -303,7 +304,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
 
           <div class="sidebar side${table_id}">   </div>    
              <input type="text" class="sidebar_search_input${table_id}" id="sidebar_search_input" >
-          <div class="content c${table_id}">   </div>  
+          <div class="content c${table_id}" tabindex="0" >   </div>  
             <div class="hashia h${table_id}">   </div> </div>`) 
 
   knex_all.raw("SELECT COUNT(*) FROM b" + table_id_original).then(function (text_table) { table_length = Object.values(text_table[0]) })  // table length for slider length                                                                    
@@ -350,14 +351,26 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           content_updater(table_id_original, row_id, content_id)
         }
       })
-  
+      
+    $(content_id).focus()
+    $(content_id).on('keydown', function(e){
+      // get keycode of current keypress event
+      var code = (e.keyCode || e.which);
+      if(code == 39 ) {
+        let a = parseInt($(content_id).attr("id"))  ; $(slider_id).slider("value", a + 1); content_updater(table_id_original, a + 1, content_id)
+      }
+      else if(code == 37 ) {
+        let a = parseInt($(content_id).attr("id")) ;  $(slider_id).slider("value", a - 1); content_updater(table_id_original, a - 1, content_id)  ;
+    }
+  })
+
       $(content_id).on('mousewheel', function (e) { delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ; delta > 0 ? content_updater(table_id_original, row_id + 1, content_id) : content_updater(table_id_original, row_id - 1, content_id); $(slider_id).slider("value", row_id);})
       $(previous).on("click", function () { let a = parseInt($(content_id).attr("id")) ;  $(slider_id).slider("value", a - 1); content_updater(table_id_original, a - 1, content_id)  ; })
       $(next).on("click", function () { let a = parseInt($(content_id).attr("id"))  ; $(slider_id).slider("value", a + 1); content_updater(table_id_original, a + 1, content_id)  ;})
       
   
       let found_in = [] 
-      //$( search_block ).draggable()
+      $( search_block ).draggable()
       $(single_book_search_input).on("keyup", function (event) { 
         $(this).val(  Oktob.replaceEnCharsAZERTY(     $(this).val()  )   ) ;
          $(single_book_search_input).val().length  > 2 ? search_in_single_book() : null 
@@ -587,6 +600,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   $(".chrome-tab").on("click", function () {                                    //          navigating between tabs            
     $(".book_div").hide()
     $("#b" + this.id).show()
+    
   })
 
   let width
@@ -659,7 +673,7 @@ $(".remove_book").on("click" , function () {
 
 
 function remove_from_bookmarks(id) { 
-  console.log(id +  " removed" )
+  
   let rawdata = fs.readFileSync('bookmark.json');
   let bookmarks_list = JSON.parse(rawdata);
 

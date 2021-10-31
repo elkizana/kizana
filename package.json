@@ -53,18 +53,13 @@
     "adm-zip": "^0.5.5",
     "chrome-tabs": "^5.4.0",
     "jquery": "3.6.0",
-    "jspdf": "^2.3.1",
     "knex": "0.95.05",
     "oktob.js": "^1.1.0",
     "path": "0.12.7",
-    "pdfkit": "^0.12.3",
-    "pdfmake": "^0.2.2",
-    "puppeteer-core": "^10.2.0",
-    "puppeteer-in-electron": "^3.0.5",
     "sqlite3": "5.0.0"
   },
   "devDependencies": {
-    "electron": "13.1.5",
+    "electron": "14.0.1",
     "electron-builder": "^22.11.7",
     "electron-reloader": "1.1.0"
   }
