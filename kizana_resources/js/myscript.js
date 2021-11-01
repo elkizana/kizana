@@ -352,17 +352,40 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         }
       })
       
-    $(content_id).focus()
+    $(content_id).trigger('focus')
+
+
     $(content_id).on('keydown', function(e){
       // get keycode of current keypress event
       var code = (e.keyCode || e.which);
       if(code == 39 ) {
         let a = parseInt($(content_id).attr("id"))  ; $(slider_id).slider("value", a + 1); content_updater(table_id_original, a + 1, content_id)
       }
-      else if(code == 37 ) {
+       else if(code == 37 ) {
         let a = parseInt($(content_id).attr("id")) ;  $(slider_id).slider("value", a - 1); content_updater(table_id_original, a - 1, content_id)  ;
+    } 
+
+else if(code == 107 || code == 187  ) {
+  var fontSize = parseInt($(this).css("font-size"));
+  fontSize = fontSize + 1 + "px";
+  $(content_id).css({'font-size':fontSize}); 
     }
+  
+    else if(code == 109 || code == 219 ) {
+      var fontSize = parseInt($(this).css("font-size"));
+      fontSize = fontSize - 1 + "px";
+      $(content_id).css({'font-size':fontSize}); 
+        }
+
+
+  
   })
+  
+
+  
+
+
+
 
       $(content_id).on('mousewheel', function (e) { delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ; delta > 0 ? content_updater(table_id_original, row_id + 1, content_id) : content_updater(table_id_original, row_id - 1, content_id); $(slider_id).slider("value", row_id);})
       $(previous).on("click", function () { let a = parseInt($(content_id).attr("id")) ;  $(slider_id).slider("value", a - 1); content_updater(table_id_original, a - 1, content_id)  ; })
