@@ -8,11 +8,8 @@
  </p>
  <h4 dir="rtl">لاستعمالها</h4>
  <p dir="rtl">
-  حمل النسخ الجاهزة من الموقع أو بالأوامر التالية  ( يجب أن يكون  nodejs منصبا على جهازك) : 
+  حمل النسخ الجاهزة من  <a href="https://elkizana.github.io/">موقعها</a>
 </p>
-
-<code> npm install </code><br>
-<code> npm start </code>
 
 
 <h6 dir="rtl" >صور منها :</h6>
