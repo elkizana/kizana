@@ -1,4 +1,21 @@
 var Oktob = oktob()
+const os = require('os');
+
+if (  os.type() == "Linux" ) {
+  var bookmark_file = os.homedir() + "/.config/الخزانة/bookmark.json" 
+  if (!fs.existsSync(os.homedir() + "/.config/الخزانة/bookmark.json" ) ) { 
+    fs.writeFile(bookmark_file, '[]', function (err) {null})
+    }
+  }
+
+
+else if ( os.type() == "Windows_NT" )  {
+  var bookmark_file = os.homedir() + "/app/الخزانة/bookmark.json"
+  if ( !fs.existsSync(os.homedir() + "/app/الخزانة/bookmark.json" ) ) { 
+  fs.writeFile(bookmark_file, '[]', function (err) {null})
+}}
+
+
 var knex_all = require("knex")({
   client: "sqlite3",
   connection: {
@@ -88,7 +105,7 @@ function authors_index() {                      //end author_index
 
       pointer = $(this).children(".bio_img")
       knex_master.select("inf").from("bio").where("authid", this.id).then(function (info) {
-        if (info[0].inf.length > 2) {
+        if (info[0].inf.length > 10) {
           $(pointer).attr('title', info[0].inf)
         }
       }).catch(function () {
@@ -253,7 +270,6 @@ async function search() {                                         // Search
 
   }
 }
-
 
 let unique = 0
 function add_book(table_id, initial_rowid = "1") {                    // add book 
@@ -532,22 +548,29 @@ else if(code == 107 || code == 187  ) {
 
 
     
-  }
+  }// end book_text_formation
 
   
+let index_list = []
 
-
-  async  function index_formation_and_behaviors() {
+   async function index_formation_and_behaviors() {
 
       await knex_all.from("t" + table_id_original).then(function (index) {                         /// start of book index 
+      
         for (x in index) {
-          if (index[x].parent == 0) {
-            $(sidebar_id).append(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
+         // index_list.push(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
+          //$(sidebar_id).append(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
+           if (index[x].parent == 0) {
+            //$(sidebar_id).append(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
+            index_list.push(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
           }
-          else if (index[x].parent != 0) {
-            $(sidebar_id).append(`<H2 id=I${index[x].id}>${index[x].content}</H2>`) // grab sub titles and put them under the previous level 1 tilte. 
-          }
+          else  {
+            //$(sidebar_id).append(`<H2 id=I${index[x].id}>${index[x].content}</H2>`) // grab sub titles and put them under the previous level 1 tilte. 
+            index_list.push(`<H2 id=I${index[x].id}>  ${index[x].content}</H2>`)
+          } 
         }
+        
+        $(sidebar_id).append(index_list)
         $(sidebar_id).append("<H1></H1>")
         $(sidebar_search_input).on("keyup", function () {
               
@@ -571,7 +594,7 @@ else if(code == 107 || code == 187  ) {
     $('body').on('DOMSubtreeModified', content_id, function () {                               // menu tracker 
       if ($(content_id + " [data-type='title']").length != 0 && $(sidebar_id).width() != 0) {
         theid = "#I" + $(content_id + " [data-type=title]").attr('id').slice(4)
-        $(sidebar_id + " " + theid).is(":hidden") ? $(sidebar_id + " " + theid).prev("H1").one().click() : null
+        $(sidebar_id + " " + theid).is(":hidden") ? $(sidebar_id + " " + theid).prev("H1").one().trigger("click") : null
         $(sidebar_id + " H1, H2").removeClass("active")
         $(sidebar_id + " " + theid).addClass("active")
         document.querySelector(sidebar_id + " " + theid).scrollIntoView({ behavior: 'smooth', block: "center" })
@@ -595,7 +618,7 @@ else if(code == 107 || code == 187  ) {
     })
   
 
-  }
+  } //end index_formation_and_behaviors
 
 
   book_text_formation()
@@ -646,11 +669,11 @@ else if(code == 107 || code == 187  ) {
   }
 
 function add_to_bookmarks() {                           // add_to_bookmarks
-let rawdata = fs.readFileSync('bookmark.json');
+let rawdata = fs.readFileSync(bookmark_file);
 let bookmarks_list = JSON.parse(rawdata);
 bookmarks_list.push({"name" : book_title , "page" : $(page_input ).val() || "1" , "page_id" : $(content_id).attr("id") , "part" : $(part_input).val()  ,   "id" : table_id_original} )
 bookmarks_list = JSON.stringify(bookmarks_list)
-fs.writeFileSync('bookmark.json', bookmarks_list ) 
+fs.writeFileSync(bookmark_file, bookmarks_list ) 
 }
 
 
@@ -669,7 +692,7 @@ function add_book_and_tab(tab_title, id, initial_rowid) {
 }
 
 function jsontotable() {      // form html table from json file
-  let rawdata = fs.readFileSync('bookmark.json');
+  let rawdata = fs.readFileSync(bookmark_file);
 let bookmarks_list = JSON.parse(rawdata);
   let i = 0 
       var transform = {"tag":"table", "id" : "bookmark_table" , "children":[
@@ -697,7 +720,7 @@ $(".remove_book").on("click" , function () {
 
 function remove_from_bookmarks(id) { 
   
-  let rawdata = fs.readFileSync('bookmark.json');
+  let rawdata = fs.readFileSync(bookmark_file);
   let bookmarks_list = JSON.parse(rawdata);
 
   bookmarks_list = $.grep(bookmarks_list, function(e){ 
@@ -705,6 +728,6 @@ function remove_from_bookmarks(id) {
 })
 
 bookmarks_list = JSON.stringify(bookmarks_list)
-fs.writeFileSync('bookmark.json', bookmarks_list ) 
+fs.writeFileSync(bookmark_file, bookmarks_list ) 
 
 }

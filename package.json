@@ -15,16 +15,16 @@
   "license": "GPL-3.0-or-later",
   "build": {
     "appId": "com.kizana.app",
-    "productName": "الخزانة",
+    "productName": "kizana",
     "directories": {
       "buildResources": "build",
-      "output": "/mnt/CCA8F968A8F95206/kizana_appimage"
+      "output": "/mnt/CCA8F968A8F95206/kizana_releases/linux"
     },
     "linux": {
       "category": "Education",
       "desktop": {
         "Comment": "خزانة الكتب فيها ثمانية آلاف كتاب للقراءة و البحث فيها",
-        "Name": "الخزانة",
+        "Name": "kizana",
         "Type": "Application",
         "Categories": "Education"
       },
@@ -33,7 +33,7 @@
       "asar": "false",
       "icon": "build/icon.icns",
       "target": [
-        "AppImage"
+        "appImage"
       ]
     },
     "mac": {
