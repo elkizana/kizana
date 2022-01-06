@@ -8,12 +8,13 @@
  </p>
  <h4 dir="rtl">لاستعمالها</h4>
  <p dir="rtl">
-  حمل النسخ الجاهزة من الموقع أو بالأوامر التالية  ( يجب أن يكون  nodejs منصبا على جهازك) : 
+  حمل النسخ الجاهزة من  <a href="https://elkizana.github.io/">موقعها</a>
 </p>
-
-<code> npm install </code><br>
-<code> npm start </code>
-
+ <h4 dir="rtl">مهم</h4>
+ <p dir="rtl">
+  هذا المخزن (repo) ليس فيه قاعدة بيانات الكتب (لكبره) فإن أردت استعماله حمله ثم انسخه غير مضغوط في /kizana_resources <br>
+ <a href="https://mega.nz/file/Kt1QkDDZ#k9kGFi5ejaSQf1EYWIUzBEw2oJl-TC9QiSeVG7EdtpA">تنزيل قاعدة بيانات الكتب </a>
+</p>
 
 <h6 dir="rtl" >صور منها :</h6>
 <img  src="https://elkizana.github.io/kizana_screenshots/01.png" alt="محتوى كتاب"><br>
