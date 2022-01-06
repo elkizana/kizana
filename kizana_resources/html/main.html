@@ -12,6 +12,13 @@
 <!-- <script charset="utf-8"  src="../js/dragscroll.js"></script> -->
 
 <script charset="utf-8" src="../js/myscript.js"></script>
+<script charset="utf-8" src="../js/add_book.js"></script>
+<script charset="utf-8" src="../js/library_index.js"></script>
+<script charset="utf-8" src="../js/authors_index.js"></script>
+<script charset="utf-8" src="../js/search_index.js"></script>
+<script charset="utf-8" src="../js/search.js"></script>
+<script charset="utf-8" src="../js/bookmark.js"></script>
+
 <script  charset="utf-8" src="../js/jquery-ui.js"></script>
 <script src="../js/jquery.ui.slider-rtl.js"></script>
 <script src="../js/arabicString.js"></script>
@@ -56,14 +63,14 @@
  <!-- categ && authors menus -->
 
     <div id='main'>    
-    <div id="first_container"> <div  id="first_container_one"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...'>  </div>   
-    <div id="second_container"> <div  id="second_container_one"  > </div> <div  id="second_container_two"  > </div>    <input  onfocus="this.value=''" id="tags2" value='...'>  </div>  
+    <div id="first_container"> <div  id="first_container_one"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء في ..." >  </div>   
+    <div id="second_container"> <div  id="second_container_one"  > </div> <div  id="second_container_two"  > </div>    <input  onfocus="this.value=''" id="tags2" placeholder="حصر العناوين في ... ">  </div>  
       </div> 
 
   <div id="search_main">                            <!-- search menus -->
     <div id="search_window_0">      
-      <input type="text" id="first_search_input" > 
-      <input  id="search_button" type="image"  src="./../icons/search.png" onclick="search()" >  <!-- -->
+      <input type="text" id="first_search_input" placeholder="البحث عن ..."  > 
+      <input  id="search_button" type="image"  src="./../icons/search.png" onclick="search()"  >  <!-- -->
       
       <div id="progress_status"></div>
       <!-- <input type="button" id="" value="without tashkeel " autocomplete="on"  onclick="search2()" >   -->
@@ -71,7 +78,7 @@
     </div>
       
     <div id="search_window_1">  </div>    
-    <input type="text" id="second_search_input" >  
+    <input type="text" id="second_search_input" placeholder="حصر العناوين في ... " >  
     <div id="search_window_2">  </div> 
     <div id="search_window_3">  </div>    
 
