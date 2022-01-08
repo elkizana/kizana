@@ -35,6 +35,7 @@
   border-radius: 3px;
   padding : 10 5 ; 
   margin-left  : 3px ; 
+  background-color : #f6f6f6 ; 
   }
   
   .slider{
@@ -48,7 +49,7 @@
     padding : 0 ; 
   width  : 30px ;
   position : relative ; 
-  border: solid 1px #6d6e73;
+  border: solid 1px #bcbec3;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 5px;width : 25 ;
   height : 30 ;
@@ -59,7 +60,7 @@
     .next { 
   width  : 30px ;
   position : relative ; 
-  border: solid 1px #6d6e73;
+  border: solid 1px #bcbec3;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 5px;width : 25 ;
   height : 30 ;
@@ -81,7 +82,7 @@
   border : none ; 
   margin : 5 0 5 0 ;
   font-family : "jazeera-regular" ;
-  border: solid 1px #6d6e73;
+  border: solid 1px #bcbec3;
   margin : 10px 0px 0px 0px ; 
   }
 
@@ -96,7 +97,7 @@
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 5px;
   border : none ; 
-  border: solid 1px #6d6e73;
+  border: solid 1px #bcbec3;
   }
   #book_info { 
   position :relative ; 
@@ -129,17 +130,21 @@
     border-radius: 7px;
     display : none ; 
     z-index : 5 ; 
-    border :  solid #757575 1px ;
+    border :  solid #d5d5d5 1px ;
     font-family : "jazeera-regular" ;
+
   }
   #single_book_search_input {
   display : inline ;   
-  width : 250px ; 
+  width : 250px  ; 
   height : 35px ; 
   border-radius: 5px;
   border : #929292 1px solid ; 
   //padding: 6px 12px 6px 14px;
   margin : 5px ; 
+  background-color : #f6f6f6 ; 
+
+
   }
 
   #previous_found , #next_found  { 
@@ -195,17 +200,19 @@ border-radius: 5px;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 5px;
   margin :3 0 0 3  ; 
+  background-color  : #f6f6f6 ; 
   
   }
   #sidebar_search_input { 
-  bottom : 20px ; 
-  height : 27px ; 
-  bottom : 15px ; 
+    height : 27px ; 
+  bottom : 5px ; 
   right : 29px ; 
-  position : absolute ; 
   border-radius: 5px;
   border : #cfc3c3 1px solid ; 
   padding: 6px 12px 6px 14px;
+  background-color  : #f6f6f6 ; 
+  position :fixed ; 
+
   }
   .active  {
   border-radius: 0px;
@@ -282,6 +289,7 @@ color : #282727 ;
   letter-spacing: .01em;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 16px 16px 16px ;
+  background-color : #f6f6f6 ; 
   }
 
   .hashia::selection , .content::selection {
