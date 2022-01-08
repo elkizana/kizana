@@ -60,8 +60,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             <span id="close_search" class="close_search${table_id}" > x</span>
             </div>
   
-            <div class="sidebar side${table_id}">   </div>    
-               <input type="text" class="sidebar_search_input${table_id}" id="sidebar_search_input" >
+            <div class="sidebar side${table_id}">  <input type="text" class="sidebar_search_input${table_id}" id="sidebar_search_input" >  </div>    
+               
             <div class="content c${table_id}" tabindex="0" >   </div>  
               <div class="hashia h${table_id}">   </div> </div>`) 
   

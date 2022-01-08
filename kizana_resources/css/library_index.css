@@ -8,6 +8,7 @@
   letter-spacing: .02em ;
   overflow : scroll ;   
   font-weight: 600; 
+  background-color : #f6f6f6 ; 
   
   }
   
@@ -28,6 +29,7 @@
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius:10px;
   float : right ; 
+
   }
   
   
@@ -224,12 +226,13 @@
   #tags1 , #tags2 {
   position : absolute ; 
   bottom : 5 ; 
-  border : 1px solid #969393 ;
+  border : 1px solid #b9b4b4 ;
   border-radius: 4px;
   font-size: 14;
   outline: none;
   padding: 6px 12px 6px 14px;
   width: 70%;
+  background-color : #f6f6f6 ;  
   }
   
   
