@@ -6,7 +6,7 @@ async function search() {                                         // Search
   
     $("td").remove()
   
-    $("#search_window_3").html("<table class=search_table><tr><th></th><th>المعثور</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>")
+    $("#search_block_4").html("<table class=search_table><tr><th></th><th>المعثور</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>")
     for (book of books_to_search) {
       book_name = book[0]
       found_in = []
