@@ -1,44 +1,44 @@
-
 #search_main{
 
-width : 90% ; 
-margin : auto ; 
-display : none ; 
-//border : solid 1px black ;
+}
+#search_main{
+
+overflow : hidden ; 
+width : 95% ; 
+display : flex ;
 margin-bottom : 50px ; 
+  flex-wrap: wrap;
+
+
 }
 
-#search_window_0 { 
+#search_block_1 { 
 position: relative;
-height : 100px  ;
-width: 250;
+height : 500px  ;
 padding: 10px;
 margin: 5px;
-overflow : hidden ;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius:16px;
-float : right ; 
+//width : 400px ; 
+flex-basis : 220px ; 
+flex-shrink: 0;
+flex-grow : 0 ;
 }
 
 
 #first_search_input {
-width : 230 ; 
+width : 200 ; 
 height : 30 ; 
 padding: 6px 12px 6px 14px;
-
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius: 7px;
 border : none ; 
 font-size : 16 ; 
-//caret-color : transparent ;
-
-
 }
 
 input:focus {
 outline: none !important;
 border:1px solid #dac1c1 !important;
-//box-shadow: 0 0 10px #719ECE; 
 }
 
 
@@ -51,7 +51,7 @@ box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius: 5px;
 border : #ccc0c0 solid 1px  ; 
 margin : 5 0  ; 
-float : left ; 
+
 }
 
 
@@ -64,20 +64,51 @@ color : #969393 ;
 
 }
 
-#search_window_1 { 
-height : 510px  ; 
-width: 250; 
+#search_block_2 { 
+ height : 500px ; 
 padding: 10px;
 margin: 5 0 5 5 ;
-overflow : hidden ;
-float : right ;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius:16px;
+//width : 400px ; 
+flex-basis : 250px ; 
+flex-shrink: 0;
+flex-grow : 0 ;
+
+}
+
+#search_block_2_div1 { 
+height : 30px ; 
+}
+
+#search_block_2_div2 { 
+height : 400px  ;
+overflow : hidden
+}
+
+#search_block_2_div3 { 
+height : 40px ; 
+margin-top : 15px ; 
+
 }
 
 
-#second_search_input {
-width : 500px ; 
+#categ_list { 
+display : inline ;
+margin : 30px ;  
+color : grey ; 
+border-left : solid #c1c1c1 1px ; 
+padding-left : 30px  ;  
+cursor : pointer ; 
+}
+#author_list { 
+color : grey ; 
+display : inline ; 
+cursor : pointer ; 
+}
+
+#books_filter { 
+//width : auto ; 
 height : 30 ; 
 padding: 6px 12px 6px 14px;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
@@ -85,21 +116,46 @@ border-radius: 7px;
 border : none ; 
 font-size : 16 ; 
 margin : 3 ; 
+display :none ; 
+
 }
 
 
-#search_window_2 { 
-height : 475px  ; 
-width : auto ; 
+
+#search_block_3 { 
+height : 500px  ; 
 padding: 10px;
-overflow : hidden ;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius: 16px;
 margin: 5px;
+//border : solid ; 
+flex: 1;
+
+
 
 }
 
 
+
+#search_block_3_div1 { 
+overflow-y : scroll ;
+height : 435px  ;
+}
+
+#search_block_3_div2 { 
+margin-top : 15px ;  
+}
+
+#second_search_input {
+height : 30 ; 
+padding: 6px 12px 6px 14px;
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 7px;
+border : none ; 
+font-size : 16 ; 
+margin : 3 ;
+display : none ;
+}
 
 .books_to_search { 
 width : 100% ; 
@@ -111,7 +167,7 @@ padding : 5px ;
 }
 
 
-#search_window_2 img    {
+#search_block_3 img    {
 position  : relative ; 
 height : 16 ; 
 width : 15 ; 
@@ -120,7 +176,6 @@ width : 15 ;
 
 .single_book_checkbox { 
 float : left ; 
-
 }
 
 input[type="checkbox"]
@@ -129,10 +184,13 @@ filter: grayscale(1)
 
 }
 
+#search_block_4 { 
+width : 100% ; 
+}
+
 table {
 width : 100% ; 
 border-collapse: collapse;
-overflow : hidden ; 
 border-radius: 10px;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius: 16px;
@@ -143,7 +201,7 @@ margin-top : 10 ;
 }
 
 th { 
-background-color : #dee1e6 ; 
+background-color : #f6f6f6 ;  
 color: #2b2626 ; 
 }
 td, th {
@@ -198,7 +256,7 @@ font-size : 12 ;
 */
 
 #checkall_categ , #checkall_books{
-float :  left  ; 
+float:  left;
 margin  :  0 0 8 15 ; 
 }
 
@@ -209,7 +267,7 @@ border-radius : 8px ;
 
 }
 
-#search_window_1:hover , #search_window_2:hover  { 
+#search_block_2_div2:hover , #search_block_3_div1:hover  { 
 overflow-y : scroll ; 
 }
 

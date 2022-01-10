@@ -8,7 +8,7 @@
   letter-spacing: .02em ;
   overflow : scroll ;   
   font-weight: 600; 
-  background-color : #f6f6f6 ; 
+  
   
   }
   
@@ -29,8 +29,7 @@
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius:10px;
   float : right ; 
-
-  }
+    }
   
   
   #main{
@@ -38,6 +37,7 @@
   width: 80%;
   margin: auto;
   padding: 10px;
+  
   }
   
   #first_container { 
@@ -57,6 +57,7 @@
   height : 90% ; 
   overflow : hidden ;
   margin-top : 15 ;
+  
   }
   
   

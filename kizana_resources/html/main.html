@@ -59,31 +59,38 @@
       <img src="../icons/info.png"  id="info_icon" title="عن الخزانة" />
       
        </div> 
- <!-- categ && authors menus -->
+ 
 
-    <div id='main'>    
-    <div id="first_container"> <div  id="first_container_one"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء في ..." >  </div>   
-    <div id="second_container"> <div  id="second_container_one"  > </div> <div  id="second_container_two"  > </div>    <input  onfocus="this.value=''" id="tags2" placeholder="حصر العناوين في ... ">  </div>  
-      </div> 
+    <div id='main'>     <!-- categ && authors menus -->
+            <div id="first_container"> <div  id="first_container_one"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء في ..." >  </div>   
+          <div id="second_container"> <div  id="second_container_one"  > </div> <div  id="second_container_two"  > </div>    <input  onfocus="this.value=''" id="tags2" placeholder="حصر العناوين في ... ">  </div>  
+          </div> 
 
-  <div id="search_main">                            <!-- search menus -->
-    <div id="search_window_0">      
-      <input type="text" id="first_search_input" placeholder="البحث عن ..."  > 
-      <input  id="search_button" type="image"  src="./../icons/search.png" onclick="search()"  >  <!-- -->
-      
-      <div id="progress_status"></div>
-      <!-- <input type="button" id="" value="without tashkeel " autocomplete="on"  onclick="search2()" >   -->
-      
-    </div>
-      
-    <div id="search_window_1">  </div>    
-    <input type="text" id="second_search_input" placeholder="حصر العناوين في ... " >  
-    <div id="search_window_2">  </div> 
-    <div id="search_window_3">  </div>    
+    <div id="search_main">                            <!-- search menus -->
 
-  </div>
-  <div id="bookmark_window"> <table id="bookmark_table" > <th>الكتاب</th> <th>الصفحة</th> </table>       </div>
-  <div id="info_window"></div>
+          <div id="search_block_1">      
+            <input type="text" id="first_search_input" placeholder="البحث عن ..."  > 
+            <input  id="search_button" type="image"  src="./../icons/search.png" onclick="search()"  >  <!-- -->
+            <div id="progress_status"></div>
+          </div>
+            
+        
+          <div id="search_block_2"> 
+            <div id="search_block_2_div1"><span class="" id="categ_list" onclick="categ_index();" > كتب</span> <span class="" id="author_list" onclick="authors_index_for_search();" > مؤلفون</span><br><br></div>
+            <div id="search_block_2_div2"></div>
+            <div id="search_block_2_div3"><input type="text" id="books_filter" placeholder="حصر أسماء المؤلفين ..."  > </div>
+          </div>    
+
+        
+        <div id="search_block_3">  
+          <div id="search_block_3_div1"> </div>
+          <div id="search_block_3_div2"> <input type="text" id="second_search_input" placeholder=" حصر الكتب ..." >  </div>
+        </div> 
+
+        <div id="search_block_4">  </div>    
+        </div>
+        <div id="bookmark_block"> <table id="bookmark_table" > <th>الكتاب</th> <th>الصفحة</th> </table>       </div>
+        <div id="info_block"></div>
 </div> 
 
 </body>
@@ -94,7 +101,7 @@
 <script>
 
 $("#book_icon").on("click" , function() {                           // books icon onclick
-  $('#search_main , #bookmark_window , #info_window ' ).hide() 
+  $('#search_main , #bookmark_block , #info_block ' ).hide() 
     $('#main').show() 
      $('#first_container_one, #second_container_one,#second_container_two ').empty()  
       $('input:text').val('') 
@@ -102,7 +109,7 @@ $("#book_icon").on("click" , function() {                           // books ico
 })
 
 $("#authors_icon").on("click" , function() {                        // authors icon onclick
-  $('#search_main , #info_window , #bookmark_window ').hide() 
+  $('#search_main , #info_block , #bookmark_block ').hide() 
   
      $('#main').show() 
       $('#first_container_one, #second_container_one,#second_container_two ').empty() 
@@ -111,27 +118,29 @@ $("#authors_icon").on("click" , function() {                        // authors i
 })
 
 $("#search_icon").on("click" , function() {                            // search icon onclick
-  $('#main , #info_window  , #bookmark_window' ).hide()   
+  $('#main , #info_block  , #bookmark_block' ).hide()   
      $('#search_main').show() 
-      search_index() 
-         $('input:text').val('') 
+      //search_index() 
+      //search_block()
+        // $('input:text').val('') 
+
 })
 
 $("#bookmark_icon").on("click" , function() {                           // bookmark icon onclick
-  $('#main , #search_main , #info_window , #bookmark_window').hide()  
-     $('#bookmark_window').show() 
+  $('#main , #search_main , #info_block , #bookmark_block').hide()  
+     $('#bookmark_block').show() 
      jsontotable()
 
 })
 
 
 $("#info_icon").on("click" , function() {                                // info icon onclick
-  $('#main , #search_main , #bookmark_window').hide()   
-     $('#info_window').show() 
+  $('#main , #search_main , #bookmark_block').hide()   
+     $('#info_block').show() 
       
-      $('#info_window').html(`<p dir="rtl">
+      $('#info_block').html(`<p dir="rtl">
 الخزانة فيها ثمانية آلاف كتاب من الكتب الشرعية و غيرها يمكنك المطالعة و البحث فيها. <br>
-الخزانة تشتغل في الأنظمة الثلاث : Linux و Windows و MAC.<br>
+الخزانة تشتغل في الأنظمة الثلاث : Linux و blocks و MAC.<br>
 الخزانة مفتوحة المصدر (Open Source) ليس عليها حجر في الإستعمال أو النسخ أو التوزيع أو التغيير.<br>
 الخزانة قاعدة بياناتها (كتبها كلها) مأخوذة من المكتبة الشاملة الشهيرة.<br><br>
 من له ملاحظة أو اقتراح يراسلني في :  elkizana@gmail.com
