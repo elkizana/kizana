@@ -1,15 +1,9 @@
 #search_main{
-
-}
-#search_main{
-
 overflow : hidden ; 
 width : 95% ; 
 display : flex ;
 margin-bottom : 50px ; 
-  flex-wrap: wrap;
-
-
+flex-wrap: wrap;
 }
 
 #search_block_1 { 
@@ -19,7 +13,6 @@ padding: 10px;
 margin: 5px;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius:16px;
-//width : 400px ; 
 flex-basis : 220px ; 
 flex-shrink: 0;
 flex-grow : 0 ;
@@ -65,25 +58,31 @@ color : #969393 ;
 }
 
 #search_block_2 { 
- height : 500px ; 
+height : 500px ; 
 padding: 10px;
 margin: 5 0 5 5 ;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius:16px;
-//width : 400px ; 
-flex-basis : 250px ; 
+flex-basis : 300px ; 
 flex-shrink: 0;
 flex-grow : 0 ;
-
 }
 
 #search_block_2_div1 { 
 height : 30px ; 
+
+padding-right : 20px ; 
+
+  
+}
+
+#categ_list:hover , #author_list:hover { 
+color : #d0cdcd  ; 
 }
 
 #search_block_2_div2 { 
 height : 400px  ;
-overflow : hidden
+overflow : hidden ;
 }
 
 #search_block_2_div3 { 
@@ -108,7 +107,6 @@ cursor : pointer ;
 }
 
 #books_filter { 
-//width : auto ; 
 height : 30 ; 
 padding: 6px 12px 6px 14px;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
@@ -117,7 +115,6 @@ border : none ;
 font-size : 16 ; 
 margin : 3 ; 
 display :none ; 
-
 }
 
 
@@ -128,22 +125,18 @@ padding: 10px;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius: 16px;
 margin: 5px;
-//border : solid ; 
 flex: 1;
-
-
-
 }
-
-
 
 #search_block_3_div1 { 
 overflow-y : scroll ;
 height : 435px  ;
+overflow : hidden ;
 }
 
 #search_block_3_div2 { 
 margin-top : 15px ;  
+
 }
 
 #second_search_input {
@@ -181,7 +174,6 @@ float : left ;
 input[type="checkbox"]
 {
 filter: grayscale(1)
-
 }
 
 #search_block_4 { 
