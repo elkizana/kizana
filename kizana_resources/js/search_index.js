@@ -132,7 +132,7 @@ author = $(this).clone().children().remove().end().text()
 
 knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).then(function (rows) {
   $("#search_block_3_div1").append(`<input type="checkbox" id="checkall_books">  `)
-  rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" id="sss${b.book_id}" class="books_to_search"> ${b.book_name} <div class="bio_img"> </div>  <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" ></label>  `))
+  rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" id="${b.book_id}" class="books_to_search"> ${b.book_name} <div class="bio_img"> </div>  <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" ></label>  `))
 
   $(".single_book_checkbox").on("change", function () {
     this.checked ? books_to_search.push([$("label[for=" + this.id).text(), "b" + this.id.slice(1)]) : books_to_search = books_to_search.filter(element => element[0] !== $("label[for=" + this.id).text())
