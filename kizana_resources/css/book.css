@@ -32,7 +32,7 @@
   width  : 25 ; 
   float : right ; 
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 3px;
+  border-radius: 5px;
   padding : 10 5 ; 
   margin-left  : 3px ; 
   background-color : #f6f6f6 ; 
@@ -42,6 +42,7 @@
   background-color: #c1c1c1;
   height : 50%;
   left : -1 ; 
+  
   }
 
 
@@ -51,7 +52,8 @@
   position : relative ; 
   border: solid 1px #bcbec3;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 5px;width : 25 ;
+  border-radius: 3px;
+  width : 25 ;
   height : 30 ;
   left : 6 ; 
   margin : 6px 0px 0px 0px ; 
@@ -62,7 +64,8 @@
   position : relative ; 
   border: solid 1px #bcbec3;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 5px;width : 25 ;
+  border-radius: 3px;
+  width : 25 ;
   height : 30 ;
   left : 6 ; 
   }
@@ -78,12 +81,13 @@
   position : relative ; 
   left : 6 ;   
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 5px;
+  border-radius: 3px;
   border : none ; 
   margin : 5 0 5 0 ;
   font-family : "jazeera-regular" ;
   border: solid 1px #bcbec3;
   margin : 10px 0px 0px 0px ; 
+
   }
 
     #part_input {
@@ -95,7 +99,7 @@
   position : relative ; 
   left : 6 ;   
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 5px;
+  border-radius: 3px;
   border : none ; 
   border: solid 1px #bcbec3;
   }
@@ -127,7 +131,7 @@
     right : 30px ; 
     background-color : #ffffff ; 
     box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-    border-radius: 7px;
+    border-radius: 5px;
     display : none ; 
     z-index : 5 ; 
     border :  solid #d5d5d5 1px ;
@@ -215,8 +219,8 @@ border-radius: 5px;
 
   }
   .active  {
-  border-radius: 0px;
-  background-color : #c1c1c1 ; 
+  border-radius: 3px;
+  background-color : #cdc8c8 ; 
   }
 
   .sidebar h1 { 
@@ -245,6 +249,7 @@ border-radius: 5px;
   cursor:pointer;
   color :white ;    
   background-color : #1B1C20 ; 
+  border-radius: 3px;
   }
  
   .content {
@@ -260,7 +265,7 @@ border-radius: 5px;
   word-spacing: 1px;
   padding : 10 ; 
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 16px;
+  border-radius: 5px;
   margin  : 3 3  3 0 ;   
   position: relative;
   outline : none ; 
@@ -288,7 +293,7 @@ color : #282727 ;
   line-height: 1.60;
   letter-spacing: .01em;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 16px 16px 16px ;
+  border-radius: 5px 5px 5px ;
   background-color : #f6f6f6 ; 
   }
 
