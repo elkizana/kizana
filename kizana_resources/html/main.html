@@ -61,11 +61,20 @@
        </div> 
                                                <!-- end navigation menu -->
 
-        <div id='main'>     
+        <div id='books_window'>     
                 <!-- categ && authors menus -->
-            <div id="first_container"> <div  id="first_container_one"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء ..." >  </div>   
-            <div id="second_container"> <div  id="second_container_one"  > </div> <div  id="second_container_two"  > </div>    <input  onfocus="this.value=''" id="tags2" placeholder="حصر الأسماء ...">  </div>  
+             <div id="books_first_block">  <div  id="categ_div"  > </div>     </div>   
+            <div id="books_second_block"> <div  id="categ_info_div"  > </div> <div  id="categ_books_div"  > </div>    <input  onfocus="this.value=''" id="tags2" placeholder="حصر الأسماء ...">  </div>  
           </div> 
+
+
+         <!-- authors menu -->
+        <div id='authors_window'>     
+            
+        <div id="authors_first_block">  <div  id="authors_info_div"  > </div>  <div  id="authors_names_div"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء ..." >  </div>   
+        <div id="authors_second_block"> <div  id="authors_books_info_div"  > </div> <div  id="authors_books_div"  > </div>    </div>  
+      </div> 
+
                   <!-- end categ && authors menus -->
 
 
@@ -107,30 +116,35 @@
 
 <script>
 
+  setTimeout(() => {
+    library_index()
+    authors_index()
+  }, 1000);
+
 $("#book_icon").on("click" , function() {                           // books icon onclick
-  $('#search_main , #bookmark_block , #info_block ' ).hide() 
-    $('#main').show() 
-     $('#first_container_one, #second_container_one,#second_container_two ').empty()  
+  $('#authors_window , #search_main , #bookmark_block , #info_block ' ).hide() 
+    $('#books_window').show() 
+     //$('#first_container_one, #second_container_one,#second_container_two ').empty()  
       $('input:text').val('') 
-        library_index()
+        
 })
 
 $("#authors_icon").on("click" , function() {                        // authors icon onclick
-  $('#search_main , #info_block , #bookmark_block ').hide() 
+  $('#books_window , #search_main , #info_block , #bookmark_block ').hide() 
   
-     $('#main').show() 
-      $('#first_container_one, #second_container_one,#second_container_two ').empty() 
+     $('#authors_window').show() 
+      //$('#first_container_one, #second_container_one,#second_container_two ').empty() 
       $('input:text').val('') 
-        authors_index()
+        
 })
 
 $("#search_icon").on("click" , function() {                            // search icon onclick
-  $('#main , #info_block  , #bookmark_block' ).hide()   
+  $('#books_window , #authors_window ,  #info_block  , #bookmark_block' ).hide()   
      $('#search_main').show() 
 })
 
 $("#bookmark_icon").on("click" , function() {                           // bookmark icon onclick
-  $('#main , #search_main , #info_block , #bookmark_block').hide()  
+  $('#books_window , #authors_window , #search_main , #info_block , #bookmark_block').hide()  
      $('#bookmark_block').show() 
      jsontotable()
 
@@ -138,7 +152,7 @@ $("#bookmark_icon").on("click" , function() {                           // bookm
 
 
 $("#info_icon").on("click" , function() {                                // info icon onclick
-  $('#main , #search_main , #bookmark_block').hide()   
+  $('#books_window , #authors_window , #search_main , #bookmark_block').hide()   
      $('#info_block').show() 
       
       $('#info_block').html(`<p dir="rtl">

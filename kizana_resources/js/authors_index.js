@@ -1,10 +1,10 @@
 function authors_index(filter = "author_name") {                      //end author_index                        
-    $("#tags1").show()
-    $("#tags2").hide()
-    $("#first_container_one").empty()
+    //$("#tags1").show()
+    //$("#tags2").hide()
+    $("#authors_info_div").empty()
     knex_master.select("death_text" , "author_name" , "author_id" , "death_number").from("author").orderBy(filter).then(function (rows) {                       /* appendding  categories  */
-      rows.forEach(author => $("#first_container_one").append(`<span class="authors"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
-      $("#first_container_one").prepend("<div id=author_and_book_number >المؤلفون (" + $('.authors').length + ")  <img src=../icons/sort.png id=authors_filter title= 'تغيير الترتيب'/>  </span> </div>") 
+      rows.forEach(author => $("#authors_names_div").append(`<span class="authors"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
+      $("#authors_info_div").prepend("<div id=author_and_book_number >المؤلفون (" + $('.authors').length + ")  <img src=../icons/sort.png id=authors_filter title= 'تغيير الترتيب'/>  </span> </div>") 
       
       
       $("#authors_filter").on("click" , function () {
@@ -32,21 +32,21 @@ function authors_index(filter = "author_name") {                      //end auth
           } else {
             $(this).show();
             count++;
-                      $("#author_and_book_number").html(count)
+            $("#author_and_book_number").html(count)
           }
         })
       })
   
       $(".authors").on("click", function () {
-        $("#second_container_one, #second_container_two").empty()
+        $("#authors_books_info_div, #authors_books_div").empty()
   
         author = $(this).clone().children().remove().end().text()
   
         knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).then(function (rows) {
   
-          rows.forEach(book => $("#second_container_two").append(`<span class="books" id="${book.book_id}" > ${book.book_name} <div class="bio_img" > </div>  </span>`))
+          rows.forEach(book => $("#authors_books_div").append(`<span class="books" id="${book.book_id}" > ${book.book_name} <div class="bio_img" > </div>  </span>`))
           
-          $("#second_container_one").html("<span id=author_and_book_number> كتب" + author + " (" + $(".books").length + ")</span>")
+          $("#authors_books_info_div").html("<span id=author_and_book_number> كتب" + author + " : " + $(".books").length + "</span>")
           
           $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")) })
   

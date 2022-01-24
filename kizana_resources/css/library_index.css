@@ -32,7 +32,7 @@
     }
   
   
-  #main{
+  #books_window , #authors_window{
   height : 90%  ; 
   width: 80%;
   margin: auto;
@@ -40,7 +40,7 @@
   
   }
   
-  #first_container { 
+  #books_first_block , #authors_first_block { 
   width : 30% ; 
   height : 100% ;
   border-right: 1px solid #fff2f2;
@@ -49,10 +49,11 @@
   padding-right :10 ;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius:16px;
+  
   }
   
   
-  #first_container_one { 
+  #categ_div , #authors_names_div { 
   width : 100% ; 
   height : 90% ; 
   overflow : hidden ;
@@ -141,7 +142,7 @@ float : left ;
   }
   
   
-  #second_container { 
+  #books_second_block , #authors_second_block { 
   border-right: 1px solid #fbecec;
   position : relative ; 
   width : 60% ; 
@@ -154,24 +155,24 @@ float : left ;
   
   }
   
-  #second_container_one {  
+  #categ_info_div , #authors_books_info_div {  
   border-bottom: 1px solid #ffffff;
   margin-bottom : 15 ;
   height : 30px ; 
   text-align: center;
   }
   
-  #second_container_two {  
+  #categ_books_div , #authors_books_div {  
   width : 100% ; 
   height : 85% ; 
   overflow : hidden ; 
   }
   
-  #first_container_one:hover { 
+  #categ_div:hover , #authors_names_div:hover { 
   overflow-y : scroll ; 
   }
   
-  #second_container_two:hover { 
+  #categ_books_div:hover , #authors_books_div:hover { 
   overflow-y : scroll ; 
   }
   
@@ -185,7 +186,7 @@ float : left ;
   
   }
   
-  .authors { 
+  .authors , .authors_search_block_2 { 
   display : inline-block ; 
   width : 100%  ; 
   font-size : 18 ; 
@@ -234,7 +235,7 @@ float : left ;
   border : solid 1px #958b8b 
       }
   
-  .categ:hover , .books:hover ,.authors:hover{ 
+  .categ:hover , .books:hover ,.authors:hover , .authors_search_block_2:hover{ 
   cursor:pointer;
   background-color  : #eee8e8 ; 
   }
