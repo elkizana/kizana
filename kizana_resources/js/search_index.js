@@ -9,7 +9,7 @@ let books_to_search = []
     })
   }, 1000);
     async function categ_index() {
-      $("#search_block_2_div2 .authors , #search_block_2_div2 .categ").remove()
+      $("#search_block_2_div2 .authors_search_block_2 , #search_block_2_div2 .categ").remove()
       $("#search_block_2_div2 #books_filter").hide()
       $("#books_filter").hide()
 
@@ -88,15 +88,15 @@ let books_to_search = []
 
 function authors_index_for_search() {
   
-  $(".categ , .authors").remove()
+  $("#search_block_2_div2 .categ , #search_block_2_div2 .authors_search_block_2").remove()
   $("#books_filter").show()
   $("#second_search_input").hide()
 
   knex_master.select("death_text" , "author_name" , "author_id").from("author").orderBy("author_name").then(function (rows) {                       /* appendding  categories  */
-rows.forEach(author => $("#search_block_2_div2").append(`<span class="authors"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
+rows.forEach(author => $("#search_block_2_div2").append(`<span class="authors_search_block_2"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
 
 
-$(".authors").on("mouseover" , function () {
+$(".authors_search_block_2").on("mouseover" , function () {
 
 pointer = $(this).children(".bio_img")
 knex_master.select("inf").from("bio").where("authid", this.id).then(function (info) {
@@ -112,7 +112,7 @@ $("#books_filter").on("keyup", function () {
   $(this).val(  Oktob.replaceEnCharsAZERTY(   $(this).val()  )   )
   var filter = $(this).val()
   count = 0;
-  $('.authors').each(function () {
+  $('.authors_search_block_2').each(function () {
     if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length > 2) {
       $(this).hide();
     } else {
@@ -124,7 +124,7 @@ $("#books_filter").on("keyup", function () {
 })
 
 
-$(".authors").on("click", function () {
+$(".authors_search_block_2").on("click", function () {
 
   $("#search_block_3_div1").empty()
 

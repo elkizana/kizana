@@ -73,8 +73,6 @@
   
 
   #page_input {
-     
-    z-index : 100 ; 
   font-size : 10px ;
   width : 25 ; 
   height : 30 ;
@@ -92,7 +90,6 @@
 
     #part_input {
   font-family : "jazeera-regular" ;
-  z-index : 100 ; 
   font-size : 12px ;
   width : 25 ;
   height : 30 ;
