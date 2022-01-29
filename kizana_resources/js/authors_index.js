@@ -1,14 +1,15 @@
 function authors_index(filter = "author_name") {                      //end author_index                        
     //$("#tags1").show()
     //$("#tags2").hide()
-    $("#authors_info_div").empty()
+    $("#authors_info_div , #authors_names_div").empty()
     knex_master.select("death_text" , "author_name" , "author_id" , "death_number").from("author").orderBy(filter).then(function (rows) {                       /* appendding  categories  */
       rows.forEach(author => $("#authors_names_div").append(`<span class="authors"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
       $("#authors_info_div").prepend("<div id=author_and_book_number >المؤلفون (" + $('.authors').length + ")  <img src=../icons/sort.png id=authors_filter title= 'تغيير الترتيب'/>  </span> </div>") 
       
       
       $("#authors_filter").on("click" , function () {
-        filter == "author_name"  ? authors_index(filter = "death_number" )   : authors_index(filter = "author_name" )  
+        filter == "author_name"  ? authors_index( filter = "death_number" )   : authors_index(  filter = "author_name" )  
+        console.log(filter)
       })
 
       $(".authors").on("mouseover" , function () {

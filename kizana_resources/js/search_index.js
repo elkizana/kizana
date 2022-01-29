@@ -8,6 +8,9 @@ let books_to_search = []
       $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
     })
   }, 1000);
+
+
+
     async function categ_index() {
       $("#search_block_2_div2 .authors_search_block_2 , #search_block_2_div2 .categ").remove()
       $("#search_block_2_div2 #books_filter").hide()
@@ -78,11 +81,11 @@ let books_to_search = []
   
   }
 
-  categ_index() 
+  //categ_index() 
+  
   $("#categ_list").on("click", function () {
     categ_index()
-    
-  })
+      })
   
 
 
