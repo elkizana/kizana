@@ -381,6 +381,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
   
     $(".chrome-tab-close").on("click", function () {              //          closing tabs            
+      //console.log($("#" + this.id.substring(1)) )
+      $(".chrome-tab").prev().length >= 2  ? $(".chrome-tab").prev().trigger("click") :  $("#001").trigger("click")
       $("#" + this.id.substring(1)).remove()
       $("#b" + this.id.substring(1)).remove()
     })
