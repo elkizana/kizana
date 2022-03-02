@@ -257,7 +257,7 @@ border-radius: 5px;
   font-family : "Naskh"  ; 
   overflow-y: auto;
   overflow-x : hidden ; 
-  cursor: text ;
+  
   letter-spacing: .001em;
   word-spacing: 1px;
   padding : 10 ; 

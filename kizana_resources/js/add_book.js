@@ -42,7 +42,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     let sidebar_search_input = ".sidebar_search_input" + table_id
     let close_search = ".close_search" + table_id
   
-    $("body").append(`<div class="book_div" id="b${table_id}"  > 
+    $("body").append(`<div  class="book_div" id="b${table_id}"  > 
     <div id="book_toolbox">
       <div class=slider id=s${table_id}> </div>
         <img src="./../icons/arrow_up.png" class="previous" id=previous${table_id} />
@@ -62,7 +62,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
             <div class="sidebar side${table_id}">  <input type="text" class="sidebar_search_input${table_id}" id="sidebar_search_input" >  </div>    
                
-            <div class="content c${table_id}" tabindex="0" >   </div>  
+            <div   class="content c${table_id}" tabindex="0" >   </div>  
               <div class="hashia h${table_id}">   </div> </div>`) 
   
     knex_all.raw("SELECT COUNT(*) FROM b" + table_id_original).then(function (text_table) { table_length = Object.values(text_table[0]) })  // table length for slider length                                                                    
@@ -288,7 +288,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       })                                                               // end text table  selection
   
   
-  
+      $(".content").kinetic()
       
     }// end book_text_formation
   
