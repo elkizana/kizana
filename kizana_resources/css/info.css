@@ -1,9 +1,7 @@
 #info_icon { 
-width : 30px ; 
-height : 30px ; 
 position : absolute ; 
 bottom : 0px ;
-right : 10px  ;
+right : 0px  ;
 }
 
 #info_window { 
