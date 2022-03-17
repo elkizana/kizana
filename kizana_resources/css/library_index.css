@@ -32,6 +32,9 @@
     }
   
   
+  #kizana_div_sidebar img{ 
+  width : 50px ; 
+    } 
   #books_window , #authors_window{
   height : 90%  ; 
   width: 80%;
