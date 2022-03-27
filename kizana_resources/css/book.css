@@ -17,13 +17,15 @@
   z-index : 5 ;
   }
   
+    
 
   
   .book_div {
     position  : fixed ; 
       height : 95% ; 
   background-color : white ;
-  width : 100%
+  width : 100% ; 
+  color : #404040 ; 
   }
   
   #book_toolbox { 
@@ -99,6 +101,7 @@
   border-radius: 3px;
   border : none ; 
   border: solid 1px #bcbec3;
+      color : #282727 ; 
   }
   #book_info { 
   position :relative ; 
@@ -133,6 +136,7 @@
     z-index : 5 ; 
     border :  solid #d5d5d5 1px ;
     font-family : "jazeera-regular" ;
+    color : #282727 ; 
 
   }
   #single_book_search_input {
@@ -144,7 +148,7 @@
   //padding: 6px 12px 6px 14px;
   margin : 5px ; 
   background-color : #f6f6f6 ; 
-
+color : #282727 ; 
 
   }
 
@@ -176,7 +180,7 @@ cursor : pointer ;
 font-weight: 600 ;  
 background-color : #9d9696 ; 
 border-radius: 5px;
-
+color : #282727 ; 
 
 }
 
@@ -213,7 +217,7 @@ border-radius: 5px;
   padding: 6px 12px 6px 14px;
   background-color  : #f6f6f6 ; 
   position :fixed ; 
-
+  color : #282727 ; 
   }
   .active  {
   border-radius: 3px;
@@ -234,6 +238,7 @@ border-radius: 5px;
   font-weight: 400  ;
   font-family : "jazeera-regular" ; 
   padding-right : 5 ; 
+    color : #524c40 ; 
   }
   
   
@@ -244,8 +249,9 @@ border-radius: 5px;
     
   .sidebar h1:hover,h2:hover{ 
   cursor:pointer;
-  color :white ;    
-  background-color : #1B1C20 ; 
+  text-decoration : underline ; 
+  //color :white ;    
+  //background-color : #1B1C20 ; 
   border-radius: 3px;
   }
  
@@ -257,6 +263,7 @@ border-radius: 5px;
   font-family : "Naskh"  ; 
   overflow-y: auto;
   overflow-x : hidden ; 
+    
   
   letter-spacing: .001em;
   word-spacing: 1px;
@@ -271,6 +278,9 @@ border-radius: 5px;
   .aya { 
 display : inline  ; 
 color : #282727 ; 
+
+    
+    
   }
 
    [data-type="title"] {
