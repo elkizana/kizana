@@ -1,6 +1,7 @@
 var Oktob = oktob()
 const os = require('os');
 
+
 if (  os.type() == "Linux" ) {
   var bookmark_file = os.homedir() + "/.config/الخزانة/bookmark.json" 
   if (!fs.existsSync(os.homedir() + "/.config/الخزانة/bookmark.json" ) ) { 

@@ -70,6 +70,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     function content_updater(table_id_original, row_id, content_id) {                 // book text content changer
       knex_all.from("b" + table_id_original).where("id", row_id).then(function (row) {
         $(content_id).animate({ scrollTop: 0 }, 0);
+        //row[0].content  = row[0].content.removeTashkel()
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
           $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>”$1“</h5>").replace(curly_brackets, "<h5 class=aya>”$1“</h5>").replaceAll("¬" , "") }   `)      //.replace(quotation , "<h5 class=aya>”$1“</h5>" )
@@ -278,17 +279,58 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
                 "bookmark" : { "name" : "جعل هذا الموضع في المفضلات" , 
                   callback: function(itemKey, opt, e) {
                     add_to_bookmarks()
-                }}
+                }} 
+
+                /* "tashkeel" : { "name" : "بيان التشكيل أو إخفاءه" , 
+                type: 'checkbox', 
+                selected: false , */
+                
+          
+              /*  className: 'tashkeel' 
+                   callback: function(itemKey, opt, e) {
+                     $(content_id).on('DOMSubtreeModified', function(){
+                      setTimeout(() => {
+                        $(content_id).html( $(content_id).html().removeTashkel() )
+                      }, 500);
+     
+                    }); 
+                                    }} */
+
+               /*  events: {
+                  click: function(itemKey, opt, e) {
+
+                    $(".tashkeel input").on("change" , function() {
+                      if (this.checked) { 
+                        $(content_id).on('DOMSubtreeModified', function(){
+                          setTimeout(() => {
+                            $(content_id).html( $(content_id).html().removeTashkel() )
+                          }, 1000);
+                                                })
+                        
+                      } else { console.log("unchecked") 
+                    
+                      $( content_id ).off(  "change" );
+                    }
+                    })
+
+
+              
+                                          
+                                          
+                                          }} 
     
+                                          }*/
+
     
-              }
+              } 
+              
           })
       }, 100);
     
       })                                                               // end text table  selection
   
   
-      $(".content").kinetic()
+      
       
     }// end book_text_formation
   
