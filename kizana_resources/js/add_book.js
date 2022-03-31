@@ -145,8 +145,38 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
   
   
-  
-        $(content_id).on('mousewheel', function (e) { delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ; delta > 0 ? content_updater(table_id_original, row_id + 1, content_id) : content_updater(table_id_original, row_id - 1, content_id); $(slider_id).slider("value", row_id);})
+      //  scrolltop of content_id 
+
+
+
+
+
+
+      /* $(content_id).on('scroll', function() {
+        if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+            console.log("bottom!");
+            row_id = parseInt(this.id)
+            content_updater(table_id_original, row_id + 1, content_id)
+        }
+    }) */
+
+    $(content_id).on('mousewheel', function (e) { 
+      delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ;
+      
+      if ( delta > 0 && $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight ) { 
+        content_updater(table_id_original, row_id + 1, content_id)
+        $(slider_id).slider("value", row_id);
+
+      }
+      
+      else if (delta < 0 && $(this).scrollTop() <= 0)  { 
+        content_updater(table_id_original, row_id - 1, content_id); 
+        $(slider_id).slider("value", row_id);
+      }
+       
+    })
+     
+        //$(content_id).on('mousewheel', function (e) { delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ; delta > 0 ? content_updater(table_id_original, row_id + 1, content_id) : content_updater(table_id_original, row_id - 1, content_id); $(slider_id).slider("value", row_id);})
         $(previous).on("click", function () { let a = parseInt($(content_id).attr("id")) ;  $(slider_id).slider("value", a - 1); content_updater(table_id_original, a - 1, content_id)  ; })
         $(next).on("click", function () { let a = parseInt($(content_id).attr("id"))  ; $(slider_id).slider("value", a + 1); content_updater(table_id_original, a + 1, content_id)  ;})
         
