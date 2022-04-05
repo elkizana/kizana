@@ -14,7 +14,6 @@
   float : left ; 
   height : 30 ;
   width : 30 ; 
-  z-index : 5 ;
   }
   
     
@@ -133,7 +132,6 @@
     box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
     border-radius: 5px;
     display : none ; 
-    z-index : 5 ; 
     border :  solid #d5d5d5 1px ;
     font-family : "jazeera-regular" ;
     color : #282727 ; 
@@ -148,7 +146,7 @@
   //padding: 6px 12px 6px 14px;
   margin : 5px ; 
   background-color : #f6f6f6 ; 
-color : #282727 ; 
+  color : #282727 ; 
 
   }
 
@@ -194,9 +192,9 @@ color : #282727 ;
 
 .sidebar {
   float : right ; 
-  width: auto;
+  width: 100%;
   max-width : 20% ; 
-  height: 93%;
+  height: 92%;
   float : right ; 
   overflow : hidden ; 
   padding-right : 0 ; 
@@ -206,23 +204,29 @@ color : #282727 ;
   border-radius: 5px;
   margin :3 0 0 3  ; 
   background-color  : #f6f6f6 ; 
+  position :relative ;  
   
   }
   #sidebar_search_input { 
-    height : 27px ; 
-  bottom : 5px ; 
-  right : 29px ; 
+  height : 27px ; 
   border-radius: 5px;
   border : #cfc3c3 1px solid ; 
-  padding: 6px 12px 6px 14px;
+  //padding: 6px 12px 6px 14px;
   background-color  : #f6f6f6 ; 
-  position :fixed ; 
-  color : #282727 ; 
+  position: fixed;
+  width: auto;
+  bottom: 10px;
+  color : #282727  ; 
   }
-  .active  {
+  
+      
+      
+      .active  {
   border-radius: 3px;
   background-color : #cdc8c8 ; 
   }
+
+
 
   .sidebar h1 { 
   font-size: 18px;
@@ -231,6 +235,7 @@ color : #282727 ;
   font-family : "jazeera-regular" ; 
   text-decoration-thickness: .1em ;
   padding-right : 5 ;
+    
   }
   
   .sidebar h2 { 
@@ -239,6 +244,7 @@ color : #282727 ;
   font-family : "jazeera-regular" ; 
   padding-right : 5 ; 
     color : #524c40 ; 
+    
   }
   
   
