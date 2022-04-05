@@ -69,7 +69,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
     function content_updater(table_id_original, row_id, content_id) {                 // book text content changer
       knex_all.from("b" + table_id_original).where("id", row_id).then(function (row) {
-        $(content_id).animate({ scrollTop: 0 }, 0);
+        $(content_id + "," + hashia_id).scrollTop(0)
         //row[0].content  = row[0].content.removeTashkel()
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
@@ -164,6 +164,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ;
       
       if ( delta > 0 && $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight ) { 
+        
         content_updater(table_id_original, row_id + 1, content_id)
         $(slider_id).slider("value", row_id);
 
@@ -239,7 +240,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
                 $(`${content_id}:contains(${search_input_value}) , ${hashia_id}:contains(${search_input_value}) ` ).html(function(_, html) {
                   return html.split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`);
               });
-              }, 500);
+              }, 1000);
         })
   
   
@@ -402,7 +403,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             })
           })
           
-          $(sidebar_search_input).css("width" , $(sidebar_id).width() ) // give width to sidebar_search_input
+          //$(sidebar_search_input).css("width" , $(sidebar_id).width() ) // give width to sidebar_search_input
         })                                                                          /// end of book index 
   
       $('body').on('DOMSubtreeModified', content_id, function () {                               // menu tracker 
@@ -495,3 +496,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
   
   }  
+
+ 
+
+
+  
