@@ -168,7 +168,8 @@ width : 15 ;
 
 
 .single_book_checkbox { 
-float : left ; 
+float : left ;  
+
 }
 
 input[type="checkbox"]
@@ -201,7 +202,7 @@ border: 1px solid #dfdfdf ;
 }
 td:nth-child(1) { 
 text-align : center ; 
-font-size : 12 ;
+font-size : 12  ;
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
@@ -210,7 +211,7 @@ white-space: nowrap;
 
 td:nth-child(2) { 
 max-width: 800px;
-font-size : 14 ; 
+font-size : 18 ; 
 padding : 3 ; 
 }
 

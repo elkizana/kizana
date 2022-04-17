@@ -70,6 +70,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     function content_updater(table_id_original, row_id, content_id) {                 // book text content changer
       knex_all.from("b" + table_id_original).where("id", row_id).then(function (row) {
         $(content_id + "," + hashia_id).scrollTop(0)
+        $(content_id).trigger('focus')
         //row[0].content  = row[0].content.removeTashkel()
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
@@ -116,9 +117,17 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
       $(content_id).on('keydown', function(e){
         // get keycode of current keypress event
+        
         var code = (e.keyCode || e.which);
-        if(code == 39 ) {
+        if(code == 39  ) {
           let a = parseInt($(content_id).attr("id"))  ; $(slider_id).slider("value", a + 1); content_updater(table_id_original, a + 1, content_id)
+        }
+
+        else if (code == 32  &&  $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 1  )  { 
+          row_id = parseInt(this.id)
+          content_updater(table_id_original, row_id + 1, content_id)
+          $(slider_id).slider("value", row_id);
+          
         }
          else if(code == 37 ) {
           let a = parseInt($(content_id).attr("id")) ;  $(slider_id).slider("value", a - 1); content_updater(table_id_original, a - 1, content_id)  ;
@@ -135,24 +144,18 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         fontSize = fontSize - 1 + "px";
         $(content_id).css({'font-size':fontSize}); 
           }
-  
+/* 
+      else if(code == 70 ) {
+        $(search_block).slideToggle()  ; $(single_book_search_input).trigger("focus") ;
+      }
+      else if(code == 108 || code == 76 ) {
+          close_index()
+      } */
   
     
     })
     
-  
-    
-  
-  
-  
-      //  scrolltop of content_id 
-
-
-
-
-
-
-      /* $(content_id).on('scroll', function() {
+          /* $(content_id).on('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
             console.log("bottom!");
             row_id = parseInt(this.id)
@@ -163,13 +166,18 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     $(content_id).on('mousewheel', function (e) { 
       delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ;
       
-      if ( delta > 0 && $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight ) { 
-        
+      if ( delta > 0 && $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 1 ) { 
         content_updater(table_id_original, row_id + 1, content_id)
         $(slider_id).slider("value", row_id);
-
+        
       }
+      /* else if ( delta > 0  ) { 
+        console.log(delta)  
+        console.log($(this).scrollTop() + $(this).innerHeight() )
+        console.log($(this)[0].scrollHeight)  
+
       
+      }  */
       else if (delta < 0 && $(this).scrollTop() <= 0)  { 
         content_updater(table_id_original, row_id - 1, content_id); 
         $(slider_id).slider("value", row_id);
@@ -177,7 +185,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
        
     })
      
-        //$(content_id).on('mousewheel', function (e) { delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ; delta > 0 ? content_updater(table_id_original, row_id + 1, content_id) : content_updater(table_id_original, row_id - 1, content_id); $(slider_id).slider("value", row_id);})
         $(previous).on("click", function () { let a = parseInt($(content_id).attr("id")) ;  $(slider_id).slider("value", a - 1); content_updater(table_id_original, a - 1, content_id)  ; })
         $(next).on("click", function () { let a = parseInt($(content_id).attr("id"))  ; $(slider_id).slider("value", a + 1); content_updater(table_id_original, a + 1, content_id)  ;})
         
