@@ -50,16 +50,16 @@
     }
   },
   "dependencies": {
-    "adm-zip": "^0.5.5",
-    "chrome-tabs": "^5.4.0",
+    "adm-zip": "0.5.5",
+    "chrome-tabs": "5.4.0",
     "jquery": "3.6.0",
     "knex": "0.95.05",
-    "oktob.js": "^1.1.0",
+    "oktob.js": "1.1.0",
     "path": "0.12.7",
     "sqlite3": "5.0.0"
   },
   "devDependencies": {
-    "electron": "18.0.1",
+    "electron": "18.0.3",
     "electron-builder": "^22.11.7",
     "electron-reloader": "1.1.0"
   }
