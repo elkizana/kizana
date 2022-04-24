@@ -1,0 +1,18 @@
+#info_icon { 
+position : absolute ; 
+bottom : 0px ;
+right : 0px  ;
+}
+
+#info_window { 
+    padding : 10px ; 
+    display : none ; 
+    width : 90% ; 
+    height : 400px ;
+    float : right ; 
+    margin : 10px 50px 0px 0px  ;  
+    box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+    border-radius:16px;
+     
+    }
+
