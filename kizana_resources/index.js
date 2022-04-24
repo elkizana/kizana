@@ -13,7 +13,7 @@ function createWindow() {
       contextIsolation: false
     } 
 
-  })
+  })  
 
   win.loadFile('kizana_resources/html/main.html')
   win.maximize()
