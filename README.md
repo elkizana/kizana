@@ -10,6 +10,16 @@
  <p dir="rtl">
   حمل النسخ الجاهزة من  <a href="https://elkizana.github.io/">موقعها</a>
 </p>
+<h4 dir="rtl">أو شغلها ب Node js</h4>
+
+ ```
+npm install 
+npm start 
+```
+
+
+
+
  <h4 dir="rtl">مهم</h4>
  <p dir="rtl">
   هذا المخزن (repo) ليس فيه قاعدة بيانات الكتب (لكبره) فإن أردت استعماله حمله ثم انسخه غير مضغوط في /kizana_resources <br>
