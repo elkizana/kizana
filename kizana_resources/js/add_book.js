@@ -27,6 +27,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     let previous = "#previous" + table_id
     let delimeter = "_________"
     //let line_breaking = /(?:\r\n|\r|\n)/g
+    //let footnote_number =  /\([\u0660-\u0669]\)/g
     let line_breaking = /(?:\r)/g
     let prentheses = /\(([^(١|٢|٣|٤|٥|٦|٧|٨|٩)]+)\)/g
     let curly_brackets = /{([^}]*)}/g
@@ -69,9 +70,10 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
     function content_updater(table_id_original, row_id, content_id) {                 // book text content changer
       knex_all.from("b" + table_id_original).where("id", row_id).then(function (row) {
+       
         $(content_id + "," + hashia_id).scrollTop(0)
         $(content_id).trigger('focus')
-        //row[0].content  = row[0].content.removeTashkel()
+      
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
           $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>”$1“</h5>").replace(curly_brackets, "<h5 class=aya>”$1“</h5>").replaceAll("¬" , "") }   `)      //.replace(quotation , "<h5 class=aya>”$1“</h5>" )
@@ -79,6 +81,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $(part_input).val(` ${row[0].part || ""}  `)
           $(hashia_id).html(hashia.replace(line_breaking, "<br>").slice(4).replaceAll("¬", ""))
           $(content_id).attr('id', row_id);
+          $(content_id).css("height", "80%");
+
         }
         else {
           $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>”$1“</h5>").replace(curly_brackets, "<h5 class=aya>”$1“</h5>").replaceAll("¬" , "") }   `)
@@ -86,7 +90,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $(part_input).val(` ${row[0].part || ""}  `)
           $(content_id).attr('id', row_id);
           $(hashia_id).empty()
-        }
+          $(content_id).css("height", "100%");
+                  }
       }).catch(function () {
         null
       })
@@ -119,6 +124,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         // get keycode of current keypress event
         
         var code = (e.keyCode || e.which);
+        
         if(code == 39  ) {
           let a = parseInt($(content_id).attr("id"))  ; $(slider_id).slider("value", a + 1); content_updater(table_id_original, a + 1, content_id)
         }
@@ -431,8 +437,14 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         this.tagName == "H1" ? $(this).nextUntil("H1").toggle('slow') : null;
         row_id = $(this).attr("id").slice(1)
         knex_all.from("b" + table_id_original).where('content', 'like', '%toc-' + $(this).attr("id").slice(1) + '%').then(function (title) {
-          $(slider_id).slider("value", title[0].id);
+          if (title.length == 1) {
+            
+          //$(slider_id).slider("value", title[0].id);
+          
+          } else { null}
+          console.log(title )
           content_updater(table_id_original, title[0].id, content_id)
+
         }).catch(function () {
           null
         })
