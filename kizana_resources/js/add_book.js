@@ -439,11 +439,12 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         knex_all.from("b" + table_id_original).where('content', 'like', '%toc-' + $(this).attr("id").slice(1) + '%').then(function (title) {
           if (title.length == 1) {
             
-          //$(slider_id).slider("value", title[0].id);
+          
           
           } else { null}
-          console.log(title )
+          //console.log(title )
           content_updater(table_id_original, title[0].id, content_id)
+          $(slider_id).slider("value", title[0].id);
 
         }).catch(function () {
           null
