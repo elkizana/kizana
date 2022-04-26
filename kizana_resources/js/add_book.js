@@ -442,7 +442,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           
           
           } else { null}
-          //console.log(title )
           content_updater(table_id_original, title[0].id, content_id)
           $(slider_id).slider("value", title[0].id);
 
