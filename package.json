@@ -53,10 +53,10 @@
     "adm-zip": "0.5.5",
     "chrome-tabs": "5.4.0",
     "jquery": "3.6.0",
-    "knex": "0.95.05",
+    "knex": "2.0.0",
     "oktob.js": "1.1.0",
     "path": "0.12.7",
-    "sqlite3": "5.0.0"
+    "sqlite3": "5.0.5"
   },
   "devDependencies": {
     "electron": "18.0.3",

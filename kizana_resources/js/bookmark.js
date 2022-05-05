@@ -42,7 +42,7 @@ var knex_master = require("knex")({
 function jsontotable() {      // form html table from json file
   let rawdata = fs.readFileSync(bookmark_file);
 let bookmarks_list = JSON.parse(rawdata);
-  let i = 0 
+  let i = 1 
       var transform = {"tag":"table", "id" : "bookmark_table" , "children":[
           {"tag":"tr","children":[
               {"tag":"td",'id':"${id}" ,"class" : "bookmarked_book" , "data-page-id" : "${page_id}" , "html": "${name}"  },
@@ -52,8 +52,10 @@ let bookmarks_list = JSON.parse(rawdata);
           ]}
     ]}
     $('#bookmark_table').html(json2html.transform(bookmarks_list,transform))
-    $('#bookmark_table').prepend('<th>الكتاب</th><th>الصفحة</th><th>الجزء</th><th>إزالة</th>')
-
+    $('#bookmark_table').prepend('<th></th>  <th>الكتاب</th><th>الصفحة</th><th>الجزء</th><th>إزالة</th>')
+    $(".bookmarked_book").each(function(){
+      $(this).before  (  '<td>' + i++ +  '</td>' ) 
+    });
     $(".bookmarked_book").on("click" , function () {
       add_book_and_tab( $(this).text(), $(this).attr("id") , initial_rowid = $(this).attr("data-page-id") )
           })

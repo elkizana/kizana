@@ -27,7 +27,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     let previous = "#previous" + table_id
     let delimeter = "_________"
     //let line_breaking = /(?:\r\n|\r|\n)/g
-    //let footnote_number =  /\([\u0660-\u0669]\)/g
+    let footnote_number =  /[\u0660-\u0669]/g
     let line_breaking = /(?:\r)/g
     let prentheses = /\(([^(١|٢|٣|٤|٥|٦|٧|٨|٩)]+)\)/g
     let curly_brackets = /{([^}]*)}/g
@@ -76,16 +76,16 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
-          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>”$1“</h5>").replace(curly_brackets, "<h5 class=aya>”$1“</h5>").replaceAll("¬" , "") }   `)      //.replace(quotation , "<h5 class=aya>”$1“</h5>" )
+          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
           $(page_input).val(` ${row[0].page || ""}  `)         //  
           $(part_input).val(` ${row[0].part || ""}  `)
           $(hashia_id).html(hashia.replace(line_breaking, "<br>").slice(4).replaceAll("¬", ""))
           $(content_id).attr('id', row_id);
-          $(content_id).css("height", "80%");
-
+          $(content_id).css("height", "70%");
+          
         }
         else {
-          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>”$1“</h5>").replace(curly_brackets, "<h5 class=aya>”$1“</h5>").replaceAll("¬" , "") }   `)
+          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)
           $(page_input).val(` ${row[0].page || ""}  `)
           $(part_input).val(` ${row[0].part || ""}  `)
           $(content_id).attr('id', row_id);
@@ -100,11 +100,33 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
   
     function book_text_formation() {
-  
-      knex_all.from("b" + table_id_original).where("id", initial_rowid).then(function (text_table) {
-        $(content_id).append(`    ${text_table[0].content.replace(line_breaking, '<br>')}      `)
+      
+      //content_updater(table_id_original, a + 1, initial_rowid)
+      
+      knex_all.from("b" + table_id_original).where("id", initial_rowid).then(function (row) {
+        /* $(content_id).append(`    ${text_table[0].content.replace(line_breaking, '<br>')}      `)
         $(page_input).val(` ${text_table[0].page || ""}  `)   
-        $(content_id).attr('id', initial_rowid);
+        $(content_id).attr('id', initial_rowid); */
+
+        if (row[0].content.includes(delimeter)) {
+          hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
+          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
+          $(page_input).val(` ${row[0].page || ""}  `)         //  
+          $(part_input).val(` ${row[0].part || ""}  `)
+          $(hashia_id).html(hashia.replace(line_breaking, "<br>").slice(4).replaceAll("¬", ""))
+          $(content_id).attr('id', initial_rowid);
+          $(content_id).css("height", "70%");
+          
+        }
+        else {
+          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)
+          $(page_input).val(` ${row[0].page || ""}  `)
+          $(part_input).val(` ${row[0].part || ""}  `)
+          $(content_id).attr('id', initial_rowid);
+          $(hashia_id).empty()
+          $(content_id).css("height", "100%");
+                  }
+
         $(slider_id).slider({
           value: initial_rowid,
           orientation: "vertical",
@@ -150,24 +172,10 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         fontSize = fontSize - 1 + "px";
         $(content_id).css({'font-size':fontSize}); 
           }
-/* 
-      else if(code == 70 ) {
-        $(search_block).slideToggle()  ; $(single_book_search_input).trigger("focus") ;
-      }
-      else if(code == 108 || code == 76 ) {
-          close_index()
-      } */
   
     
     })
     
-          /* $(content_id).on('scroll', function() {
-        if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-            console.log("bottom!");
-            row_id = parseInt(this.id)
-            content_updater(table_id_original, row_id + 1, content_id)
-        }
-    }) */
 
     $(content_id).on('mousewheel', function (e) { 
       delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ;
@@ -235,10 +243,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
                   a == found_in.length ? null : a++ 
     
                   setTimeout(() => {
-                    $(content_id).text().removeTashkel()
-                    $( `${content_id}:contains(${search_input_value}) , ${hashia_id}:contains(${search_input_value}) `).html(function(_, html) {
-                      return html.split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`);
-                  })
+                    $(content_id).html(  $(content_id).html().removeTashkel().split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`) )
                   }, 1000);
                 })
          
@@ -250,9 +255,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             
             $(single_book_search_num).html( a  + " / "  +  found_in.length  )
               setTimeout(() => {
-                $(`${content_id}:contains(${search_input_value}) , ${hashia_id}:contains(${search_input_value}) ` ).html(function(_, html) {
-                  return html.split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`);
-              });
+                $(content_id).html(  $(content_id).html().removeTashkel().split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`) )
               }, 1000);
         })
   
@@ -406,7 +409,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             var filter = $(this).val() 
               count = 0;
             $(sidebar_id + " H1,H2").each(function () {
-              if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length > 2 ) {
+              if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length >= 2 ) {
                 $(this).hide();
               } else {
                 $(this).show();
@@ -437,11 +440,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         this.tagName == "H1" ? $(this).nextUntil("H1").toggle('slow') : null;
         row_id = $(this).attr("id").slice(1)
         knex_all.from("b" + table_id_original).where('content', 'like', '%toc-' + $(this).attr("id").slice(1) + '%').then(function (title) {
-          if (title.length == 1) {
-            
-          
-          
-          } else { null}
           content_updater(table_id_original, title[0].id, content_id)
           $(slider_id).slider("value", title[0].id);
 
