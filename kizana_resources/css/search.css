@@ -200,7 +200,8 @@ color: #2b2626 ;
 td, th {
 border: 1px solid #dfdfdf ; 
 }
-td:nth-child(1) { 
+
+.search_table td:nth-child(1) { 
 text-align : center ; 
 font-size : 12  ;
 overflow: hidden;
@@ -209,14 +210,14 @@ white-space: nowrap;
 }
 
 
-td:nth-child(2) { 
+.search_table td:nth-child(2) { 
 max-width: 800px;
 font-size : 18 ; 
 padding : 3 ; 
 }
 
 
-td:nth-child(3) {
+.search_table td:nth-child(3) {
 max-width : 200 ;   
 overflow: hidden;
 text-overflow: ellipsis;
@@ -224,11 +225,11 @@ white-space: nowrap;
 font-size : 13 ; 
 }
 
-td:nth-child(5) , td:nth-child(4) {
+.search_table td:nth-child(5) , .search_table td:nth-child(4) {
 font-size : 13 ; 
 }
 
-.search_table td:nth-child(2):hover , .books_to_search:hover , #bookmark_table td:nth-child(1):hover {
+.search_table td:nth-child(2):hover , .search_table .books_to_search:hover {
 background-color : #e8e8e8 ; 
 cursor : pointer ; 
 
@@ -240,13 +241,6 @@ height:auto;  /* just added this line */
 
 }
 
-
-
-/*td:nth-child(2) [data-type="title"] {
-font-family : "jazeera-bold" ; 
-font-size : 12 ; 
-}
-*/
 
 #checkall_categ , #checkall_books{
 float:  left;

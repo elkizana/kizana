@@ -981,10 +981,11 @@ a.ui-button:focus {
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
-	border: 1px solid #003eff;
-	background: #007fff;
+	
+	background: rgb(114, 114, 114);
 	font-weight: normal;
 	color: #ffffff;
+	border-radius: 5px;
 }
 .ui-icon-background,
 .ui-state-active .ui-icon-background {
