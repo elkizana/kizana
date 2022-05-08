@@ -168,7 +168,8 @@ width : 15 ;
 
 
 .single_book_checkbox { 
-float : left ;  
+float : left ;   
+margin  :  0 0 8 -10 ; 
 
 }
 
