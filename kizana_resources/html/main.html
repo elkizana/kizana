@@ -66,7 +66,7 @@
        </div> 
                                                <!-- end navigation menu -->
 
-        <div id='books_window'>     
+        <div id='books_window' class="aaa" >     
                 <!-- categ && authors menus -->
              <div id="books_first_block">  <div  id="categ_div"  > </div>     </div>   
             <div id="books_second_block"> <div  id="categ_info_div"  > </div> <div  id="categ_books_div"  > </div>    <input  onfocus="this.value=''" id="tags2" placeholder="حصر الأسماء ...">  </div>  
@@ -74,7 +74,7 @@
 
 
          <!-- authors menu -->
-        <div id='authors_window'>     
+        <div id='authors_window' class="aaa">     
             
         <div id="authors_first_block">  <div  id="authors_info_div"  > </div>  <div  id="authors_names_div"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء ..." >  </div>   
         <div id="authors_second_block"> <div  id="authors_books_info_div"  > </div> <div  id="authors_books_div"  > </div>    </div>  
@@ -83,7 +83,7 @@
                   <!-- end categ && authors menus -->
 
 
-    <div id="search_main">                            <!-- search menus -->
+    <div id="search_main" class="aaa" >                             <!-- search menus -->
 
           <div id="search_block_1">      
             <input type="text" id="first_search_input" placeholder="البحث عن ..."  > 
@@ -107,11 +107,11 @@
         <!-- end search menus -->
 
         <!-- bookmark menu -->
-        <div id="bookmark_block"> <table id="bookmark_table" > <th>الكتاب</th> <th>الصفحة</th> </table>       </div>
+        <div id="bookmark_block" class="aaa"> <table id="bookmark_table" > <th>الكتاب</th> <th>الصفحة</th> </table>       </div>
         <!-- end bookmark menu -->
 
         <!-- info menu -->
-        <div id="info_block"></div>
+        <div id="info_block" class="aaa"></div>
         <!-- end info menu -->
 </div> 
 
@@ -127,29 +127,31 @@
   }, 1000);
 
 $("#book_icon").on("click" , function() {                           // books icon onclick
-  $('#authors_window , #search_main , #bookmark_block , #info_block ' ).hide() 
+  $(".aaa").hide()
+
     $('#books_window').show() 
-     //$('#first_container_one, #second_container_one,#second_container_two ').empty()  
       $('input:text').val('') 
+      $(".aaa").removeClass("active")
+          $(this).addClass("active")
         
 })
 
 $("#authors_icon").on("click" , function() {                        // authors icon onclick
-  $('#books_window , #search_main , #info_block , #bookmark_block ').hide() 
-  
+  $(".aaa").hide()
      $('#authors_window').show() 
-      //$('#first_container_one, #second_container_one,#second_container_two ').empty() 
       $('input:text').val('') 
+      $(".aaa").removeClass("active")
+          $(this).addClass("active")
         
 })
 
 $("#search_icon").on("click" , function() {                            // search icon onclick
-  $('#books_window , #authors_window ,  #info_block  , #bookmark_block' ).hide()   
+  $(".aaa").hide()
      $('#search_main').show() 
 })
 
 $("#bookmark_icon").on("click" , function() {                           // bookmark icon onclick
-  $('#books_window , #authors_window , #search_main , #info_block , #bookmark_block').hide()  
+  $(".aaa").hide()
      $('#bookmark_block').show() 
      jsontotable()
 
@@ -157,7 +159,7 @@ $("#bookmark_icon").on("click" , function() {                           // bookm
 
 
 $("#info_icon").on("click" , function() {                                // info icon onclick
-  $('#books_window , #authors_window , #search_main , #bookmark_block').hide()   
+  $(".aaa").hide()  
      $('#info_block').show() 
       
       $('#info_block').html(`<p dir="rtl">
