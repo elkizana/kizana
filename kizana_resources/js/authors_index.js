@@ -47,7 +47,7 @@ function authors_index(filter = "author_name") {                      //end auth
   
           rows.forEach(book => $("#authors_books_div").append(`<span class="books" id="${book.book_id}" > ${book.book_name} <div class="bio_img" > </div>  </span>`))
           
-          $("#authors_books_info_div").html("<span id=author_and_book_number> كتب" + author + " : " + $(".books").length + "</span>")
+          $("#authors_books_info_div").html("<span id=author_and_book_number> كتب" + author + " : " + $("#authors_books_div .books").length + "</span>")
           
           $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")) })
   
