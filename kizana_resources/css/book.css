@@ -21,7 +21,7 @@
   
   .book_div {
     position  : fixed ; 
-      height : 95% ; 
+      height : 92% ; 
   background-color : white ;
   width : 100% ; 
   color : #404040 ; 
@@ -29,19 +29,19 @@
   
   #book_toolbox { 
   
-  height : 98% ; 
+  height : 100% ; 
   width  : 25 ; 
   float : right ; 
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 5px;
+  border-radius: 18px;
   padding : 10 5 ; 
   margin-left  : 3px ; 
-  background-color : #f6f6f6 ; 
+  
   }
   
   .slider{
   background-color: #c1c1c1;
-  height : 50%;
+  height : 80%;
   left : -1 ; 
   
   }
@@ -53,7 +53,7 @@
   position : relative ; 
   border: solid 1px #bcbec3;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 3px;
+  border-radius: 10px;
   width : 25 ;
   height : 30 ;
   left : 6 ; 
@@ -65,7 +65,7 @@
   position : relative ; 
   border: solid 1px #bcbec3;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 3px;
+  border-radius: 10px;
   width : 25 ;
   height : 30 ;
   left : 6 ; 
@@ -80,7 +80,7 @@
   position : relative ; 
   left : 6 ;   
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 3px;
+  border-radius: 10px;
   border : none ; 
   margin : 5 0 5 0 ;
   font-family : "jazeera-regular" ;
@@ -97,7 +97,7 @@
   position : relative ; 
   left : 6 ;   
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 3px;
+  border-radius: 10px;
   border : none ; 
   border: solid 1px #bcbec3;
       color : #282727 ; 
@@ -185,41 +185,31 @@ color : #282727 ;
 
 }
 
-.sidebar_icon { 
-  position : absolute ; 
-  right  : -5 ;
-  bottom : 15 ;
-  width  : 30px ;
-}
-
 
 .sidebar {
   float : right ; 
   width: 100%;
   max-width : 20% ; 
-  height: 92%;
+  height: 95%;
   float : right ; 
   overflow : hidden ; 
   padding-right : 0 ; 
   letter-spacing: .01em;
   line-height: 1.65;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 5px;
+  border-radius: 18px;
   margin :3 0 0 3  ; 
-  background-color  : #f6f6f6 ; 
   position :relative ;  
-  
   }
   #sidebar_search_input { 
   height : 27px ; 
+  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
   border-radius: 5px;
-  border : #cfc3c3 1px solid ; 
-  //padding: 6px 12px 6px 14px;
-  background-color  : #f6f6f6 ; 
   position: fixed;
   width: auto;
   bottom: 10px;
   color : #282727  ; 
+    border : none ; 
   }
   
       
@@ -272,21 +262,20 @@ color : #282727 ;
   font-family : "Naskh"   ; 
   overflow-y: auto;
   overflow-x : hidden ; 
-    
-  
   letter-spacing: .001em;
   word-spacing: 1px;
   padding : 10 ; 
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 5px;
+  border-radius: 18px;
   margin  : 3 3  3 0 ;   
   position: relative;
   outline : none ; 
   }
 
   .aya { 
-display : inline  ; 
-color : #282727 ; 
+display :  inline  ; 
+/* color : #282727 ; */
+    color : #37414d ;
   }
 
    [data-type="title"] {
@@ -297,7 +286,7 @@ color : #282727 ;
 
   
   .hashia { 
-  height : 100% ;   
+  height :100% ;   
   min-height : 120px  ;
   max-height : 200px  ;
   padding : 10 ; 
@@ -308,9 +297,7 @@ color : #282727 ;
   line-height: 1.60;
   letter-spacing: .01em;
   box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 5px 5px 5px ;
-  background-color : #f6f6f6 ; 
-    
+  border-radius: 18px  ; 
   }
 
   .hashia::selection , .content::selection {
