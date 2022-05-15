@@ -1,165 +1,165 @@
 * { 
-  box-sizing : border-box ;
-  }
-  
-  body { 
-  overflow  : hidden ;
-  line-height: 1.65;
+box-sizing : border-box ;
+}
 
-  }
-  
-  img.chrome-tab { 
-  position  : absolute ; 
-  top : 5 ; 
-  float : left ; 
-  height : 30 ;
-  width : 30 ; 
-  }
-  
-    
+body { 
+overflow  : hidden ;
+line-height: 1.65;
 
-  
-  .book_div {
-    position  : fixed ; 
-      height : 92% ; 
-  background-color : white ;
-  width : 100% ; 
-  color : #404040 ; 
-  }
-  
-  #book_toolbox { 
-  
-  height : 100% ; 
-  width  : 25 ; 
-  float : right ; 
-  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 18px;
-  padding : 10 5 ; 
-  margin-left  : 3px ; 
-  
-  }
-  
-  .slider{
-  background-color: #c1c1c1;
-  height : 80%;
-  left : -1 ; 
-  
-  }
+}
+
+img.chrome-tab { 
+position  : absolute ; 
+top : 5 ; 
+float : left ; 
+height : 30 ;
+width : 30 ; 
+}
 
 
-    .previous { 
-    padding : 0 ; 
-  width  : 30px ;
-  position : relative ; 
-  border: solid 1px #bcbec3;
-  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 10px;
-  width : 25 ;
-  height : 30 ;
-  left : 6 ; 
-  margin : 6px 0px 0px 0px ; 
-  }
-
-    .next { 
-  width  : 30px ;
-  position : relative ; 
-  border: solid 1px #bcbec3;
-  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 10px;
-  width : 25 ;
-  height : 30 ;
-  left : 6 ; 
-  }
-
-  
-
-  #page_input {
-  font-size : 10px ;
-  width : 25 ; 
-  height : 30 ;
-  position : relative ; 
-  left : 6 ;   
-  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 10px;
-  border : none ; 
-  margin : 5 0 5 0 ;
-  font-family : "jazeera-regular" ;
-  border: solid 1px #bcbec3;
-  margin : 10px 0px 0px 0px ; 
-
-  }
-
-    #part_input {
-  font-family : "jazeera-regular" ;
-  font-size : 12px ;
-  width : 25 ;
-  height : 30 ;
-  position : relative ; 
-  left : 6 ;   
-  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 10px;
-  border : none ; 
-  border: solid 1px #bcbec3;
-      color : #282727 ; 
-  }
-  #book_info { 
-  position :relative ; 
-  right  : -7 ;
-  width  : 28px ;
-  margin-top : 7 ; 
-  position : absolute ; 
-  right  : -2 ;
-  bottom : 80 ;
-  }
-  #single_book_search { 
-  position :relative ; 
-  right  : -7 ;
-  width  : 28px ;
-  margin-top : 7 ; 
-  position : absolute ; 
-  right  : -2 ;
-  bottom : 45 ;
-
-  }
-  
-  #search_block {
-
-    width : 450px ;  
-    height : 50px ; 
-    position : absolute ; 
-    bottom : 40px ; 
-    right : 30px ; 
-    background-color : #ffffff ; 
-    box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-    border-radius: 5px;
-    display : none ; 
-    border :  solid #d5d5d5 1px ;
-    font-family : "jazeera-regular" ;
-    color : #282727 ; 
-    z-index: 1;
 
 
-  }
-  #single_book_search_input {
-  display : inline ;   
-  width : 250px  ; 
-  height : 35px ; 
-  border-radius: 5px;
-  border : #929292 1px solid ; 
-  //padding: 6px 12px 6px 14px;
-  margin : 5px ; 
-  background-color : #f6f6f6 ; 
-  color : #282727 ; 
+.book_div {
+position  : fixed ; 
+height : 92% ; 
+background-color : white ;
+width : 100% ; 
+color : #404040 ; 
+}
 
-  }
+#book_toolbox { 
 
-  #previous_found , #next_found  { 
-  display : none ; 
-  height : 30px ; 
-  width : 30px ; 
-  margin :  0px  ; 
-  }
-  
+height : 100% ; 
+width  : 25 ; 
+float : right ; 
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 18px;
+padding : 10 5 ; 
+margin-left  : 3px ; 
+
+}
+
+.slider{
+background-color: #333333;
+height : 80%;
+left : -1 ; 
+width : 10px ; 
+
+}
+
+
+.previous { 
+padding : 0 ; 
+width  : 30px ;
+position : relative ; 
+border: solid 1px #bcbec3;
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 10px;
+width : 25 ;
+height : 30 ;
+left : 6 ; 
+margin : 6px 0px 0px 0px ; 
+}
+
+.next { 
+width  : 30px ;
+position : relative ; 
+border: solid 1px #bcbec3;
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 10px;
+width : 25 ;
+height : 30 ;
+left : 6 ; 
+}
+
+
+
+#page_input {
+font-size : 10px ;
+width : 25 ; 
+height : 30 ;
+position : relative ; 
+left : 6 ;   
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 10px;
+border : none ; 
+margin : 5 0 5 0 ;
+font-family : "jazeera-regular" ;
+border: solid 1px #bcbec3;
+margin : 10px 0px 0px 0px ; 
+
+}
+
+#part_input {
+font-family : "jazeera-regular" ;
+font-size : 12px ;
+width : 25 ;
+height : 30 ;
+position : relative ; 
+left : 6 ;   
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 10px;
+border : none ; 
+border: solid 1px #bcbec3;
+color : #282727 ; 
+}
+#book_info { 
+position :relative ; 
+right  : -7 ;
+width  : 28px ;
+margin-top : 7 ; 
+position : absolute ; 
+right  : -2 ;
+bottom : 80 ;
+}
+#single_book_search { 
+position :relative ; 
+right  : -7 ;
+width  : 28px ;
+margin-top : 7 ; 
+position : absolute ; 
+right  : -2 ;
+bottom : 45 ;
+
+}
+
+#search_block {
+
+width : 450px ;  
+height : 50px ; 
+position : absolute ; 
+bottom : 40px ; 
+right : 30px ; 
+background-color : #ffffff ; 
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 5px;
+display : none ; 
+border :  solid #d5d5d5 1px ;
+font-family : "jazeera-regular" ;
+color : #282727 ; 
+z-index: 1;
+
+
+}
+#single_book_search_input {
+display : inline ;   
+width : 250px  ; 
+height : 35px ; 
+border-radius: 5px;
+border : #929292 1px solid ; 
+margin : 5px ; 
+background-color : #f6f6f6 ; 
+color : #282727 ; 
+
+}
+
+#previous_found , #next_found  { 
+display : none ; 
+height : 30px ; 
+width : 30px ; 
+margin :  0px  ; 
+}
+
 #single_book_search_num { 
 display  : inline ; 
 font-size : 18px ; 
@@ -175,7 +175,7 @@ cursor : pointer  ;
 }
 #close_search:hover { 
 cursor : pointer ; 
-   transform: translateY(4px);
+transform: translateY(4px);
 }
 .found_single_word { 
 font-weight: 600 ;  
@@ -187,141 +187,139 @@ color : #282727 ;
 
 
 .sidebar {
-  float : right ; 
-  width: 100%;
-  max-width : 20% ; 
-  height: 95%;
-  float : right ; 
-  overflow : hidden ; 
-  padding-right : 0 ; 
-  letter-spacing: .01em;
-  line-height: 1.65;
-  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 18px;
-  margin :3 0 0 3  ; 
-  position :relative ;  
-  }
-  #sidebar_search_input { 
-  height : 27px ; 
-  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 5px;
-  position: fixed;
-  width: auto;
-  bottom: 10px;
-  color : #282727  ; 
-    border : none ; 
-  }
-  
-      
-      
-      .active  {
-  border-radius: 3px;
-  background-color : #cdc8c8 ; 
-  }
+float : right ; 
+width: 100%;
+max-width : 20% ; 
+height: 95%;
+float : right ; 
+overflow : auto ; 
+padding : 0 5 0 30 ;
+letter-spacing: .01em;
+line-height: 1.65;
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 18px;
+margin :3 0 0 3  ; 
+position :relative ; 
+
+}
+#sidebar_search_input { 
+height : 27px ; 
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 5px;
+position: fixed;
+width: auto;
+bottom: 10px;
+color : #282727  ; 
+border : none ; 
+}
 
 
 
-  .sidebar h1 { 
-  font-size: 18px;
-  text-decoration : underline #d0d1d4  ; 
-  text-underline-position: under;
-  font-family : "jazeera-regular" ; 
-  text-decoration-thickness: .1em ;
-  padding-right : 5 ;
-    
-  }
-  
-  .sidebar h2 { 
-  font-size: 18 ;
-  font-weight: 400  ;
-  font-family : "jazeera-regular" ; 
-  padding-right : 5 ; 
-    color : #524c40 ; 
-    
-  }
-  
-  
-  .sidebar:hover { 
-  overflow-y : auto ; 
-  }
-  
-    
-  .sidebar h1:hover,h2:hover{ 
-  cursor:pointer;
-  text-decoration : underline ; 
-  //color :white ;    
-  //background-color : #1B1C20 ; 
-  border-radius: 3px;
-  }
- 
-  .content {
-  width: auto  ; 
-  height: 70% ;  
-  line-height: 1.65;
-  font-size : 30 ; 
-  font-family : "Naskh"   ; 
-  overflow-y: auto;
-  overflow-x : hidden ; 
-  letter-spacing: .001em;
-  word-spacing: 1px;
-  padding : 10 ; 
-  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 18px;
-  margin  : 3 3  3 0 ;   
-  position: relative;
-  outline : none ; 
-  }
+.active  {
+border-radius: 3px;
+//border :  #878760 solid 1px  ; 
+box-shadow:0 0 1.11111vw rgb(0 0 0 / 25%),0 0 .34722vw rgb(98 35 35 / 10%) ;
 
-  .aya { 
+}
+
+
+
+.sidebar h1 { 
+font-size: 18px;
+text-decoration : underline #d0d1d4  ; 
+text-underline-position: under;
+font-family : "jazeera-regular" ; 
+text-decoration-thickness: .1em ;
+
+
+}
+
+.sidebar h2 { 
+font-size: 18 ;
+font-weight: 400  ;
+font-family : "jazeera-regular" ; 
+}
+
+
+.sidebar:hover { 
+//overflow-y : auto ; 
+}
+
+
+.sidebar h1:hover,h2:hover{ 
+cursor:pointer;
+text-decoration : underline ; 
+border-radius: 3px;
+}
+
+.content {
+width: auto  ; 
+height: 70% ;  
+line-height: 1.65;
+font-size : 30 ; 
+font-family : "Naskh"   ; 
+overflow-y: auto;
+overflow-x : hidden ; 
+letter-spacing: .001em;
+word-spacing: 1px;
+padding : 10 ; 
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 18px;
+margin  : 3 3  3 0 ;   
+position: relative;
+outline : none ; 
+}
+
+.aya { 
 display :  inline  ; 
 /* color : #282727 ; */
-    color : #37414d ;
-  }
+color : #37414d ;
+}
 
-   [data-type="title"] {
-  font-family : "jazeera-regular" ; 
-  font-size : 18 ; 
-  font-weight : 600 ; 
-  }
+[data-type="title"] {
+font-family : "jazeera-regular" ; 
+font-size : 18 ; 
+font-weight : 600 ; 
+}
 
-  
-  .hashia { 
-  height :100% ;   
-  min-height : 120px  ;
-  max-height : 200px  ;
-  padding : 10 ; 
-  overflow-y: auto;
-  overflow-x : hidden ; 
-  font-family : "Naskh" ; 
-  font-size : 24 ; 
-  line-height: 1.60;
-  letter-spacing: .01em;
-  box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
-  border-radius: 18px  ; 
-  }
 
-  .hashia::selection , .content::selection {
-     background-color: #434141 ; 
-     color : white ; 
-     }
-  
-  @font-face {
-    font-family: "Naskh" ;
-    src: url("../fonts/Naskh.ttf");
-  }
-  
-     @font-face {
-    font-family: "jazeera-regular";
-    src: url("../fonts/Al-Jazeera-Regular.woff2");
-  }
+.hashia { 
+height :100% ;   
+min-height : 120px  ;
+max-height : 200px  ;
+padding : 10 ; 
+overflow-y: auto;
+overflow-x : hidden ; 
+font-family : "Naskh" ; 
+font-size : 24 ; 
+line-height: 1.60;
+letter-spacing: .01em;
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border-radius: 18px  ; 
+}
+
+.hashia::selection , .content::selection {
+background-color: #434141 ; 
+color : white ; 
+}
+
+@font-face {
+font-family: "Naskh" ;
+src: url("../fonts/Naskh.ttf");
+}
+
+@font-face {
+font-family: "jazeera-regular";
+src: url("../fonts/Al-Jazeera-Regular.woff2");
+}
 
 
 
 img:hover  , .bio_img_search:hover , .bio_img:hover , .remove_book:hover {  
 cursor : pointer ; 
-   transform: translateY(4px);
+transform: translateY(4px);
 }
 
- img:active {
-   transform: translateY(8px);
+img:active {
+transform: translateY(8px);
 }
