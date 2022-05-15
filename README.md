@@ -9,6 +9,7 @@
 <h4 dir="rtl">شغلها بواسطة : Nodejs</h4>
 
  ```
+cd kizana
 npm install 
 npm start 
 ```
