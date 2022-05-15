@@ -23,14 +23,13 @@ function library_index() {               // library index
   
             knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
               if (info[0].bibliography.length > 5) {
+                $(".bio_img").hide()
+                $(pointer).show()
                 $(pointer).attr('title', info[0].bibliography)
-  
-              } else {
-                $(pointer).attr('title', "ليس للكتاب بطاقة")
-              }
+              } 
   
             }).catch(function (info) {
-              $(pointer).attr('title', "ليس للكتاب بطاقة")
+              $(".bio_img").hide()
             })
   
   

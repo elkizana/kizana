@@ -59,10 +59,12 @@ function authors_index(filter = "author_name") {                      //end auth
             pointer = $(this).children(".bio_img")
             knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
               if (info[0].bibliography.length > 5) {
+                $(".bio_img").hide()               
+                $(pointer).show()
                 $(pointer).attr('title', info[0].bibliography)
               }
             }).catch(function (info) {
-              $(pointer).attr('title', "ليس للكتاب بطاقة")
+              $(".bio_img").hide()
             })
   
   

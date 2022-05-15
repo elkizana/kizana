@@ -193,7 +193,6 @@ max-width : 20% ;
 height: 95%;
 float : right ; 
 overflow : auto ; 
-padding : 0 5 0 30 ;
 letter-spacing: .01em;
 line-height: 1.65;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
@@ -216,8 +215,8 @@ border : none ;
 
 
 .active  {
-border-radius: 3px;
-//border :  #878760 solid 1px  ; 
+border-radius: 7px;
+border :  black solid 1px  ; 
 box-shadow:0 0 1.11111vw rgb(0 0 0 / 25%),0 0 .34722vw rgb(98 35 35 / 10%) ;
 
 }
@@ -230,7 +229,7 @@ text-decoration : underline #d0d1d4  ;
 text-underline-position: under;
 font-family : "jazeera-regular" ; 
 text-decoration-thickness: .1em ;
-
+padding : 4 ;
 
 }
 
@@ -238,6 +237,7 @@ text-decoration-thickness: .1em ;
 font-size: 18 ;
 font-weight: 400  ;
 font-family : "jazeera-regular" ; 
+    padding : 4 ;
 }
 
 
