@@ -104,6 +104,7 @@ $(".authors_search_block_2").on("mouseover" , function () {
 pointer = $(this).children(".bio_img")
 knex_master.select("inf").from("bio").where("authid", this.id).then(function (info) {
   if (info[0].inf.length > 10) {
+    
     $(pointer).attr('title', info[0].inf)
   }
 }).catch(function () {

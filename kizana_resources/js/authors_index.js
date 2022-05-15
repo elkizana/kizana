@@ -16,10 +16,13 @@ function authors_index(filter = "author_name") {                      //end auth
         pointer = $(this).children(".bio_img")
         knex_master.select("inf").from("bio").where("authid", this.id).then(function (info) {
           if (info[0].inf.length > 10) {
+            $(".bio_img").hide()
+            $(pointer).show()
             $(pointer).attr('title', info[0].inf)
           }
         }).catch(function () {
-          $(pointer).attr('title', "ليس للمؤلف بطاقة")
+          $(".bio_img").hide()
+          //$(pointer).attr('title', "ليس للمؤلف بطاقة")
         })
       })
   
@@ -28,7 +31,7 @@ function authors_index(filter = "author_name") {                      //end auth
         var filter = $(this).val()
         count = 0;
         $('.authors').each(function () {
-          if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length > 2) {
+          if ($(this).text().search(filter) < 0 && filter.length > 2) {
             $(this).hide();
           } else {
             $(this).show();

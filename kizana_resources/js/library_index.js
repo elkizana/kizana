@@ -44,7 +44,7 @@ function library_index() {               // library index
             var filter = $(this).val(),
               count = 0;
             $('.books').each(function () {
-              if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length > 3 ) {
+              if ($(this).text().search(filter) < 0 && filter.length > 3 ) {
                 $(this).hide();
               } else {
                 $(this).show();

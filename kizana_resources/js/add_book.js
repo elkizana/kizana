@@ -287,6 +287,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     
             }).catch(function () {
               author_inf = "ليس للمؤلف بطاقة"
+              
             })
           }) 
     
@@ -388,21 +389,19 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
         await knex_all.from("t" + table_id_original).then(function (index) {                         /// start of book index 
         
-          for (x in index) {
-           // index_list.push(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
-            //$(sidebar_id).append(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
+         for (x in index) {
              if (index[x].parent == 0) {
-              //$(sidebar_id).append(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
               index_list.push(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
             }
             else  {
-              //$(sidebar_id).append(`<H2 id=I${index[x].id}>${index[x].content}</H2>`) // grab sub titles and put them under the previous level 1 tilte. 
               index_list.push(`<H2 id=I${index[x].id}>  ${index[x].content}</H2>`)
             } 
           }
+
           
           $(sidebar_id).append(index_list)
           $(sidebar_id).append("<H1></H1>")
+          
           $(sidebar_search_input).on("keyup", function () {
                 
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
@@ -422,16 +421,20 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           //$(sidebar_search_input).css("width" , $(sidebar_id).width() ) // give width to sidebar_search_input
         })                                                                          /// end of book index 
   
-      $('body').on('DOMSubtreeModified', content_id, function () {                               // menu tracker 
-        if ($(content_id + " [data-type='title']").length != 0 && $(sidebar_id).width() != 0) {
-          theid = "#I" + $(content_id + " [data-type=title]").attr('id').slice(4)
-          $(sidebar_id + " " + theid).is(":hidden") ? $(sidebar_id + " " + theid).prev("H1").one().trigger("click") : null
-          $(sidebar_id + " H1, H2").removeClass("active")
-          $(sidebar_id + " " + theid).addClass("active")
-          document.querySelector(sidebar_id + " " + theid).scrollIntoView({ behavior: 'smooth', block: "center" })
-        }
-        else { null }
-      })
+        setTimeout(() => {
+          $('body').on('DOMSubtreeModified', content_id, function () {                               // menu tracker 
+            //console.log($(content_id + " [data-type='title']"))
+            if ($(content_id + " [data-type='title']").length != 0 ) {
+              theid = "#I" + $(content_id + " [data-type=title]").attr('id').slice(4)
+              $(sidebar_id + " " + theid).is(":hidden") ? $(sidebar_id + " " + theid).prev("H1").one().trigger("click") : null
+              $(sidebar_id + " H1, H2").removeClass("active")
+              $(sidebar_id + " " + theid).addClass("active")
+              document.querySelector(sidebar_id + " " + theid).scrollIntoView({ behavior: 'smooth', block: "center" })
+            }
+            else { null }
+          })    
+        }, 500);
+      
     
     
       $(sidebar_id + " H2").toggle()                                  // Initiate the index in collappsed state 

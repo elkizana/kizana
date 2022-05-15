@@ -58,15 +58,15 @@
     <div class="book_div"  id="b001">
 
       <div  id="kizana_div_sidebar"  >             <!-- navigation menu -->
-        <img src="../icons/book.png"   id="book_icon" title="الكتب" />
-        <img src="../icons/person.png"  id="authors_icon" title="المؤلفون"/>
-        <img src="../icons/search.png"  id="search_icon" title="البحث" />
-        <img src="../icons/bookmark.png"  id="bookmark_icon" title="المفضلة" />
-        <img src="../icons/info.png"  id="info_icon" title="عن الخزانة" />
+        <img src="../icons/book.png"  class="home_icons" id="book_icon" title="الكتب" />
+        <img src="../icons/person.png"  class="home_icons"  id="authors_icon" title="المؤلفون"/>
+        <img src="../icons/search.png"   class="home_icons" id="search_icon" title="البحث" />
+        <img src="../icons/bookmark.png"   class="home_icons" id="bookmark_icon" title="المفضلة" />
+        <img src="../icons/info.png" class="home_icons"   id="info_icon" title="عن الخزانة" />
        </div> 
                                                <!-- end navigation menu -->
 
-        <div id='books_window' class="aaa" >     
+        <div id='books_window' class="home_menus" >     
                 <!-- categ && authors menus -->
              <div id="books_first_block">  <div  id="categ_div"  > </div>     </div>   
             <div id="books_second_block"> <div  id="categ_info_div"  > </div> <div  id="categ_books_div"  > </div>    <input  onfocus="this.value=''" id="tags2" placeholder="حصر الأسماء ...">  </div>  
@@ -74,7 +74,7 @@
 
 
          <!-- authors menu -->
-        <div id='authors_window' class="aaa">     
+        <div id='authors_window' class="home_menus">     
             
         <div id="authors_first_block">  <div  id="authors_info_div"  > </div>  <div  id="authors_names_div"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء ..." >  </div>   
         <div id="authors_second_block"> <div  id="authors_books_info_div"  > </div> <div  id="authors_books_div"  > </div>    </div>  
@@ -83,7 +83,7 @@
                   <!-- end categ && authors menus -->
 
 
-    <div id="search_main" class="aaa" >                             <!-- search menus -->
+    <div id="search_main" class="home_menus" >                             <!-- search menus -->
 
           <div id="search_block_1">      
             <input type="text" id="first_search_input" placeholder="البحث عن ..."  > 
@@ -92,7 +92,7 @@
           </div>
         
           <div id="search_block_2"> 
-            <div id="search_block_2_div1"><span class="" id="categ_list" onclick="categ_index();" > كتب</span> <span class="" id="author_list" onclick="authors_index_for_search();" > مؤلفون</span><br><br></div>
+            <div id="search_block_2_div1"><span class="" id="categ_list" onclick='categ_index() ; $(this).addClass("active") ; $("#author_list").removeClass("active") ' > كتب</span> <span class="" id="author_list" onclick='authors_index_for_search() ; $(this).addClass("active") ; $("#categ_list").removeClass("active")'> مؤلفون</span><br><br></div>
             <div id="search_block_2_div2"></div>
             <div id="search_block_2_div3"><input type="text" id="books_filter" placeholder="حصر الأسماء ..."  > </div>
           </div>    
@@ -107,11 +107,11 @@
         <!-- end search menus -->
 
         <!-- bookmark menu -->
-        <div id="bookmark_block" class="aaa"> <table id="bookmark_table" > <th>الكتاب</th> <th>الصفحة</th> </table>       </div>
+        <div id="bookmark_block" class="home_menus"> <table id="bookmark_table" > <th>الكتاب</th> <th>الصفحة</th> </table>       </div>
         <!-- end bookmark menu -->
 
         <!-- info menu -->
-        <div id="info_block" class="aaa"></div>
+        <div id="info_block" class="home_menus"></div>
         <!-- end info menu -->
 </div> 
 
@@ -127,39 +127,46 @@
   }, 1000);
 
 $("#book_icon").on("click" , function() {                           // books icon onclick
-  $(".aaa").hide()
+  $(".home_menus").hide()
 
     $('#books_window').show() 
       $('input:text').val('') 
-      /* $(".aaa").removeClass("active")
-          $(this).addClass("active") */
+       $(".home_icons").removeClass("active")
+          $(this).addClass("active") 
         
 })
 
 $("#authors_icon").on("click" , function() {                        // authors icon onclick
-  $(".aaa").hide()
+  $(".home_menus").hide()
      $('#authors_window').show() 
       $('input:text').val('') 
-      
+      $(".home_icons").removeClass("active")
+          $(this).addClass("active") 
         
 })
 
 $("#search_icon").on("click" , function() {                            // search icon onclick
-  $(".aaa").hide()
+  $(".home_menus").hide()
      $('#search_main').show() 
+     $(".home_icons").removeClass("active")
+          $(this).addClass("active") 
 })
 
 $("#bookmark_icon").on("click" , function() {                           // bookmark icon onclick
-  $(".aaa").hide()
+  $(".home_menus").hide()
      $('#bookmark_block').show() 
+     $(".home_icons").removeClass("active")
+          $(this).addClass("active") 
      jsontotable()
 
 })
 
 
 $("#info_icon").on("click" , function() {                                // info icon onclick
-  $(".aaa").hide()  
+  $(".home_menus").hide()  
      $('#info_block').show() 
+     $(".home_icons").removeClass("active")
+          $(this).addClass("active") 
       
       $('#info_block').html(`<p dir="rtl">
 الخزانة فيها ثمانية آلاف كتاب من الكتب الشرعية و غيرها يمكنك المطالعة و البحث فيها. <br>
