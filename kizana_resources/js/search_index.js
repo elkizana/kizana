@@ -104,11 +104,26 @@ $(".authors_search_block_2").on("mouseover" , function () {
 pointer = $(this).children(".bio_img")
 knex_master.select("inf").from("bio").where("authid", this.id).then(function (info) {
   if (info[0].inf.length > 10) {
+    $(".bio_img").hide()
+    $(pointer).show()
+    setTimeout(() => {
+      $( pointer ).tooltip({
+        content: info[0].inf ,
+        show: {
+          effect: "slideDown",
+          delay: 250
+        }
+    } )  
+    }, 2000);
     
-    $(pointer).attr('title', info[0].inf)
-  }
+  
+
+}
+
+    
+    
 }).catch(function () {
-  $(pointer).attr('title', "ليس للمؤلف بطاقة")
+  $(".bio_img").hide()
 })
 })
 
