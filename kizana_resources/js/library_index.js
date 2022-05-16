@@ -25,7 +25,16 @@ function library_index() {               // library index
               if (info[0].bibliography.length > 5) {
                 $(".bio_img").hide()
                 $(pointer).show()
-                $(pointer).attr('title', info[0].bibliography)
+                //$(pointer).attr('title', info[0].bibliography)
+                setTimeout(() => {
+                  $( pointer ).tooltip({
+                    content: info[0].bibliography ,
+                    show: {
+                      effect: "slideDown",
+                      delay: 250
+                    }
+                } )  
+                }, 1000);
               } 
   
             }).catch(function (info) {

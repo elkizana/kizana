@@ -13,16 +13,26 @@ function authors_index(filter = "author_name") {                      //end auth
       })
 
       $(".authors").on("mouseover" , function () {
+        zzz = this.children[0]
+        
         pointer = $(this).children(".bio_img")
         knex_master.select("inf").from("bio").where("authid", this.id).then(function (info) {
           if (info[0].inf.length > 10) {
             $(".bio_img").hide()
             $(pointer).show()
-            $(pointer).attr('title', info[0].inf)
+            //$(pointer).attr('title', info[0].inf)
+
+            tippy(  zzz , {
+              content: info[0].inf , 
+              placement: 'left' ,
+              arrow: true,
+              /* theme: 'material', */
+              trigger: 'click',
+              interactive: true,
+            })
           }
         }).catch(function () {
           $(".bio_img").hide()
-          //$(pointer).attr('title', "ليس للمؤلف بطاقة")
         })
       })
   
