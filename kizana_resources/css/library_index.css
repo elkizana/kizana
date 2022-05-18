@@ -54,7 +54,7 @@ border-radius:16px;
 
 #categ_div , #authors_names_div { 
 width : 100% ; 
-height : 90% ; 
+height : 83% ; 
 overflow : hidden ;
 margin-top : 15 ;
 }
@@ -174,7 +174,7 @@ display : inline-block ;
 width : 100%  ; 
 font-size : 18 ; 
 border-top : #dadada 1px solid ; 
-padding-top : 5px ; 
+padding-top : 5px ;
 }
 
 #death_date { 
@@ -183,13 +183,13 @@ color : #969393 ;
 font-size : 12 ; 
 }
 
-
-
 #author_and_book_number { 
+height : 40px ; 
 color : #969393 ; 
 font-size : 14 ; 
 text-align : center ;
-
+border-bottom : #ddcfcf 2px solid ; 
+padding : 5px ; 
 
 }
 
@@ -207,34 +207,44 @@ padding : 5px ;
 }
 
 .bio_img  {
-display: none;
-float : left ;
-position :relative ;  
-left : 33 ; 
+display: none; 
+float : left ; 
+margin-left: 5px; 
 height : 20  ; 
 width : 20 ;
 background-color : #f5f2f2 ; 
 border : solid 1px #a8a1a1 ;
 border-radius : 40px ;
-border : solid 1px #958b8b 
+left : 40px ; 
+position : relative ; 
+    
 }
 
 .categ:hover , .books:hover ,.authors:hover , .authors_search_block_2:hover{ 
 cursor:pointer;
 background-color  : #eee8e8 ; 
 }
+.tags_div {
+height : 40px ; 
+margin-top : 5px ; 
+border-top : #ddcfcf 2px solid ; 
+}
 
+    
 #tags1 , #tags2 {
 position : absolute ; 
 bottom : 5 ; 
-border : 1px solid #b9b4b4 ;
 border-radius: 4px;
-font-size: 14;
 outline: none;
 padding: 6px 12px 6px 14px;
-width: 70%;
-background-color : #f6f6f6 ;  
-}
+width: 80%;
+height : 30 ; 
+box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
+border : none ; 
+font-size : 16 ; 
+
+
+} 
 
 
 
@@ -246,12 +256,14 @@ border-radius:16px;
 background : white ; 
 color : black ; 
 overflow-y: auto;
-width : 300px ;
+//width : 300px ;
 max-height: 400px;
 font-size: 18px; 
 cursor : text ; 
+font-family : "Naskh" ;   
 }
 
 .tippy-box , .tippy-content {
 border-radius: 10px  ;
+white-space: pre-line;
 }

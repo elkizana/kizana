@@ -8,8 +8,6 @@
   const fs = require("fs")
 
 </script>
-<script src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="https://unpkg.com/tippy.js@6"></script>
 
 <!-- kizana functions scripts -->
 <script charset="utf-8" src="../js/add_book.js"></script>
@@ -18,6 +16,8 @@
 <script charset="utf-8" src="../js/search_index.js"></script>
 <script charset="utf-8" src="../js/search.js"></script>
 <script charset="utf-8" src="../js/bookmark.js"></script>
+<script charset="utf-8" src="../js/popper.min.js"></script>
+<script charset="utf-8" src="../js/tippy-bundle.umd.min.js"></script>
 
 
 
@@ -70,14 +70,14 @@
         <div id='books_window' class="home_menus" >     
                 <!-- categ && authors menus -->
              <div id="books_first_block">  <div  id="categ_div"  > </div>     </div>   
-            <div id="books_second_block"> <div  id="categ_info_div"  > </div> <div  id="categ_books_div"  > </div>    <input  onfocus="this.value=''" id="tags2" placeholder="حصر الأسماء ...">  </div>  
+            <div id="books_second_block"> <div  id="categ_info_div"  > </div> <div  id="categ_books_div"  > </div>  <div class="tags_div" >  <input  onfocus="this.value=''" id="tags2" placeholder="حصر الأسماء ..."></div> </div>  
           </div> 
 
 
          <!-- authors menu -->
         <div id='authors_window' class="home_menus">     
             
-        <div id="authors_first_block">  <div  id="authors_info_div"  > </div>  <div  id="authors_names_div"  > </div>    <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء ..." >  </div>   
+        <div id="authors_first_block">  <div  id="authors_info_div"  > </div>  <div  id="authors_names_div"  > </div>   <div class="tags_div" > <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء ..." > </div>   </div>   
         <div id="authors_second_block"> <div  id="authors_books_info_div"  > </div> <div  id="authors_books_div"  > </div>    </div>  
       </div> 
 

@@ -69,9 +69,9 @@ flex-grow : 0 ;
 }
 
 #search_block_2_div1 { 
-height : 30px ; 
+height : 40px ; 
+border-bottom : #ddcfcf 2px solid ; 
 
-padding-right : 20px ; 
 
   
 }
@@ -85,7 +85,7 @@ height : 400px  ;
 overflow : hidden ;
 }
 
-#search_block_2_div3 { 
+#search_block_2_div3  { 
 height : 40px ; 
 margin-top : 15px ; 
 
@@ -131,6 +131,7 @@ flex: 1;
 overflow-y : scroll ;
 height : 435px  ;
 overflow : hidden ;
+   
 }
 
 #search_block_3_div2 { 
@@ -152,7 +153,7 @@ display : none ;
 .books_to_search { 
 width : 100% ; 
 display : inline-block ; 
-font-size : 15 ; 
+
 border-top : #ddcfcf 1px solid ; 
 font-size : 16 ; 
 padding : 5px ; 
@@ -168,7 +169,6 @@ width : 15 ;
 
 .single_book_checkbox { 
 float : left ;   
-margin  :  0 0 8 10 ; 
 
 }
 
@@ -229,7 +229,7 @@ font-size : 13 ;
 font-size : 13 ; 
 }
 
-.search_table td:nth-child(2):hover , .search_table .books_to_search:hover {
+.search_table td:nth-child(2):hover , #search_block_3_div1 .books_to_search:hover {
 background-color : #e8e8e8 ; 
 cursor : pointer ; 
 
@@ -244,7 +244,7 @@ height:auto;  /* just added this line */
 
 #checkall_categ , #checkall_books{
 float:  left;
-margin  :  0 0 8 15 ; 
+margin  :  0 0 8 8 ; 
 }
 
 #found_word { 
@@ -257,5 +257,3 @@ border-radius : 8px ;
 #search_block_2_div2:hover , #search_block_3_div1:hover  { 
 overflow-y : scroll ; 
 }
-
-
