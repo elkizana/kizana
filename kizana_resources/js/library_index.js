@@ -13,28 +13,26 @@ function library_index() {               // library index
         this.id.slice(1) != "" ? selected_category = knex_master.select("book_name", "book_id", "book_category" , "authors").from("book").orderBy("book_name", "ASC").where("book_category", this.id.slice(1))/* .andWhere("book_type" , "1") */ : selected_category = knex_master.select("book_name", "book_id", "authors", "author_name", "author_id", "book_category", "death_text").from("book").leftJoin("author", "authors", "author_id")/* .where("book_type" , "1") */.orderBy("book_name", "ASC")
   
         selected_category.then(function (rows) {
-          rows.forEach(book => $("#categ_books_div").append(`<span class="books" data-author="${book.authors}"  id="${book.book_id}" title="" > ${book.book_name} <div class="bio_img" > </div>  </span>`))
+          rows.forEach(book => $("#categ_books_div").append(`<span class="books" data-author="${book.authors}"  id="${book.book_id}" title="" > ${book.book_name} <div class="bio_img" onclick="event.stopPropagation()" > </div>  </span>`))
           $("#categ_info_div").html("<div id=author_and_book_number >" + $(".books").length + " كتابا في " + category + "</div>")
   
           $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")) })
   
           $(".books").on("mouseover" , function () {
+            pointer0 = this.children[0] // select pointer for tippy (doesn't read jquery)
             pointer = $(this).children(".bio_img")
   
             knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
               if (info[0].bibliography.length > 5) {
                 $(".bio_img").hide()
                 $(pointer).show()
-                //$(pointer).attr('title', info[0].bibliography)
-                setTimeout(() => {
-                  $( pointer ).tooltip({
-                    content: info[0].bibliography ,
-                    show: {
-                      effect: "slideDown",
-                      delay: 250
-                    }
-                } )  
-                }, 1000);
+                //console.log(info[0].inf)
+                tippy(  pointer0 , {
+                  content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
+                  placement: 'bottom' ,
+                  arrow: true,
+                  interactive: true,
+                })
               } 
   
             }).catch(function (info) {
