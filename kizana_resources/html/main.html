@@ -70,14 +70,14 @@
         <div id='books_window' class="home_menus" >     
                 <!-- categ && authors menus -->
              <div id="books_first_block">  <div  id="categ_div"  > </div>     </div>   
-            <div id="books_second_block"> <div  id="categ_info_div"  > </div> <div  id="categ_books_div"  > </div>  <div class="tags_div" >  <input  onfocus="this.value=''" id="tags2" placeholder="حصر الأسماء ..."></div> </div>  
+            <div id="books_second_block"> <div  id="categ_info_div"  > </div> <div  id="categ_books_div"  > </div>  <div class="tags_div" >  <input type="search" onfocus="this.value=''" id="tags2" placeholder="حصر الأسماء ..."></div> </div>  
           </div> 
 
 
          <!-- authors menu -->
         <div id='authors_window' class="home_menus">     
             
-        <div id="authors_first_block">  <div  id="authors_info_div"  > </div>  <div  id="authors_names_div"  > </div>   <div class="tags_div" > <input  onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء ..." > </div>   </div>   
+        <div id="authors_first_block">  <div  id="authors_info_div"  > </div>  <div  id="authors_names_div"  > </div>   <div class="tags_div" > <input type="search" onfocus="this.value=''" id="tags1" value='...' placeholder="حصر الأسماء ..." > </div>   </div>   
         <div id="authors_second_block"> <div  id="authors_books_info_div"  > </div> <div  id="authors_books_div"  > </div>    </div>  
       </div> 
 
@@ -87,7 +87,7 @@
     <div id="search_main" class="home_menus" >                             <!-- search menus -->
 
           <div id="search_block_1">      
-            <input type="text" id="first_search_input" placeholder="البحث عن ..."  > 
+            <input type="search" id="first_search_input" placeholder="البحث عن ..."  > 
             <input  id="search_button" type="image"  src="./../icons/search.png" onclick="search()"  >  <!-- -->
             <div id="progress_status"></div>
           </div>
@@ -95,7 +95,7 @@
           <div id="search_block_2"> 
             <div id="search_block_2_div1"><span class="" id="categ_list" onclick='categ_index() ; $(this).addClass("active") ; $("#author_list").removeClass("active") ' > كتب</span> <span class="" id="author_list" onclick='authors_index_for_search() ; $(this).addClass("active") ; $("#categ_list").removeClass("active")'> مؤلفون</span><br><br></div>
             <div id="search_block_2_div2"></div>
-            <div id="search_block_2_div3"><input type="text" id="books_filter" placeholder="حصر الأسماء ..."  > </div>
+            <div id="search_block_2_div3"><input type="search" id="books_filter" placeholder="حصر الأسماء ..."  > </div>
           </div>    
         
           <div id="search_block_3">  
