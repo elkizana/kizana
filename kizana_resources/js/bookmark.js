@@ -31,14 +31,6 @@ var knex_master = require("knex")({
   }
 })
 
-                    
-
-
-
-                /// end add_book
-
-
-
 function jsontotable() {      // form html table from json file
   let rawdata = fs.readFileSync(bookmark_file);
 let bookmarks_list = JSON.parse(rawdata);
@@ -61,21 +53,20 @@ let bookmarks_list = JSON.parse(rawdata);
           })
 
 $(".remove_book").on("click" , function () {
-  remove_from_bookmarks(this.id)
+  num = $(this).parents("tr").find("td:first").html()
+  remove_from_bookmarks(num)
   $(this).parents("tbody").remove()
 })
 
 }
 
-
-function remove_from_bookmarks(id) { 
+function remove_from_bookmarks(num) { 
   
   let rawdata = fs.readFileSync(bookmark_file);
   let bookmarks_list = JSON.parse(rawdata);
 
-  bookmarks_list = $.grep(bookmarks_list, function(e){ 
-    return e.id != id; 
-})
+
+bookmarks_list = bookmarks_list.filter(x => x !== bookmarks_list[num - 1 ]);
 
 bookmarks_list = JSON.stringify(bookmarks_list)
 fs.writeFileSync(bookmark_file, bookmarks_list ) 

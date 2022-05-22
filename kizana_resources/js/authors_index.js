@@ -68,8 +68,6 @@ function authors_index(filter = "author_name") {                      //end auth
                 tippy(  pointer , {
                   content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
                   arrow: true,
-                  /* theme: 'material', */
-                  trigger: 'click',
                   interactive: true,
                 })
               

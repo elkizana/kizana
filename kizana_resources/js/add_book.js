@@ -32,6 +32,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     let prentheses = /\(([^(١|٢|٣|٤|٥|٦|٧|٨|٩)]+)\)/g
     let curly_brackets = /{([^}]*)}/g
     let quotation = /"(.*?)"/g
+    let bayt    = /.*[.]{3}.*/g
     let table_length = ""
     let page_input = ".page_input" + table_id
     let part_input = ".part_input" + table_id
@@ -54,14 +55,14 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             </div> 
             
             <div class=search_block${table_id} id=search_block> 
-            <input type="text" placeholder="ثلاثة أحرف على الأقل"  class="single_book_search_input${table_id}" id="single_book_search_input"> 
+            <input type="search" placeholder="ثلاثة أحرف على الأقل"  class="single_book_search_input${table_id}" id="single_book_search_input"> 
             <img src="./../icons/arrow_down.png" class="next_found${table_id}" id="next_found"   />  
             <img src="./../icons/arrow_up.png" class="previous_found${table_id}" id="previous_found" />
             <div id="single_book_search_num" class="single_book_search_num${table_id}"> </div>
             <span id="close_search" class="close_search${table_id}" > x</span>
             </div>
   
-            <div class="sidebar side${table_id}">  <input type="text" class="sidebar_search_input${table_id}" id="sidebar_search_input" >  </div>    
+            <div class="sidebar side${table_id}">  <input type="search" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>    
                
             <div   class="content c${table_id}" tabindex="0" >   </div>  
               <div class="hashia h${table_id}">   </div> </div>`) 
@@ -73,7 +74,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
        
         $(content_id + "," + hashia_id).scrollTop(0)
         $(content_id).trigger('focus')
-      
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
           $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
@@ -81,11 +81,11 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $(part_input).val(` ${row[0].part || ""}  `)
           $(hashia_id).html(hashia.replace(line_breaking, "<br>").slice(4).replaceAll("¬", ""))
           $(content_id).attr('id', row_id);
-          $(content_id).css("height", "70%");
+          $(content_id).css("height", "75%");
           
         }
         else {
-          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)
+          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
           $(page_input).val(` ${row[0].page || ""}  `)
           $(part_input).val(` ${row[0].part || ""}  `)
           $(content_id).attr('id', row_id);
@@ -101,13 +101,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
     function book_text_formation() {
       
-      //content_updater(table_id_original, a + 1, initial_rowid)
-      
       knex_all.from("b" + table_id_original).where("id", initial_rowid).then(function (row) {
-        /* $(content_id).append(`    ${text_table[0].content.replace(line_breaking, '<br>')}      `)
-        $(page_input).val(` ${text_table[0].page || ""}  `)   
-        $(content_id).attr('id', initial_rowid); */
-
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
           $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
@@ -185,13 +179,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         $(slider_id).slider("value", row_id);
         
       }
-      /* else if ( delta > 0  ) { 
-        console.log(delta)  
-        console.log($(this).scrollTop() + $(this).innerHeight() )
-        console.log($(this)[0].scrollHeight)  
-
-      
-      }  */
       else if (delta < 0 && $(this).scrollTop() <= 0)  { 
         content_updater(table_id_original, row_id - 1, content_id); 
         $(slider_id).slider("value", row_id);
@@ -329,59 +316,14 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
                     add_to_bookmarks()
                 }} 
 
-                /* "tashkeel" : { "name" : "بيان التشكيل أو إخفاءه" , 
-                type: 'checkbox', 
-                selected: false , */
-                
-          
-              /*  className: 'tashkeel' 
-                   callback: function(itemKey, opt, e) {
-                     $(content_id).on('DOMSubtreeModified', function(){
-                      setTimeout(() => {
-                        $(content_id).html( $(content_id).html().removeTashkel() )
-                      }, 500);
-     
-                    }); 
-                                    }} */
-
-               /*  events: {
-                  click: function(itemKey, opt, e) {
-
-                    $(".tashkeel input").on("change" , function() {
-                      if (this.checked) { 
-                        $(content_id).on('DOMSubtreeModified', function(){
-                          setTimeout(() => {
-                            $(content_id).html( $(content_id).html().removeTashkel() )
-                          }, 1000);
-                                                })
-                        
-                      } else { console.log("unchecked") 
-                    
-                      $( content_id ).off(  "change" );
-                    }
-                    })
-
-
-              
-                                          
-                                          
-                                          }} 
-    
-                                          }*/
-
-    
               } 
               
           })
       }, 100);
     
       })                                                               // end text table  selection
-  
-  
-      
       
     }// end book_text_formation
-  
     
   let index_list = []
   
@@ -403,16 +345,18 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $(sidebar_id).append("<H1></H1>")
           
           $(sidebar_search_input).on("keyup", function () {
-                
+            
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
             var filter = $(this).val() 
-              count = 0;
+            count = 0
+            
             $(sidebar_id + " H1,H2").each(function () {
-              if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length >= 2 ) {
+              
+              if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length >= 3 ) {
                 $(this).hide();
-              } else {
+              } else if (filter.length < 3){
                 $(this).show();
-                count++;
+                count++
               }
       
             })
@@ -421,27 +365,28 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           //$(sidebar_search_input).css("width" , $(sidebar_id).width() ) // give width to sidebar_search_input
         })                                                                          /// end of book index 
   
-        setTimeout(() => {
-          $('body').on('DOMSubtreeModified', content_id, function () {                               // menu tracker 
-            //console.log($(content_id + " [data-type='title']"))
+        
+          $(content_id).on('DOMSubtreeModified',  function () {                               // menu tracker 
             if ($(content_id + " [data-type='title']").length != 0 ) {
               theid = "#I" + $(content_id + " [data-type=title]").attr('id').slice(4)
-              $(sidebar_id + " " + theid).is(":hidden") ? $(sidebar_id + " " + theid).prev("H1").one().trigger("click") : null
-              $(sidebar_id + " H1, H2").removeClass("active")
+              //$(sidebar_id + " " + theid).is(":hidden") ? $(sidebar_id + " " + theid).prev("H1").one().trigger("click") : null
+              $(sidebar_id + " H1.active,H2.active").removeClass("active")
               $(sidebar_id + " " + theid).addClass("active")
-              document.querySelector(sidebar_id + " " + theid).scrollIntoView({ behavior: 'smooth', block: "center" })
+              document.querySelector("H1.active,H2.active").scrollIntoView({ /* behavior: 'smooth', */ block: "center" }) &&  $(sidebar_id + " " + theid).prev("H1").one().trigger("click") 
+              $("H1.active,H2.active").is(":hidden") ? $("H1.active,H2.active").prev("H1").one().trigger("click") : null
             }
-            else { null }
+
           })    
-        }, 500);
-      
-    
+        
+
     
       $(sidebar_id + " H2").toggle()                                  // Initiate the index in collappsed state 
   
       $(sidebar_id + " H1 , H2").on("click", function () {                        // On click  toggle the title sub-titles and scroll to correspondent text in main book window                     
         this.tagName == "H1" ? $(this).nextUntil("H1").toggle('slow') : null;
         row_id = $(this).attr("id").slice(1)
+        $(sidebar_id + " H1, H2").removeClass("active")
+        $(this).addClass("active")
         knex_all.from("b" + table_id_original).where('content', 'like', '%toc-' + $(this).attr("id").slice(1) + '%').then(function (title) {
           content_updater(table_id_original, title[0].id, content_id)
           $(slider_id).slider("value", title[0].id);
