@@ -82,7 +82,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $(hashia_id).html(hashia.replace(line_breaking, "<br>").slice(4).replaceAll("¬", ""))
           $(content_id).attr('id', row_id);
           $(content_id).css("height", "75%");
-          
+          $(hashia_id).css("height", "23%");
         }
         else {
           $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
@@ -137,7 +137,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   
   
       $(content_id).on('keydown', function(e){
-        // get keycode of current keypress event
         
         var code = (e.keyCode || e.which);
         
@@ -344,7 +343,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $(sidebar_id).append(index_list)
           $(sidebar_id).append("<H1></H1>")
           
-          $(sidebar_search_input).on("keyup", function () {
+          $(sidebar_search_input).on("keyup change", function () {
             
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
             var filter = $(this).val() 
@@ -352,9 +351,10 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             
             $(sidebar_id + " H1,H2").each(function () {
               
-              if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length >= 3 ) {
+              //if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length >= 3 ) {
+                if ($(this).text().search(filter, "i") < 0 && filter.length >= 2 ) {
                 $(this).hide();
-              } else if (filter.length < 3){
+              } else if (filter.length <= 2){
                 $(this).show();
                 count++
               }

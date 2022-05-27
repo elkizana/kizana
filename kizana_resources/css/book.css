@@ -224,7 +224,7 @@ text-decoration : underline #d0d1d4  ;
 text-underline-position: under;
 font-family : "jazeera-regular" ; 
 text-decoration-thickness: .1em ;
-padding : 4 ;
+padding-right : 10 ;
 
 }
 
@@ -232,7 +232,7 @@ padding : 4 ;
 font-size: 18 ;
 font-weight: 400  ;
 font-family : "jazeera-regular" ; 
-    padding : 4 ;
+padding-right : 10 ;
 }
 
 
@@ -262,7 +262,8 @@ box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius: 18px;
 margin  : 3 3  3 0 ;   
 position: relative;
-outline : none ; 
+outline : none ;  
+    
 }
 
 .aya { 
