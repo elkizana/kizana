@@ -187,7 +187,7 @@ width: 100%;
 max-width : 20% ; 
 height: 95%;
 float : right ; 
-overflow : auto ; 
+overflow : hidden ; 
 letter-spacing: .01em;
 line-height: 1.65;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
@@ -237,7 +237,7 @@ padding-right : 10 ;
 
 
 .sidebar:hover { 
-//overflow-y : auto ; 
+overflow-y : auto ; 
 }
 
 
