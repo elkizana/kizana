@@ -12,8 +12,6 @@ function add_book_and_tab(tab_title, id, initial_rowid) {
   add_book(id, initial_rowid)
 }
 
-
-
 function add_book(table_id, initial_rowid = "1") {                    // add book 
     let table_id_original = table_id
     table_id = table_id + unique
@@ -369,7 +367,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $(content_id).on('DOMSubtreeModified',  function () {                               // menu tracker 
             if ($(content_id + " [data-type='title']").length != 0 ) {
               theid = "#I" + $(content_id + " [data-type=title]").attr('id').slice(4)
-              //$(sidebar_id + " " + theid).is(":hidden") ? $(sidebar_id + " " + theid).prev("H1").one().trigger("click") : null
               $(sidebar_id + " H1.active,H2.active").removeClass("active")
               $(sidebar_id + " " + theid).addClass("active")
               document.querySelector("H1.active,H2.active").scrollIntoView({ /* behavior: 'smooth', */ block: "center" }) &&  $(sidebar_id + " " + theid).prev("H1").one().trigger("click") 
@@ -404,22 +401,9 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     book_text_formation()
     index_formation_and_behaviors()
   
-    
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
     $(".chrome-tab-close").on("click", function () {              //          closing tabs            
-      //console.log($("#" + this.id.substring(1)) )
       $(".chrome-tab").prev().length >= 2  ? $(".chrome-tab").prev().trigger("click") :  $("#001").trigger("click")
       $("#" + this.id.substring(1)).remove()
       $("#b" + this.id.substring(1)).remove()
@@ -458,11 +442,4 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
   fs.writeFileSync(bookmark_file, bookmarks_list ) 
   }
   
-  
-  
   }  
-
- 
-
-
-  
