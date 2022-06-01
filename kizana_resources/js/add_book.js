@@ -41,6 +41,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     let single_book_search_num = ".single_book_search_num" + table_id
     let sidebar_search_input = ".sidebar_search_input" + table_id
     let close_search = ".close_search" + table_id
+
+    
   
     $("body").append(`<div  class="book_div" id="b${table_id}"  > 
     <div id="book_toolbox">
@@ -71,7 +73,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       knex_all.from("b" + table_id_original).where("id", row_id).then(function (row) {
        
         $(content_id + "," + hashia_id).scrollTop(0)
-        $(content_id).trigger('focus')
+        //$(content_id).trigger('focus')
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
           $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
@@ -163,10 +165,35 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         fontSize = fontSize - 1 + "px";
         $(content_id).css({'font-size':fontSize}); 
           }
-  
     
     })
     
+ /*    $(book_id).on('keydown', function(e){
+      var code = (e.keyCode || e.which)
+      
+        if ( event.ctrlKey && event.key === 'Tab') {
+          if ($( "#" + $(this).attr("id").slice(1) ).next(".chrome-tab").length > 0) {
+
+            $( "#" + $(this).attr("id").slice(1) ).removeAttr("active")
+            $( "#" + $(this).attr("id").slice(1) ).next(".chrome-tab").attr("active", "true")
+            $( "#" + $(this).attr("id").slice(1) ).next(".chrome-tab").trigger('click')
+            $(book_id).trigger('focus')
+          }
+          else {
+            $( "#" + $(this).attr("id").slice(1) ).removeAttr("active")
+            $( "#" + $(this).attr("id").slice(1) ).prev(".chrome-tab").attr("active", "true")
+            $( "#" + $(this).attr("id").slice(1) ).prev(".chrome-tab").trigger('click')
+            $(book_id).trigger('focus')
+          }    
+      }
+      
+
+      else  if (event.ctrlKey && event.key === 'z') {
+        $("#k" + $(this).attr("id").slice(1)  ).click()  
+      }
+
+    }) */
+
 
     $(content_id).on('mousewheel', function (e) { 
       delta = e.originalEvent.deltaY ; row_id = parseInt(this.id) ;
