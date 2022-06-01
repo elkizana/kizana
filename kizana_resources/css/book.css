@@ -209,7 +209,7 @@ border : none ;
 
 
 
-.active  {
+.activee  {
 border-radius: 7px;
 border :  black solid 1px  ; 
 box-shadow:0 0 1.11111vw rgb(0 0 0 / 25%),0 0 .34722vw rgb(98 35 35 / 10%) ;
@@ -220,8 +220,8 @@ box-shadow:0 0 1.11111vw rgb(0 0 0 / 25%),0 0 .34722vw rgb(98 35 35 / 10%) ;
 
 .sidebar h1 { 
 font-size: 18px;
-text-decoration : underline #d0d1d4  ; 
-text-underline-position: under;
+//text-decoration : underline #d0d1d4  ; 
+//text-underline-position: under;
 font-family : "jazeera-regular" ; 
 text-decoration-thickness: .1em ;
 padding-right : 10 ;
@@ -243,7 +243,7 @@ overflow-y : auto ;
 
 .sidebar h1:hover,h2:hover{ 
 cursor:pointer;
-text-decoration : underline ; 
+//text-decoration : underline ; 
 border-radius: 3px;
 }
 

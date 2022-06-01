@@ -45,6 +45,7 @@ function authors_index(filter = "author_name") {                      //end auth
       })
   
       $(".authors").on("click", function () {
+        $(this).addClass("active").siblings().removeClass("active")
         $("#authors_books_info_div, #authors_books_div").empty()
   
         author = $(this).clone().children().remove().end().text()
