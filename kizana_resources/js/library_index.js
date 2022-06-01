@@ -7,6 +7,7 @@ function library_index() {               // library index
       rows.forEach(category => $("#categ_div").append(`<span class="categ " id="t${category.category_id}" >${category.category_name}<br></span>`))
   
       $(".categ").on("click", function () {
+        $(this).addClass("active").siblings().removeClass("active")
         let category = $(this).text()
         $("#tags2").show()
         $("#categ_info_div, #categ_books_div").empty()

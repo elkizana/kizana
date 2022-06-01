@@ -79,15 +79,15 @@ background: #e1dbdb;
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-background: #333333; 
+background: #b0adad; 
 border-radius: 5px  ;
 }
 
-/* Handle on hover */
+/* Handle on hover 
 ::-webkit-scrollbar-thumb:hover , ::-webkit-scrollbar-button:hover {
-background: #615151; 
+background: #918c8c; 
 }
-
+*/
 
 /* Buttons */
 ::-webkit-scrollbar-button
@@ -95,7 +95,7 @@ background: #615151;
 border-radius: 5px 5px 5px  5px;
 height: 25px;
 width: 16px;
-background: #333333; 
+background: #858181; 
 }
 
 
@@ -159,23 +159,29 @@ overflow-y : scroll ;
 overflow-y : scroll ; 
 }
 
-.categ { 
+.categ , .authors , .authors_search_block_2{ 
 width : 100%  ; 
 font-size : 18 ; 
 display : inline-block ; 
 border-top : #dadada 1px solid ; 
 padding : 5px ; 
 font-size : 18 ; 
-
 }
-
-.authors , .authors_search_block_2 { 
+.active {
+border-right :   3px solid ;   
+border-radius : 3px ;   
+}
+/*.authors , .authors_search_block_2 { 
 display : inline-block ; 
 width : 100%  ; 
 font-size : 18 ; 
 border-top : #dadada 1px solid ; 
-padding-top : 5px ;
-}
+padding-top : 5px ; 
+  
+} */
+.authors  {
+//padding : 5px; 
+}  
 
 #death_date { 
 position : relative ; 

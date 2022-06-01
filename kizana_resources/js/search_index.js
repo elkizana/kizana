@@ -18,7 +18,7 @@ let books_to_search = []
     })
   
     $(".categ").on("click", function () {
-    
+      $(this).addClass("active").siblings().removeClass("active")
       $("#search_block_3_div1").empty()
       $("#second_search_input").show()
       this.id.slice(1) != "" ? selected_category = knex_master.select("book_name", "book_id", "book_category").from("book").orderBy("book_name", "ASC").where("book_category", this.id.slice(1)) : selected_category = knex_master.select("book_name", "book_id", "authors", "author_name", "author_id", "book_category", "death_text").from("book").leftJoin("author", "authors", "author_id").orderBy("book_name", "ASC")
