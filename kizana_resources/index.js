@@ -2,6 +2,7 @@ let kizana_version = "121442"
 
 
 const { app, BrowserWindow } = require('electron');
+
 const { cpuUsage } = require('process');
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 function createWindow() {
@@ -22,6 +23,7 @@ function createWindow() {
 }
 app.setName("الخزانة")
 app.whenReady().then(createWindow)
+
 
 app.on('window-all-closed', () => {
 
@@ -86,3 +88,4 @@ const file = fs.createWriteStream("update.zip");
 
 
  */
+
