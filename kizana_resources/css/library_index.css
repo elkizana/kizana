@@ -75,12 +75,15 @@ width: 8px;
 /* Track */
 ::-webkit-scrollbar-track {
 background: #e1dbdb; 
+  
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-background: #b0adad; 
+//background: #5a4f4f; 
+border : 1px solid #5a4f4f ;   
 border-radius: 5px  ;
+
 }
 
 /* Handle on hover 
@@ -95,34 +98,35 @@ background: #918c8c;
 border-radius: 5px 5px 5px  5px;
 height: 25px;
 width: 16px;
-background: #858181; 
+border : 1px solid #939191 ; 
+background: #e1dbdb; 
 }
 
 
 /* Up */
 ::-webkit-scrollbar-button:vertical:decrement
 {
-border-width: 7px 7px 14px 7px;
-border-color: transparent transparent #777777 transparent;
+//border-width: 7px 7px 14px 7px;
+//border-color: transparent transparent #777777 transparent;
 
 }
 
 ::-webkit-scrollbar-button:vertical:decrement:hover
 {
-border-color: transparent transparent #000000 transparent;
+//border-color: transparent transparent #000000 transparent;
 }
 
 
 /* Down */
 ::-webkit-scrollbar-button:vertical:increment
 {
-border-width: 14px 7px 0 7px;
-border-color: #777777 transparent transparent transparent;
+//border-width: 14px 7px 0 7px;
+//border-color: #777777 transparent transparent transparent;
 }
 
 ::-webkit-scrollbar-button:vertical:increment:hover
 {
-border-color: #000000 transparent transparent transparent;
+//border-color: #000000 transparent transparent transparent;
 }
 
 
