@@ -36,10 +36,12 @@ function authors_index(filter = "author_name") {                      //end auth
         $('.authors').each(function () {
           if ($(this).text().search(filter) < 0 && filter.length > 2) {
             $(this).hide();
+            $("#author_and_book_number").show()
           } else {
             $(this).show();
             count++;
-            $("#author_and_book_number").html(count)
+            //$("#author_and_book_number").html(count)
+            //$("#author_and_book_number").hide()
           }
         })
       })
