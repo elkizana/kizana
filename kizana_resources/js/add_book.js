@@ -73,7 +73,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       knex_all.from("b" + table_id_original).where("id", row_id).then(function (row) {
        
         $(content_id + "," + hashia_id).scrollTop(0)
-        //$(content_id).trigger('focus')
+        $(content_id).trigger('focus')
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
           $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
@@ -357,7 +357,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         
          for (x in index) {
              if (index[x].parent == 0) {
-              index_list.push(`<H1 id=I${index[x].id}>  ${index[x].content}</H1>`)
+              index_list.push(`<span class="expand_arrow left" >  </span>   <H1 class="samat" id=I${index[x].id}>  ${index[x].content}</H1> <br>`)
             }
             else  {
               index_list.push(`<H2 id=I${index[x].id}>  ${index[x].content}</H2>`)
@@ -396,18 +396,30 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
               theid = "#I" + $(content_id + " [data-type=title]").attr('id').slice(4)
               $(sidebar_id + " H1.active,H2.active").removeClass("active")
               $(sidebar_id + " " + theid).addClass("active")
-              document.querySelector("H1.active,H2.active").scrollIntoView({ /* behavior: 'smooth', */ block: "center" }) &&  $(sidebar_id + " " + theid).prev("H1").one().trigger("click") 
-              $("H1.active,H2.active").is(":hidden") ? $("H1.active,H2.active").prev("H1").one().trigger("click") : null
+              document.querySelector("H1.active,H2.active").scrollIntoView({block: "center" }) 
+              $("H2.active").is(":hidden") ? $("H2.active").prevAll(".samat:first").one().trigger("click") : null
+              
             }
 
           })    
         
+          
+        
 
     
       $(sidebar_id + " H2").toggle()                                  // Initiate the index in collappsed state 
-  
+      $("h1").each(function(){
+        $(this).nextUntil("h1").is("h2") ? null : $(this).prev(".expand_arrow").hide()
+      })
+    
+    
+    
+    $(".expand_arrow").on("click", function () { 
+        $(this).next("h1").nextUntil("h1").is("h2") ? $(this).next("h1").nextUntil("h1").toggle("slow") : null
+      })
+
       $(sidebar_id + " H1 , H2").on("click", function () {                        // On click  toggle the title sub-titles and scroll to correspondent text in main book window                     
-        this.tagName == "H1" ? $(this).nextUntil("H1").toggle('slow') : null;
+        this.tagName == "H1" && $(this).nextUntil("h1").is("h2") ? $(this).nextUntil("H1").toggle('slow') : null;
         row_id = $(this).attr("id").slice(1)
         $(sidebar_id + " H1, H2").removeClass("active")
         $(this).addClass("active")
