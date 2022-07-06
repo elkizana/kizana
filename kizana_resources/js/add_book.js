@@ -167,32 +167,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           }
     
     })
-    
- /*    $(book_id).on('keydown', function(e){
-      var code = (e.keyCode || e.which)
-      
-        if ( event.ctrlKey && event.key === 'Tab') {
-          if ($( "#" + $(this).attr("id").slice(1) ).next(".chrome-tab").length > 0) {
-
-            $( "#" + $(this).attr("id").slice(1) ).removeAttr("active")
-            $( "#" + $(this).attr("id").slice(1) ).next(".chrome-tab").attr("active", "true")
-            $( "#" + $(this).attr("id").slice(1) ).next(".chrome-tab").trigger('click')
-            $(book_id).trigger('focus')
-          }
-          else {
-            $( "#" + $(this).attr("id").slice(1) ).removeAttr("active")
-            $( "#" + $(this).attr("id").slice(1) ).prev(".chrome-tab").attr("active", "true")
-            $( "#" + $(this).attr("id").slice(1) ).prev(".chrome-tab").trigger('click')
-            $(book_id).trigger('focus')
-          }    
-      }
-      
-
-      else  if (event.ctrlKey && event.key === 'z') {
-        $("#k" + $(this).attr("id").slice(1)  ).click()  
-      }
-
-    }) */
 
 
     $(content_id).on('mousewheel', function (e) { 
@@ -373,18 +347,25 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
             var filter = $(this).val() 
             count = 0
-            
-            $(sidebar_id + " H1,H2").each(function () {
-              
-              //if ($(this).text().search(new RegExp(filter, "i")) < 0 && filter.length >= 3 ) {
-                if ($(this).text().search(filter, "i") < 0 && filter.length >= 2 ) {
-                $(this).hide();
-              } else if (filter.length <= 2){
-                $(this).show();
+            if ( filter.length >= 2  ) { 
+          
+              $(sidebar_id + " H1,H2").each(function () {
+                if ($(this).text().search(filter, "i") < 0  ) {
+                $(this).hide()  && $(this).prev(".expand_arrow").hide()
+              } 
+          
+              else {
+                $(this).show() && $(this).prev().show()
                 count++
               }
-      
+            
             })
+
+          } 
+          else { 
+            $(sidebar_id + " H1,H2").show() 
+          }
+
           })
           
           //$(sidebar_search_input).css("width" , $(sidebar_id).width() ) // give width to sidebar_search_input
@@ -409,7 +390,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     
       $(sidebar_id + " H2").toggle()                                  // Initiate the index in collappsed state 
       $("h1").each(function(){
-        $(this).nextUntil("h1").is("h2") ? null : $(this).prev(".expand_arrow").hide()
+        $(this).nextUntil("h1").is("h2") ? null : $(this).prev(".expand_arrow").attr('class', 'circle')
       })
     
     
