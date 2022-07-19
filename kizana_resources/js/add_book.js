@@ -357,7 +357,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
               } 
           
               else {
-                $(this).show() && $(this).prev().show()
+                $(this).show() && $(this).prev(".expand_arrow").show()
                 count++
               }
             
@@ -381,7 +381,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
               $(sidebar_id + " H1.active,H2.active").removeClass("active")
               $(sidebar_id + " " + theid).addClass("active")
               document.querySelector("H1.active,H2.active").scrollIntoView({block: "center" }) 
-              //$( sidebar_id + " H2.active").is(":hidden") ? $("H2.active").prevAll(".h1_header:first").one().trigger("click")  : null
               $( sidebar_id + " H2.active").is(":hidden") ? $(theclass).show().one() && $( sidebar_id + " H2").not(theclass).hide().one() : null
               
             }
