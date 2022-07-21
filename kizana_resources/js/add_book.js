@@ -104,7 +104,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       knex_all.from("b" + table_id_original).where("id", initial_rowid).then(function (row) {
         if (row[0].content.includes(delimeter)) {
           hashia = row[0].content.split(delimeter)[1], row[0].content = row[0].content.split(delimeter)[0]
-          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
+          $(content_id).html(`${row[0].content.replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)  
           $(page_input).val(` ${row[0].page || ""}  `)         //  
           $(part_input).val(` ${row[0].part || ""}  `)
           $(hashia_id).html(hashia.replace(line_breaking, "<br>").slice(4).replaceAll("¬", ""))
@@ -113,7 +113,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           
         }
         else {
-          $(content_id).html(`${row[0].content.replace(line_breaking, '<br>').replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)
+          $(content_id).html(`${row[0].content.replace(prentheses, "<h5 class=aya>$1</h5>").replace(curly_brackets, "<h5 class=aya>$1</h5>").replaceAll("¬" , "") }   `)
           $(page_input).val(` ${row[0].page || ""}  `)
           $(part_input).val(` ${row[0].part || ""}  `)
           $(content_id).attr('id', initial_rowid);
