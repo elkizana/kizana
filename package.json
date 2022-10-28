@@ -18,7 +18,7 @@
     "productName": "الخزانة",
     "directories": {
       "buildResources": "build",
-      "output": "/mnt/CCA8F968A8F95206/kizana_appimage"
+      "output": "kizana_appimage"
     },
     "linux": {
       "category": "Education",
@@ -36,13 +36,7 @@
         "AppImage"
       ]
     },
-    "mac": {
-      "category": "public.app-category.tools",
-      "target": [
-        "dmg"
-      ]
-    },
-    "win": {
+      "win": {
       "asar": false,
       "target": [
         "nsis"
@@ -59,8 +53,8 @@
     "sqlite3": "5.0.5"
   },
   "devDependencies": {
-    "electron": "19.0.1",
-    "electron-builder": "^22.11.7",
+    "electron": "21.0.1",
+    "electron-builder": "23.6.0",
     "electron-reloader": "1.1.0"
   }
 }
