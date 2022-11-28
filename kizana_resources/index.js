@@ -3,7 +3,6 @@ let kizana_version = "121442"
 
 const { app, BrowserWindow } = require('electron');
 
-const { cpuUsage } = require('process');
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 function createWindow() {
   const win = new BrowserWindow({

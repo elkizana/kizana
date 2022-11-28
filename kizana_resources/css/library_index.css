@@ -170,7 +170,7 @@ font-size : 18 ;
 display : inline-block ; 
 border-top : #dadada 1px solid ; 
 padding : 5px ; 
-font-size : 18 ; 
+//font-family : "andalus"
 }
 .active {
 border-right :   3px solid ;   

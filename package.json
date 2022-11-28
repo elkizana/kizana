@@ -1,6 +1,7 @@
 {
   "name": "kizana",
   "version": "1.0.0",
+  
   "main": "kizana_resources/index.js",
   "description": "خزانة الكتب فيها ثمانية آلاف كتاب للقراءة و البحث فيها",
   "scripts": {
@@ -47,10 +48,10 @@
     "adm-zip": "0.5.5",
     "chrome-tabs": "5.4.0",
     "jquery": "3.6.0",
-    "knex": "2.0.0",
+    "knex": "2.3.0",
     "oktob.js": "1.1.0",
     "path": "0.12.7",
-    "sqlite3": "5.0.5"
+    "sqlite3": "5.1.2"
   },
   "devDependencies": {
     "electron": "21.0.1",
