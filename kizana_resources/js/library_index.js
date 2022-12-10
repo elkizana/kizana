@@ -50,16 +50,39 @@ function library_index() {               // library index
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
             var filter = $(this).val(),
               count = 0;
-            $('.books').each(function () {
-              if ($(this).text().search(filter) < 0 && filter.length > 3 ) {
-                $(this).hide();
-              } else {
-                $(this).show();
-                count++;
-                $("#author_and_book_number").html(count)
+              
+              if (filter.length > 3  ) { 
+                
+                $('.books').each(function () {
+              
+                  if ($(this).text().search(filter) < 0 && filter.length > 3 ) {
+                    $(this).hide();
+                  }   
+                  
+                  else {
+                    $(this).show();
+                    count++;
+                    $("#author_and_book_number").html(count)
+                  }
+      
+                })
+
+
               }
-  
-            })
+              
+              else if (filter.length == 0 ) { 
+                $(".books").show()
+              }
+              
+              else { 
+                null
+              }
+            
+           
+
+
+
+
           })
   
         })        

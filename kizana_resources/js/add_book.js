@@ -349,24 +349,35 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
             var filter = $(this).val() 
             count = 0
+
+            
+
             if ( filter.length >= 2  ) { 
           
               $(sidebar_id + " H1,H2").each(function () {
+
                 if ($(this).text().search(filter, "i") < 0  ) {
                 $(this).hide()  && $(this).prev(".expand_arrow").hide()
               } 
           
               else {
-                $(this).show() && $(this).prev(".expand_arrow").show()
+                $(this).show() //&& $(this).prev(".expand_arrow").show()
                 count++
               }
             
             })
 
           } 
-          else { 
-            $(sidebar_id + " H1,H2").show() 
+          
+          else if (filter.length == 0 ) { 
+            $(sidebar_id + " H1,H2").show()
           }
+          
+          else { 
+            null
+          }
+
+
 
           })
           
