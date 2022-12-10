@@ -343,6 +343,10 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           
           $(sidebar_id).append(index_list)
           $(sidebar_id).append("<H1></H1>")
+
+          $(sidebar_search_input).on('search', function () {
+            $(sidebar_id + " H1,H2").show()
+          }); 
           
           $(sidebar_search_input).on("keyup change", function () {
             

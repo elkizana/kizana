@@ -29,6 +29,11 @@ function authors_index(filter = "author_name") {                      //end auth
         })
       })
   
+
+      $('#tags1').on('search', function () {
+        $('.authors').show()
+    }); 
+
       $("#tags1").on("keyup", function () {
         $(this).val(  Oktob.replaceEnCharsAZERTY(   $(this).val()  )   )
         var filter = $(this).val()
@@ -38,7 +43,7 @@ function authors_index(filter = "author_name") {                      //end auth
 
         $('.authors').each(function () {
           
-          if ($(this).text().search(filter) < 0 && filter.length > 3) {
+          if ($(this).text().search(filter) < 0 && filter.length > 2) {
             $(this).hide();
             $("#author_and_book_number").show()
           } 
