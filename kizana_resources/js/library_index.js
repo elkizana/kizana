@@ -44,6 +44,10 @@ function library_index() {               // library index
             
           })
   
+
+          $('#tags2').on('search', function () {
+            $('.books').show()
+        });
   
           $("#tags2").on("keyup", function () {
             

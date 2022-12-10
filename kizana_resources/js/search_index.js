@@ -129,13 +129,21 @@ knex_master.select("inf").from("bio").where("authid", this.id).then(function (in
 })
 })
 
+
+$('#books_filter').on('search', function () {
+  $('.authors_search_block_2').show()
+}); 
+
+
+
+
 $("#books_filter").on("keyup", function () {
 
   $(this).val(  Oktob.replaceEnCharsAZERTY(   $(this).val()  )   )
   var filter = $(this).val()
   count = 0;
 
-  if (filter.length > 3  ) { 
+  if (filter.length > 2  ) { 
 
   $('.authors_search_block_2').each(function () {
     
