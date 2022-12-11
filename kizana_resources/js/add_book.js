@@ -325,24 +325,47 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     
   let index_list = []
   
-     async function index_formation_and_behaviors() {
+      function index_formation_and_behaviors() {
   
-        await knex_all.from("t" + table_id_original).then(function (index) {                         /// start of book index 
+         knex_all.from("t" + table_id_original).then(function (index) {                         /// start of book index 
+        console.log(index.length)
         
-         for (x in index) {
-             if (index[x].parent == 0) {
+        for (x in index) {
+          if (index.length < 10000) { 
+           if (index[x].parent == 0 ) {
               var aaa =  "h1-"  + unique++
               index_list.push(`<span class="expand_arrow left" >  </span>   <H1 class="${aaa}" id=I${index[x].id}>  ${index[x].content}</H1> <br>`)
             }
+            
             else  {
               index_list.push(`<H2  class="${aaa}" id=I${index[x].id}>  ${index[x].content}</H2>`)
-              
             } 
-          }
+          }   
+         else  if (index.length > 10000 && index[x].parent == 0  ) { 
+          var aaa =  "h1-"  + unique++
+          index_list.push(`<span class="expand_arrow left" >  </span>   <H1 class="${aaa}" id=I${index[x].id}>  ${index[x].content}</H1> <br>`)
+         }
+        
+        }
+
+         //alert('Loop ended!');
+
 
           
+         
+
+          
+          
+        }).then(function() {
           $(sidebar_id).append(index_list)
           $(sidebar_id).append("<H1></H1>")
+
+          $(sidebar_id + " H2").toggle()                                  // Initiate the index in collappsed state 
+          $("h1").each(function(){
+            $(this).nextUntil("h1").is("h2") ? null : $(this).prev(".expand_arrow").attr('class', 'circle')
+            
+          })
+
 
           $(sidebar_search_input).on('search', function () {
             $(sidebar_id + " H1,H2").show()
@@ -384,9 +407,43 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
 
 
           })
-          
-          //$(sidebar_search_input).css("width" , $(sidebar_id).width() ) // give width to sidebar_search_input
-        })                                                                          /// end of book index 
+
+
+          $(".expand_arrow").on("click", function () { 
+            $(this).next("h1").nextUntil("h1").is("h2") ? $(this).next("h1").nextUntil("h1").toggle() : null
+          })
+    
+          $(sidebar_id + " H1 , H2").on("click", function () {                        // On click  toggle the title sub-titles and scroll to correspondent text in main book window                     
+    
+            row_id = $(this).attr("id").slice(1)
+            $(sidebar_id + " H1, H2").removeClass("active")
+            $(this).addClass("active")
+          knex_all.from("b" + table_id_original).where('content', 'like', '%toc-' + $(this).attr("id").slice(1) + '%').then(function (title) {
+              content_updater(table_id_original, title[0].id, content_id)
+              $(slider_id).slider("value", title[0].id);
+    
+            }).catch(function () {
+              null
+            }) 
+            
+            this.tagName == "H1" && $(this).nextUntil(sidebar_id +  " H1").is( sidebar_id +  " H2") ? $(this).nextUntil(sidebar_id +  " H1").toggle() : null;
+    
+      
+          })
+        
+      
+          $(toggle_id).on("click", function () {
+            $(sidebar_id + " H2").toggle()  
+          })  
+
+
+
+        })
+        
+       
+
+
+  /// end of book index 
   
         
           $(content_id).on('DOMSubtreeModified',  function () {                               // menu tracker 
@@ -406,39 +463,11 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         
 
     
-      $(sidebar_id + " H2").toggle()                                  // Initiate the index in collappsed state 
-      $("h1").each(function(){
-        $(this).nextUntil("h1").is("h2") ? null : $(this).prev(".expand_arrow").attr('class', 'circle')
-        
-      })
+     
     
     
     
-    $(".expand_arrow").on("click", function () { 
-        $(this).next("h1").nextUntil("h1").is("h2") ? $(this).next("h1").nextUntil("h1").toggle() : null
-      })
-
-      $(sidebar_id + " H1 , H2").on("click", function () {                        // On click  toggle the title sub-titles and scroll to correspondent text in main book window                     
-
-        row_id = $(this).attr("id").slice(1)
-        $(sidebar_id + " H1, H2").removeClass("active")
-        $(this).addClass("active")
-      knex_all.from("b" + table_id_original).where('content', 'like', '%toc-' + $(this).attr("id").slice(1) + '%').then(function (title) {
-          content_updater(table_id_original, title[0].id, content_id)
-          $(slider_id).slider("value", title[0].id);
-
-        }).catch(function () {
-          null
-        }) 
-        
-        this.tagName == "H1" && $(this).nextUntil(sidebar_id +  " H1").is( sidebar_id +  " H2") ? $(this).nextUntil(sidebar_id +  " H1").toggle() : null;
-
-  
-      })
     
-      $(toggle_id).on("click", function () {
-      $(sidebar_id + " H2").toggle()  
-    })  
   
     } //end index_formation_and_behaviors
   
@@ -446,7 +475,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     book_text_formation()
     index_formation_and_behaviors()
   
-  
+
   
     $(".chrome-tab-close").on("click", function () {              //          closing tabs            
       $(".chrome-tab").prev().length >= 2  ? $(".chrome-tab").prev().trigger("click") :  $("#001").trigger("click")
