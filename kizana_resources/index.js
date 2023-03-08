@@ -7,7 +7,7 @@ process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 function createWindow() {
   const win = new BrowserWindow({
     frame: false,
-    icon : "kizana_resources/icons/dash.png",
+    icon : "kizana_resources/icons/kizana_icon.png",
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
