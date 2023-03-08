@@ -3,6 +3,8 @@ let kizana_version = "121442"
 
 const { app, BrowserWindow } = require('electron');
 
+const {shell} = require('electron');
+
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 function createWindow() {
   const win = new BrowserWindow({
@@ -13,8 +15,14 @@ function createWindow() {
       enableRemoteModule: true,
       contextIsolation: false
     } 
-
   })  
+
+  const { shell } = require('electron');
+
+  win.webContents.on('will-navigate', function (e, url) {
+      e.preventDefault();
+      shell.openExternal(url);
+  });
 
   win.loadFile('kizana_resources/html/main.html')
   win.maximize()
