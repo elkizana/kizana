@@ -410,7 +410,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
 
 
           $(".expand_arrow").on("click", function () { 
-            $(this).next("h1").nextUntil("h1").is("h2") ? $(this).next("h1").nextUntil("h1").toggle() : null
+            $(this).next("h1").nextUntil("h1").is("h2") ? $(this).next("h1").nextUntil(".expand_arrow").toggle() : null
           })
     
           $(sidebar_id + " H1 , H2").on("click", function () {                        // On click  toggle the title sub-titles and scroll to correspondent text in main book window                     
@@ -426,7 +426,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
               null
             }) 
             
-            this.tagName == "H1" && $(this).nextUntil(sidebar_id +  " H1").is( sidebar_id +  " H2") ? $(this).nextUntil(sidebar_id +  " H1").toggle() : null;
+            this.tagName == "H1" && $(this).nextUntil(sidebar_id +  " H1").is( sidebar_id +  " H2") ? $(this).nextUntil(sidebar_id +  " .expand_arrow").toggle() : null;
     
       
           })

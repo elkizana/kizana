@@ -17,13 +17,6 @@ function createWindow() {
     } 
   })  
 
-  const { shell } = require('electron');
-
-  win.webContents.on('will-navigate', function (e, url) {
-      e.preventDefault();
-      shell.openExternal(url);
-  });
-
   win.loadFile('kizana_resources/html/main.html')
   win.maximize()
   win.setMenuBarVisibility(false)

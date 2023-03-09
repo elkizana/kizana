@@ -199,6 +199,7 @@ color: #2b2626 ;
 }
 td, th {
 border: 1px solid #dfdfdf ; 
+height : 5fpx ;
 }
 
 .search_table td:nth-child(1) { 
@@ -212,7 +213,7 @@ white-space: nowrap;
 
 .search_table td:nth-child(2) { 
 max-width: 800px;
-font-size : 18 ; 
+font-size : 15 ; 
 padding : 3 ; 
 }
 
