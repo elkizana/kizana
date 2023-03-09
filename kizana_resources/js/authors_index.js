@@ -21,6 +21,7 @@ function authors_index(filter = "author_name") {                      //end auth
               placement: 'left' ,
               arrow: true,
               interactive: true,
+              delay: 300,
               
             })
           }

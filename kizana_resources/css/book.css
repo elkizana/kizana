@@ -257,7 +257,7 @@ text-decoration-thickness: .1em ;
 padding : 5 ;
 margin : 0 ;   
 width : 80% ; 
-border-bottom : #e0d7d7 1px solid ; 
+border-bottom : #e9e2e2 0.5px solid ; 
 }
 
 h1:hover , h2:hover {
@@ -268,8 +268,10 @@ color : #0a2458 ;
 font-size: 18 ;
 font-weight: 400  ;
 font-family : "jazeera-regular" ; 
-padding-right : 5px ;
+padding-right : 15px ;
 max-width : 80% ; 
+border-bottom : #e9e2e2 0.5px solid ; 
+
 }
 
 
