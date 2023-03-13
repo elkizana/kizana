@@ -49,7 +49,7 @@ function search() {
     console.timeEnd("label");
 
     // Delegate a click event to the table rows
-    $(".search_table").delegate("td", "click", function() {
+    $(".search_table").on( "click", "td" , function() {
       add_book_and_tab($(this).next().text(), this.className.slice(1), (initial_rowid = this.id));
       setTimeout(() => {
         $(".content:last").text($(".content:last").text().removeTashkel());
