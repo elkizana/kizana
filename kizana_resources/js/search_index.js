@@ -25,7 +25,7 @@ let books_to_search = []
   
       selected_category.then(function (rows) {
         $("#search_block_3_div1").append(`<input type="checkbox" id="checkall_books">  `)
-        rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" class="books_to_search"> ${b.book_name} <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >  <div  class="bio_img" onclick="event.stopPropagation()" > </div> </label>        `))
+        rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" class="books_to_search"> ${b.book_name} <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >  <div  class="bio_img book_card" onclick="event.stopPropagation()" > </div>  <div  class="bio_img person_card" onclick="event.stopPropagation()" style="margin-left:100px" > </div>  </label>        `))
   
         $(".books_to_search").on("mouseover" , function () {
           
@@ -101,7 +101,7 @@ function authors_index_for_search() {
   $("#second_search_input").hide()
 
   knex_master.select("death_text" , "author_name" , "author_id").from("author").orderBy("author_name").then(function (rows) {                       /* appendding  categories  */
-rows.forEach(author => $("#search_block_2_div2").append(`<span class="authors_search_block_2"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
+rows.forEach(author => $("#search_block_2_div2").append(`<span class="authors_search_block_2"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img person_card" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
 
 
 $(".authors_search_block_2").on("mouseover" , function () {
@@ -181,7 +181,7 @@ author = $(this).clone().children().remove().end().text()
 
 knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).then(function (rows) {
   $("#search_block_3_div1").append(`<input type="checkbox" id="checkall_books">  `)
-  rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" id="${b.book_id}" class="books_to_search"> ${b.book_name}  <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >   <div class="bio_img"> </div>  </label>  `))
+  rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" id="${b.book_id}" class="books_to_search"> ${b.book_name}  <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >   <div class="bio_img book_card"> </div>  </label>  `))
 
   $(".single_book_checkbox").on("change", function () {
     this.checked ? books_to_search.push([$("label[for=" + this.id).text(), "b" + this.id.slice(1)]) : books_to_search = books_to_search.filter(element => element[0] !== $("label[for=" + this.id).text())

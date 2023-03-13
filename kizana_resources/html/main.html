@@ -192,6 +192,45 @@ $("#info_icon").on("click" , function() {                                // info
 $("#book_icon").trigger("click")
 </script>
 
+<script>
+
+$(window).on("mouseover" , ".bio_img" , function () {
+          
+  pointer = $(this).children(".bio_img")[0]
+  theid = $(this).attr("for").slice(1)
+
+  knex_master.select("bibliography").from("biblio").where("id", theid).then(function (info) {
+    
+      if (info[0].bibliography.length > 10) {
+   $(".bio_img").hide()
+  $(pointer).show()
+  tippy(  pointer , {
+    content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
+    arrow: true,
+    interactive: true,
+    //trigger : "click",
+  })
+
+}
+  }).catch(function () {
+    $(".bio_img").hide()
+  })
+
+
+
+
+
+
+
+
+}) </script>
+
+
+
+
+
+
+
 
 </body>
 

@@ -6,7 +6,7 @@ function library_index() {               // library index
       $("#categ_div").append(`<span class="categ"> الخزانة كلها <br></span>`)
       rows.forEach(category => $("#categ_div").append(`<span class="categ " id="t${category.category_id}" >${category.category_name}<br></span>`))
   
-      $(".categ").on("click", function () {
+      $("#categ_div").on("click", ".categ"   , function () {
         $(this).addClass("active").siblings().removeClass("active")
         let category = $(this).text()
         $("#tags2").show()
@@ -14,31 +14,66 @@ function library_index() {               // library index
         this.id.slice(1) != "" ? selected_category = knex_master.select("book_name", "book_id", "book_category" , "authors").from("book").orderBy("book_name", "ASC").where("book_category", this.id.slice(1))/* .andWhere("book_type" , "1") */ : selected_category = knex_master.select("book_name", "book_id", "authors", "author_name", "author_id", "book_category", "death_text").from("book").leftJoin("author", "authors", "author_id")/* .where("book_type" , "1") */.orderBy("book_name", "ASC")
   
         selected_category.then(function (rows) {
-          rows.forEach(book => $("#categ_books_div").append(`<span class="books" data-author="${book.authors}"  id="${book.book_id}" title="" > ${book.book_name} <div class="bio_img" onclick="event.stopPropagation()" > </div>  </span>`))
+          rows.forEach(book => $("#categ_books_div").append(`<span class="books" data-author="${book.authors}"  id="${book.book_id}" title="" > ${book.book_name} 
+          <div class="bio_img book_card" onclick="event.stopPropagation()" >  </div>  
+          <div class="bio_img person_card" onclick="event.stopPropagation()" ></div>  
+          </span>`))
           $("#categ_info_div").html("<div id=author_and_book_number >" + $(".books").length + " كتابا في " + category + "</div>")
   
           $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")) })
-  
-          $(".books").on("mouseover" , function () {
-            pointer0 = this.children[0] // select pointer for tippy (doesn't read jquery)
-            pointer = $(this).children(".bio_img")
-  
+          const instance = tippy(document.querySelector('.bio_img'));
+
+          $("#categ_books_div").on(   "mouseover" , ".books" , function () {
+          instance.destroy() 
+
+            book_card = this.children[0] // select pointer for tippy (doesn't read jquery)
+            book_card_jq = $(this).children(".book_card")
+            //$(".bio_img").not(book_card , book_card_jq).hide()
+            $(".bio_img").not(  $(this).children()  ).hide() 
+            
+
             knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
               if (info[0].bibliography.length > 5) {
-                $(".bio_img").hide()
-                $(pointer).show()
-                //console.log(info[0].inf)
-                tippy(  pointer0 , {
+
+                $(book_card_jq).show()
+                
+                tippy(  book_card , {
                   content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
                   placement: 'bottom' ,
                   arrow: true,
                   interactive: true,
+                   delay: 300,
+
                 })
               } 
   
             }).catch(function (info) {
               $(".bio_img").hide()
-            })
+            }) 
+
+            person_card = this.children[1] // select pointer for tippy (doesn't read jquery)
+            person_card_jq = $(this).children(".person_card")
+            
+            knex_master.select("inf").from("bio").where("authid", $(this).attr("data-author") ).then(function (info) {
+             // console.log( person_card_jq ) 
+
+              if (info[0].inf.length > 5) {
+                
+                $(person_card_jq).show()
+                tippy(  person_card , {
+                  content: info[0].inf.replace(/(?:\r)/g, '\n') , 
+                  placement: 'bottom' ,
+                  arrow: true,
+                  interactive: true,
+                   delay: 300,
+
+                })
+              } 
+  
+            }).catch(function (info) {
+             $(".bio_img").hide()
+            }) 
+  
   
   
             
