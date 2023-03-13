@@ -21,10 +21,8 @@ function library_index() {               // library index
           $("#categ_info_div").html("<div id=author_and_book_number >" + $(".books").length + " كتابا في " + category + "</div>")
   
           $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")) })
-          const instance = tippy(document.querySelector('.bio_img'));
 
-          $("#categ_books_div").on(   "mouseover" , ".books" , function () {
-          instance.destroy() 
+          $("#categ_books_div").on(   "mouseenter" , ".books" , function () {
 
             book_card = this.children[0] // select pointer for tippy (doesn't read jquery)
             book_card_jq = $(this).children(".book_card")
@@ -50,6 +48,7 @@ function library_index() {               // library index
             }).catch(function (info) {
               $(".bio_img").hide()
             }) 
+
 
             person_card = this.children[1] // select pointer for tippy (doesn't read jquery)
             person_card_jq = $(this).children(".person_card")

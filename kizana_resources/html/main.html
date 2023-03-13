@@ -180,8 +180,7 @@ $("#info_icon").on("click" , function() {                                // info
 الخزانة قاعدة بياناتها (كتبها كلها) مأخوذة من المكتبة الشاملة الشهيرة.<br><br>
 من له شيء عن الخزانة يرسل إلى :  elkizana@gmail.com
 </p> 
-مصدر البرمجة : <a href="https://github.com/elkizana/kizana"><img src="../icons/github.png" id="github" title="مصدر البرمجة" width="50" height="50"></a>
-
+مصدر البرمجة : https://github.com/elkizana/kizana
 
 
 `) 
@@ -191,39 +190,7 @@ $("#info_icon").on("click" , function() {                                // info
 
 $("#book_icon").trigger("click")
 </script>
-
-<script>
-
-$(window).on("mouseover" , ".bio_img" , function () {
-          
-  pointer = $(this).children(".bio_img")[0]
-  theid = $(this).attr("for").slice(1)
-
-  knex_master.select("bibliography").from("biblio").where("id", theid).then(function (info) {
-    
-      if (info[0].bibliography.length > 10) {
-   $(".bio_img").hide()
-  $(pointer).show()
-  tippy(  pointer , {
-    content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
-    arrow: true,
-    interactive: true,
-    //trigger : "click",
-  })
-
-}
-  }).catch(function () {
-    $(".bio_img").hide()
-  })
-
-
-
-
-
-
-
-
-}) </script>
+ <!-- <img src="../icons/github.png" id="github" title="مصدر البرمجة" width="50" height="50">  -->
 
 
 
