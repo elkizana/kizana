@@ -25,28 +25,37 @@ let books_to_search = []
   
       selected_category.then(function (rows) {
         $("#search_block_3_div1").append(`<input type="checkbox" id="checkall_books">  `)
-        rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" class="books_to_search"> ${b.book_name} <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >  <div  class="bio_img book_card" onclick="event.stopPropagation()" > </div>  <div  class="bio_img person_card" onclick="event.stopPropagation()" style="margin-left:100px" > </div>  </label>        `))
+        rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" class="books_to_search"> ${b.book_name} <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >  <div  class="bio_img book_card" onclick="event.stopPropagation()" > </div>   <div  class="bio_img open_book_icon" onclick="event.stopPropagation()"> </div>   </label>        `))
   
-        $(".books_to_search").on("mouseover" , function () {
-          
+        $(".books_to_search").on("mouseenter" , function () {
+          $(".bio_img").hide()
+
+          open_book_icon = $(this).children(".bio_img")[1]
+          $(open_book_icon).show()
+          $(open_book_icon).off("click");
+          $(open_book_icon).on("click" , function() {
+            add_book_and_tab(  $(this).parent().text()  , $(this).prevAll("input").attr("id").slice(1)  ) 
+          } )  
+
           pointer = $(this).children(".bio_img")[0]
           theid = $(this).attr("for").slice(1)
 
           knex_master.select("bibliography").from("biblio").where("id", theid).then(function (info) {
             
               if (info[0].bibliography.length > 10) {
-           $(".bio_img").hide()
-          $(pointer).show()
+              $(pointer).show()
+          
+
           tippy(  pointer , {
             content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
             arrow: true,
             interactive: true,
-            //trigger : "click",
+            delay  : 300 , 
           })
 
       }
           }).catch(function () {
-            $(".bio_img").hide()
+            $(pointer).hide()
           })
         })
   
@@ -67,13 +76,13 @@ let books_to_search = []
   
         $(".single_book_checkbox").on("change", function () {
           this.checked ? books_to_search.push([$("label[for=" + this.id).text(), "b" + this.id.slice(1)]) : books_to_search = books_to_search.filter(element => element[0] !== $("label[for=" + this.id).text())
-          $("#progress_status").html(books_to_search.length)
+          $("#progress_status").html("البحث في " + books_to_search.length +  " كتاب")
         })
   
         $("#checkall_books").on("change", function () {
           $('input:checkbox').not(this).prop('checked', this.checked);
           this.checked ? $(".books_to_search").each(function () { books_to_search.push([$(this).text(), "b" + $(this).attr("for").slice(1)]) }) : books_to_search = []
-          $("#progress_status").html(books_to_search.length)
+          $("#progress_status").html("البحث في " + books_to_search.length +  " كتاب")
         })
   
   

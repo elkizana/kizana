@@ -70,20 +70,19 @@ width : 15 ;
 
 
 ::-webkit-scrollbar {
-width: 8px;
+width: 9px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-background: #e1dbdb; 
+background: #fbfbfb; 
   
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-//background: #5a4f4f; 
-border : 1px solid #5a4f4f ;   
-border-radius: 5px  ;
+border:1px solid #000000 ;   
+border-radius: 2px  ;
 
 }
 
@@ -96,11 +95,11 @@ background: #918c8c;
 /* Buttons */
 ::-webkit-scrollbar-button
 {
-border-radius: 5px 5px 5px  5px;
+/*border-radius: 5px 0px 5px  5px; */
 height: 25px;
 width: 16px;
-border : 1px solid #939191 ; 
-background: #e1dbdb; 
+border: 1px solid #000000 ;   
+background: #fdfdfd; 
 }
 
 
@@ -235,6 +234,15 @@ display: none;
     width : 20 ;
     background-image: url("../icons/book_card.svg");    
     }
+
+    .open_book_icon  {
+        display: none; 
+        float : left ; 
+        margin-left: 0px; 
+        height : 20  ; 
+        width : 20 ;
+        background-image: url("../icons/book2.png");    
+        }
 
 .categ:hover , .books:hover ,.authors:hover , .authors_search_block_2:hover{ 
 cursor:pointer;

@@ -42,7 +42,7 @@ margin-left  : 3px ;
 }
 
 .slider{
-background-color: #0a2458;
+background-color: #181919;
 height : 80%;
 left : -1 ; 
 width : 10px ; 
@@ -134,19 +134,20 @@ border :  solid #d5d5d5 1px ;
 font-family : "jazeera-regular" ;
 color : #282727 ; 
 z-index: 1;
+border: solid 1px black ;
 
 
 }
 #single_book_search_input {
-display : inline ;   
-width : 250px  ; 
-height : 35px ; 
+display: inline ;   
+width: 250px  ; 
+height: 35px ; 
 border-radius: 5px;
-border : #929292 1px solid ; 
-margin : 5px ; 
-background-color : #f6f6f6 ; 
-color : #282727 ; 
-
+border: #929292 1px solid ; 
+margin: 5px ; 
+background-color: #f6f6f6 ; 
+color: #282727 ; 
+border: solid 1px black ;
 }
 
 #previous_found , #next_found  { 
@@ -203,14 +204,15 @@ width : 25px ;
 }
 
 #sidebar_search_input { 
-height : 27px ; 
+height: 27px ; 
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius: 5px;
 position: fixed;
 width: auto;
-bottom: 10px;
-color : #282727  ; 
-border : none ; 
+bottom: 14px;
+color: #282727  ; 
+border: solid 1px #aaa3a3 ; 
+
 }
 
 
