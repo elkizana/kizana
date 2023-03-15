@@ -62,7 +62,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             <span id="close_search" class="close_search${table_id}" > x</span>
             </div>
   
-            <div class="sidebar side${table_id}"> <img title="ضم أوبسط العناوين" src="./../icons/toggle.png" class="toggle_all" id=toggle${table_id} /> <input type="search" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>    
+            <div class="sidebar side${table_id}"> <img title="ضم أوبسط العناوين" src="./../icons/toggle.png" class="toggle_all" id=toggle${table_id} /> <input type="search" placeholder="حرفان على الأقل" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>    
                
             <div   class="content c${table_id}" tabindex="0" >   </div>  
               <div class="hashia h${table_id}">   </div> </div>`) 
@@ -409,11 +409,11 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           })
 
 
-          $(".expand_arrow").on("click", function () { 
+          $(sidebar_id).on("click", ".expand_arrow"  , function () { 
             $(this).next("h1").nextUntil("h1").is("h2") ? $(this).next("h1").nextUntil(".expand_arrow").toggle() : null
           })
     
-          $(sidebar_id + " H1 , H2").on("click", function () {                        // On click  toggle the title sub-titles and scroll to correspondent text in main book window                     
+          $(sidebar_id ).on("click", ('h1,h2') , function () {                        // On click  toggle the title sub-titles and scroll to correspondent text in main book window                     
     
             row_id = $(this).attr("id").slice(1)
             $(sidebar_id + " H1, H2").removeClass("active")
@@ -432,7 +432,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           })
         
       
-          $(toggle_id).on("click", function () {
+          $(sidebar_id).on("click", toggle_id , function () {
             $(sidebar_id + " H2").toggle()  
           })  
 

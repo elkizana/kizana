@@ -90,6 +90,7 @@
 }
 .chrome-tabs .chrome-tab[active] .chrome-tab-background > svg .chrome-tab-geometry {
   fill: #fff;
+
 }
 .chrome-tabs .chrome-tab:not([active]) .chrome-tab-background {
   transition: opacity 0.2s ease;
@@ -142,6 +143,7 @@
 }
 .chrome-tabs .chrome-tab[is-mini][active] .chrome-tab-favicon {
   display: none;
+  
 }
 .chrome-tabs .chrome-tab .chrome-tab-title {
   flex: 1;
@@ -167,7 +169,12 @@
   display: none;
 }
 .chrome-tabs .chrome-tab[active] .chrome-tab-title {
+
   color: #45474a;
+}
+.chrome-tabs .chrome-tab[active] .chrome-tab-drag-handle {
+
+  border: solid .1px #989393;
 }
 .chrome-tabs .chrome-tab .chrome-tab-drag-handle {
   position: absolute;
