@@ -51,6 +51,7 @@ let books_to_search = []
             arrow: true,
             interactive: true,
             delay  : 300 , 
+            placement: 'auto' ,
           })
 
       }
@@ -121,7 +122,7 @@ knex_master.select("inf").from("bio").where("authid", this.id).then(function (in
     $(pointer).show()
     tippy(  pointer , {
       content: info[0].inf.replace(/(?:\r)/g, '\n') , 
-      placement: 'left' ,
+      placement: 'auto' ,
       arrow: true,
       interactive: true,
 
@@ -213,7 +214,7 @@ knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).t
         $(pointer).show()
         tippy(  pointer , {
           content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
-          placement: 'bottom' ,
+          placement: 'auto' ,
           arrow: true,
           
           interactive: true,

@@ -19,10 +19,12 @@ function authors_index(filter = "author_name") { //end author_index
 
                   tippy(pointer, {
                       content: info[0].inf.replace(/(?:\r)/g, '\n'),
-                      placement: 'left',
+                      
                       arrow: true,
                       interactive: true,
                       delay: 300,
+                      placement: 'auto' ,
+
 
                   })
               }
@@ -98,6 +100,8 @@ function authors_index(filter = "author_name") { //end author_index
                               arrow: true,
                               interactive: true,
                               delay: 300,
+                              placement: 'auto' ,
+
 
                           })
 
