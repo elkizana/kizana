@@ -37,7 +37,7 @@ function library_index() {               // library index
                 
                 tippy(  book_card , {
                   content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
-                  placement: 'bottom' ,
+                  placement: 'auto' ,
                   arrow: true,
                   interactive: true,
                    delay: 300,
@@ -61,7 +61,7 @@ function library_index() {               // library index
                 $(person_card_jq).show()
                 tippy(  person_card , {
                   content: info[0].inf.replace(/(?:\r)/g, '\n') , 
-                  placement: 'bottom' ,
+                  placement: 'auto' ,
                   arrow: true,
                   interactive: true,
                    delay: 300,
