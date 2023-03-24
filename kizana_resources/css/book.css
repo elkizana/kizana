@@ -41,13 +41,7 @@ margin-left  : 3px ;
 
 }
 
-.slider{
-background-color: #181919;
-height : 80%;
-left : -1 ; 
-width : 10px ; 
-
-}
+.slider{background-color: #181919;height: 70%;left : -1;width : 10px;}
 
 
 .previous { 
@@ -74,6 +68,17 @@ height : 30 ;
 left : 6 ; 
 }
 
+.sidebar_toggle { 
+    max-width  : 20px ;
+    mmax-height : 20 ;
+    }
+    
+    .search_book_loop { 
+        max-width  : 20px ;
+        max-height : 20px ;
+        margin: 10px 0px  ;
+        }
+        
 
 
 #page_input {
@@ -218,9 +223,7 @@ border: solid 1px #aaa3a3 ;
 
 
 .activee  {
-border-radius: 7px;
 border :  black solid 1px  ; 
-box-shadow:0 0 1.11111vw rgb(0 0 0 / 25%),0 0 .34722vw rgb(98 35 35 / 10%) ;
 }
 
 .expand_arrow {
@@ -312,9 +315,7 @@ outline : none ;
 
 .aya { 
 display :  inline  ; 
-/* color : #282727 ; */
-color : #0a2458 ;  
-    //font-family : "jazeera-regular";
+color : #005483 ;  
 }
 .bayt {
 display: table;

@@ -34,6 +34,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     let table_length = ""
     let page_input = ".page_input" + table_id
     let part_input = ".part_input" + table_id
+    let sidebar_toggle = "#sidebar_toggle" + table_id
+    let search_book_loop = "#search_book_loop" + table_id
     let single_book_search_input = ".single_book_search_input" + table_id
     let search_block = ".search_block" + table_id
     let previous_found = ".previous_found" + table_id
@@ -41,7 +43,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     let single_book_search_num = ".single_book_search_num" + table_id
     let sidebar_search_input = ".sidebar_search_input" + table_id
     let close_search = ".close_search" + table_id
-    let toggle_id = "#toggle" + table_id
+    //let toggle_id = "#toggle" + table_id
     
   
     $("body").append(`<div  class="book_div" id="b${table_id}"  > 
@@ -51,6 +53,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           <img src="./../icons/arrow_down.png" class="next" id=next${table_id} />  
             <input type="text" class="page_input${table_id}" id="page_input"> 
             <input type="text" class="part_input${table_id}" id="part_input">
+            <img src="./../icons/search.png" class="search_book_loop" id=search_book_loop${table_id} />  
+            <img src="./../icons/sidebar_toggle.png" class="sidebar_toggle" id=sidebar_toggle${table_id} />  
   
             </div> 
             
@@ -62,11 +66,12 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             <span id="close_search" class="close_search${table_id}" > x</span>
             </div>
   
-            <div class="sidebar side${table_id}"> <img title="ضم أوبسط العناوين" src="./../icons/toggle.png" class="toggle_all" id=toggle${table_id} /> <input type="search" placeholder="حرفان على الأقل" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>    
+            <div class="sidebar side${table_id}">  <input type="search" placeholder="حرفان على الأقل" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>    
                
             <div   class="content c${table_id}" tabindex="0" >   </div>  
               <div class="hashia h${table_id}">   </div> </div>`) 
   
+              //<img title="ضم أوبسط العناوين" src="./../icons/toggle.png" class="toggle_all" id=toggle${table_id} />
     knex_all.raw("SELECT COUNT(*) FROM b" + table_id_original).then(function (text_table) { table_length = Object.values(text_table[0]) })  // table length for slider length                                                                    
   
     function content_updater(table_id_original, row_id, content_id) {                 // book text content changer
@@ -186,6 +191,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
      
         $(previous).on("click", function () { let a = parseInt($(content_id).attr("id")) ;  $(slider_id).slider("value", a - 1); content_updater(table_id_original, a - 1, content_id)  ; })
         $(next).on("click", function () { let a = parseInt($(content_id).attr("id"))  ; $(slider_id).slider("value", a + 1); content_updater(table_id_original, a + 1, content_id)  ;})
+        $(search_book_loop).on("click", function () {     $(search_block).slideToggle()  ; $(single_book_search_input).trigger("focus")  })
+        $(sidebar_toggle).on("click", function () { close_index() })
         
     
         let found_in = [] 
@@ -282,19 +289,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $.contextMenu({
               selector: content_id, 
               items: {
-                    "close" : {"name"  : "غلق أو فتح الفهرس" ,
-                    callback: function(itemKey, opt, e) {
-                      close_index()
-                  }
-                  } ,
-    
                    
-                  "search" : { "name" : "البحث في هذا الكتاب" , 
-                  callback: function(itemKey, opt, e) {
-                    $(search_block).slideToggle()  ; $(single_book_search_input).trigger("focus") ;
-                }
-                
-                } ,
                   "fold1": {
                       "name": "بطاقة الكتاب", 
                       "items": {
@@ -309,7 +304,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
                     }
                 } , 
                 
-                "bookmark" : { "name" : "جعل هذا الموضع في المفضلات" , 
+                "bookmark" : { "name" : "جعل هذا الموضع في المنشورة" , 
                   callback: function(itemKey, opt, e) {
                     add_to_bookmarks()
                 }} 
@@ -432,10 +427,10 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           })
         
       
-          $(sidebar_id).on("click", toggle_id , function () {
+        /*   $(sidebar_id).on("click", toggle_id , function () {
             $(sidebar_id + " H2").toggle()  
           })  
-
+ */
 
 
         })
