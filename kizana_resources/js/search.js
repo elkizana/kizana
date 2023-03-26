@@ -1,5 +1,6 @@
 function search() {
   let i = 1;
+  let booksSearched = 0;
   console.time("label");
 
   // Remove Tashkeel (diacritics) from search input value
@@ -10,6 +11,9 @@ function search() {
 
   // Create table header
   $("#search_block_4").html("<table class=search_table><tr><th></th><th>الموجود</th><th>الكتاب</th><th>ص</th><th>ج</th></tr></table>");
+
+  // Display search status message
+  $("#progress_status").html("0 / " + books_to_search.length);
 
   // Map over each book and create a promise for each one
   const promises = books_to_search.map(book => {
@@ -39,7 +43,11 @@ function search() {
           .join("");
         return tableRows;
       })
-      .catch(() => "");
+      .catch(() => "")
+      .finally(() => {
+        booksSearched++;
+        $("#progress_status").html(booksSearched + " / " + books_to_search.length);
+      });
   });
 
   // Wait for all promises to resolve before appending table rows to the table
@@ -47,6 +55,9 @@ function search() {
     const tableRows = tableRowsArray.join("");
     $(".search_table").append(tableRows);
     console.timeEnd("label");
+
+    // Display search status message
+    $("#progress_status").html(`المعثور ${i - 1} `);
 
     // Delegate a click event to the table rows
     $(".search_table").on( "click", "td" , function() {
@@ -61,5 +72,4 @@ function search() {
       }, 500);
     });
   });
-  
 }
