@@ -33,9 +33,10 @@ let books_to_search = []
           open_book_icon = $(this).children(".bio_img")[1]
           $(open_book_icon).show()
           $(open_book_icon).off("click");
-          $(open_book_icon).on("click" , function() {
+
+           $(open_book_icon).on("click" , function(event) {
             add_book_and_tab(  $(this).parent().text()  , $(this).prevAll("input").attr("id").slice(1)  ) 
-          } )  
+          } )   
 
           pointer = $(this).children(".bio_img")[0]
           theid = $(this).attr("for").slice(1)
@@ -114,7 +115,8 @@ function authors_index_for_search() {
 rows.forEach(author => $("#search_block_2_div2").append(`<span class="authors_search_block_2"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img person_card" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
 
 
-$(".authors_search_block_2").on("mouseover" , function () {
+$(".authors_search_block_2").on("mouseenter" , function () {
+  
   pointer = $(this).children(".bio_img")[0]
 knex_master.select("inf").from("bio").where("authid", this.id).then(function (info) {
   if (info[0].inf.length > 10) {
@@ -191,7 +193,7 @@ author = $(this).clone().children().remove().end().text()
 
 knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).then(function (rows) {
   $("#search_block_3_div1").append(`<input type="checkbox" id="checkall_books">  `)
-  rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" id="${b.book_id}" class="books_to_search"> ${b.book_name}  <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >   <div class="bio_img book_card"> </div>  </label>  `))
+  rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" id="${b.book_id}" class="books_to_search"> ${b.book_name}  <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >   <div class="bio_img book_card"> </div>  <div  class="bio_img open_book_icon" onclick="event.stopPropagation()"> </div>  </label>  `))
 
   $(".single_book_checkbox").on("change", function () {
     this.checked ? books_to_search.push([$("label[for=" + this.id).text(), "b" + this.id.slice(1)]) : books_to_search = books_to_search.filter(element => element[0] !== $("label[for=" + this.id).text())
@@ -204,27 +206,39 @@ knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).t
     $("#progress_status").html(books_to_search.length)
   })
 
-   $(".books_to_search").on("mouseover" , function () {
-    
-    pointer = $(this).children(".bio_img")[0]
-   
-    knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
-      if (info[0].bibliography.length > 5) {
-        $(".bio_img").hide()
-        $(pointer).show()
-        tippy(  pointer , {
-          content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
-          placement: 'auto' ,
-          arrow: true,
-          
-          interactive: true,
-        })
-      }
-    }).catch(function (info) {
-      $(pointer).attr('title', "ليس للكتاب بطاقة")
-    })
-       }) 
+   $(".books_to_search").on("mouseenter" , function () {
+    $(".bio_img").hide()
 
+    open_book_icon = $(this).children(".bio_img")[1]
+    $(open_book_icon).show()
+    $(open_book_icon).off("click");
+
+     $(open_book_icon).on("click" , function(event) {
+      add_book_and_tab(  $(this).parent().text()  , $(this).prevAll("input").attr("id").slice(1)  ) 
+    } )   
+
+    pointer = $(this).children(".bio_img")[0]
+    theid = $(this).attr("for").slice(1)
+
+    knex_master.select("bibliography").from("biblio").where("id", theid).then(function (info) {
+            
+      if (info[0].bibliography.length > 10) {
+      $(pointer).show()
+  
+
+  tippy(  pointer , {
+    content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
+    arrow: true,
+    interactive: true,
+    delay  : 300 , 
+    placement: 'auto' ,
+  })
+
+}
+  }).catch(function () {
+    $(pointer).hide()
+  })
+})
 
 
 })

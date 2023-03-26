@@ -481,7 +481,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     $(".chrome-tab").on("click", function () {                                    //          navigating between tabs            
       $(".book_div").hide()
       $("#b" + this.id).show()
-      
+      $(this).attr("id") == "001" ? $(".chrome-tabs .chrome-tab[active]").removeAttr("active")  : null 
     })
   
     let width
