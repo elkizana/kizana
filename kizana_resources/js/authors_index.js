@@ -2,7 +2,7 @@ function authors_index(filter = "author_name") { //end author_index
   $("#authors_info_div , #authors_names_div").empty()
   knex_master.select("death_text", "author_name", "author_id", "death_number").from("author").orderBy(filter).then(function(rows) {
       /* appendding  categories  */
-      rows.forEach(author => $("#authors_names_div").append(`<span class="authors"  id="${author.author_id}" title="" > ${author.author_name}    <div class="bio_img person_card" onclick="event.stopPropagation()" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
+      rows.forEach(author => $("#authors_names_div").append(`<span class="authors"  id="${author.author_id}" title="" > ${author.author_name}    <div class="bio_img person_card"  > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
       $("#authors_info_div").prepend("<div id=author_and_book_number >المؤلفون (" + $('.authors').length + ")  <img src=../icons/sort.png id=authors_filter title= 'تغيير الترتيب'/>  </span> </div>")
 
 
@@ -10,8 +10,11 @@ function authors_index(filter = "author_name") { //end author_index
           filter == "author_name" ? authors_index(filter = "death_number") : authors_index(filter = "author_name")
       })
 
-      $(".authors").on("mouseover", function() {
-          pointer = $(this).children(".bio_img")[0]
+      $("#authors_first_block").on("mouseenter", ".authors" ,  function() {
+       
+
+          pointer = $(this).children(".person_card")[0]
+          console.log(pointer)
           knex_master.select("inf").from("bio").where("authid", this.id).then(function(info) {
               if (info[0].inf.length > 10) {
                   $(".bio_img").hide()
@@ -19,10 +22,9 @@ function authors_index(filter = "author_name") { //end author_index
 
                   tippy(pointer, {
                       content: info[0].inf.replace(/(?:\r)/g, '\n'),
-                      
                       arrow: true,
                       interactive: true,
-                      delay: 300,
+                      delay: [300 , 0],
                       placement: 'auto' ,
 
 
@@ -69,7 +71,7 @@ function authors_index(filter = "author_name") { //end author_index
 
       })
 
-      $(".authors").on("click", function() {
+      $("#authors_first_block").on("click", ".authors" , function() {
           $(this).addClass("active").siblings().removeClass("active")
           $("#authors_books_info_div, #authors_books_div").empty()
 
@@ -77,7 +79,7 @@ function authors_index(filter = "author_name") { //end author_index
 
           knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).then(function(rows) {
 
-              rows.forEach(book => $("#authors_books_div").append(`<span class="books" id="${book.book_id}" > ${book.book_name} <div class="bio_img book_card" onclick="event.stopPropagation()"> </div>  </span>`))
+              rows.forEach(book => $("#authors_books_div").append(`<span class="books" id="${book.book_id}" > ${book.book_name} <div class="bio_img book_card" > </div>  </span>`))
 
               $("#authors_books_info_div").html("<span id=author_and_book_number> كتب" + author + " : " + $("#authors_books_div .books").length + "</span>")
 
@@ -87,9 +89,10 @@ function authors_index(filter = "author_name") { //end author_index
 
               $("#authors_books_div").on("mouseenter", ".books" , function() {
                 
+                
 
 
-                  pointer = $(this).children(".bio_img")[0]
+                  pointer = $(this).children(".book_card")[0]
                   knex_master.select("bibliography").from("biblio").where("id", this.id).then(function(info) {
                       if (info[0].bibliography.length > 5) {
                           $(".bio_img").hide()
@@ -99,7 +102,7 @@ function authors_index(filter = "author_name") { //end author_index
                               content: info[0].bibliography.replace(/(?:\r)/g, '\n'),
                               arrow: true,
                               interactive: true,
-                              delay: 300,
+                              delay: [300 , 0],
                               placement: 'auto' ,
 
 
