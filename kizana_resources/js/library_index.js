@@ -15,14 +15,15 @@ function library_index() {               // library index
   
         selected_category.then(function (rows) {
           rows.forEach(book => $("#categ_books_div").append(`<span class="books" data-author="${book.authors}"  id="${book.book_id}" title="" > ${book.book_name} 
-          <div class="bio_img book_card" onclick="event.stopPropagation()" >  </div>  
-          <div class="bio_img person_card" onclick="event.stopPropagation()" ></div>  
+          <div class="bio_img book_card"  >  </div>  
+          <div class="bio_img person_card" ></div>  
           </span>`))
           $("#categ_info_div").html("<div id=author_and_book_number >" + $(".books").length + " كتابا في " + category + "</div>")
   
           $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")) })
 
           $("#categ_books_div").on(   "mouseenter" , ".books" , function () {
+            tippy.hideAll();
 
             book_card = this.children[0] // select pointer for tippy (doesn't read jquery)
             book_card_jq = $(this).children(".book_card")
@@ -40,12 +41,14 @@ function library_index() {               // library index
                   placement: 'auto' ,
                   arrow: true,
                   interactive: true,
-                   delay: 300,
+                   delay: [300 , 0],
 
                 })
               } 
   
-            }).catch(function (info) {
+            }).catch(function (error) {
+              console.error(error);
+
               $(".bio_img").hide()
             }) 
 
@@ -64,7 +67,7 @@ function library_index() {               // library index
                   placement: 'auto' ,
                   arrow: true,
                   interactive: true,
-                   delay: 300,
+                   delay: [300 , 0],
 
                 })
               } 

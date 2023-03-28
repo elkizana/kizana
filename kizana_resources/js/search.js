@@ -60,7 +60,7 @@ function search() {
     $("#progress_status").html(`المعثور ${i - 1} `);
 
     // Delegate a click event to the table rows
-    $(".search_table").on( "click", "td" , function() {
+    $(".search_table").on( "click", "td:nth-child(2)" , function() {
       add_book_and_tab($(this).next().text(), this.className.slice(1), (initial_rowid = this.id));
       setTimeout(() => {
         $(".content:last").text($(".content:last").text().removeTashkel());
