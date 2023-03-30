@@ -9,6 +9,7 @@ function authors_index(filter = "author_name") { //end author_index
       $("#authors_filter").on("click", function() {
           filter == "author_name" ? authors_index(filter = "death_number") : authors_index(filter = "author_name")
       })
+      
 
       $("#authors_first_block").on("mouseenter", ".authors" ,  function() {
        
@@ -89,35 +90,25 @@ function authors_index(filter = "author_name") { //end author_index
 
 
 
-              const tooltip = tippy('.book_card', {
-                arrow: true,
-                interactive: true,
-                delay: [300 , 0],
-                placement: 'auto' ,
-                singleton: true,
-              });
+           
 
               $("#authors_books_div").on("mouseenter", ".books" , function() {
 
-                
-                  let pointer =  $(this).children(".book_card")[0]
+                let pointer =  $(this).children(".book_card")[0]
 
                   knex_master.select("bibliography").from("biblio").where("id", this.id).then(function(info) {
                       if (info[0].bibliography.length > 10) {
                           $(".bio_img").hide()
                           $(pointer).show()
 
-                          tooltip.setContent(info[0].bibliography.replace(/(?:\r)/g, '\n'));
-                        //tooltip.show(pointer) 
-
-                      /*     tippy(pointer, {
+                         tippy(pointer, {
                               content: info[0].bibliography.replace(/(?:\r)/g, '\n'),
                               arrow: true,
                               interactive: true,
                               delay: [300 , 0],
                               placement: 'auto' ,
                               
-                          })  */
+                          })  
 
                       }
                   }).catch(function(info) {
