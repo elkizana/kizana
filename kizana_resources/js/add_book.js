@@ -1,7 +1,7 @@
 let unique = 0
 
 
-function add_book_and_tab(tab_title, id, initial_rowid) {
+async function add_book_and_tab(tab_title, id, initial_rowid) {
   $('#001').show()  
   var el = document.querySelector('.chrome-tabs');
   var chromeTabs = new ChromeTabs();
@@ -9,7 +9,28 @@ function add_book_and_tab(tab_title, id, initial_rowid) {
   unique++
   chromeTabs.addTab({ title: tab_title, id: id + unique })
   $(".book_div").hide()
-  add_book(id, initial_rowid)
+
+  let rawdata = fs.readFileSync(last_opened);
+  let last_opened_list = JSON.parse(rawdata);
+ 
+  
+  const idToCheck = id;
+
+const foundObject = last_opened_list.find(obj => obj.id === idToCheck);
+
+if (foundObject) {
+    console.log(`Object with id ${idToCheck} found:`, foundObject);
+    console.log(foundObject['page_id'] )
+    add_book(id, foundObject['page_id'] )
+} else {
+    console.log(`Object with id ${idToCheck} not found.`);
+    add_book(id, initial_rowid)
+}
+
+
+  //add_book(id, initial_rowid)
+
+  
 }
 
 function add_book(table_id, initial_rowid = "1") {                    // add book 
@@ -323,7 +344,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       function index_formation_and_behaviors() {
   
          knex_all.from("t" + table_id_original).then(function (index) {                         /// start of book index 
-        console.log(index.length)
+        
         
         for (x in index) {
           if (index.length < 10000) { 
@@ -471,12 +492,33 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     index_formation_and_behaviors()
   
 
-  
-    $(".chrome-tab-close").on("click", function () {              //          closing tabs            
+    $(".chrome-tab-close").on("click", function () {              // closing tabs
+   
+      let rawdata = fs.readFileSync(last_opened);
+      let last_opened_list = JSON.parse(rawdata);
+      last_opened_list.push({"name" : book_title , "page" : $(page_input ).val() || "1" , "page_id" : $(content_id).attr("id") , "part" : $(part_input).val()  ,   "id" : table_id_original} )
+      last_opened_list = JSON.stringify(last_opened_list)
+      fs.writeFileSync(last_opened, last_opened_list ) 
+
+
+
+      // Closing tabs
       $(".chrome-tab").prev().length >= 2  ? $(".chrome-tab").prev().trigger("click") :  $("#001").trigger("click")
       $("#" + this.id.substring(1)).remove()
       $("#b" + this.id.substring(1)).remove()
     })
+    
+    
+    
+    
+    
+    
+  
+   /*  $(".chrome-tab-close").on("click", function () {              //          closing tabs            
+      $(".chrome-tab").prev().length >= 2  ? $(".chrome-tab").prev().trigger("click") :  $("#001").trigger("click")
+      $("#" + this.id.substring(1)).remove()
+      $("#b" + this.id.substring(1)).remove()
+    }) */
   
     $(".chrome-tab").on("click", function () {                                    //          navigating between tabs            
       $(".book_div").hide()
