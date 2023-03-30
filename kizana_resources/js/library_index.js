@@ -16,7 +16,7 @@ function library_index() {               // library index
         selected_category.then(function (rows) {
           rows.forEach(book => $("#categ_books_div").append(`<span class="books" data-author="${book.authors}"  id="${book.book_id}" title="" > ${book.book_name} 
           <div class="bio_img book_card"  >  </div>  
-          <div class="bio_img person_card" ></div>  
+          <div class="bio_img person_card" " ></div>  
           </span>`))
           $("#categ_info_div").html("<div id=author_and_book_number >" + $(".books").length + " كتابا في " + category + "</div>")
   

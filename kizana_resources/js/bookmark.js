@@ -16,6 +16,19 @@ else if ( os.type() == "Windows_NT" )  {
   fs.writeFile(bookmark_file, '[]', function (err) {null})
 }}
 
+if (  os.type() == "Linux" ) {
+  var last_opened = os.homedir() + "/.config/الخزانة/last_opened.json" 
+  if (!fs.existsSync(os.homedir() + "/.config/الخزانة/last_opened.json" ) ) { 
+    fs.writeFile(last_opened, '[]', function (err) {null})
+    }
+  }
+
+
+else if ( os.type() == "Windows_NT" )  {
+  var last_opened = os.homedir() + "/app/الخزانة/last_opened.json"
+  if ( !fs.existsSync(os.homedir() + "/app/الخزانة/last_opened.json" ) ) { 
+  fs.writeFile(last_opened, '[]', function (err) {null})
+}}
 
 var knex_all = require("knex")({
   client: "sqlite3",
