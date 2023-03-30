@@ -14,7 +14,7 @@ function authors_index(filter = "author_name") { //end author_index
        
 
           pointer = $(this).children(".person_card")[0]
-          console.log(pointer)
+          
           knex_master.select("inf").from("bio").where("authid", this.id).then(function(info) {
               if (info[0].inf.length > 10) {
                   $(".bio_img").hide()
@@ -87,26 +87,37 @@ function authors_index(filter = "author_name") { //end author_index
                   add_book_and_tab($(this).text(), $(this).attr("id"))
               })
 
+
+
+              const tooltip = tippy('.book_card', {
+                arrow: true,
+                interactive: true,
+                delay: [300 , 0],
+                placement: 'auto' ,
+                singleton: true,
+              });
+
               $("#authors_books_div").on("mouseenter", ".books" , function() {
-                
-                
 
+                
+                  let pointer =  $(this).children(".book_card")[0]
 
-                  pointer = $(this).children(".book_card")[0]
                   knex_master.select("bibliography").from("biblio").where("id", this.id).then(function(info) {
-                      if (info[0].bibliography.length > 5) {
+                      if (info[0].bibliography.length > 10) {
                           $(".bio_img").hide()
                           $(pointer).show()
 
-                          tippy(pointer, {
+                          tooltip.setContent(info[0].bibliography.replace(/(?:\r)/g, '\n'));
+                        //tooltip.show(pointer) 
+
+                      /*     tippy(pointer, {
                               content: info[0].bibliography.replace(/(?:\r)/g, '\n'),
                               arrow: true,
                               interactive: true,
                               delay: [300 , 0],
                               placement: 'auto' ,
-
-
-                          })
+                              
+                          })  */
 
                       }
                   }).catch(function(info) {
@@ -116,6 +127,10 @@ function authors_index(filter = "author_name") { //end author_index
 
 
               })
+
+
+
+              
           })
       })
   })
