@@ -19,8 +19,8 @@ npm start
 
  <h4 dir="rtl">مهم</h4>
  <p dir="rtl">
-  هذا المخزن (repo) ليس فيه قاعدة بيانات الكتب (لكبره) فإن أردت استعماله حمله ثم انسخه غير مضغوط في /kizana_resources <br>
- <a href="https://mega.nz/file/Kt1QkDDZ#k9kGFi5ejaSQf1EYWIUzBEw2oJl-TC9QiSeVG7EdtpA">تنزيل قاعدة بيانات الكتب </a>
+   هذا المخزن ليس فيه قااعدة بيانات الكتب سأجعل لها موقعا خاصا و أضعها فيه عندما يتيسر لي  ذلك اان شاء الله 
+ 
 </p>
 
 <h6 dir="rtl" >صور منها :</h6>
