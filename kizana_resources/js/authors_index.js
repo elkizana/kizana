@@ -80,7 +80,7 @@ function authors_index(filter = "author_name") { //end author_index
 
           knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).then(function(rows) {
 
-              rows.forEach(book => $("#authors_books_div").append(`<span class="books" id="${book.book_id}" > ${book.book_name} <div class="bio_img book_card" > </div>  </span>`))
+              rows.forEach(book => $("#authors_books_div").append(`<span class="books authors_books" id="${book.book_id}" > ${book.book_name} <div class="bio_img book_card" > </div>  </span>`))
 
               $("#authors_books_info_div").html("<span id=author_and_book_number> كتب" + author + " : " + $("#authors_books_div .books").length + "</span>")
 
@@ -92,7 +92,7 @@ function authors_index(filter = "author_name") { //end author_index
 
            
 
-              $("#authors_books_div").on("mouseenter", ".books" , function() {
+              $(".authors_books").mouseenter(function() {
 
                 let pointer =  $(this).children(".book_card")[0]
 
@@ -100,7 +100,6 @@ function authors_index(filter = "author_name") { //end author_index
                       if (info[0].bibliography.length > 10) {
                           $(".bio_img").hide()
                           $(pointer).show()
-
                          tippy(pointer, {
                               content: info[0].bibliography.replace(/(?:\r)/g, '\n'),
                               arrow: true,

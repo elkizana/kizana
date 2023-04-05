@@ -53,7 +53,7 @@ app.on('activate', () => {
 var request = require('request');
   request.get('https://elkizana.github.io/version.txt', function (error, response, body) {      // new update verfication 
       if (!error && response.statusCode == 200) {
-        console.log(Number.isInteger(kizana_version))
+        .log(Number.isInteger(kizana_version))
               if ( toString(body) !=  toString(kizana_version)) { 
               }
     }

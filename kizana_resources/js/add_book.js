@@ -19,11 +19,8 @@ async function add_book_and_tab(tab_title, id, initial_rowid) {
 const foundObject = last_opened_list.find(obj => obj.id === idToCheck);
 
 if (foundObject) {
-    console.log(`Object with id ${idToCheck} found:`, foundObject);
-    console.log(foundObject['page_id'] )
     add_book(id, foundObject['page_id'] )
 } else {
-    console.log(`Object with id ${idToCheck} not found.`);
     add_book(id, initial_rowid)
 }
 
@@ -161,7 +158,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         
       $(content_id).trigger('focus')
   
-  
+     
       $(content_id).on('keydown', function(e){
         
         var code = (e.keyCode || e.which);
