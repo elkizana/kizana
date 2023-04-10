@@ -24,7 +24,16 @@ npm start
 </p>
 
 <h6 dir="rtl" >صور منها :</h6>
-<img  src="https://github.com/elkizana/kizana/blob/main/screenshots/01.png" style="border-radius:4px" alt="محتوى كتاب"><br>
+<img  src="https://github.com/elkizana/kizana/blob/main/screenshots/01.png" alt="محتوى كتاب"><br>
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/02.png" alt="التصانيف"><br>
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/03.png" alt="المؤلفون"><br>
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/04.png" alt="البحث"><br>  
+
+
+ <style>
+
+	img {
+border : solid 1x black ; 
+border-radius:4px ; 
+	}
+</style>
