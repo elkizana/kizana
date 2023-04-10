@@ -33,7 +33,7 @@ npm start
  <style>
 
 	img {
-border : solid 1x black ; 
+border : solid 1px black ; 
 border-radius:4px ; 
 	}
 </style>
