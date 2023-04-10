@@ -30,3 +30,12 @@ npm start
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/04.png" alt="البحث"><br>  
 
 
+<style>
+h1 {
+    background-image: url(./image.gif);
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+</style>
