@@ -19,12 +19,12 @@ npm start
 
  <h4 dir="rtl">مهم</h4>
  <p dir="rtl">
-   هذا المخزن ليس فيه قااعدة بيانات الكتب سأجعل لها موقعا خاصا و أضعها فيه عندما يتيسر لي  ذلك اان شاء الله 
+   هذا المخزن ليس فيه قاعدة بيانات الكتب سأجعل لها موقعا خاصا و أضعها فيه عندما يتيسر لي  ذلك إن شاء الله 
  
 </p>
 
 <h6 dir="rtl" >صور منها :</h6>
-<img  src="https://github.com/elkizana/kizana/blob/main/screenshots/01.png" alt="محتوى كتاب"><br>
+<img  src="https://github.com/elkizana/kizana/blob/main/screenshots/01.png" style="border-radius:4px" alt="محتوى كتاب"><br>
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/02.png" alt="التصانيف"><br>
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/03.png" alt="المؤلفون"><br>
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/04.png" alt="البحث"><br>  
