@@ -107,6 +107,7 @@
 .ui-resizable-disabled .ui-resizable-handle,
 .ui-resizable-autohide .ui-resizable-handle {
 	display: none;
+	
 }
 .ui-resizable-n {
 	cursor: n-resize;
@@ -730,11 +731,14 @@ button.ui-button::-moz-focus-inner {
 .ui-slider .ui-slider-handle {
 	position: absolute;
 	z-index: 2;
-	width: 1.2em;
-	height: 1.2em;
+	width: 1.1em;
+	height: 1.1em;
 	cursor: default;
 	-ms-touch-action: none;
 	touch-action: none;
+	border:red solid 11px; 
+	border-radius: 8px; 
+	
 }
 .ui-slider .ui-slider-range {
 	position: absolute;
@@ -749,6 +753,7 @@ button.ui-button::-moz-focus-inner {
 .ui-slider.ui-state-disabled .ui-slider-handle,
 .ui-slider.ui-state-disabled .ui-slider-range {
 	filter: inherit;
+	
 }
 
 .ui-slider-horizontal {
@@ -757,6 +762,7 @@ button.ui-button::-moz-focus-inner {
 .ui-slider-horizontal .ui-slider-handle {
 	top: -.3em;
 	margin-left: -.6em;
+	
 }
 .ui-slider-horizontal .ui-slider-range {
 	top: 0;
@@ -775,8 +781,9 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-slider-vertical .ui-slider-handle {
 	left: -.3em;
-	margin-left: 0;
+	margin-left: -1;
 	margin-bottom: -.6em;
+
 }
 .ui-slider-vertical .ui-slider-range {
 	left: 0;

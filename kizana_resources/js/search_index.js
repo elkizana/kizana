@@ -51,7 +51,7 @@ let books_to_search = []
             content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
             arrow: true,
             interactive: true,
-            delay  : 300 , 
+            delay: [300 , 0],
             placement: 'auto' ,
           })
 
@@ -127,7 +127,7 @@ knex_master.select("inf").from("bio").where("authid", this.id).then(function (in
       placement: 'auto' ,
       arrow: true,
       interactive: true,
-
+      delay: [300 , 0],
     })
     
   
@@ -230,7 +230,7 @@ knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).t
     content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
     arrow: true,
     interactive: true,
-    delay  : 300 , 
+    delay: [300 , 0],
     placement: 'auto' ,
   })
 
