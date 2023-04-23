@@ -26,7 +26,7 @@ npm start
 <h6 dir="rtl" >صور منها :</h6>
 <img  src="https://github.com/elkizana/kizana/blob/main/screenshots/01.png"  border="1px solid red" alt="محتوى كتاب"><br>
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/02.png" alt="التصانيف"><br>
- <img src="https://github.com/elkizana/kizana/blob/main/screenshots/03.png" alt="المؤلفون"><br>
+ <!-- <img src="https://github.com/elkizana/kizana/blob/main/screenshots/03.png" alt="المؤلفون"><br> -->
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/04.png" alt="البحث"><br>  
 
 
