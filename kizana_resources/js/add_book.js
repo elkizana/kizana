@@ -23,11 +23,7 @@ if (foundObject) {
 } else {
     add_book(id, initial_rowid)
 }
-
-
-  //add_book(id, initial_rowid)
-
-  
+ 
 }
 
 function add_book(table_id, initial_rowid = "1") {                    // add book 
@@ -71,8 +67,8 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           <img src="./../icons/arrow_down.png" class="next" id=next${table_id} />  
             <input type="text" class="page_input${table_id}" id="page_input"> 
             <input type="text" class="part_input${table_id}" id="part_input">
-            <img src="./../icons/search.png" class="search_book_loop" id=search_book_loop${table_id} />  
-            <img src="./../icons/sidebar_toggle.png" class="sidebar_toggle" id=sidebar_toggle${table_id} />  
+            <img src="./../icons/search.png" class="search_book_loop" id=search_book_loop${table_id} title="البحث في هذاسالكتاب" />  
+            <img src="./../icons/sidebar_toggle.png" class="sidebar_toggle"  id=sidebar_toggle${table_id} title="غلق الفهرس و فتحه"/>  
   
             </div> 
             

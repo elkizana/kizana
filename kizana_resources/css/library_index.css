@@ -2,13 +2,12 @@
 --blue: #1e90ff;
 }
 #b001{ 
-width : 100% ; 
-height : 100% ; 
-font-family : "jazeera-regular" ;
+width: 100% ; 
+height: 100% ; 
+font-family: "jazeera-regular" ;
 letter-spacing: .02em ;
-overflow : scroll ;   
-color : #282727 ; 
-
+overflow: scroll ;   
+color: #282727 ; 
 }
 
 [id="001"] { 
@@ -16,6 +15,8 @@ display : none ;
 left : 10 ; 
 height : 30 ; 
 width : 30 ; 
+z-index:10;
+    
 }
 
 
@@ -172,7 +173,7 @@ padding : 5px ;
 //font-family : "andalus"
 }
 .active {
-border-right :   3px solid ;   
+border-left :   3px solid  ;   
 border-radius : 3px ;   
 }
 /*.authors , .authors_search_block_2 { 
