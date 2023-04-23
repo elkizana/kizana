@@ -74,10 +74,10 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             
             <div class=search_block${table_id} id=search_block> 
             <input type="search" placeholder="ثلاثة أحرف على الأقل"  class="single_book_search_input${table_id}" id="single_book_search_input"> 
-            <img src="./../icons/arrow_down.png" class="next_found${table_id}" id="next_found"   />  
-            <img src="./../icons/arrow_up.png" class="previous_found${table_id}" id="previous_found" />
             <div id="single_book_search_num" class="single_book_search_num${table_id}"> </div>
-            <span id="close_search" class="close_search${table_id}" > x</span>
+            <img src="./../icons/arrow_up.png" class="previous_found${table_id}" id="previous_found" />
+            <img src="./../icons/arrow_down.png" class="next_found${table_id}" id="next_found"   />  
+            <span id="close_search" class="close_search${table_id}" > </span>
             </div>
   
             <div class="sidebar side${table_id}">  <input type="search" placeholder="حرفان على الأقل" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>    
@@ -272,7 +272,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         
            let book_inf          
             knex_master.select("bibliography").from("biblio").where("id", table_id_original ).then(function (info) {
-             if (info[0].bibliography.length > 5) {
+             if (info[0].bibliography.length > 15) {
                book_inf = info[0].bibliography.replace(line_breaking , "\n")
              }
            }).catch(function () {
@@ -287,7 +287,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     
             knex_master.select("inf").from("bio").where("authid" , author_id ).then(function (results) { 
               
-              if (results[0].inf.length > 5 ) { 
+              if (results[0].inf.length > 15 ) { 
                author_inf = results[0].inf.replace(line_breaking , "\n")
               }
     
@@ -385,8 +385,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
             var filter = $(this).val() 
             count = 0
-
-            
 
             if ( filter.length >= 2  ) { 
           
