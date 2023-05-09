@@ -62,7 +62,7 @@ let bookmarks_list = JSON.parse(rawdata);
       $(this).before  (  '<td>' + i++ +  '</td>' ) 
     });
     $(".bookmarked_book").on("click" , function () {
-      add_book_and_tab( $(this).text(), $(this).attr("id") , initial_rowid = $(this).attr("data-page-id") )
+      add_book_and_tab( $(this).text(), $(this).attr("id") , initial_rowid = $(this).attr("data-page-id")  )
           })
 
 $(".remove_book").on("click" , function () {

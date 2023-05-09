@@ -83,7 +83,7 @@ background: #fbfbfb;
 /* Handle */
 ::-webkit-scrollbar-thumb {
 border:1px solid #000000 ;   
-border-radius: 2px  ;
+border-radius: 3px   ;
 
 }
 
@@ -96,11 +96,12 @@ background: #918c8c;
 /* Buttons */
 ::-webkit-scrollbar-button
 {
-/*border-radius: 5px 0px 5px  5px; */
 height: 25px;
 width: 16px;
 border: 1px solid #000000 ;   
 background: #fdfdfd; 
+border-radius: 3px   ;
+    
 }
 
 

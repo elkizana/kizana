@@ -20,7 +20,7 @@ function library_index() {               // library index
           </span>`))
           $("#categ_info_div").html("<div id=author_and_book_number >" + $(".books").length + " كتابا في " + category + "</div>")
   
-          $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")) })
+          $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")  ) })
 
           $("#categ_books_div").on(   "mouseenter" , ".books" , function () {
             tippy.hideAll();
@@ -33,6 +33,7 @@ function library_index() {               // library index
 
             knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
               if (info[0].bibliography.length > 5) {
+                $(".bio_img").hide()
 
                 $(book_card_jq).show()
                 
