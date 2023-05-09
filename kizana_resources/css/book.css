@@ -42,12 +42,13 @@ margin  : 3px ;
 }
 
 .slider{
-background-color:   #005483;
-    color : #005483 ;  
-
+background-color: #005483;
+color: #005483 ;  
 height: 70%;
-left : -1;
-width : 8px;
+left: -1;
+width: 8px;
+border-radius: 5px   ;
+    
 }
 
 

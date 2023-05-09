@@ -1,7 +1,7 @@
 let unique = 0
 
 
-async function add_book_and_tab(tab_title, id, initial_rowid) {
+async function add_book_and_tab(tab_title, id, initial_rowid , not_resume=false) {
   $('#001').show()  
   var el = document.querySelector('.chrome-tabs');
   var chromeTabs = new ChromeTabs();
@@ -13,15 +13,23 @@ async function add_book_and_tab(tab_title, id, initial_rowid) {
   let rawdata = fs.readFileSync(last_opened);
   let last_opened_list = JSON.parse(rawdata);
  
-  
   const idToCheck = id;
 
 const foundObject = last_opened_list.find(obj => obj.id === idToCheck);
 
-if (foundObject) {
+if (foundObject &&  not_resume == false) {
     add_book(id, foundObject['page_id'] )
-} else {
+  
+
+} else if (foundObject &&  not_resume == true  ) {
     add_book(id, initial_rowid)
+  
+
+}
+else {
+  add_book(id, initial_rowid)
+  
+
 }
  
 }
@@ -391,11 +399,12 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
               $(sidebar_id + " H1,H2").each(function () {
 
                 if ($(this).text().search(filter, "i") < 0  ) {
-                $(this).hide()  && $(this).prev(".expand_arrow").hide()
+                $(this).hide()  && $(this).prev(".expand_arrow , .circle ").hide()
               } 
           
               else {
                 $(this).show() //&& $(this).prev(".expand_arrow").show()
+                this.scrollIntoView({block: "center" }) 
                 count++
               }
             
@@ -486,8 +495,33 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     $(".chrome-tab-close").on("click", function () {              // closing tabs
    
       let rawdata = fs.readFileSync(last_opened);
-      let last_opened_list = JSON.parse(rawdata);
-      last_opened_list.push({"name" : book_title , "page" : $(page_input ).val() || "1" , "page_id" : $(content_id).attr("id") , "part" : $(part_input).val()  ,   "id" : table_id_original} )
+let last_opened_list = JSON.parse(rawdata);
+let updated = false;
+
+for (let i = 0; i < last_opened_list.length; i++) {
+  if (last_opened_list[i].name === book_title) {
+    last_opened_list[i].page = $(page_input).val() || "1";
+    last_opened_list[i].page_id = $(content_id).attr("id");
+    last_opened_list[i].part = $(part_input).val();
+    last_opened_list[i].id = table_id_original;
+    updated = true;
+    break;
+  }
+}
+
+if (!updated) {
+  last_opened_list.push({
+    "name": book_title,
+    "page": $(page_input).val() || "1",
+    "page_id": $(content_id).attr("id"),
+    "part": $(part_input).val(),
+    "id": table_id_original
+  });
+}
+
+// write updated last_opened_list to file
+fs.writeFileSync(last_opened, JSON.stringify(last_opened_list));
+
       last_opened_list = JSON.stringify(last_opened_list)
       fs.writeFileSync(last_opened, last_opened_list ) 
 

@@ -35,7 +35,8 @@ let books_to_search = []
           $(open_book_icon).off("click");
 
            $(open_book_icon).on("click" , function(event) {
-            add_book_and_tab(  $(this).parent().text()  , $(this).prevAll("input").attr("id").slice(1)  ) 
+            add_book_and_tab(  $(this).parent().text()  , $(this).prevAll("input").attr("id").slice(1)  ,"1",true ) 
+
           } )   
 
           pointer = $(this).children(".bio_img")[0]
@@ -214,7 +215,7 @@ knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).t
     $(open_book_icon).off("click");
 
      $(open_book_icon).on("click" , function(event) {
-      add_book_and_tab(  $(this).parent().text()  , $(this).prevAll("input").attr("id").slice(1)  ) 
+      add_book_and_tab(  $(this).parent().text()  , $(this).prevAll("input").attr("id").slice(1),"1",true) 
     } )   
 
     pointer = $(this).children(".bio_img")[0]

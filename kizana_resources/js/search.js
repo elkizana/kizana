@@ -54,14 +54,14 @@ function search() {
   Promise.all(promises).then(tableRowsArray => {
     const tableRows = tableRowsArray.join("");
     $(".search_table").append(tableRows);
-    console.timeEnd("label");
+    //console.timeEnd("label");
 
     // Display search status message
     $("#progress_status").html(`المعثور ${i - 1} `);
 
     // Delegate a click event to the table rows
     $(".search_table").on( "click", "td:nth-child(2)" , function() {
-      add_book_and_tab($(this).next().text(), this.className.slice(1), (initial_rowid = this.id));
+      add_book_and_tab($(this).next().text(), this.className.slice(1), (initial_rowid = this.id) , true);
       setTimeout(() => {
         $(".content:last").text($(".content:last").text().removeTashkel());
 
