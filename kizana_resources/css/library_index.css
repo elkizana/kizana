@@ -243,7 +243,8 @@ display: none;
         margin-left: 10px; 
         height : 20  ; 
         width : 20 ;
-        background-image: url("../icons/book2.png");    
+        background-image: url("../icons/book2.png");  
+          
         }
 
 .categ:hover , .books:hover ,.authors:hover , .authors_search_block_2:hover{ 

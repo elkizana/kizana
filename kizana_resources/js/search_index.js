@@ -25,7 +25,7 @@ let books_to_search = []
   
       selected_category.then(function (rows) {
         $("#search_block_3_div1").append(`<input type="checkbox" id="checkall_books">  `)
-        rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" class="books_to_search"> ${b.book_name} <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >  <div  class="bio_img book_card"  > </div>   <div  class="bio_img open_book_icon" > </div>   </label>        `))
+        rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" class="books_to_search"> ${b.book_name} <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >  <div  class="bio_img book_card"  > </div>   <div  class="bio_img open_book_icon"  role="img" title="نشر الكتاب"> </div>   </label>        `))
   
         $(".books_to_search").on("mouseenter" , function () {
           $(".bio_img").hide()
