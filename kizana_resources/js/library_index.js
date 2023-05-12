@@ -22,22 +22,23 @@ function library_index() {               // library index
   
           $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")  ) })
 
-          $("#categ_books_div").on(   "mouseenter" , ".books" , function () {
-            tippy.hideAll();
-
+          $("#categ_books_div").on("mouseenter" , ".books" , function () {
+            
             book_card = this.children[0] // select pointer for tippy (doesn't read jquery)
             book_card_jq = $(this).children(".book_card")
-            //$(".bio_img").not(book_card , book_card_jq).hide()
+
+            pointer1 = $(this).children(".book_card")[0]
+              
             $(".bio_img").not(  $(this).children()  ).hide() 
             
 
             knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
-              if (info[0].bibliography.length > 5) {
+              if (info[0].bibliography.length > 10) {
                 $(".bio_img").hide()
 
-                $(book_card_jq).show()
+                $(pointer1).show()
                 
-                tippy(  book_card , {
+                tippy(  pointer1 , {
                   content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
                   placement: 'auto' ,
                   arrow: true,
@@ -56,14 +57,14 @@ function library_index() {               // library index
 
             person_card = this.children[1] // select pointer for tippy (doesn't read jquery)
             person_card_jq = $(this).children(".person_card")
+            pointer2 = $(this).children(".person_card")[0]
             
             knex_master.select("inf").from("bio").where("authid", $(this).attr("data-author") ).then(function (info) {
-             // console.log( person_card_jq ) 
 
-              if (info[0].inf.length > 5) {
+              if (info[0].inf.length > 10) {
                 
-                $(person_card_jq).show()
-                tippy(  person_card , {
+                $(pointer2).show()
+                tippy(  pointer2 , {
                   content: info[0].inf.replace(/(?:\r)/g, '\n') , 
                   placement: 'auto' ,
                   arrow: true,
