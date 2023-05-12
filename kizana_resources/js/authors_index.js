@@ -12,13 +12,13 @@ function authors_index(filter = "author_name") { //end author_index
       
 
       $("#authors_first_block").on("mouseenter", ".authors" ,  function() {
-       
-
-          pointer = $(this).children(".person_card")[0]
-          
-          knex_master.select("inf").from("bio").where("authid", this.id).then(function(info) {
+               
+            pointer = $(this).children(".person_card")[0]
+        
+            knex_master.select("inf").from("bio").where("authid", this.id).then(function(info) {
               if (info[0].inf.length > 10) {
                   $(".bio_img").hide()
+                
                   $(pointer).show()
 
                   tippy(pointer, {
