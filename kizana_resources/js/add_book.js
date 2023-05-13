@@ -219,10 +219,13 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     
         let found_in = [] 
         $( search_block ).draggable()
-        $(single_book_search_input).on("keyup", function (event) { 
+
+        //$(sidebar_search_input).on("keyup change", debounce(function () {
+        $(single_book_search_input).on("keyup", debounce (function (event) { 
           $(this).val(  Oktob.replaceEnCharsAZERTY(     $(this).val()  )   ) ;
            $(single_book_search_input).val().length  > 2 ? search_in_single_book() : null 
-        })   
+                   }, 500))
+
   
         $(close_search).on("click" , function () {                      
           $(search_block).slideToggle()
@@ -387,8 +390,10 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $(sidebar_search_input).on('search', function () {
             $(sidebar_id + " H1,H2").show()
           }); 
+      
           
-          $(sidebar_search_input).on("keyup change", function () {
+          $(sidebar_search_input).on("keyup change", debounce(function () {
+        
             
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
             var filter = $(this).val() 
@@ -422,7 +427,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
 
 
 
-          })
+        }, 500));
 
 
           $(sidebar_id).on("click", ".expand_arrow"  , function () { 

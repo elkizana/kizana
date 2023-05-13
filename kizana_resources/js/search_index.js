@@ -14,6 +14,7 @@ let books_to_search = []
 
 
     await knex_master.from("category").orderBy("category_order").then(function (rows) {
+      $("#search_block_2_div2").append(  ` <span class="categ"> الخزانة كلها <br></span> ` )
       rows.forEach(c => $("#search_block_2_div2").append(`<span class="categ " id="t${c.category_id}" >${c.category_name}<br></span>`))
     })
   
@@ -63,7 +64,7 @@ let books_to_search = []
         })
   
   
-        $("#second_search_input").on("keyup", function () {
+        $("#second_search_input").on("keyup", debounce( function () {
           $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
           var filter = $(this).val(),
             count = 0;
@@ -75,7 +76,7 @@ let books_to_search = []
               count++;
                       }
           })
-        })
+        },500))
   
         $(".single_book_checkbox").on("change", function () {
           this.checked ? books_to_search.push([$("label[for=" + this.id).text(), "b" + this.id.slice(1)]) : books_to_search = books_to_search.filter(element => element[0] !== $("label[for=" + this.id).text())
@@ -150,7 +151,7 @@ $('#books_filter').on('search', function () {
 
 
 
-$("#books_filter").on("keyup", function () {
+$("#books_filter").on("keyup", debounce( function () {
 
   $(this).val(  Oktob.replaceEnCharsAZERTY(   $(this).val()  )   )
   var filter = $(this).val()
@@ -183,7 +184,7 @@ else {
 
 
 
-})
+},500))
 
 
 $(".authors_search_block_2").on("click", function () {

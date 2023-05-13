@@ -88,7 +88,7 @@ function library_index() {               // library index
             $('.books').show()
         });
   
-          $("#tags2").on("keyup", function () {
+          $("#tags2").on("keyup", debounce( function () {
             
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
             var filter = $(this).val(),
@@ -126,7 +126,7 @@ function library_index() {               // library index
 
 
 
-          })
+          },500 ))
   
         })        
       })          
