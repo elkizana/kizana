@@ -41,7 +41,7 @@ function authors_index(filter = "author_name") { //end author_index
           $('.authors').show()
       });
 
-      $("#tags1").on("keyup", function() {
+      $("#tags1").on("keyup", debounce( function() {
           $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
           var filter = $(this).val()
           count = 0;
@@ -70,7 +70,7 @@ function authors_index(filter = "author_name") { //end author_index
 
 
 
-      })
+      },500))
 
       $("#authors_first_block").on("click", ".authors" , function() {
           $(this).addClass("active").siblings().removeClass("active")

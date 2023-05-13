@@ -64,6 +64,7 @@ function search() {
       add_book_and_tab($(this).next().text(), this.className.slice(1), (initial_rowid = this.id) , true);
       setTimeout(() => {
         $(".content:last").text($(".content:last").text().removeTashkel());
+        
 
         // Highlight the search input in the content and hashia
         $(`.content:last:contains(${search_input_value}), .hashia:last:contains(${search_input_value})`).html(function(_, html) {

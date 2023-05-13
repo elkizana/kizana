@@ -62,7 +62,7 @@
     <div class="book_div"  id="b001">
 
       <div  id="kizana_div_sidebar"  >             <!-- navigation menu -->
-        <img src="../icons/book.png"  class="home_icons" id="book_icon" title="الكتب" />
+        <img src="../icons/book.png"  class="home_icons" id="book_icon" title="الصنوف" />
         <img src="../icons/person.png"  class="home_icons"  id="authors_icon" title="المؤلفون"/>
         <img src="../icons/search.png"   class="home_icons" id="search_icon" title="البحث" />
         <img src="../icons/bookmark.png"   class="home_icons" id="bookmark_icon" title="المنشورة" />
@@ -87,12 +87,12 @@
 
                   <!-- end categ && authors menus -->
 
-
     <div id="search_main" class="home_menus" >                             <!-- search menus -->
 
           <div id="search_block_1">      
             <input type="search" id="first_search_input" placeholder="البحث عن ..."  > 
             <input  id="search_button" type="image"  src="./../icons/search.png" onclick="search()"  >  <!-- -->
+            
             <div id="progress_status"></div>
           </div>
         
@@ -189,6 +189,30 @@ $("#info_icon").on("click" , function() {                                // info
 
 
 $("#book_icon").trigger("click")
+
+
+
+function debounce(func, wait, immediate) {
+            let timeout;
+            return function executedFunction() {
+              const context = this;
+              const args = arguments;
+              const later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+              };
+              const callNow = immediate && !timeout;
+              clearTimeout(timeout);
+              timeout = setTimeout(later, wait);
+              if (callNow) func.apply(context, args);
+            };
+          }
+
+
+
+
+
+          
 </script>
  <!-- <img src="../icons/github.png" id="github" title="مصدر البرمجة" width="50" height="50">  -->
 
