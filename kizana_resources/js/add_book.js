@@ -318,7 +318,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
                   "fold1": {
                       "name": "بطاقة الكتاب", 
                       "items": {
-                          "fold2-key": {"name": book_inf }
+                          "fold2-key": {"name": book_inf}
                       }
                   }  , 
     

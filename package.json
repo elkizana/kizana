@@ -47,7 +47,7 @@
   "dependencies": {
     "adm-zip": "0.5.5",
     "chrome-tabs": "5.4.0",
-    "jquery": "3.6.0",
+    "jquery": "3.7.0",
     "knex": "2.3.0",
     "oktob.js": "1.1.0",
     "path": "0.12.7",

@@ -1,5 +1,5 @@
 @charset "UTF-8"; /*!
- * jQuery contextMenu - Plugin for simple contextMenu handling
+ * jQuery  - Plugin for simple contextMenu handling
  *
  * Version: v2.7.0
  *
@@ -187,6 +187,7 @@
     -ms-user-select: none;
     user-select: none;
     background-color: #fff;
+      white-space:   pre-line ;
 }
 .context-menu-separator {
     padding: 0;
