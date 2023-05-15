@@ -207,9 +207,12 @@ transform: translateY(4px);
 }
 .found_single_word { 
 font-weight: 600 ;  
-background-color : #9d9696 ; 
-border-radius: 5px;
-color : #282727 ; 
+//background-color: #e8e8e8 ; 
+//border: solid 1px ;
+border-radius: 3px;
+color: red ;
+//text-decoration: underline #a20b0b;
+
 
 }
 
@@ -339,8 +342,8 @@ outline : none ;
 }
 
 .aya { 
-display :  inline  ; 
-color : #005483 ;  
+display:  inline  ; 
+color: #005483 ;  
 }
 .bayt {
 display: table;

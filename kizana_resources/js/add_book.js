@@ -261,8 +261,15 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
     
                   setTimeout(() => {
                     $(content_id).html(  $(content_id).html().removeTashkel().split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`) )
+                  }, 500);
+
+
+                  setTimeout(() => {
+                    document.querySelector(".found_single_word").scrollIntoView({block: "center" }) 
                   }, 1000);
-                })
+             
+            
+            })
          
         $(previous_found).on("click" , function () {                      // previous of found single book search results
             a ==  1 ?   null :   a--
@@ -452,14 +459,7 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       
           })
         
-      
-        /*   $(sidebar_id).on("click", toggle_id , function () {
-            $(sidebar_id + " H2").toggle()  
-          })  
- */
-
-
-        })
+              })
         
        
 
