@@ -21,15 +21,17 @@ function library_index() {               // library index
           $("#categ_info_div").html("<div id=author_and_book_number >" + $(".books").length + " كتابا في " + category + "</div>")
   
           $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")  ) })
+          $(".bio_img").hide()
 
-          $("#categ_books_div").on("mouseenter" , ".books" , function () {
+          $("#categ_books_div").on("mouseenter" , ".books" ,  debounce( function () {
+
+          // $(".bio_img").not(  $(this).children()  ).hide() 
             
             book_card = this.children[0] // select pointer for tippy (doesn't read jquery)
             book_card_jq = $(this).children(".book_card")
 
             pointer1 = $(this).children(".book_card")[0]
               
-            $(".bio_img").not(  $(this).children()  ).hide() 
             
 
             knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
@@ -55,8 +57,8 @@ function library_index() {               // library index
             }) 
 
 
-            person_card = this.children[1] // select pointer for tippy (doesn't read jquery)
-            person_card_jq = $(this).children(".person_card")
+            //person_card = this.children[1] // select pointer for tippy (doesn't read jquery)
+            //person_card_jq = $(this).children(".person_card")
             pointer2 = $(this).children(".person_card")[0]
             
             knex_master.select("inf").from("bio").where("authid", $(this).attr("data-author") ).then(function (info) {
@@ -81,7 +83,7 @@ function library_index() {               // library index
   
   
             
-          })
+          },250))
   
 
           $('#tags2').on('search', function () {
