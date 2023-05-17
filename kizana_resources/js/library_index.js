@@ -51,8 +51,7 @@ function library_index() {               // library index
               } 
   
             }).catch(function (error) {
-              console.error(error);
-
+              //console.error(error);
               $(".bio_img").hide()
             }) 
 
