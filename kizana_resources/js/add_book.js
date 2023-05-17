@@ -163,37 +163,69 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
       $(content_id).trigger('focus')
   
      
-      $(content_id).on('keydown', function(e){
-        
-        var code = (e.keyCode || e.which);
-        
-        if(code == 39  ) {
-          let a = parseInt($(content_id).attr("id"))  ; $(slider_id).slider("value", a + 1); content_updater(table_id_original, a + 1, content_id)
-        }
+     // Cache jQuery objects
+const $content = $(content_id);
+const $slider = $(slider_id);
 
-        else if (code == 32  &&  $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 1  )  { 
-          row_id = parseInt(this.id)
-          content_updater(table_id_original, row_id + 1, content_id)
-          $(slider_id).slider("value", row_id);
-          
-        }
-         else if(code == 37 ) {
-          let a = parseInt($(content_id).attr("id")) ;  $(slider_id).slider("value", a - 1); content_updater(table_id_original, a - 1, content_id)  ;
-      } 
-  
-  else if(code == 107 || code == 187  ) {
-    var fontSize = parseInt($(this).css("font-size"));
-    fontSize = fontSize + 1 + "px";
-    $(content_id).css({'font-size':fontSize}); 
-      }
-    
-      else if(code == 109 || code == 219 ) {
-        var fontSize = parseInt($(this).css("font-size"));
-        fontSize = fontSize - 1 + "px";
-        $(content_id).css({'font-size':fontSize}); 
-          }
-    
-    })
+// Define the keydown event handler
+$content.on('keydown', function(event) {
+  const code = event.which;
+
+  if (code === 39) {
+    moveToNextSlide();
+  } else if (code === 32 &&  $(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight - 1  ) {
+    moveToNextSlide();
+  } else if (code === 37) {
+    moveToPreviousSlide();
+  } else if (code === 107 || code === 187) {
+    increaseFontSize();
+  } else if (code === 109 || code === 219) {
+    decreaseFontSize();
+  }
+  else if (code === 9) {
+    close_index();
+  }
+  else if (code === 70) {
+ $(search_block).slideToggle()  ;// $(single_book_search_input).trigger("focus") 
+  }
+});
+
+// Move to the next slide
+function moveToNextSlide() {
+  const id = parseInt($content.attr("id"));
+  $slider.slider("value", id + 1);
+  content_updater(table_id_original, id + 1, content_id);
+}
+
+// Move down the table
+function moveDownTable() {
+  const rowId = parseInt(this.id);
+  content_updater(table_id_original, rowId + 1, content_id);
+  $slider.slider("value", rowId);
+}
+
+// Move to the previous slide
+function moveToPreviousSlide() {
+  const id = parseInt($content.attr("id"));
+  $slider.slider("value", id - 1);
+  content_updater(table_id_original, id - 1, content_id);
+}
+
+// Increase the font size
+function increaseFontSize() {
+  const fontSize = parseInt($content.css("font-size"));
+  const newFontSize = `${fontSize + 1}px`;
+  $content.css({ 'font-size': newFontSize });
+}
+
+// Decrease the font size
+function decreaseFontSize() {
+  const fontSize = parseInt($content.css("font-size"));
+  const newFontSize = `${fontSize - 1}px`;
+  $content.css({ 'font-size': newFontSize });
+}
+
+
 
 
     $(content_id).on('mousewheel', function (e) { 
@@ -231,61 +263,59 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
           $(search_block).slideToggle()
         })
         
-        async function search_in_single_book() {                   
-          $( next_found ).off()
-          $(previous_found).off()
-          found_in = []
-      
-          let search_input_value =   $(single_book_search_input).val().removeTashkel() 
-          
-          await knex_all.select("content", "id").from("b" + table_id_original).then(function (results) {
-                for (row of results) {
-                  if (row.content.removeTashkel().includes(search_input_value)) {
-                    $( previous_found ).show()
-                    $( next_found ).show()
-                    found_in.push(row.id)
-                }
-              }
-            })
-            found_in.length > 0 ? $(single_book_search_num).html(found_in.length) : $(single_book_search_num).html("لا شيئ") && $(previous_found).hide() && $(next_found).hide() 
-          
-        let i = 0 
-        let a = 1     
-    
-           $(next_found).on("click" , function () {               // next of found single book search results
-           content_updater(table_id_original,  found_in[i] , content_id)
-            $(single_book_search_num).html(  a  + " / "  + found_in.length)
-    
-                  i == (found_in.length - 1) ? null :  i++
-                  a == found_in.length ? null : a++ 
-    
-                  setTimeout(() => {
-                    $(content_id).html(  $(content_id).html().removeTashkel().split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`) )
-                  }, 500);
-
-
-                  setTimeout(() => {
-                    document.querySelector(".found_single_word").scrollIntoView({block: "center" }) 
-                  }, 1000);
-             
-            
-            })
-         
-        $(previous_found).on("click" , function () {                      // previous of found single book search results
-            a ==  1 ?   null :   a--
-            i == 0 ? null : i--
-    
-            content_updater(table_id_original,  found_in[i] , content_id)
-            
-            $(single_book_search_num).html( a  + " / "  +  found_in.length  )
-              setTimeout(() => {
-                $(content_id).html(  $(content_id).html().removeTashkel().split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`) )
-              }, 1000);
-        })
-  
-  
-    
-    
+        async function search_in_single_book() {
+          $(next_found).off();
+          $(previous_found).off();
+          found_in = [];
+        
+          const search_input_value = $(single_book_search_input).val().removeTashkel();
+        
+          const results = await knex_all
+            .select('content', 'id')
+            .from('b' + table_id_original);
+        
+          results.forEach((row) => {
+            if (row.content.removeTashkel().includes(search_input_value)) {
+              $(previous_found).show();
+              $(next_found).show();
+              found_in.push(row.id);
+            }
+          });
+        
+          $(single_book_search_num).html(found_in.length > 0 ? found_in.length : 'لا شيئ');
+          $(previous_found).toggle(found_in.length > 0);
+          $(next_found).toggle(found_in.length > 0);
+        
+          let i = 0;
+          let a = 1;
+        
+          const updateContent = (index) => {
+            content_updater(table_id_original, found_in[index], content_id);
+            $(single_book_search_num).html(`${a} / ${found_in.length}`);
+            setTimeout(() => {
+              $(content_id)
+                .html($(content_id).html().removeTashkel().split(search_input_value).join(`<span class='${content_id}   found_single_word'>${search_input_value}</span>`));
+            }, 500);
+            setTimeout(() => {
+              document.querySelector(`${content_id}  .found_single_word`).scrollIntoView({block: "center" });
+            }, 1000);
+          };
+        
+          $(next_found).on('click', () => {
+            if (i < found_in.length - 1) {
+              i++;
+              a++;
+            }
+            updateContent(i);
+          });
+        
+          $(previous_found).on('click', () => {
+            if (a > 1) {
+              a--;
+              i--;
+            }
+            updateContent(i);
+          });
         }
         
            let book_inf          
@@ -375,14 +405,6 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
         
         }
 
-         //alert('Loop ended!');
-
-
-          
-         
-
-          
-          
         }).then(function() {
           $(sidebar_id).append(index_list)
           $(sidebar_id).append("<H1></H1>")
@@ -476,26 +498,14 @@ function add_book(table_id, initial_rowid = "1") {                    // add boo
               document.querySelector("H1.active,H2.active").scrollIntoView({block: "center" }) 
               $( sidebar_id + " H2.active").is(":hidden") ? $(theclass).show().one() && $( sidebar_id + " H2").not(theclass).hide().one() : null
               
-            }
+            } else{}
 
           })    
         
-          
-        
-
-    
-     
-    
-    
-    
-    
-  
     } //end index_formation_and_behaviors
-  
   
     book_text_formation()
     index_formation_and_behaviors()
-  
 
     $(".chrome-tab-close").on("click", function () {              // closing tabs
    
@@ -530,8 +540,6 @@ fs.writeFileSync(last_opened, JSON.stringify(last_opened_list));
       last_opened_list = JSON.stringify(last_opened_list)
       fs.writeFileSync(last_opened, last_opened_list ) 
 
-
-
       // Closing tabs
       $(".chrome-tab").prev().length >= 2  ? $(".chrome-tab").prev().trigger("click") :  $("#001").trigger("click")
       $("#" + this.id.substring(1)).remove()
@@ -539,16 +547,6 @@ fs.writeFileSync(last_opened, JSON.stringify(last_opened_list));
     })
     
     
-    
-    
-    
-    
-  
-   /*  $(".chrome-tab-close").on("click", function () {              //          closing tabs            
-      $(".chrome-tab").prev().length >= 2  ? $(".chrome-tab").prev().trigger("click") :  $("#001").trigger("click")
-      $("#" + this.id.substring(1)).remove()
-      $("#b" + this.id.substring(1)).remove()
-    }) */
   
     $(".chrome-tab").on("click", function () {                                    //          navigating between tabs            
       $(".book_div").hide()

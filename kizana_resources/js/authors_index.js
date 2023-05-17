@@ -46,7 +46,7 @@ function authors_index(filter = "author_name") { //end author_index
           var filter = $(this).val()
           count = 0;
 
-          if (filter.length > 3) {
+          if (filter.length > 2) {
 
               $('.authors').each(function() {
 
@@ -74,8 +74,9 @@ function authors_index(filter = "author_name") { //end author_index
 
       $("#authors_first_block").on("click", ".authors" , function() {
           $(this).addClass("active").siblings().removeClass("active")
-          $("#authors_books_info_div, #authors_books_div").empty()
 
+          $("#authors_books_info_div, #authors_books_div").empty()
+            
           author = $(this).clone().children().remove().end().text()
 
           knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).then(function(rows) {
@@ -117,6 +118,57 @@ function authors_index(filter = "author_name") { //end author_index
 
 
               })
+
+
+
+
+
+
+
+
+              $(".tags2").on("keyup", debounce( function () {
+                console.log("zzz")
+                    $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
+                    var filter = $(this).val(),
+                      count = 0;
+                      
+                      if (filter.length > 2  ) { 
+                        
+                        $('.books').each(function () {
+                      
+                          if ($(this).text().search(filter) < 0 && filter.length > 2 ) {
+                            $(this).hide();
+                          }   
+                          
+                          else {
+                            $(this).show();
+                            count++;
+                            $("#author_and_book_number").html(count)
+                          }
+              
+                        })
+        
+        
+                      }
+                      
+                      else if (filter.length == 0 ) { 
+                        $(".books").show()
+                      }
+                      
+                      else { 
+                        null
+                      }
+                            
+        
+                  },500 ))
+    
+
+
+
+
+
+
+
 
 
 
