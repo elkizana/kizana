@@ -28,41 +28,46 @@ let books_to_search = []
         $("#search_block_3_div1").append(`<input type="checkbox" id="checkall_books">  `)
         rows.forEach(b => $("#search_block_3_div1").append(`<label for="l${b.book_id}" class="books_to_search"> ${b.book_name} <input type="checkbox" class="single_book_checkbox" id="l${b.book_id}" >  <div  class="bio_img book_card"  > </div>   <div  class="bio_img open_book_icon"  role="img" title="نشر الكتاب"> </div>   </label>        `))
   
-        $(".books_to_search").on("mouseenter" , function () {
-          $(".bio_img").hide()
-
-          open_book_icon = $(this).children(".bio_img")[1]
-          $(open_book_icon).show()
-          $(open_book_icon).off("click");
-
-           $(open_book_icon).on("click" , function(event) {
-            add_book_and_tab(  $(this).parent().text()  , $(this).prevAll("input").attr("id").slice(1)  ,"1",true ) 
-
-          } )   
-
-          pointer = $(this).children(".bio_img")[0]
-          theid = $(this).attr("for").slice(1)
-
-          knex_master.select("bibliography").from("biblio").where("id", theid).then(function (info) {
-            
-              if (info[0].bibliography.length > 10) {
-              $(pointer).show()
-          
-
-          tippy(  pointer , {
-            content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
-            arrow: true,
-            interactive: true,
-            delay: [300 , 0],
-            placement: 'auto' ,
-          })
-
-      }
-          }).catch(function () {
-            $(pointer).hide()
-          })
-        })
-  
+        $(".books_to_search").on("mouseenter", function () {
+          const bioImgElements = $(this).children(".bio_img");
+          const openBookIcon = bioImgElements[1];
+          const pointer = bioImgElements[0];
+          const theId = $(this).attr("for").slice(1);
+        
+          $(".bio_img").hide();
+          $(openBookIcon).show();
+          $(openBookIcon).off("click");
+        
+          $(openBookIcon).on("click", function (event) {
+            const bookTitle = $(this).parent().text();
+            const inputId = $(this).prevAll("input").attr("id").slice(1);
+            add_book_and_tab(bookTitle, inputId, "1", true);
+          });
+        
+          knex_master
+            .select("bibliography")
+            .from("biblio")
+            .where("id", theId)
+            .then(function (info) {
+              const bibliography = info[0].bibliography.replace(/(?:\r)/g, '\n');
+        
+              if (bibliography.length > 10) {
+                $(pointer).show();
+        
+                tippy(pointer, {
+                  content: bibliography,
+                  arrow: true,
+                  interactive: true,
+                  delay: [300, 0],
+                  placement: 'auto',
+                });
+              }
+            })
+            .catch(function () {
+              $(pointer).hide();
+            });
+        });
+        
   
         $("#second_search_input").on("keyup", debounce( function () {
           $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
@@ -117,38 +122,38 @@ function authors_index_for_search() {
 rows.forEach(author => $("#search_block_2_div2").append(`<span class="authors_search_block_2"  id="${author.author_id}" title="" > ${author.author_name}   <div class="bio_img person_card" > </div>     <span id="death_date" >${author.death_text ? author.death_text : ""}</span></span>`))
 
 
-$(".authors_search_block_2").on("mouseenter" , function () {
-  
-  pointer = $(this).children(".bio_img")[0]
-knex_master.select("inf").from("bio").where("authid", this.id).then(function (info) {
-  if (info[0].inf.length > 10) {
-    $(".bio_img").hide()
-    $(pointer).show()
-    tippy(  pointer , {
-      content: info[0].inf.replace(/(?:\r)/g, '\n') , 
-      placement: 'auto' ,
-      arrow: true,
-      interactive: true,
-      delay: [300 , 0],
+$(".authors_search_block_2").on("mouseenter", function () {
+  const pointer = $(this).children(".bio_img")[0];
+  const authId = this.id;
+
+  knex_master
+    .select("inf")
+    .from("bio")
+    .where("authid", authId)
+    .then(function (info) {
+      const inf = info[0].inf.replace(/(?:\r)/g, '\n');
+
+      if (inf.length > 10) {
+        $(".bio_img").hide();
+        $(pointer).show();
+
+        tippy(pointer, {
+          content: inf,
+          placement: 'auto',
+          arrow: true,
+          interactive: true,
+          delay: [300, 0],
+        });
+      }
     })
-    
-  
-
-}
-
-    
-    
-}).catch(function () {
-  $(".bio_img").hide()
-})
-})
-
+    .catch(function () {
+      $(".bio_img").hide();
+    });
+});
 
 $('#books_filter').on('search', function () {
-  $('.authors_search_block_2').show()
-}); 
-
-
+  $('.authors_search_block_2').show();
+});
 
 
 $("#books_filter").on("keyup", debounce( function () {

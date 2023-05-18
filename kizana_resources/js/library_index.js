@@ -23,73 +23,58 @@ function library_index() {               // library index
           $(".books").on("click", function () { add_book_and_tab($(this).text(), $(this).attr("id")  ) })
           $(".bio_img").hide()
 
-          $("#categ_books_div").on("mouseenter" , ".books" ,  debounce( function () {
-
-          // $(".bio_img").not(  $(this).children()  ).hide() 
-            
-            book_card = this.children[0] // select pointer for tippy (doesn't read jquery)
-            book_card_jq = $(this).children(".book_card")
-
-            pointer1 = $(this).children(".book_card")[0]
-              
-            
-
-            knex_master.select("bibliography").from("biblio").where("id", this.id).then(function (info) {
+          $("#categ_books_div").on("mouseenter", ".books", function() {
+            var $bioImg = $(".bio_img");
+            var $bookCard = $(this).children(".book_card");
+            var $personCard = $(this).children(".person_card");
+            var bookCardPointer = $bookCard[0];
+            var personCardPointer = $personCard[0];
+          
+            knex_master.select("bibliography").from("biblio").where("id", this.id).then(function(info) {
               if (info[0].bibliography.length > 10) {
-                $(".bio_img").hide()
-
-                $(pointer1).show()
-                
-                tippy(  pointer1 , {
-                  content: info[0].bibliography.replace(/(?:\r)/g, '\n') , 
-                  placement: 'auto' ,
+                $bioImg.hide();
+                $bookCard.show();
+          
+                var tippyOptions = {
+                  content: info[0].bibliography.replace(/(?:\r)/g, '\n'),
+                  placement: 'auto',
                   arrow: true,
                   interactive: true,
-                   delay: [300 , 0],
-
-                })
-              } 
-  
-            }).catch(function (error) {
-              //console.error(error);
-              $(".bio_img").hide()
-            }) 
-
-
-            //person_card = this.children[1] // select pointer for tippy (doesn't read jquery)
-            //person_card_jq = $(this).children(".person_card")
-            pointer2 = $(this).children(".person_card")[0]
-            
-            knex_master.select("inf").from("bio").where("authid", $(this).attr("data-author") ).then(function (info) {
-
+                  delay: [300, 0]
+                };
+          
+                tippy(bookCardPointer, tippyOptions);
+              }
+            }).catch(function(error) {
+              $(".bio_img").hide();
+            });
+          
+            knex_master.select("inf").from("bio").where("authid", $(this).attr("data-author")).then(function(info) {
               if (info[0].inf.length > 10) {
-                
-                $(pointer2).show()
-                tippy(  pointer2 , {
-                  content: info[0].inf.replace(/(?:\r)/g, '\n') , 
-                  placement: 'auto' ,
+                $personCard.show();
+          
+                var tippyOptions = {
+                  content: info[0].inf.replace(/(?:\r)/g, '\n'),
+                  placement: 'auto',
                   arrow: true,
                   interactive: true,
-                   delay: [300 , 0],
-
-                })
-              } 
-  
-            }).catch(function (info) {
-             $(".bio_img").hide()
-            }) 
-  
-  
-  
-            
-          },250))
+                  delay: [300, 0]
+                };
+          
+                tippy(personCardPointer, tippyOptions);
+              }
+            }).catch(function(info) {
+              $(".bio_img").hide();
+            });
+          });
+          
   
 
           $('#tags2').on('search', function () {
             $('.books').show()
         });
   
-          $("#tags2").on("keyup", debounce( function () {
+          $("#tags2").on("keyup", function () {
             
             $(this).val(Oktob.replaceEnCharsAZERTY($(this).val()))
             var filter = $(this).val(),
@@ -127,7 +112,7 @@ function library_index() {               // library index
 
 
 
-          },500 ))
+          })
   
         })        
       })          
