@@ -11,30 +11,30 @@ function authors_index(filter = "author_name") { //end author_index
       })
       
 
-      $("#authors_first_block").on("mouseenter", ".authors" ,  function() {
-               
-            pointer = $(this).children(".person_card")[0]
-        
-            knex_master.select("inf").from("bio").where("authid", this.id).then(function(info) {
-              if (info[0].inf.length > 10) {
-                  $(".bio_img").hide()
-                
-                  $(pointer).show()
-
-                  tippy(pointer, {
-                      content: info[0].inf.replace(/(?:\r)/g, '\n'),
-                      arrow: true,
-                      interactive: true,
-                      delay: [300 , 0],
-                      placement: 'auto' ,
-
-
-                  })
-              }
-          }).catch(function() {
-              $(".bio_img").hide()
-          })
-      })
+      $("#authors_first_block").on("mouseenter", ".authors", function() {
+        var $bioImg = $(".bio_img");
+        var $pointer = $(this).find(".person_card")[0];
+      
+        knex_master.select("inf").from("bio").where("authid", this.id).then((info) => {
+          if (info[0].inf.length > 10) {
+            $bioImg.hide();
+            $($pointer).show();
+      
+            var tippyOptions = {
+              content: info[0].inf.replace(/(?:\r)/g, '\n'),
+              arrow: true,
+              interactive: true,
+              delay: [300, 0],
+              placement: 'auto'
+            };
+      
+            tippy($pointer, tippyOptions);
+          }
+        }).catch(() => {
+          $bioImg.hide();
+        });
+      });
+      
 
 
       $('#tags1').on('search', function() {
@@ -93,31 +93,33 @@ function authors_index(filter = "author_name") { //end author_index
 
            
 
-              $(".authors_books").mouseenter(function() {
-
-                let pointer =  $(this).children(".book_card")[0]
-
-                  knex_master.select("bibliography").from("biblio").where("id", this.id).then(function(info) {
-                      if (info[0].bibliography.length > 10) {
-                          $(".bio_img").hide()
-                          $(pointer).show()
-                         tippy(pointer, {
-                              content: info[0].bibliography.replace(/(?:\r)/g, '\n'),
-                              arrow: true,
-                              interactive: true,
-                              delay: [300 , 0],
-                              placement: 'auto' ,
-                              
-                          })  
-
-                      }
-                  }).catch(function(info) {
-                      $(".bio_img").hide()
+              $(".authors_books").on("mouseenter", function () {
+                const pointer = $(this).children(".book_card")[0];
+              
+                knex_master
+                  .select("bibliography")
+                  .from("biblio")
+                  .where("id", this.id)
+                  .then(function (info) {
+                    const bibliography = info[0].bibliography.replace(/(?:\r)/g, '\n');
+              
+                    if (bibliography.length > 10) {
+                      $(".bio_img").hide();
+                      $(pointer).show();
+                      tippy(pointer, {
+                        content: bibliography,
+                        arrow: true,
+                        interactive: true,
+                        delay: [300, 0],
+                        placement: 'auto',
+                      });
+                    }
                   })
-
-
-
-              })
+                  .catch(function (error) {
+                    $(".bio_img").hide();
+                  });
+              });
+              
 
 
 
