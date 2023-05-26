@@ -186,7 +186,10 @@ $content.on('keydown', function(event) {
     close_index();
   }
   else if (code === 70) {
- $(search_block).slideToggle()  ;// $(single_book_search_input).trigger("focus") 
+ $(search_block).slideToggle()  ; 
+ setTimeout(() => {
+  $(single_book_search_input).trigger("focus") 
+ }, 100);
   }
 });
 
