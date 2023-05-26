@@ -68,9 +68,17 @@ function search() {
 
         // Highlight the search input in the content and hashia
         $(`.content:last:contains(${search_input_value}), .hashia:last:contains(${search_input_value})`).html(function(_, html) {
-          return html.split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`);
+          return html.split(search_input_value).join(`<span class='found_single_word'>${search_input_value}</span>`)
+
+          
+
         });
       }, 500);
+
+  /*     setTimeout(() => {
+        document.querySelector(`.found_single_word`).scrollIntoView({block: "center" });
+      }, 1000); */
+
     });
   });
 }

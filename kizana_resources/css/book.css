@@ -144,10 +144,7 @@ bottom : 45 ;
 
 }
 
-
-
 #search_block {
-
 width: 450px ;  
 height: 50px ; 
 position: absolute ; 
@@ -157,13 +154,11 @@ background-color: #ffffff ;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius: 5px;
 display: none ; 
-
 font-family: "jazeera-regular" ;
-z-index: 1;
+z-index:  1 ;
 border: solid 1px #949090 ;
-
-
 }
+    
 #single_book_search_input {
 display: inline ;   
 width: 250px  ; 

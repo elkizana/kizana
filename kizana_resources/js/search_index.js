@@ -152,8 +152,8 @@ $(".authors_search_block_2").on("mouseenter", function () {
 });
 
 $('#books_filter').on('search', function () {
-  $('.authors_search_block_2').show();
-});
+  $('.authors_search_block_2').show()
+})
 
 
 $("#books_filter").on("keyup", debounce( function () {
