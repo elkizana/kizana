@@ -14,7 +14,7 @@ function library_index() {               // library index
         this.id.slice(1) != "" ? selected_category = knex_master.select("book_name", "book_id", "book_category" , "authors").from("book").orderBy("book_name", "ASC").where("book_category", this.id.slice(1))/* .andWhere("book_type" , "1") */ : selected_category = knex_master.select("book_name", "book_id", "authors", "author_name", "author_id", "book_category", "death_text").from("book").leftJoin("author", "authors", "author_id")/* .where("book_type" , "1") */.orderBy("book_name", "ASC")
   
         selected_category.then(function (rows) {
-          rows.forEach(book => $("#categ_books_div").append(`<span class="books" data-author="${book.authors}"  id="${book.book_id}" title="" > ${book.book_name} 
+          rows.forEach(book => $("#categ_books_div").append(`<span  class="books" data-author="${book.authors}"  id="${book.book_id}" title="" > ${book.book_name} 
           <div class="bio_img book_card"  >  </div>  
           <div class="bio_img person_card" " ></div>  
           </span>`))
