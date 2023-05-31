@@ -23,6 +23,8 @@ function createWindow() {
   //win.webContents.openDevTools()
 }
 app.setName("الخزانة")
+app.commandLine.appendSwitch('enable-experimental-web-platform-features');
+
 app.whenReady().then(createWindow)
 
 
