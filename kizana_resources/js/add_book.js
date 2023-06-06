@@ -329,18 +329,20 @@ function add_book(table_id, initial_rowid = "1") { // add book
 
                 $(next_found).on('click', () => {
                     if (i < found_in.length - 1) {
-                        i++;
-                        a++;
+                        updateContent(i)
+                        i++
+                        a++
                     }
-                    updateContent(i);
+                    
                 });
 
                 $(previous_found).on('click', () => {
                     if (a > 1) {
-                        a--;
-                        i--;
+                        updateContent(i)
+                        a--
+                        i--
                     }
-                    updateContent(i);
+                    
                 });
             }
 
