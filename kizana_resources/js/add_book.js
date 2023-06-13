@@ -315,7 +315,7 @@ function add_book(table_id, initial_rowid = "1") { // add book
 
                 const updateContent = (index) => {
                     content_updater(table_id_original, found_in[index], content_id);
-                    $(single_book_search_num).html(`${a} / ${found_in.length}`);
+                    $(single_book_search_num).html(`${i + 1} / ${found_in.length}`);
                     setTimeout(() => {
                         $(content_id)
                             .html($(content_id).html().removeTashkel().split(search_input_value).join(`<span class='${content_id}   found_single_word'>${search_input_value}</span>`));
@@ -328,22 +328,24 @@ function add_book(table_id, initial_rowid = "1") { // add book
                 };
 
                 $(next_found).on('click', () => {
-                    if (i < found_in.length - 1) {
-                        updateContent(i)
-                        i++
-                        a++
-                    }
-                    
-                });
+                console.log("i ===  "  + i )
+                  console.log("legnth ===  " +  found_in.length )
+                  if (       i < found_in.length ) { 
+                    updateContent(i)
+                    i++ 
+                  }
+                          
+                })
 
                 $(previous_found).on('click', () => {
-                    if (a > 1) {
-                        updateContent(i)
-                        a--
+                    if (       i > 0  ) { 
                         i--
-                    }
-                    
-                });
+                        updateContent(i)
+                      }
+
+
+                })
+
             }
 
             let book_inf
@@ -425,13 +427,14 @@ function add_book(table_id, initial_rowid = "1") { // add book
                 if (index.length < 10000) {
                     if (index[x].parent == 0) {
                         var aaa = "h1-" + unique++
-                        index_list.push(`<span class="expand_arrow left" >  </span>   <H1 class="${aaa}" id=I${index[x].id}>  ${index[x].content}</H1> <br>`)
+                        //<div class=header_block>  </div> 
+                        index_list.push(`<span class="expand_arrow left" >  </span>   <H1 class="${aaa}" id=I${index[x].id}>  ${index[x].content}</H1><br>`)
                     } else {
-                        index_list.push(`<H2  class="${aaa}" id=I${index[x].id}>  ${index[x].content}</H2>`)
+                        index_list.push(`<H2  class="${aaa}" id=I${index[x].id}>  ${index[x].content}</H2> `)
                     }
                 } else if (index.length > 10000 && index[x].parent == 0) {
                     var aaa = "h1-" + unique++
-                    index_list.push(`<span class="expand_arrow left" >  </span>   <H1 class="${aaa}" id=I${index[x].id}>  ${index[x].content}</H1> <br>`)
+                    index_list.push(`<div class=header_block> <span class="expand_arrow left" >  </span>   <H1 class="${aaa}" id=I${index[x].id}>  ${index[x].content}</H1> </div><br>`)
                 }
 
             }

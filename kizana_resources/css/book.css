@@ -202,13 +202,8 @@ transform: translateY(4px);
 }
 .found_single_word { 
 font-weight: 600 ;  
-//background-color: #e8e8e8 ; 
-//border: solid 1px ;
 border-radius: 3px;
 color: red ;
-//text-decoration: underline #a20b0b;
-
-
 }
 
 
@@ -218,7 +213,7 @@ width: 100%;
 max-width : 20% ; 
 height: 95%;
 float : right ; 
-overflow : hidden ; 
+overflow-y : scroll ;  
 letter-spacing: .01em;
 line-height: 1.65;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
@@ -252,15 +247,15 @@ border :  black solid 1px  ;
 }
 
 .expand_arrow {
-border: solid black;
-border-width: 0 3px 3px 0;
+border: solid  #8d8181;
+border-width: 0 1px 1px 0;
 display: inline-block;
 padding: 3px;
 cursor:pointer;
 }
 .expand_arrow:hover {
-border: solid #0a2458;
-border-width: 0 3px 3px 0;
+border: solid #a11212;
+border-width: 0 1px 1px 0;
   
 }
 .circle::before {
@@ -278,16 +273,15 @@ margin-right : 5px ;
 transform: rotate(135deg);
 -webkit-transform: rotate(135deg);
 }
-  
+
 .sidebar h1 { 
-display : inline-block ; 
-font-size: 18px;
-font-family : "jazeera-regular" ; 
+display: inline-block ; 
+font-size: 17px;
+font-family: "jazeera-regular" ; 
 text-decoration-thickness: .1em ;
-padding : 5 ;
-margin : 0 ;   
-width : 80% ; 
-border-bottom : #e9e2e2 0.5px solid ; 
+margin: 0 0 5 0  ;    
+border-bottom: #e9e2e2 0.5px solid ; 
+width:95%;    
 }
 
 h1:hover , h2:hover {
@@ -295,18 +289,20 @@ color : #0a2458 ;
 }    
 
 .sidebar h2 { 
-font-size: 18 ;
+font-size: 16px ;
 font-weight: 400  ;
-font-family : "jazeera-regular" ; 
-padding-right : 15px ;
-max-width : 80% ; 
-border-bottom : #e9e2e2 0.5px solid ; 
+font-family: "jazeera-regular" ; 
+padding-right:10px ;
+max-width: 95% ; 
+border-bottom: #e9e2e2 0.5px solid ; 
+margin: 0 0 5 0  ;   
+    
 
 }
 
 
 .sidebar:hover { 
-overflow-y : auto ; 
+//overflow-y : auto ; 
 }
 
 
@@ -321,7 +317,7 @@ white-space: pre-line		;
 width: auto  ; 
 height: 70% ;  
 line-height: 1.65;
-font-size : 30 ; 
+font-size : 25 ; 
 font-family : "Naskh"   ; 
 overflow-y: auto;
 overflow-x : hidden ; 
@@ -353,7 +349,7 @@ right:  40%;
   
 [data-type="title"] {
 //justify-content: center ; 
-font-size: 24px;
+font-size: 20px;
 font-family : "jazeera-regular" ; 
 //color : #0a2458 ;   
 font-weight : 600 ;  
@@ -370,7 +366,7 @@ padding: 10 ;
 overflow-y: auto;
 overflow-x: hidden ; 
 font-family: "Naskh" ; 
-font-size: 24 ; 
+font-size: 20 ; 
 line-height: 1.60;
 letter-spacing: .01em;
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
