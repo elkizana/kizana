@@ -203,8 +203,8 @@
 }
 .context-menu-item.context-menu-hover {
     color: #fff;
-    cursor: pointer;
-    background-color: #2980b9;
+    cursor: text;
+    background-color: #005483 /*blue*/;
 }
 .context-menu-item.context-menu-disabled {
     color: #bbb;
@@ -279,6 +279,7 @@
 }
 .context-menu-item.context-menu-visible > .context-menu-list {
     display: block;
+    //background-color: red;
 }
 .context-menu-accesskey {
     text-decoration: underline;
