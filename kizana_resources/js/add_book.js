@@ -357,17 +357,16 @@ function add_book(table_id, initial_rowid = "1") { // add book
                 book_inf = "ليس للكتاب بطاقة"
             })
 
-            let author_inf
-            let author_id
-
+            //let author_inf
+            //let author_id
             knex_master.select("authors").from("book").where("book_id", table_id_original).then(function(results) {
                 author_id = results[0].authors
-
+               
                 knex_master.select("inf").from("bio").where("authid", author_id).then(function(results) {
 
                     if (results[0].inf.length > 15) {
                         author_inf = results[0].inf.replace(line_breaking, "\n")
-                    }
+                    } 
 
                 }).catch(function() {
                     author_inf = "ليس للمؤلف بطاقة"
@@ -385,7 +384,7 @@ function add_book(table_id, initial_rowid = "1") { // add book
                         "fold1": {
                             "name": "بطاقة الكتاب",
                             "items": {
-                                "fold2-key": {
+                                "fold1-key": {
                                     "name": book_inf
                                 }
                             }
