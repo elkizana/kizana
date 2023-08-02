@@ -94,10 +94,10 @@ function add_book(table_id, initial_rowid = "1") { // add book
             <span id="close_search" class="close_search${table_id}" > </span>
             </div>
   
-            <div class="sidebar side${table_id}">  <input type="search" placeholder="حرفان على الأقل" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>    
+            <div class="sidebar resizable-element side${table_id}">  <div class="resize-handle"></div> <input type="search" placeholder="حرفان على الأقل" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>    
                
-            <div   class="content c${table_id}" tabindex="0" >   </div>  
-              <div class="hashia h${table_id}">   </div> </div>`)
+            <div   class="content  c${table_id}" tabindex="0" >   </div>  
+              <div class="hashia   h${table_id}">    </div>  </div>`)
 
     //<img title="ضم أوبسط العناوين" src="./../icons/toggle.png" class="toggle_all" id=toggle${table_id} />
     knex_all.raw("SELECT COUNT(*) FROM b" + table_id_original).then(function(text_table) {
@@ -271,6 +271,12 @@ function add_book(table_id, initial_rowid = "1") { // add book
             $(sidebar_toggle).on("click", function() {
                 close_index()
             })
+
+             $( sidebar_id + ".resizable-element").resizable({
+                handles: {
+                  'w': '.resize-handle'
+                }
+              }); 
 
 
             let found_in = []
