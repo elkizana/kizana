@@ -21,14 +21,15 @@ z-index:10;
 
 
 #kizana_div_sidebar { 
-position : relative ; 
-width : 50px ; 
-max-width : 8% ; 
-height : 50% ; 
-margin : 150 0 0 0   ; 
+//display:inline-block;    
+position: relative ; 
+width: 50px ; 
+max-width: 8% ; 
+height: 50% ; 
+margin: 150 0 0 0   ; 
 box-shadow:0 0 1.11111vw rgba(50,50,93,.25),0 0 .34722vw rgba(77,77,77,.1) ;
 border-radius:10px;
-float : right ; 
+float: right ; 
 }
 
 
@@ -84,14 +85,14 @@ background: #fbfbfb;
 ::-webkit-scrollbar-thumb {
 border:1px solid #000000 ;   
 border-radius: 3px   ;
-
 }
 
-/* Handle on hover 
+ Handle on hover 
 ::-webkit-scrollbar-thumb:hover , ::-webkit-scrollbar-button:hover {
 background: #918c8c; 
+    //cursor:grab;    
 }
-*/
+
 
 /* Buttons */
 ::-webkit-scrollbar-button
@@ -116,12 +117,14 @@ border-radius: 3px   ;
 ::-webkit-scrollbar-button:vertical:decrement:hover
 {
 //border-color: transparent transparent #000000 transparent;
+    
 }
 
 
 /* Down */
 ::-webkit-scrollbar-button:vertical:increment
 {
+    
 //border-width: 14px 7px 0 7px;
 //border-color: #777777 transparent transparent transparent;
 }
