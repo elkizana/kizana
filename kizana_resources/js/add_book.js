@@ -94,7 +94,7 @@ function add_book(table_id, initial_rowid = "1") { // add book
             <span id="close_search" class="close_search${table_id}" > </span>
             </div>
   
-            <div class="sidebar resizable-element side${table_id}">  <div class="resize-handle"></div> <input type="search" placeholder="حرفان على الأقل" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>    
+            <div class="sidebar resizable-element side${table_id}">   <input type="search" placeholder="حرفان على الأقل" class="sidebar_search_input${table_id}" id="sidebar_search_input" >   </div>   
                
             <div   class="content  c${table_id}" tabindex="0" >   </div>  
               <div class="hashia   h${table_id}">    </div>  </div>`)
@@ -272,12 +272,12 @@ function add_book(table_id, initial_rowid = "1") { // add book
                 close_index()
             })
 
-             $( sidebar_id + ".resizable-element").resizable({
+          /*    $( sidebar_id + ".resizable-element").resizable({
                 handles: {
                   'w': '.resize-handle'
                 }
               }); 
-
+ */
 
             let found_in = []
             $(search_block).draggable()
