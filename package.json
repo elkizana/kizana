@@ -1,7 +1,6 @@
 {
   "name": "kizana",
   "version": "1.0.0",
-  
   "main": "kizana_resources/index.js",
   "description": "خزانة الكتب فيها ثمانية آلاف كتاب للقراءة و البحث فيها",
   "scripts": {
@@ -37,7 +36,7 @@
         "AppImage"
       ]
     },
-      "win": {
+    "win": {
       "asar": false,
       "target": [
         "nsis"
@@ -47,14 +46,14 @@
   "dependencies": {
     "adm-zip": "0.5.5",
     "chrome-tabs": "5.4.0",
-    "jquery": "3.7.0",
-    "knex": "2.3.0",
+    "jquery": "3.7.1",
+    "knex": "3.0.1",
     "oktob.js": "1.1.0",
     "path": "0.12.7",
-    "sqlite3": "5.1.2"
+    "sqlite3": "5.1.6"
   },
   "devDependencies": {
-    "electron": "25.3.1",
+    "electron-nightly": "^29.0.0-nightly.20231101",
     "electron-builder": "23.6.0",
     "electron-reloader": "1.1.0"
   }
