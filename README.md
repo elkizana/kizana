@@ -11,7 +11,7 @@
  ```
 cd kizana
 npm install 
-npm start 
+
 ```
 
  
