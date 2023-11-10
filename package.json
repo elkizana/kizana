@@ -53,8 +53,8 @@
     "sqlite3": "5.1.6"
   },
   "devDependencies": {
-    "electron-nightly": "^29.0.0-nightly.20231101",
     "electron-builder": "23.6.0",
+    "electron-nightly": "^29.0.0-nightly.20231109",
     "electron-reloader": "1.1.0"
   }
 }

@@ -7,6 +7,9 @@ function authors_index(filter = "author_name") { //end author_index
 
 
       $("#authors_filter").on("click", function() {
+        //$(".authors").off("click");
+        $("#authors_first_block").off("click")
+
           filter == "author_name" ? authors_index(filter = "death_number") : authors_index(filter = "author_name")
       })
       
