@@ -83,13 +83,13 @@ background: #fbfbfb;
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-border:1px solid #000000 ;   
+border:1px solid #686969 ;   
 border-radius: 3px   ;
 }
 
  Handle on hover 
 ::-webkit-scrollbar-thumb:hover , ::-webkit-scrollbar-button:hover {
-background: #918c8c; 
+background: #686969; 
     //cursor:grab;    
 }
 
@@ -99,7 +99,7 @@ background: #918c8c;
 {
 height: 25px;
 width: 16px;
-border: 1px solid #000000 ;   
+border: 1px solid #686969 ;   
 background: #fdfdfd; 
 border-radius: 3px   ;
     
@@ -176,10 +176,10 @@ border-top : #dadada 1px solid ;
 padding : 5px ; 
 //font-family : "andalus"
 }
-.active {
-border-left :   3px solid  ;   
-border-radius : 3px ;   
-}
+.active {//border-left:   3px solid;
+         border-radius: 3px;
+         color:#0067d8;
+        }
 /*.authors , .authors_search_block_2 { 
 display : inline-block ; 
 width : 100%  ; 
