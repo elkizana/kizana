@@ -1,0 +1,25 @@
+directories:
+  output: kizana_appimage
+  buildResources: build
+appId: com.kizana.app
+productName: الخزانة
+linux:
+  category: Education
+  desktop:
+    Comment: خزانة الكتب فيها ثمانية آلاف كتاب للقراءة و البحث فيها
+    Name: الخزانة
+    Type: Application
+    Categories: Education
+  executableName: kizana
+  maintainer: kizana@gmail.com
+  asar: false
+  compression: maximum
+  icon: build/icon.icns
+  target:
+    - AppImage
+win:
+  asar: false
+  target:
+    - nsis
+files: []
+electronVersion: 28.0.0-beta.11
