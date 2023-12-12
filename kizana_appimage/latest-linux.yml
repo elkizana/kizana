@@ -1,9 +1,0 @@
-version: 1.0.0
-files:
-  - url: kizana-1.0.0-x86_64.AppImage
-    sha512: KIrgDmst9IdlIKKNbL1joIMSgbSMubQlq9GKEpZ0b7MR169HOnk/bgsDXEeWx6g0My2s9/32xgw3BXXC7wkN3A==
-    size: 3263617614
-    blockMapSize: 3385954
-path: kizana-1.0.0-x86_64.AppImage
-sha512: KIrgDmst9IdlIKKNbL1joIMSgbSMubQlq9GKEpZ0b7MR169HOnk/bgsDXEeWx6g0My2s9/32xgw3BXXC7wkN3A==
-releaseDate: '2023-12-01T17:17:57.234Z'
