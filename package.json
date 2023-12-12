@@ -31,6 +31,7 @@
       "executableName": "kizana",
       "maintainer": "kizana@gmail.com",
       "asar": "false",
+      "compression": "maximum",
       "icon": "build/icon.icns",
       "target": [
         "AppImage"
@@ -53,8 +54,8 @@
     "sqlite3": "5.1.6"
   },
   "devDependencies": {
-    "electron-builder": "23.6.0",
-    "electron-nightly": "^29.0.0-nightly.20231109",
+    "electron": "^28.0.0-beta.11",
+    "electron-builder": "24.9.1",
     "electron-reloader": "1.1.0"
   }
 }
