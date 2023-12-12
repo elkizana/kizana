@@ -1,6 +1,5 @@
 {
   "name": "kizana",
-  "version": "1.0.0",
   "main": "kizana_resources/index.js",
   "description": "خزانة الكتب فيها ثمانية آلاف كتاب للقراءة و البحث فيها",
   "scripts": {
