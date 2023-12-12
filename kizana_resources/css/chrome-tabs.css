@@ -150,12 +150,12 @@
   vertical-align: top;
   overflow: hidden;
   white-space: nowrap;
-  margin-left: 4px;
-  height : 23 ; 
-  //border : solid 1px black ; 
+  margin-right: 04px;
+  height: 23 ; 
+  //border: solid 1px black ; 
   color: #5f6368;
   //-webkit-mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 24px), transparent);
-  mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 24px), transparent);
+  //mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 24px), transparent);
 }
 .chrome-tabs .chrome-tab[is-small] .chrome-tab-title {
   margin-left: 0;
