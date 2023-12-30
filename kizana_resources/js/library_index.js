@@ -24,12 +24,13 @@ function library_index() {               // library index
           $(".bio_img").hide()
 
           $("#categ_books_div").on("mouseenter", ".books", function() {
+
             var $bioImg = $(".bio_img");
             var $bookCard = $(this).children(".book_card");
             var $personCard = $(this).children(".person_card");
             var bookCardPointer = $bookCard[0];
             var personCardPointer = $personCard[0];
-          
+
             knex_master.select("bibliography").from("biblio").where("id", this.id).then(function(info) {
               if (info[0].bibliography.length > 10) {
                 $bioImg.hide();
@@ -40,10 +41,16 @@ function library_index() {               // library index
                   placement: 'auto',
                   arrow: true,
                   interactive: true,
-                  delay: [300, 0]
-                };
+                  delay: [300, 0],
+                  zIndex: 9999,
+                  onHidden(instance) {
+                    instance.destroy(); // Destroy the tooltip when it's hidden
+                  }
+
+                }
           
-                tippy(bookCardPointer, tippyOptions);
+                tippy(bookCardPointer, tippyOptions) ; 
+                //console.log(instance); 
               }
             }).catch(function(error) {
               $(".bio_img").hide();
@@ -58,7 +65,10 @@ function library_index() {               // library index
                   placement: 'auto',
                   arrow: true,
                   interactive: true,
-                  delay: [300, 0]
+                  delay: [300, 0],
+                  onHidden(instance) {
+                    instance.destroy(); // Destroy the tooltip when it's hidden
+                  }
                 };
           
                 tippy(personCardPointer, tippyOptions);

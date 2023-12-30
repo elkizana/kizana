@@ -60,6 +60,9 @@ let books_to_search = []
                   interactive: true,
                   delay: [300, 0],
                   placement: 'auto',
+                  onHidden(instance) {
+                    instance.destroy(); // Destroy the tooltip when it's hidden
+                  }
                 });
               }
             })
@@ -143,6 +146,9 @@ $(".authors_search_block_2").on("mouseenter", function () {
           arrow: true,
           interactive: true,
           delay: [300, 0],
+          onHidden(instance) {
+            instance.destroy(); // Destroy the tooltip when it's hidden
+          }
         });
       }
     })
@@ -239,6 +245,9 @@ knex_master.from("book").orderBy("book_name", "ASC").where("authors", this.id).t
     interactive: true,
     delay: [300 , 0],
     placement: 'auto' ,
+    onHidden(instance) {
+      instance.destroy(); // Destroy the tooltip when it's hidden
+    }
   })
 
 }

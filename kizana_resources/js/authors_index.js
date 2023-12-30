@@ -28,7 +28,10 @@ function authors_index(filter = "author_name") { //end author_index
               arrow: true,
               interactive: true,
               delay: [300, 0],
-              placement: 'auto'
+              placement: 'auto',
+              onHidden(instance) {
+                instance.destroy(); // Destroy the tooltip when it's hidden
+              }
             };
       
             tippy($pointer, tippyOptions);
@@ -115,6 +118,9 @@ function authors_index(filter = "author_name") { //end author_index
                         interactive: true,
                         delay: [300, 0],
                         placement: 'auto',
+                        onHidden(instance) {
+                          instance.destroy(); // Destroy the tooltip when it's hidden
+                        }
                       });
                     }
                   })
