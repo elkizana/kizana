@@ -17,10 +17,8 @@ npm start
  <h4>مهم</h4>
  <p > 
 هذا المخزن ليس فيه قاعدة بيانات الكتب سأجعل للمكتبة موقعا خاصا بها عندما يتيسر لي  ذلك إن شاء الله <br>
-تستطيع تحميل قاعدة البيانات مفردة ثم تنسخها في ملف kizana_resources :
 
   </p>
-https://mega.nz/file/Kt1QkDDZ#k9kGFi5ejaSQf1EYWIUzBEw2oJl-TC9QiSeVG7EdtpA
 <h6 >صور منها :</h6>
 <img  src="https://github.com/elkizana/kizana/blob/main/screenshots/01.png"  border="1px solid red" alt="محتوى كتاب"><br>
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/02.png" alt="التصانيف"><br>
