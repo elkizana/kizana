@@ -42,6 +42,14 @@
       "target": [
         "dir"
       ]
+    },
+    "mac": {
+      "category": "public.app-category.education",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ]
     }
   },
   "dependencies": {
