@@ -18,7 +18,7 @@
     "productName": "الخزانة",
     "directories": {
       "buildResources": "build",
-      "output": "kizana_appimage"
+      "output": "/mnt/CCA8F968A8F95206/kizana/dist"
     },
     "linux": {
       "category": "Education",
@@ -34,7 +34,7 @@
       "compression": "maximum",
       "icon": "build/icon.icns",
       "target": [
-        "AppImage"
+        "7z"
       ]
     },
     "win": {
@@ -54,7 +54,7 @@
     "sqlite3": "5.1.6"
   },
   "devDependencies": {
-    "electron": "^28.0.0-beta.11",
+    "electron": "29.1.0",
     "electron-builder": "24.9.1",
     "electron-reloader": "1.1.0"
   }
