@@ -2,25 +2,12 @@ var Oktob = oktob()
 const os = require('os');
 
 
-/* if (  os.type() == "Linux" ) {
-  var bookmark_file = os.homedir() + "/.config/الخزانة/bookmark.json" 
-  if (!fs.existsSync(os.homedir() + "/.config/الخزانة/bookmark.json" ) ) { 
-    fs.writeFile(bookmark_file, '[]', function (err) {null})
-    }
-  }
 
-
-else if ( os.type() == "Windows_NT" )  {
-  var bookmark_file = os.homedir() + "/app/الخزانة/bookmark.json"
-  if ( !fs.existsSync(os.homedir() + "/app/الخزانة/bookmark.json" ) ) { 
-  fs.writeFile(bookmark_file, '[]', function (err) {null})
-}} */
 
   
 
 
-
-if (os.type() == "Linux") {
+if (os.type() == "Linux" || os.type() == "Darwin") {
   var bookmark_file = path.join(os.homedir(), ".config", "الخزانة", "bookmark.json");
   var dir = path.dirname(bookmark_file);
 
@@ -44,44 +31,30 @@ if (os.type() == "Linux") {
   }
 }
 
+if (os.type() == "Linux" || os.type() == "Darwin") {
+  var last_opened = path.join(os.homedir(), ".config", "الخزانة", "last_opened.json");
+  var dir = path.dirname(last_opened);
 
-/* if (  os.type() == "Linux" ) {
-  var last_opened = os.homedir() + "/.config/الخزانة/last_opened.json" 
-  if (!fs.existsSync(os.homedir() + "/.config/الخزانة/last_opened.json" ) ) { 
-    fs.writeFile(last_opened, '[]', function (err) {null})
-    }
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
   }
 
-
-else if ( os.type() == "Windows_NT" )  {
-  var last_opened = os.homedir() + "/app/الخزانة/last_opened.json"
-  if ( !fs.existsSync(os.homedir() + "/app/الخزانة/last_opened.json" ) ) { 
-  fs.writeFile(last_opened, '[]', function (err) {null})
-}} */
-
-  if (os.type() == "Linux") {
-    var last_opened = path.join(os.homedir(), ".config", "الخزانة", "last_opened.json");
-    var dir = path.dirname(last_opened);
-  
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-  
-    if (!fs.existsSync(last_opened)) {
-      fs.writeFile(last_opened, '[]', function (err) { if (err) throw err; });
-    }
-  } else if (os.type() == "Windows_NT") {
-    var last_opened = path.join(os.homedir(), "AppData", "Roaming", "الخزانة", "last_opened.json");
-    var dir = path.dirname(last_opened);
-  
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-  
-    if (!fs.existsSync(last_opened)) {
-      fs.writeFile(last_opened, '[]', function (err) { if (err) throw err; });
-    }
+  if (!fs.existsSync(last_opened)) {
+    fs.writeFile(last_opened, '[]', function (err) { if (err) throw err; });
   }
+} else if (os.type() == "Windows_NT") {
+  var last_opened = path.join(os.homedir(), "AppData", "Roaming", "الخزانة", "last_opened.json");
+  var dir = path.dirname(last_opened);
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
+  if (!fs.existsSync(last_opened)) {
+    fs.writeFile(last_opened, '[]', function (err) { if (err) throw err; });
+  }
+}
+
 
 var knex_all = require("knex")({
   client: "sqlite3",
