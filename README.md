@@ -7,7 +7,7 @@
 الخزانة قاعدة بياناتها (كتبها كلها) مأخوذة من المكتبة الشاملة الشهيرة.<br>
  </p>
 <h2 >تنزيل الخزانة </h2>
-For more information, visit [OpenAI](https://www.openai.com).
+(https://www.kizana.org)
 
 <h4 >شغلها بواسطة : Nodejs</h4>
 
