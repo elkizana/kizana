@@ -6,76 +6,9 @@
 الخزانة مفتوحة المصدر (Open Source) ليس عليها حجر في الإستعمال أو النسخ أو التوزيع أو التغيير.<br>
 الخزانة قاعدة بياناتها (كتبها كلها) مأخوذة من المكتبة الشاملة الشهيرة.<br>
  </p>
+<h2 >تنزيل الخزانة </h2>
+For more information, visit [OpenAI](https://www.openai.com).
 
-```html
-  <table>
-            <tr>
-           <th>النظام</th>
-           <!-- <th>الحجم</th> -->
-           <th> تنزيل</th>
-           </tr>
-           
-
-
-           <tr>
-            <td>Linux </td>
-            
-            <td>
-            
-            <a href="https://ia801509.us.archive.org/34/items/kizana_linux/kizana_linux.zip"> <img src="resources/download.png" id="download_image" alt="تنزيل المكتبة" title="تنزيل المكتبة" >  </a>
-            <!-- <span>آت إن شاء الله</span> -->
-            </td>
-            </tr>
-
-
-            
-           <tr>
-            <td>Windows</td>
-            
-            <td>
-           
-             <a href="https://ia600602.us.archive.org/16/items/kizana_windows/kizana_windows.zip"> <img src="resources/download.png" id="download_image" alt="تنزيل المكتبة" title="تنزيل المكتبة" >  </a>
-           <!-- <span>آت إن شاء الله</span> -->
-
-           </td>
-           
-           
-            </tr>
-            
-           
-                     
-           <tr>
-            <td>Mac</td>
-            
-            <td>
-           
-             <a href="https://ia801508.us.archive.org/32/items/kizana_mac/kizana_mac.zip"> <img src="resources/download.png" id="download_image" alt="تنزيل المكتبة" title="تنزيل المكتبة" >  </a>
-           <!-- <span>آت إن شاء الله</span> -->
-
-           </td>
-           
-           
-            </tr>
-            
-     
-           
-
-            
-
-
-
-           
-            <tr>
-            <td>المصدر البرمجي</td>
-            <td>
-             <a href="https://github.com/elkizana/kizana"> <img src="resources/github.png" id="download_image" alt="تنزيل المكتبة"> </a>
-            </td>
-            
-            </tr>
-           
-           </table>
-
-           ```html
 <h4 >شغلها بواسطة : Nodejs</h4>
 
  ```
