@@ -23,7 +23,7 @@ npm start
 تستطيع تحميل قاعدة البيانات مفردة ثم تنسخها في ملف kizana_resources :
 
   </p>
-https://mega.nz/file/Kt1QkDDZ#k9kGFi5ejaSQf1EYWIUzBEw2oJl-TC9QiSeVG7EdtpA
+https://archive.org/download/kizana_all_books/kizana_all_books.zip
 <h6 >صور منها :</h6>
 <img  src="https://github.com/elkizana/kizana/blob/main/screenshots/01.png"  border="1px solid red" alt="محتوى كتاب"><br>
  <img src="https://github.com/elkizana/kizana/blob/main/screenshots/02.png" alt="التصانيف"><br>
