@@ -121,9 +121,16 @@ String.prototype.hasArabic = function () {
  */
  
 String.prototype.removeTashkel = function () {
+    return this.replace(/[\u064B-\u0652]/g, '') // إزالة التشكيل (الفتحة، الضمة، الشدة، إلخ.)
+               .replace(/[أإآ]/g, "ا")  // توحيد جميع أشكال الألف
+               .replace(/ة/g, "ه")      // استبدال التاء المربوطة بالهاء
+               .replace(/ئ/g, "ى")      // استبدال الياء الهمزية بالياء العادية
+               .replace(/ؤ/g, "و")      // استبدال الواو الهمزية بالواو العادية
+               .replace(/ٱ/g, "ا")      // استبدال الألف الخنجرية بالألف العادية
+               .replace(/ٓ/g, "");      // إزالة علامات المدّ
+};
 
-	return this.replace(/[\u064B-\u0652]/gm, '');
-}
+
 
 /**
  * Remove non-Arabic letters
